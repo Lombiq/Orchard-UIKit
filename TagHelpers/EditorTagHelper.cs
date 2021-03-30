@@ -42,6 +42,9 @@ namespace Lombiq.UIKit.TagHelpers
         [HtmlAttributeName(nameof(BlockClassName))]
         public string BlockClassName { get; set; }
 
+        [HtmlAttributeName(nameof(BlockId))]
+        public string BlockId { get; set; }
+
         [HtmlAttributeName(nameof(DropDownContainerId))]
         public string DropDownContainerId { get; set; }
 
@@ -68,6 +71,7 @@ namespace Lombiq.UIKit.TagHelpers
             Properties.Add(nameof(Placeholder), Placeholder?.Value);
             Properties.Add(nameof(Hint), Hint?.Value);
             Properties.Add(nameof(BlockClassName), BlockClassName);
+            Properties.Add(nameof(BlockId), BlockId);
             Properties.Add(nameof(LabelPosition), LabelPosition);
             Properties.Add(nameof(DropDownContainerId), DropDownContainerId);
             Properties.Add(nameof(ButtonContainerId), ButtonContainerId);

@@ -11,36 +11,45 @@
 
     var labelAttributes = new Dictionary<string, object>
     {
-        ["class"] = $"editorLabel {blockClassName}__label"
+        ["class"] = $"{blockClassName}__label"
     };
 
     var inputAttributes = new Dictionary<string, object>
     {
-        ["class"] = $"form-control textbox {blockClassName}__input"
+        ["class"] = $"form-control {blockClassName}__input"
     };
 
     var isRequired = forModel.Metadata.RequiredAttrExists();
     if (isRequired)
     {
-        inputAttributes["required"] = "";
-        inputAttributes["class"] = inputAttributes["class"] + " required form-control";
+        inputAttributes["required"] = string.Empty;
+        inputAttributes["class"] = inputAttributes["class"] + " required";
         labelAttributes["class"] = labelAttributes["class"] + " required";
     }
 
     if (Model.Disabled == true)
     {
-        inputAttributes["disabled"] = "";
+        inputAttributes["disabled"] = string.Empty;
     }
 
     var labelPositionModifier = Model.LabelPosition switch
     {
         LabelPosition.Border => "__label_border",
         LabelPosition.Top => "__label_top",
-        LabelPosition.None => string.Empty,
+        LabelPosition.None => "__label_none",
         _ => "__label_top",
     };
 
-    var hasAsterixInPlaceholder = labelPositionModifier == string.Empty && isRequired;
+    labelAttributes["class"] = labelAttributes["class"] + $" {DefaultBlockName}{labelPositionModifier}" +
+            $" {blockClassName}{labelPositionModifier}";
+
+
+    if (labelPositionModifier == "__label_none")
+    {
+        labelAttributes["class"] = labelAttributes["class"] + $" {placeholderLabelClass}";
+    }
+
+    var hasAsterixInPlaceholder = Model.LabelPosition == LabelPosition.None && isRequired;
 
     var placeholder = Model.Placeholder as string;
     if (!string.IsNullOrEmpty(placeholder) && !hasAsterixInPlaceholder)
@@ -48,16 +57,7 @@
         inputAttributes["placeholder"] = placeholder;
     }
 
-    if (labelPositionModifier != string.Empty)
-    {
-        labelAttributes["class"] = labelAttributes["class"] + $" {blockClassName}{labelPositionModifier}";
-    }
-    else
-    {
-        labelAttributes["class"] = labelAttributes["class"] + $" {placeholderLabelClass}";
-    }
-
-    var blockId = string.IsNullOrEmpty(Model.Id) ? string.Empty : $"id={Model.Id}";
+    var blockId = string.IsNullOrEmpty(Model.BlockId) ? string.Empty : $"id={Model.BlockId}";
 
     var label = HtmlGenerator.GenerateLabel(
         Model.ViewContext,

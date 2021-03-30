@@ -7,6 +7,8 @@ namespace Lombiq.UIKit.ViewModels
         [Required]
         public string RequiredStringEmpty { get; set; }
 
+        public string NotRequiredStringEmpty { get; set; }
+
         [Required]
         public string RequiredStringDefault { get; set; } = "Test string";
 
