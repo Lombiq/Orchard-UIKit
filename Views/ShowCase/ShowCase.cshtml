@@ -1,0 +1,71 @@
+@model ShowcaseViewModel
+
+@{
+    var dropDownData = new List<DropDownItem>
+{
+        new DropDownItem(){ Text = T["Email Verified"], DataState = true, DataClass = "btn-success"},
+        new DropDownItem(){ Text = T["Email Not Verified"], DataState = false, DataClass = "btn-danger"},
+    };
+}
+<script src="/Lombiq.UIKit/lombiq-uikitscripts/jquery-bootstrap-dropdown.js" at="Foot"></script>
+<div style="width:30%; padding: 1.5em; float:left;">
+
+    <h1>@T["Textbox:"]</h1>
+
+    <h4>@T["No label, required."]</h4>
+    <editor type="TextBox" model-for="@Model.RequiredStringEmpty" labelPosition="@LabelPosition.None"
+            placeholder="@T["Email"]" hint="@T["Hint message can be written here."]" />
+
+    <h4>@T["Label top, required."]</h4>
+    <editor type="TextBox" model-for="@Model.RequiredStringEmpty" label="@T["Email"]" labelPosition="@LabelPosition.Top"
+            placeholder="@T["Email"]" hint="@T["Hint message can be written here."]" />
+
+    <h4>@T["Label top, not required."]</h4>
+    <editor type="TextBox" model-for="@Model.RequiredStringEmpty" label="@T["Email"]" labelPosition="@LabelPosition.Top"
+            placeholder="@T["Email"]" hint="@T["Hint message can be written here."]" />
+
+    <h4>@T["Label on border, required or not."]</h4>
+    <editor type="TextBox" model-for="@Model.RequiredStringEmpty" label="@T["Email"]" labelPosition="@LabelPosition.Border"
+            placeholder="@T["Email"]" hint="@T["Hint message can be written here."]" />
+
+</div>
+<div style="width:30%; padding: 1.5em; float:left">
+
+    <h1>@T["Checkbox:"]</h1>
+
+    <h4>@T["Label on right"]</h4>
+    <editor Type="CheckBox" model-for="@Model.CheckboxFalse" label="@T["Checkbox default false"]" labelPosition="@LabelPosition.Right" />
+
+    <h4>@T["Label on left"]</h4>
+    <editor Type="CheckBox" model-for="@Model.CheckboxTrue" label="@T["Checkbox default true"]" labelPosition="@LabelPosition.Left" />
+
+    <h1>@T["Bootstrap dropdown:"]</h1>
+    <editor type="BootstrapDropDown" model-for="@Model.CheckboxTrue" DropDownContainerId="userVerifiedDropdown" ButtonContainerId="verified" ButtonId="verifiedButton" DropDownData="@dropDownData" />
+    <br />
+    <editor type="BootstrapDropDown" model-for="@Model.CheckboxFalse" DropDownContainerId="userVerifiedDropdown2" ButtonContainerId="verified2" ButtonId="verifiedButton2" DropDownData="@dropDownData" />
+</div>
+
+
+<style>
+    .form-group {
+        position: relative;
+    }
+
+    .form-group .textBoxEditor__placeholder {
+        position: absolute;
+        top: 0.4rem;
+        left: 0.75rem;
+        display: none;
+    }
+
+    .form-group .textBoxEditor__placeholderLabel {
+        font-weight: normal;
+        font-style: normal;
+        color: #868E96;
+        font-size: 0.875em;
+    }
+
+    .form-group .star {
+        color: red;
+    }
+</style>

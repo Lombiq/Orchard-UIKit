@@ -1,0 +1,101 @@
+@inject IHtmlGenerator HtmlGenerator
+
+@{
+    const string DefaultBlockName = "textBoxEditor";
+    var blockClassName = Model.BlockClassName ?? DefaultBlockName;
+    var placeholderClass = $"{DefaultBlockName}__placeholder";
+    var placeholderLabelClass = $"{DefaultBlockName}__placeholderLabel";
+
+
+    var forModel = Model.For as ModelExpression;
+
+    var labelAttributes = new Dictionary<string, object>
+    {
+        ["class"] = $"editorLabel {blockClassName}__label"
+    };
+
+    var inputAttributes = new Dictionary<string, object>
+    {
+        ["class"] = $"form-control textbox {blockClassName}__input"
+    };
+
+    var isRequired = forModel.Metadata.RequiredAttrExists();
+    if (isRequired)
+    {
+        inputAttributes["required"] = "";
+        inputAttributes["class"] = inputAttributes["class"] + " required form-control";
+        labelAttributes["class"] = labelAttributes["class"] + " required";
+    }
+
+    if (Model.Disabled == true)
+    {
+        inputAttributes["disabled"] = "";
+    }
+
+    var labelPositionModifier = Model.LabelPosition switch
+    {
+        LabelPosition.Border => "__label_border",
+        LabelPosition.Top => "__label_top",
+        LabelPosition.None => string.Empty,
+        _ => "__label_top",
+    };
+
+    var hasAsterixInPlaceholder = labelPositionModifier == string.Empty && isRequired;
+
+    var placeholder = Model.Placeholder as string;
+    if (!string.IsNullOrEmpty(placeholder) && !hasAsterixInPlaceholder)
+    {
+        inputAttributes["placeholder"] = placeholder;
+    }
+
+    if (labelPositionModifier != string.Empty)
+    {
+        labelAttributes["class"] = labelAttributes["class"] + $" {blockClassName}{labelPositionModifier}";
+    }
+    else
+    {
+        labelAttributes["class"] = labelAttributes["class"] + $" {placeholderLabelClass}";
+    }
+
+    var blockId = string.IsNullOrEmpty(Model.Id) ? string.Empty : $"id={Model.Id}";
+
+    var label = HtmlGenerator.GenerateLabel(
+        Model.ViewContext,
+        forModel.ModelExplorer,
+        forModel.Name,
+        hasAsterixInPlaceholder
+            ? placeholder
+            : Model.Label as string,
+        labelAttributes);
+
+    var input = HtmlGenerator.GenerateTextBox(
+        Model.ViewContext,
+        forModel.ModelExplorer,
+        forModel.Name,
+        forModel.Model,
+        string.Empty,
+        inputAttributes);
+
+}
+
+<div @blockId class="form-group @blockClassName @Model.Class">
+
+    @if (hasAsterixInPlaceholder)
+    {
+        <div class="@(blockClassName)__placeholder">
+            @label
+            <span class="@(blockClassName)__asterisk star">*</span>
+        </div>
+    }
+    else
+    {
+        @label
+    }
+
+    @input
+
+    @if (!string.IsNullOrEmpty(Model.Hint))
+    {
+        <div class="hint @(blockClassName)__hint">@Model.Hint</div>
+    }
+</div>

@@ -1,0 +1,68 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Lombiq.UIKit.Models
+
+@inject IHtmlGenerator HtmlGenerator
+
+@{
+    var blockClasses = Model.BlockClassName ?? string.Empty;
+
+    var forModel = Model.For as ModelExpression;
+
+    var inputAttributes = new Dictionary<string, object>
+    {
+        ["type"] = "hidden",
+        ["required"] = "",
+    };
+
+    if (Model.Disabled == true)
+    {
+        inputAttributes["disabled"] = "";
+    }
+
+    var input = HtmlGenerator.GenerateTextBox(
+        Model.ViewContext,
+        forModel.ModelExplorer,
+        forModel.Name,
+        forModel.Model,
+        string.Empty,
+        inputAttributes);
+
+    var dropDownData = Model.DropDownData as List<DropDownItem>;
+
+    var defaultData = dropDownData.FirstOrDefault(data => data.DataState.Equals(forModel.Model));
+}
+<div id="@Model.DropDownContainerId" class="@blockClasses">
+    @input
+    <nav>
+        <div asp-validation-class-for="@forModel">
+            <div id="@Model.ButtonContainerId" class="dropdown">
+                <button id="@Model.ButtonId" title="@forModel.Model" @(Model.Disabled ? "disabled" : string.Empty)
+                    class="btn btn-sm @defaultData.DataClass dropdown-toggle"
+                    type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @defaultData.Text
+                </button>
+                <div class="dropdown-menu">
+                    @foreach (var dropDownItem in Model.DropDownData)
+                    {
+                        <a href="javascript:void(0)"
+                           data-state="@dropDownItem.DataState"
+                           data-state-text="@dropDownItem.Text"
+                           data-class="@dropDownItem.DataClass"
+                           class="dropdown-item">
+                            @dropDownItem.Text
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<script at="Foot">
+    (function ($) {
+        $(function () {
+            dropdownOnClick('@Model.ButtonContainerId', '@Model.ButtonId', '@(Html.IdFor(m => forModel.Model))');
+        });
+    })(jQuery);
+</script>

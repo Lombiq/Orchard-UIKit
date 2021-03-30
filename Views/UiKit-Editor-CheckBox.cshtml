@@ -1,0 +1,72 @@
+@inject IHtmlGenerator HtmlGenerator
+
+@{
+    const string DefaultBlockName = "checkBoxEditor";
+    var blockClassName = Model.BlockClassName ?? DefaultBlockName;
+
+    var model = Model.For as ModelExpression;
+
+    var labelAttributes = new Dictionary<string, object>
+    {
+        ["class"] = $"{DefaultBlockName}__label"
+    };
+
+
+    var inputAttributes = new Dictionary<string, object>
+    {
+        ["class"] = $"checkBox {DefaultBlockName}__input"
+    };
+
+    var isRequired = model.Metadata.RequiredAttrExists();
+    if (isRequired)
+    {
+        inputAttributes["required"] = "";
+        inputAttributes["class"] = inputAttributes["class"] + " required";
+        labelAttributes["class"] = labelAttributes["class"] + " required";
+    }
+
+    if (Model.Disabled == true)
+    {
+        inputAttributes["disabled"] = "";
+    }
+
+    if (!string.IsNullOrEmpty(Model.Placeholder))
+    {
+        inputAttributes["placeholder"] = Model.Placeholder;
+    }
+
+    var labelPositionModifier = Model.LabelPosition switch
+    {
+        LabelPosition.Right => "__label_right",
+        LabelPosition.Left => "__label_left",
+        _ => "__label_right",
+    };
+
+    if (labelPositionModifier != string.Empty)
+    {
+        labelAttributes["class"] = labelAttributes["class"] + $" {DefaultBlockName}{labelPositionModifier}";
+    }
+
+    var blockId = string.IsNullOrEmpty(Model.Id) ? string.Empty : $"id={Model.Id}";
+
+    var label = Model.Label != null
+        ? HtmlGenerator.GenerateLabel(Model.ViewContext, model.ModelExplorer, model.Name, Model.Label as string, labelAttributes)
+        : null;
+
+    var input = HtmlGenerator.GenerateCheckBox(Model.ViewContext, model.ModelExplorer, model.Name, (bool)model.Model, inputAttributes);
+
+}
+
+<div @blockId class="custom-control custom-checkbox @blockClassName @DefaultBlockName @Model.Class">
+    @if (Model.LabelPosition == LabelPosition.Left && label != null)
+    {
+        @label
+    }
+
+    @input
+
+    @if (Model.LabelPosition != LabelPosition.Left && label != null)
+    {
+        @label
+    }
+</div>

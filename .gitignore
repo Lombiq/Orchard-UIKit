@@ -1,0 +1,7 @@
+obj/
+bin/
+
+# Exclude wwwroot and add exceptions
+**/wwwroot/*
+!**/wwwroot/favicon.ico
+!**/wwwroot/.placeholder
