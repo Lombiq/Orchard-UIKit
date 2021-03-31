@@ -44,12 +44,18 @@
             $" {blockClassName}{labelPositionModifier}";
 
 
-    if (labelPositionModifier == "__label_none")
+    if (Model.LabelPosition == LabelPosition.None)
     {
         labelAttributes["class"] = labelAttributes["class"] + $" {placeholderLabelClass}";
     }
 
+    if (Model.LabelPosition == LabelPosition.Border)
+    {
+        inputAttributes["class"] = inputAttributes["class"] + $" textBoxEditor__input_borderLabel";
+    }
+
     var hasAsterixInPlaceholder = Model.LabelPosition == LabelPosition.None && isRequired;
+
 
     var placeholder = Model.Placeholder as string;
     if (!string.IsNullOrEmpty(placeholder) && !hasAsterixInPlaceholder)
@@ -59,14 +65,18 @@
 
     var blockId = string.IsNullOrEmpty(Model.BlockId) ? string.Empty : $"id={Model.BlockId}";
 
-    var label = HtmlGenerator.GenerateLabel(
-        Model.ViewContext,
-        forModel.ModelExplorer,
-        forModel.Name,
-        hasAsterixInPlaceholder
-            ? placeholder
-            : Model.Label as string,
-        labelAttributes);
+    var noLabelNotRequired = Model.LabelPosition == LabelPosition.None && !isRequired;
+
+    var label = noLabelNotRequired
+        ? null
+        : HtmlGenerator.GenerateLabel(
+            Model.ViewContext,
+            forModel.ModelExplorer,
+            forModel.Name,
+            hasAsterixInPlaceholder
+                ? placeholder
+                : Model.Label,
+            labelAttributes);
 
     var input = HtmlGenerator.GenerateTextBox(
         Model.ViewContext,
