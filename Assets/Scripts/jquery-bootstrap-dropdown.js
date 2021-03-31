@@ -10,10 +10,28 @@ function dropdownOnClick(id, buttonId, aspId) {
 
         //Set hidden input value
         $('#' + aspId).val(state);
+
+        removeSelectedFromDropDown(buttonId);
     });
 };
 
+function removeSelectedFromDropDown(buttonId) {
+    //Remove selected 
+    var button = $("#" + buttonId + ".dropDown__Button");
+    var buttonItems = button.siblings().children();
+    var buttonText = button[0].innerText.trim();
 
+    $.each(buttonItems, function (index, item) {
+        if (buttonText == item.innerText.trim()) {
+            item.classList.add("d-none");
+        }
+        else {
+            item.classList.remove("d-none");
+        };
+    });
+};
+
+// This part is responsible for the asterisk in the placeholder if needed.
 (function ($) {
     $(function () {
         $('.textBoxEditor__placeholder').click(function () {

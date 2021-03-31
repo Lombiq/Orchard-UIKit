@@ -27,30 +27,27 @@
         string.Empty,
         inputAttributes);
 
-    var dropDownData = Model.DropDownData as List<DropDownItem>;
+    var dropDownDatas = Model.DropDownData as List<DropDownItem>;
 
-    var defaultData = dropDownData.FirstOrDefault(data => data.DataState.Equals(forModel.Model));
+    var defaultData = dropDownDatas.FirstOrDefault(data => data.DataState.Equals(forModel.Model));
+    //var dropDownDataWithoutTheDefault = dropDownDatas.Where(data => !data.DataState.Equals(forModel.Model));
 }
-<div id="@Model.DropDownContainerId" class="@blockClasses">
+<div id="@Model.DropDownContainerId" class="@blockClasses dropDown">
     @input
     <nav>
         <div asp-validation-class-for="@forModel">
-            <div id="@Model.ButtonContainerId" class="dropdown">
+            <div id="@Model.ButtonContainerId" class="dropDown__ButtonContainer">
                 <button id="@Model.ButtonId" title="@forModel.Model" @(Model.Disabled ? "disabled" : string.Empty)
-                    class="btn btn-sm @defaultData.DataClass dropdown-toggle"
-                    type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @defaultData.Text
-                </button>
-                <div class="dropdown-menu">
-                    @foreach (var dropDownItem in Model.DropDownData)
+                    class="btn btn-sm @defaultData.DataClass dropdown-toggle dropDown__Button"
+                    type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@defaultData.Text</button>
+                <div class="dropdown-menu dropDown__itemContainer">
+                    @foreach (var dropDownItem in dropDownDatas)
                     {
                         <a href="javascript:void(0)"
                            data-state="@dropDownItem.DataState"
                            data-state-text="@dropDownItem.Text"
                            data-class="@dropDownItem.DataClass"
-                           class="dropdown-item">
-                            @dropDownItem.Text
-                        </a>
+                           class="dropdown-item dropDown__item">@dropDownItem.Text</a>
                     }
                 </div>
             </div>
@@ -62,6 +59,7 @@
 <script at="Foot">
     (function ($) {
         $(function () {
+            removeSelectedFromDropDown('@Model.ButtonId')
             dropdownOnClick('@Model.ButtonContainerId', '@Model.ButtonId', '@(Html.IdFor(m => forModel.Model))');
         });
     })(jQuery);
