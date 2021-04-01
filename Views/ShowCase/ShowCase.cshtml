@@ -14,29 +14,44 @@
         <h1>@T["Textbox:"]</h1>
 
         <h4>@T["No label, required."]</h4>
-        <editor type="TextBox" model-for="@Model.RequiredStringEmpty" labelPosition="@LabelPosition.None"
+        <editor type="TextBox"
+                model-for="@Model.RequiredStringEmpty"
+                labelPosition="@LabelPosition.None"
                 placeholder="@T["Email"]" />
 
         <h4>@T["No label, not required."]</h4>
-        <editor type="TextBox" model-for="@Model.NotRequiredStringEmpty" labelPosition="@LabelPosition.None"
+        <editor type="TextBox"
+                model-for="@Model.NotRequiredStringEmpty"
+                labelPosition="@LabelPosition.None"
                 placeholder="@T["Email"]" />
 
         <h4>@T["Label top, required."]</h4>
-        <editor type="TextBox" model-for="@Model.RequiredStringEmpty" label="@T["Email"]" labelPosition="@LabelPosition.Top"
+        <editor type="TextBox"
+                model-for="@Model.RequiredStringEmpty"
+                label="@T["Email"]"
+                labelPosition="@LabelPosition.Top"
                 placeholder="@T["Email"]" />
 
         <h4>@T["Label top, not required."]</h4>
-        <editor type="TextBox" model-for="@Model.NotRequiredStringEmpty" label="@T["Email"]" labelPosition="@LabelPosition.Top"
+        <editor type="TextBox"
+                model-for="@Model.NotRequiredStringEmpty"
+                label="@T["Email"]"
+                labelPosition="@LabelPosition.Top"
                 placeholder="@T["Email"]" />
 
         <h4>@T["Label on border, required."]</h4>
-        <editor type="TextBox" model-for="@Model.RequiredStringEmpty" label="@T["Email"]" labelPosition="@LabelPosition.Border"
+        <editor type="TextBox"
+                model-for="@Model.RequiredStringEmpty"
+                label="@T["Email"]"
+                labelPosition="@LabelPosition.Border"
                 placeholder="@T["Email"]" />
 
         <h4>@T["Label on border, not required."]</h4>
-        <editor type="TextBox" model-for="@Model.NotRequiredStringEmpty" label="@T["Email"]" labelPosition="@LabelPosition.Border"
+        <editor type="TextBox"
+                model-for="@Model.NotRequiredStringEmpty"
+                label="@T["Email"]"
+                labelPosition="@LabelPosition.Border"
                 placeholder="@T["Email"]" />
-
     </div>
     <div style="width:30%; padding: 1.5em; float:left">
 
@@ -55,11 +70,23 @@
                 labelPosition="@LabelPosition.Left" />
 
         <h1>@T["Bootstrap dropdown:"]</h1>
-        <editor type="BootstrapDropDown" model-for="@Model.CheckboxFalse" DropDownContainerId="downContainerId2" ButtonContainerId="buttonContainerId2" ButtonId="buttonId2" DropDownData="@dropDownData" />
-        <br />
-        <editor type="BootstrapDropDown" model-for="@Model.CheckboxTrue" DropDownContainerId="downContainerId1" ButtonContainerId="buttonContainerId1" ButtonId="buttonId1" DropDownData="@dropDownData" />
-        <br />
 
+        <h4>@T["Hide selected from list"]</h4>
+        <editor type="DropDown"
+                model-for="@Model.CheckboxFalse"
+                DropDownContainerId="downContainerId2"
+                ButtonContainerId="buttonContainerId2"
+                ButtonId="buttonId2"
+                DropDownData="@dropDownData"
+                HideSelectedFromDropDownList="true" />
+
+        <h4>@T["Don't hide selected from list"]</h4>
+        <editor type="DropDown"
+                model-for="@Model.CheckboxTrue"
+                DropDownContainerId="downContainerId1"
+                ButtonContainerId="buttonContainerId1"
+                ButtonId="buttonId1"
+                DropDownData="@dropDownData" />
     </div>
 </div>
 
