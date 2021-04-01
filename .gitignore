@@ -1,5 +1,6 @@
 obj/
 bin/
+*.user
 
 # Exclude wwwroot and add exceptions
 **/wwwroot/*
