@@ -43,10 +43,16 @@
         <h1>@T["Checkbox:"]</h1>
 
         <h4>@T["Label on right"]</h4>
-        <editor Type="CheckBox" model-for="@Model.CheckboxFalse" label="@T["Checkbox default false"]" labelPosition="@LabelPosition.Right" />
+        <editor Type="CheckBox"
+                model-for="@Model.CheckboxFalse"
+                label="@T["Checkbox default false"]"
+                labelPosition="@LabelPosition.Right" />
 
         <h4>@T["Label on left"]</h4>
-        <editor Type="CheckBox" model-for="@Model.CheckboxTrue" label="@T["Checkbox default true"]" labelPosition="@LabelPosition.Left" />
+        <editor Type="CheckBox"
+                model-for="@Model.CheckboxTrue"
+                label="@T["Checkbox default true"]"
+                labelPosition="@LabelPosition.Left" />
 
         <h1>@T["Bootstrap dropdown:"]</h1>
         <editor type="BootstrapDropDown" model-for="@Model.CheckboxFalse" DropDownContainerId="downContainerId2" ButtonContainerId="buttonContainerId2" ButtonId="buttonId2" DropDownData="@dropDownData" />
@@ -141,5 +147,104 @@
     .textBoxEditor__input_borderLabel {
         padding: 0 0.75rem;
         padding-top: 0.125rem;
+    }
+</style>
+
+<style>
+    /* Base for label styling */
+    .checkBoxEditor__input:not(:checked),
+    .checkBoxEditor__input:checked {
+        position: absolute;
+        left: 0;
+        opacity: 0.01;
+    }
+
+    .checkBoxEditor__label,
+    .checkBoxEditor__label {
+        position: relative;
+        padding-left: 1.25em;
+        user-select: none;
+        cursor: pointer;
+    }
+
+    .checkBoxEditor__label_left {
+        padding-left: 0em;
+        padding-right: 1.25em;
+    }
+
+    /* checkbox aspect */
+    .checkBoxEditor__input:not(:checked) + .checkBoxEditor__label:before,
+    .checkBoxEditor__input:checked + .checkBoxEditor__label:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.125rem;
+        width: 0.9375em;
+        height: 0.9375em;
+        border: 1px solid #BBBBBB;
+        background: #FFF;
+        border-radius: 0.125em;
+    }
+
+    .checkBoxEditor__input:not(:checked) + .checkBoxEditor__label_left:before,
+    .checkBoxEditor__input:checked + .checkBoxEditor__label_left:before {
+        right: 0;
+        left: unset;
+    }
+
+
+    .checkBoxEditor__input:checked + .checkBoxEditor__label:before {
+        background: #3497FF;
+        border: 1px solid #3497FF;
+    }
+
+    /* checked mark aspect */
+    .checkBoxEditor__input:not(:checked) + .checkBoxEditor__label:after,
+    .checkBoxEditor__input:checked + .checkBoxEditor__label:after {
+        content: "";
+        position: absolute;
+        display: block;
+        left: 0.35em;
+        top: 0.25em;
+        width: 0.3125em;
+        height: 0.5em;
+        border: solid white;
+        border-width: 0 0.125em 0.125em 0;
+        -webkit-transform: rotate( 45deg );
+        -ms-transform: rotate(45deg);
+        transform: rotate( 45deg );
+    }
+
+    .checkBoxEditor__input:not(:checked) + .checkBoxEditor__label_left:after,
+    .checkBoxEditor__input:checked + .checkBoxEditor__label_left:after {
+        left: unset;
+        right: 0.35em;
+        top: 0.25em;
+    }
+
+    .checkBoxEditor__input:not(:checked) + .checkBoxEditor__label:after {
+        display: none;
+    }
+
+    /* Disabled checkbox */
+    .checkBoxEditor__input:disabled:not(:checked) + .checkBoxEditor__label:before,
+    .checkBoxEditor__input:disabled:checked + .checkBoxEditor__label:before {
+        box-shadow: none;
+        border-color: #bbb;
+        background-color: #e9e9e9;
+    }
+
+    .checkBoxEditor__input:disabled:checked + .checkBoxEditor__label:after {
+        color: #777;
+    }
+
+    .checkBoxEditor__input:disabled + .checkBoxEditor__label {
+        color: #aaa;
+    }
+
+    /* Accessibility */
+    .checkBoxEditor__input:checked:focus + .checkBoxEditor__label:before,
+    .checkBoxEditor__input:not(:checked):focus + .checkBoxEditor__label:before {
+        box-shadow: inset 0 0px 3px rgb(0 0 0 / 0%), 0 0 0 1px rgb(99 99 99 / 16%);
     }
 </style>
