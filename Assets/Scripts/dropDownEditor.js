@@ -36,5 +36,3 @@ function dropdownOnClick(id, buttonId, aspId, removeSelected) {
     });
 }
 /* eslint-enable no-unused-vars */
-
-
