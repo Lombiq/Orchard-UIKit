@@ -5,17 +5,17 @@
             $(this).siblings('input').focus();
         });
 
-        $('.form-control').blur(function formControlBlur() {
+        $('.textBoxEditor__input').blur(function formControlBlur() {
             const $this = $(this);
             if ($this.val().length === 0) {
                 $(this).siblings('').show();
             }
         });
 
-        $('.textBoxEditor__input.required').on('input', function onInput() {
+        $('.textBoxEditor__input.textBoxEditor__label_required').on('input', function onInput() {
             $(this).siblings('.textBoxEditor__placeholder').hide();
         });
 
-        $('.form-control').blur();
+        $('.textBoxEditor__input').blur();
     });
 })(jQuery);
