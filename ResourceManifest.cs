@@ -10,10 +10,14 @@ namespace Lombiq.UIKit
             var manifest = builder.Add();
 
             manifest
-                .DefineScript(LombiqBootstrapDropDown)
+                .DefineScript(LombiqDropDownScript)
                 .SetDependencies("jQuery")
-                .SetUrl("~/Lombiq.UIKit/lombiq-uikitscripts/jquery-bootstrap-dropdown.js")
+                .SetUrl("~/Lombiq.UIKit/js/jquery-bootstrap-dropdown.js")
                 .SetVersion("1.0");
+
+            manifest
+                .DefineStyle(LombiqTextBoxStyle)
+                .SetUrl("~/Lombiq.UIKit/css/textBox.min.css", "~/Finitive.Theme/css/textBox.css");
         }
     }
 }
