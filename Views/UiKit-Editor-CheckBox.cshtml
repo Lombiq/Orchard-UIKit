@@ -4,7 +4,7 @@
     const string DefaultBlockName = "checkBoxEditor";
     var blockClassName = Model.BlockClassName ?? DefaultBlockName;
 
-    var model = Model.For as ModelExpression;
+    var modelFor = Model.For as ModelExpression;
 
     var labelAttributes = new Dictionary<string, object>
     {
@@ -17,7 +17,7 @@
         ["class"] = $"checkBox {DefaultBlockName}__input"
     };
 
-    var isRequired = model.Metadata.RequiredAttrExists();
+    var isRequired = modelFor.Metadata.RequiredAttrExists();
     if (isRequired)
     {
         inputAttributes["required"] = "";
@@ -42,6 +42,8 @@
         _ => "__label_right",
     };
 
+    var labelPositionLeft = Model.LabelPosition == LabelPosition.Left;
+
     if (labelPositionModifier != string.Empty)
     {
         labelAttributes["class"] = labelAttributes["class"] + $" {DefaultBlockName}{labelPositionModifier}";
@@ -50,23 +52,13 @@
     var blockId = string.IsNullOrEmpty(Model.Id) ? string.Empty : $"id={Model.Id}";
 
     var label = Model.Label != null
-        ? HtmlGenerator.GenerateLabel(Model.ViewContext, model.ModelExplorer, model.Name, Model.Label as string, labelAttributes)
+        ? HtmlGenerator.GenerateLabel(Model.ViewContext, modelFor.ModelExplorer, modelFor.Name, Model.Label as string, labelAttributes)
         : null;
 
-    var input = HtmlGenerator.GenerateCheckBox(Model.ViewContext, model.ModelExplorer, model.Name, (bool)model.Model, inputAttributes);
-
+    var input = HtmlGenerator.GenerateCheckBox(Model.ViewContext, modelFor.ModelExplorer, modelFor.Name, (bool)modelFor.Model, inputAttributes);
 }
 
 <div @blockId class="custom-control custom-checkbox @blockClassName @DefaultBlockName @Model.Class">
-    @if (Model.LabelPosition == LabelPosition.Left && label != null)
-    {
-        @label
-    }
-
     @input
-
-    @if (Model.LabelPosition != LabelPosition.Left && label != null)
-    {
-        @label
-    }
+    @label
 </div>
