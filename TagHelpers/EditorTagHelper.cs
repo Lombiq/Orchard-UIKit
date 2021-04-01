@@ -57,6 +57,9 @@ namespace Lombiq.UIKit.TagHelpers
         [HtmlAttributeName(nameof(DropDownData))]
         public List<DropDownItem> DropDownData { get; set; }
 
+        [HtmlAttributeName(nameof(HideSelectedFromDropDownList))]
+        public bool HideSelectedFromDropDownList { get; set; }
+
         public EditorTagHelper(IShapeFactory shapeFactory, IDisplayHelper displayHelper, IHtmlHelper htmlHelper)
             : base(shapeFactory, displayHelper)
             => _htmlHelper = htmlHelper;
@@ -77,6 +80,7 @@ namespace Lombiq.UIKit.TagHelpers
             Properties.Add(nameof(ButtonContainerId), ButtonContainerId);
             Properties.Add(nameof(ButtonId), ButtonId);
             Properties.Add(nameof(DropDownData), DropDownData);
+            Properties.Add(nameof(HideSelectedFromDropDownList), HideSelectedFromDropDownList);
 
             return base.ProcessAsync(tagHelperContext, output);
         }
