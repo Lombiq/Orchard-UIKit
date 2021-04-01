@@ -1,0 +1,73 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Lombiq.UIKit.Models
+@using Newtonsoft.Json.Linq
+
+@inject IHtmlGenerator HtmlGenerator
+
+@{
+    var blockClasses = Model.BlockClassName ?? string.Empty;
+
+    var forModel = Model.For as ModelExpression;
+
+    var inputAttributes = new Dictionary<string, object>
+    {
+        ["type"] = "hidden",
+        ["required"] = "",
+    };
+
+    if (Model.Disabled == true)
+    {
+        inputAttributes["disabled"] = "";
+    }
+
+    var input = HtmlGenerator.GenerateTextBox(
+        Model.ViewContext,
+        forModel.ModelExplorer,
+        forModel.Name,
+        forModel.Model,
+        string.Empty,
+        inputAttributes);
+
+    var dropDownDatas = Model.DropDownData as List<DropDownItem>;
+
+    var defaultData = dropDownDatas.FirstOrDefault(data => data.DataState.Equals(forModel.Model));
+}
+
+<div id="@Model.DropDownContainerId" class="@blockClasses dropDown">
+    @input
+    <nav>
+        <div asp-validation-class-for="@forModel">
+            <div id="@Model.ButtonContainerId" class="dropDown__ButtonContainer">
+                <button id="@Model.ButtonId" title="@forModel.Model" @(Model.Disabled ? "disabled" : string.Empty)
+                        class="btn btn-sm @defaultData.DataClass dropdown-toggle dropDown__Button"
+                        type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @defaultData.Text
+                </button>
+                <div class="dropdown-menu dropDown__itemContainer">
+                    @foreach (var dropDownItem in dropDownDatas)
+                    {
+                        <a href="javascript:void(0)"
+                           data-state="@dropDownItem.DataState"
+                           data-state-text="@dropDownItem.Text"
+                           data-class="@dropDownItem.DataClass"
+                           class="dropdown-item dropDown__item">@dropDownItem.Text</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<script at="Foot">
+(function ($) {
+    $(function () {
+        @if ((bool)Model.HideSelectedFromDropDownList)
+        {
+            @:removeSelectedFromDropDown(@Json.Serialize(Model.ButtonId));
+        }
+
+        dropdownOnClick(@Json.Serialize(Model.ButtonContainerId), @Json.Serialize(Model.ButtonId), @Json.Serialize((Html.IdFor(m => forModel.Model))), @Json.Serialize(Model.HideSelectedFromDropDownList));
+    });
+})(jQuery);
+</script>
