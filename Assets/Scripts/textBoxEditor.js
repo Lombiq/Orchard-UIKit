@@ -8,7 +8,7 @@
         $('.textBoxEditor__input').blur(function formControlBlur() {
             const $this = $(this);
             if ($this.val().length === 0) {
-                $(this).siblings('').show();
+                $(this).siblings('.textBoxEditor__placeholder').show();
             }
         });
 
