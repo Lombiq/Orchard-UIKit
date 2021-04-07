@@ -1,6 +1,4 @@
-@using Microsoft.AspNetCore.Mvc.Localization
 @using Lombiq.UIKit.Models
-@using Newtonsoft.Json.Linq
 
 @inject IHtmlGenerator HtmlGenerator
 
@@ -67,9 +65,8 @@
             <div id="@Model.ButtonContainerId" class="dropDown__ButtonContainer">
                 <button id="@Model.ButtonId" title="@forModel.Model" @(Model.Disabled ? "disabled" : string.Empty)
                         class="btn btn-sm @defaultData.DataClass dropdown-toggle dropDown__Button"
-                        type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    @defaultData.Text
-                </button>
+                        type="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">@defaultData.Text</button>
                 <div class="dropdown-menu dropDown__itemContainer">
                     @foreach (var dropDownItem in dropDownDatas)
                     {
