@@ -52,10 +52,20 @@
     var blockId = string.IsNullOrEmpty(Model.Id) ? string.Empty : $"id={Model.Id}";
 
     var label = Model.Label != null
-        ? HtmlGenerator.GenerateLabel(Model.ViewContext, modelFor.ModelExplorer, modelFor.Name, Model.Label as string, labelAttributes)
+        ? HtmlGenerator.GenerateLabel(
+            Model.ViewContext,
+            modelFor.ModelExplorer,
+            modelFor.Name,
+            Model.Label as string,
+            labelAttributes)
         : null;
 
-    var input = HtmlGenerator.GenerateCheckBox(Model.ViewContext, modelFor.ModelExplorer, modelFor.Name, (bool)modelFor.Model, inputAttributes);
+    var input = HtmlGenerator.GenerateCheckBox(
+        Model.ViewContext,
+        modelFor.ModelExplorer,
+        modelFor.Name,
+        (bool)modelFor.Model,
+        inputAttributes);
 }
 
 
