@@ -58,6 +58,9 @@
     var input = HtmlGenerator.GenerateCheckBox(Model.ViewContext, modelFor.ModelExplorer, modelFor.Name, (bool)modelFor.Model, inputAttributes);
 }
 
+
+<style asp-src="~/Lombiq.UIKit/css/checkBox.min.css" debug-src="~/Lombiq.UIKit/css/checkBox.css"></style>
+
 <div @blockId class="@blockClassName @DefaultBlockName @Model.Class">
     @input
     @label
