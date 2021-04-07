@@ -5,7 +5,8 @@
 @inject IHtmlGenerator HtmlGenerator
 
 @{
-    var blockClasses = Model.BlockClassName ?? string.Empty;
+    var DefaultBlockName = "dropDownEditor";
+    var blockClassName = Model.BlockClassName ?? DefaultBlockName;
 
     var forModel = Model.For as ModelExpression;
 
@@ -13,12 +14,35 @@
     {
         ["type"] = "hidden",
         ["required"] = "",
+        ["class"] = "",
+    };
+
+    var labelAttributes = new Dictionary<string, object>
+    {
+        ["class"] = $"{DefaultBlockName}__label"
     };
 
     if (Model.Disabled == true)
     {
         inputAttributes["disabled"] = "";
     }
+
+    var isRequired = forModel.Metadata.RequiredAttrExists();
+    if (isRequired)
+    {
+        inputAttributes["class"] = $" {DefaultBlockName}__label_required {blockClassName}__label_required";
+        labelAttributes["class"] = labelAttributes["class"]
+            + $" {DefaultBlockName}__label_required {blockClassName}__label_required";
+    }
+
+    var label = Model.Label != null
+        ? HtmlGenerator.GenerateLabel(
+            Model.ViewContext,
+            forModel.ModelExplorer,
+            forModel.Name,
+            Model.Label as string,
+            labelAttributes)
+        : null;
 
     var input = HtmlGenerator.GenerateTextBox(
         Model.ViewContext,
@@ -33,7 +57,10 @@
     var defaultData = dropDownDatas.FirstOrDefault(data => data.DataState.Equals(forModel.Model));
 }
 
-<div id="@Model.DropDownContainerId" class="@blockClasses dropDown">
+<style asp-src="~/Lombiq.UIKit/css/dropDown.min.css" debug-src="~/Lombiq.UIKit/css/dropDown.css"></style>
+
+<div id="@Model.DropDownContainerId" class="@blockClassName @DefaultBlockName">
+    @label
     @input
     <nav>
         <div asp-validation-class-for="@forModel">

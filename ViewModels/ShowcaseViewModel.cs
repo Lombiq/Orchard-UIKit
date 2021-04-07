@@ -12,6 +12,7 @@ namespace Lombiq.UIKit.ViewModels
         [Required]
         public string RequiredStringDefault { get; set; } = "Test string";
 
+        [Required]
         public bool CheckboxFalse { get; set; }
         public bool CheckboxTrue { get; set; } = true;
     }
