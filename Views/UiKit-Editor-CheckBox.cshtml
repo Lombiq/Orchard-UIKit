@@ -58,7 +58,7 @@
     var input = HtmlGenerator.GenerateCheckBox(Model.ViewContext, modelFor.ModelExplorer, modelFor.Name, (bool)modelFor.Model, inputAttributes);
 }
 
-<div @blockId class="custom-control custom-checkbox @blockClassName @DefaultBlockName @Model.Class">
+<div @blockId class="@blockClassName @DefaultBlockName @Model.Class">
     @input
     @label
 </div>
