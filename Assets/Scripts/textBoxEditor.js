@@ -13,7 +13,12 @@
         });
 
         $('.textBoxEditor__input.textBoxEditor__label_required').on('input', function onInput() {
-            $(this).siblings('.textBoxEditor__placeholder').hide();
+            if ($(this)[0].value.length === 0) {
+                $(this).siblings('.textBoxEditor__placeholder').show();
+            }
+            else {
+                $(this).siblings('.textBoxEditor__placeholder').hide();
+            }
         });
 
         $('.textBoxEditor__input').blur();
