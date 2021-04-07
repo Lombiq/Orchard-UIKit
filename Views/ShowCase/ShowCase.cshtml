@@ -13,7 +13,7 @@
 
 @*<style asp-name="@ResourceNames.LombiqTextBoxStyle"></style>
     <script asp-name="@ResourceNames.LombiqDropDownScript" at="Foot"></script>*@
-<div style="background:white; overflow: auto;">
+<div style="background:white; overflow: auto; display: flex;align-items: flex-start;justify-content: center;">
     <div style="width:30%; padding: 1.5em; float:left;">
 
         <h1>@T["Textbox:"]</h1>
@@ -73,7 +73,8 @@
                 model-for="@Model.CheckboxTrue"
                 label="@T["Checkbox default true"]"
                 labelPosition="@LabelPosition.Left" />
-
+    </div>
+    <div style="width:30%; padding: 1.5em; float:left">
         <h1>@T["Bootstrap dropdown:"]</h1>
 
         <h4>@T["Hide selected from list"]</h4>
@@ -225,7 +226,7 @@
     .checkBoxEditor__input:not(:checked) + .checkBoxEditor__label_left:after,
     .checkBoxEditor__input:checked + .checkBoxEditor__label_left:after {
         left: unset;
-        right: 0.35em;
+        right: 0.3em;
         top: 0.25em;
     }
 
