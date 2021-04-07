@@ -7,26 +7,28 @@
         opacity: 0;
 
         + .checkBoxEditor__label {
-            /* checkbox */
             &:before {
+                /* checkbox */
                 content: '';
                 position: absolute;
                 left: 0;
                 top: 0.3em;
                 width: 0.9375em;
                 height: 0.9375em;
-                border: 1px solid #BBBBBB;
-                background: #FFF;
+                border: 1px solid grey;
+                background: red;
                 border-radius: 0.125em;
             }
-            /* checkbox - label position left */
+
             &_left:before {
+                /* checkbox - label position left */
                 right: 0;
                 top: 0.3em;
                 left: unset;
             }
-            /* check mark */
+
             &:after {
+                /* check mark */
                 content: "";
                 position: absolute;
                 display: block;
@@ -40,8 +42,9 @@
                 -ms-transform: rotate(45deg);
                 transform: rotate( 45deg );
             }
-            /* check mark - label position left */
+
             &_left:after {
+                /* check mark - label position left */
                 left: unset;
                 right: 0.3em;
                 top: 0.45em;
@@ -49,22 +52,24 @@
         }
 
         &:checked {
-            /* checkbox when checked*/
+
             + .checkBoxEditor__label:before {
+                /* checkbox when checked*/
                 background: #3497FF;
                 border: 1px solid #3497FF;
             }
         }
 
         &:not(:checked) {
-            /* check mark when not checked */
+
             + .checkBoxEditor__label:after {
+                /* check mark when not checked */
                 display: none;
             }
         }
 
-        /* Disabled checkbox */
         &:disabled {
+            /* disabled checkbox */
             + .checkBoxEditor__label {
                 color: lightslategray;
 
