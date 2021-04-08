@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace Lombiq.UIKit.TagHelpers
 {
-    [HtmlTargetElement("editor", Attributes = nameof(Type) + "," + "model-for")]
+    [HtmlTargetElement("editor", Attributes = nameof(Type) + "," + nameof(For))]
     [HtmlTargetElement("editor", Attributes = PropertyPrefix + "*")]
     public class EditorTagHelper : BaseShapeTagHelper
     {
         private readonly IHtmlHelper _htmlHelper;
 
-        [HtmlAttributeName("model-for")]
+        [HtmlAttributeName(nameof(For))]
         public ModelExpression For { get; set; }
 
         [HtmlAttributeNotBound]
@@ -60,6 +60,9 @@ namespace Lombiq.UIKit.TagHelpers
         [HtmlAttributeName(nameof(HideSelectedFromDropDownList))]
         public bool HideSelectedFromDropDownList { get; set; }
 
+        [HtmlAttributeName(nameof(CheckBoxStyle))]
+        public CheckBoxStyle CheckBoxStyle { get; set; }
+
         public EditorTagHelper(IShapeFactory shapeFactory, IDisplayHelper displayHelper, IHtmlHelper htmlHelper)
             : base(shapeFactory, displayHelper)
             => _htmlHelper = htmlHelper;
@@ -67,20 +70,13 @@ namespace Lombiq.UIKit.TagHelpers
         public override Task ProcessAsync(TagHelperContext tagHelperContext, TagHelperOutput output)
         {
             Type = "UiKit__Editor__" + Type;
-            Properties.Add(nameof(For), For);
+
+            foreach (var item in tagHelperContext.AllAttributes)
+            {
+                Properties.Add(item.Name, item.Value);
+            }
+
             Properties.Add(nameof(ViewContext), ViewContext);
-            Properties.Add(nameof(Disabled), Disabled);
-            Properties.Add(nameof(Label), Label?.Value);
-            Properties.Add(nameof(Placeholder), Placeholder?.Value);
-            Properties.Add(nameof(Hint), Hint?.Value);
-            Properties.Add(nameof(BlockClassName), BlockClassName);
-            Properties.Add(nameof(BlockId), BlockId);
-            Properties.Add(nameof(LabelPosition), LabelPosition);
-            Properties.Add(nameof(DropDownContainerId), DropDownContainerId);
-            Properties.Add(nameof(ButtonContainerId), ButtonContainerId);
-            Properties.Add(nameof(ButtonId), ButtonId);
-            Properties.Add(nameof(DropDownData), DropDownData);
-            Properties.Add(nameof(HideSelectedFromDropDownList), HideSelectedFromDropDownList);
 
             return base.ProcessAsync(tagHelperContext, output);
         }

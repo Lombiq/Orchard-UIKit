@@ -1,92 +1,94 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+
 @inject IHtmlGenerator HtmlGenerator
 
 @{
     const string DefaultBlockName = "textBoxEditor";
-    var blockClassName = Model.BlockClassName ?? DefaultBlockName;
-    var placeholderClass = $"{DefaultBlockName}__placeholder";
-    var placeholderLabelClass = $"{DefaultBlockName}__placeholderLabel";
+ var blockClassName = Model.BlockClassName ?? DefaultBlockName;
+ var placeholderClass = $"{DefaultBlockName}__placeholder";
+ var placeholderLabelClass = $"{DefaultBlockName}__placeholderLabel";
 
 
-    var forModel = Model.For as ModelExpression;
+ var forModel = Model.For as ModelExpression;
 
-    var labelAttributes = new Dictionary<string, object>
-    {
-        ["class"] = $"{DefaultBlockName}__label {blockClassName}__label"
-    };
+ var labelAttributes = new Dictionary<string, object>
+ {
+     ["class"] = $"{DefaultBlockName}__label {blockClassName}__label"
+ };
 
-    var inputAttributes = new Dictionary<string, object>
-    {
-        ["class"] = $"{DefaultBlockName}__input {blockClassName}__input"
-    };
+ var inputAttributes = new Dictionary<string, object>
+ {
+     ["class"] = $"{DefaultBlockName}__input {blockClassName}__input"
+ };
 
-    var isRequired = forModel.Metadata.RequiredAttrExists();
-    if (isRequired)
-    {
-        inputAttributes["required"] = string.Empty;
-        inputAttributes["class"] = inputAttributes["class"]
-            + $" {DefaultBlockName}__label_required {blockClassName}__label_required";
-        labelAttributes["class"] = labelAttributes["class"]
-            + $" {DefaultBlockName}__label_required {blockClassName}__label_required";
-    }
+ var isRequired = forModel.Metadata.RequiredAttrExists();
+ if (isRequired)
+ {
+     inputAttributes["required"] = string.Empty;
+     inputAttributes["class"] = inputAttributes["class"]
+         + $" {DefaultBlockName}__label_required {blockClassName}__label_required";
+     labelAttributes["class"] = labelAttributes["class"]
+         + $" {DefaultBlockName}__label_required {blockClassName}__label_required";
+ }
 
-    if (Model.Disabled == true)
-    {
-        inputAttributes["disabled"] = string.Empty;
-    }
+ if (Model.Disabled == true)
+ {
+     inputAttributes["disabled"] = string.Empty;
+ }
 
-    var labelPositionModifier = Model.LabelPosition switch
-    {
-        LabelPosition.Border => "__label_border",
-        LabelPosition.Top => "__label_top",
-        LabelPosition.None => "__label_none",
-        _ => "__label_top",
-    };
+ var labelPositionModifier = Model.LabelPosition switch
+ {
+     LabelPosition.Border => "__label_border",
+     LabelPosition.Top => "__label_top",
+     LabelPosition.None => "__label_none",
+     _ => "__label_top",
+ };
 
-    labelAttributes["class"] = labelAttributes["class"] + $" {DefaultBlockName}{labelPositionModifier}" +
-            $" {blockClassName}{labelPositionModifier}";
-
-
-    if (Model.LabelPosition == LabelPosition.None)
-    {
-        labelAttributes["class"] = labelAttributes["class"] + $" {placeholderLabelClass}";
-    }
-
-    if (Model.LabelPosition == LabelPosition.Border)
-    {
-        inputAttributes["class"] = inputAttributes["class"] + $" textBoxEditor__input_borderLabel";
-    }
-
-    var hasAsteriksInPlaceholder = Model.LabelPosition == LabelPosition.None && isRequired;
+ labelAttributes["class"] = labelAttributes["class"] + $" {DefaultBlockName}{labelPositionModifier}" +
+         $" {blockClassName}{labelPositionModifier}";
 
 
-    var placeholder = Model.Placeholder as string;
-    if (!string.IsNullOrEmpty(placeholder) && !hasAsteriksInPlaceholder)
-    {
-        inputAttributes["placeholder"] = placeholder;
-    }
+ if (Model.LabelPosition == LabelPosition.None)
+ {
+     labelAttributes["class"] = labelAttributes["class"] + $" {placeholderLabelClass}";
+ }
 
-    var blockId = string.IsNullOrEmpty(Model.BlockId) ? string.Empty : $"id={Model.BlockId}";
+ if (Model.LabelPosition == LabelPosition.Border)
+ {
+     inputAttributes["class"] = inputAttributes["class"] + $" textBoxEditor__input_borderLabel";
+ }
 
-    var noLabelNotRequired = Model.LabelPosition == LabelPosition.None && !isRequired;
+ var hasAsteriksInPlaceholder = Model.LabelPosition == LabelPosition.None && isRequired;
 
-    var label = noLabelNotRequired
-        ? null
-        : HtmlGenerator.GenerateLabel(
-            Model.ViewContext,
-            forModel.ModelExplorer,
-            forModel.Name,
-            hasAsteriksInPlaceholder
-                ? placeholder
-                : Model.Label,
-            labelAttributes);
 
-    var input = HtmlGenerator.GenerateTextBox(
-        Model.ViewContext,
-        forModel.ModelExplorer,
-        forModel.Name,
-        forModel.Model,
-        string.Empty,
-        inputAttributes);
+ var placeholder = (Model.Placeholder as LocalizedHtmlString)?.Value;
+ if (!string.IsNullOrEmpty(placeholder) && !hasAsteriksInPlaceholder)
+ {
+     inputAttributes["placeholder"] = placeholder;
+ }
+
+ var blockId = string.IsNullOrEmpty(Model.BlockId) ? string.Empty : $"id={Model.BlockId}";
+
+ var noLabelNotRequired = Model.LabelPosition == LabelPosition.None && !isRequired;
+
+ var label = noLabelNotRequired
+     ? null
+     : HtmlGenerator.GenerateLabel(
+         Model.ViewContext,
+         forModel.ModelExplorer,
+         forModel.Name,
+         hasAsteriksInPlaceholder
+             ? placeholder
+             : (Model.Label as LocalizedHtmlString)?.Value,
+         labelAttributes);
+
+ var input = HtmlGenerator.GenerateTextBox(
+     Model.ViewContext,
+     forModel.ModelExplorer,
+     forModel.Name,
+     forModel.Model,
+     string.Empty,
+     inputAttributes);
 
 }
 <style asp-src="~/Lombiq.UIKit/css/textBox.min.css" debug-src="~/Lombiq.UIKit/css/textBox.css"></style>
