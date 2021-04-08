@@ -30,11 +30,6 @@
         inputAttributes["disabled"] = "";
     }
 
-    if (!string.IsNullOrEmpty(Model.Placeholder))
-    {
-        inputAttributes["placeholder"] = Model.Placeholder;
-    }
-
     var labelPositionModifier = Model.LabelPosition switch
     {
         LabelPosition.Right => "__label_right",
@@ -56,7 +51,7 @@
             Model.ViewContext,
             modelFor.ModelExplorer,
             modelFor.Name,
-            Model.Label as string,
+            (Model.Label as LocalizedHtmlString)?.Value,
             labelAttributes)
         : null;
 
