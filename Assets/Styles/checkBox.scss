@@ -103,6 +103,26 @@
         &_left {
             padding-left: 0em;
             padding-right: 1.25em;
+
+            &.checkBoxEditor__label_required {
+                padding-left: 0.7em;
+
+                + .checkBoxEditor__asterisk {
+                    display: inline-block;
+                    color: red;
+                    position: absolute;
+                    left: 0;
+                }
+            }
         }
+
+        &_right.checkBoxEditor__label_required + .checkBoxEditor__asterisk {
+            display: inline-block;
+            color: red;
+        }
+    }
+
+    &__asterisk {
+        display: none;
     }
 }
