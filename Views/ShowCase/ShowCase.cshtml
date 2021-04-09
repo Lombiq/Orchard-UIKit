@@ -31,6 +31,12 @@
                 labelPosition="@LabelPosition.None"
                 placeholder="@T["Email"]" />
 
+        <editor type="TextBox"
+                for="@Model.TextBox1"
+                labelPosition="@LabelPosition.None"
+                placeholder="@T["Email"]"
+                Disabled="true" />
+
         <h4>@T["Label top."]</h4>
         <editor type="TextBox"
                 for="@Model.TextBox3"
@@ -44,6 +50,13 @@
                 labelPosition="@LabelPosition.Top"
                 placeholder="@T["Email"]" />
 
+        <editor type="TextBox"
+                for="@Model.TextBox4Disabled"
+                label="@T["Email"]"
+                labelPosition="@LabelPosition.Top"
+                placeholder="@T["Email"]"
+                Disabled="true" />
+
         <h4>@T["Label on border."]</h4>
         <editor type="TextBox"
                 for="@Model.TextBox5"
@@ -56,6 +69,13 @@
                 label="@T["Email"]"
                 labelPosition="@LabelPosition.Border"
                 placeholder="@T["Email"]" />
+
+        <editor type="TextBox"
+                for="@Model.TextBox6Disabled"
+                label="@T["Email"]"
+                labelPosition="@LabelPosition.Border"
+                placeholder="@T["Email"]"
+                Disabled="true"/>
     </div>
     <div style="width:30%; padding: 1.5em;">
 
@@ -70,6 +90,11 @@
                 for="@Model.CheckboxFalse2"
                 label="@T["Default false"]" />
 
+        <editor Type="CheckBox"
+                for="@Model.CheckboxFalse2Disabled"
+                label="@T["Default false"]"
+                Disabled="true" />
+
         <h4>@T["Label on left"]</h4>
         <editor Type="CheckBox"
                 for="@Model.CheckboxTrue1"
@@ -80,6 +105,12 @@
                 for="@Model.CheckboxTrue2"
                 label="@T["Default true"]"
                 labelPosition="@LabelPosition.Left" />
+
+        <editor Type="CheckBox"
+                for="@Model.CheckboxTrue2Disabled"
+                label="@T["Default true"]"
+                labelPosition="@LabelPosition.Left"
+                Disabled="true"/>
 
     </div>
     <div style="width:30%; padding: 1.5em;">
@@ -95,6 +126,16 @@
                 Label="@T["Dropdown 1"]"
                 HideSelectedFromDropDownList="true" />
 
+        <editor type="DropDown"
+                for="@Model.DropDownDisabled"
+                DropDownContainerId="downContainerId2"
+                ButtonContainerId="buttonContainerId2"
+                ButtonId="buttonId2"
+                DropDownData="@dropDownData"
+                Label="@T["Dropdown 1"]"
+                HideSelectedFromDropDownList="true"
+                Disabled="true" />
+
         <h4>@T["Don't hide selected from list"]</h4>
         <editor type="DropDown"
                 for="@Model.Status"
@@ -103,5 +144,14 @@
                 ButtonId="buttonId1"
                 Label="@T["Dropdown 2"]"
                 DropDownData="@dropDownData2" />
+
+        <editor type="DropDown"
+                for="@Model.StatusDisabled"
+                DropDownContainerId="downContainerId1"
+                ButtonContainerId="buttonContainerId1"
+                ButtonId="buttonId1"
+                Label="@T["Dropdown 2"]"
+                DropDownData="@dropDownData2"
+                Disabled="true"/>
     </div>
 </div>
