@@ -53,8 +53,11 @@ namespace Lombiq.UIKit.TagHelpers
         [HtmlAttributeName(nameof(ButtonId))]
         public string ButtonId { get; set; }
 
+        // Otherwise the taghelper can't bind it's value to it.
+#pragma warning disable CA2227 // Collection properties should be read only
         [HtmlAttributeName(nameof(DropDownData))]
         public List<DropDownItem> DropDownData { get; set; }
+#pragma warning restore CA2227 // Collection properties should be read only
 
         [HtmlAttributeName(nameof(HideSelectedFromDropDownList))]
         public bool HideSelectedFromDropDownList { get; set; }
