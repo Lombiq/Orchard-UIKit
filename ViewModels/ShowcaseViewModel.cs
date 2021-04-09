@@ -12,16 +12,26 @@ namespace Lombiq.UIKit.ViewModels
     public class ShowcaseViewModel
     {
         [Required]
-        public string RequiredStringEmpty { get; set; }
-
-        public string NotRequiredStringEmpty { get; set; }
-
-        [Required]
-        public string RequiredStringDefault { get; set; } = "Test string";
+        public string TextBox1 { get; set; }
+        public string TextBox2 { get; set; }
 
         [Required]
-        public bool CheckboxFalse { get; set; }
-        public bool CheckboxTrue { get; set; } = true;
+        public string TextBox3 { get; set; }
+        public string TextBox4 { get; set; }
+
+        [Required]
+        public string TextBox5 { get; set; }
+        public string TextBox6 { get; set; }
+
+        [Required]
+        public bool CheckboxFalse1 { get; set; }
+        public bool CheckboxFalse2 { get; set; }
+
+        [Required]
+        public bool CheckboxTrue1 { get; set; } = true;
+        public bool CheckboxTrue2 { get; set; } = true;
+
+        public bool DropDown { get; set; }
         public Status Status { get; set; }
     }
 }
