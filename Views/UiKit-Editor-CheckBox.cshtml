@@ -1,52 +1,40 @@
 @using Microsoft.AspNetCore.Mvc.Localization
+@using static Lombiq.UIKit.Constants.Classes
 
 @inject IHtmlGenerator HtmlGenerator
 
 @{
-    const string DefaultBlockName = "checkBoxEditor";
-    var blockClassName = Model.BlockClassName ?? DefaultBlockName;
+    const string DefaultInputClass = DefaultCheckBoxBlockName + InputElement;
+    const string DefaultLabelClass = DefaultCheckBoxBlockName + LabelElement;
 
-    var modelFor = Model.For as ModelExpression;
+    var customBlockClasses = Model.BlockClassName;
+
+    var blockId = string.IsNullOrEmpty(Model.BlockId) ? string.Empty : $"id={Model.BlockId}";
 
     var labelAttributes = new Dictionary<string, object>
     {
-        ["class"] = $"{DefaultBlockName}__label"
+        ["class"] = $"{DefaultLabelClass} {DefaultLabelClass}" +
+        $"{(Model.LabelPosition != LabelPosition.Left ? LabelPositionModifierRight : LabelPositionModifierLeft)} "
     };
-
 
     var inputAttributes = new Dictionary<string, object>
     {
-        ["class"] = $"checkBox {DefaultBlockName}__input"
+        ["class"] = $"{DefaultInputClass} "
     };
 
+    var modelFor = Model.For as ModelExpression;
     var isRequired = modelFor.Metadata.RequiredAttrExists();
     if (isRequired)
     {
         inputAttributes["required"] = "";
-        inputAttributes["class"] = inputAttributes["class"] + " required";
-        labelAttributes["class"] = labelAttributes["class"] + " required";
+        inputAttributes["class"] = inputAttributes["class"] + $"{DefaultInputClass}{RequiredModifier} ";
+        labelAttributes["class"] = labelAttributes["class"] + $"{DefaultLabelClass}{RequiredModifier} ";
     }
 
     if (Model.Disabled == true)
     {
         inputAttributes["disabled"] = "";
     }
-
-    var labelPositionModifier = Model.LabelPosition switch
-    {
-        LabelPosition.Right => "__label_right",
-        LabelPosition.Left => "__label_left",
-        _ => "__label_right",
-    };
-
-    var labelPositionLeft = Model.LabelPosition == LabelPosition.Left;
-
-    if (labelPositionModifier != string.Empty)
-    {
-        labelAttributes["class"] = labelAttributes["class"] + $" {DefaultBlockName}{labelPositionModifier}";
-    }
-
-    var blockId = string.IsNullOrEmpty(Model.Id) ? string.Empty : $"id={Model.Id}";
 
     var label = Model.Label != null
         ? HtmlGenerator.GenerateLabel(
@@ -65,10 +53,10 @@
         inputAttributes);
 }
 
-
 <style asp-src="~/Lombiq.UIKit/css/checkBox.min.css" debug-src="~/Lombiq.UIKit/css/checkBox.css"></style>
 
-<div @blockId class="@blockClassName @DefaultBlockName @Model.Class">
+<div @blockId class="@DefaultCheckBoxBlockName @customBlockClasses">
     @input
     @label
+    <span class="@(DefaultCheckBoxBlockName + AsteriskElement)">*</span>
 </div>
