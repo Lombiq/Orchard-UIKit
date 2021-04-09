@@ -12,10 +12,9 @@ using System.Threading.Tasks;
 namespace Lombiq.UIKit.TagHelpers
 {
     [HtmlTargetElement("editor", Attributes = nameof(Type) + "," + nameof(For))]
-    [HtmlTargetElement("editor", Attributes = PropertyPrefix + "*")]
     public class EditorTagHelper : BaseShapeTagHelper
     {
-        private readonly IHtmlHelper _htmlHelper;
+        private const string UIKitEditorBaseName = "UiKit__Editor__";
 
         [HtmlAttributeName(nameof(For))]
         public ModelExpression For { get; set; }
@@ -63,13 +62,12 @@ namespace Lombiq.UIKit.TagHelpers
         [HtmlAttributeName(nameof(CheckBoxStyle))]
         public CheckBoxStyle CheckBoxStyle { get; set; }
 
-        public EditorTagHelper(IShapeFactory shapeFactory, IDisplayHelper displayHelper, IHtmlHelper htmlHelper)
-            : base(shapeFactory, displayHelper)
-            => _htmlHelper = htmlHelper;
+        public EditorTagHelper(IShapeFactory shapeFactory, IDisplayHelper displayHelper)
+            : base(shapeFactory, displayHelper) { }
 
         public override Task ProcessAsync(TagHelperContext tagHelperContext, TagHelperOutput output)
         {
-            Type = "UiKit__Editor__" + Type;
+            Type = UIKitEditorBaseName + Type;
 
             foreach (var item in tagHelperContext.AllAttributes)
             {
