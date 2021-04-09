@@ -62,9 +62,6 @@ namespace Lombiq.UIKit.TagHelpers
         [HtmlAttributeName(nameof(HideSelectedFromDropDownList))]
         public bool HideSelectedFromDropDownList { get; set; }
 
-        [HtmlAttributeName(nameof(CheckBoxStyle))]
-        public CheckBoxStyle CheckBoxStyle { get; set; }
-
         public EditorTagHelper(IShapeFactory shapeFactory, IDisplayHelper displayHelper)
             : base(shapeFactory, displayHelper) { }
 
