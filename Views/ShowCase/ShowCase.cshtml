@@ -3,15 +3,15 @@
 @{
     var dropDownData = new List<DropDownItem>
 {
-        new DropDownItem(){ Text = T["Email Verified"], DataState = true, DataClass = "dropDownEditor__button_success"},
-        new DropDownItem(){ Text = T["Email Not Verified"], DataState = false, DataClass = "btn-danger"},
+        new DropDownItem(){ Text = T["Text 1"], DataState = true, DataClass = "dropDownEditor__button_success"},
+        new DropDownItem(){ Text = T["Long Text 2"], DataState = false, DataClass = "btn-danger"},
     };
 
     var dropDownData2 = new List<DropDownItem>
 {
-        new DropDownItem(){ Text = T["Approved"], DataState = Status.Approved, DataClass = "dropDownEditor__button_success"},
-        new DropDownItem(){ Text = T["Denied"], DataState = Status.Denied, DataClass = "btn-danger"},
-        new DropDownItem(){ Text = T["Pending"], DataState = Status.Pending, DataClass = "btn-warning"},
+        new DropDownItem(){ Text = T["Text 1"], DataState = Status.Approved, DataClass = "dropDownEditor__button_success"},
+        new DropDownItem(){ Text = T["Text 2"], DataState = Status.Denied, DataClass = "btn-danger"},
+        new DropDownItem(){ Text = T["Long Text 2"], DataState = Status.Pending, DataClass = "btn-warning"},
     };
 }
 
@@ -32,7 +32,17 @@
                 placeholder="@T["Email"]" />
 
         <editor type="TextBox"
-                for="@Model.TextBox1"
+                for="@Model.TextBox2"
+                labelPosition="@LabelPosition.None"
+                icon="fab fa-linkedin"
+                placeholder="@T["Placeholder"]" />
+
+        <editor type="TextBox"
+                for="@Model.TextBox2Disabled"
+                labelPosition="@LabelPosition.None"
+                icon="fab fa-linkedin"
+                placeholder="@T["Placeholder"]"/>
+
                 labelPosition="@LabelPosition.None"
                 placeholder="@T["Email"]"
                 Disabled="true" />
@@ -75,7 +85,7 @@
                 label="@T["Email"]"
                 labelPosition="@LabelPosition.Border"
                 placeholder="@T["Email"]"
-                Disabled="true"/>
+                Disabled="true" />
     </div>
     <div style="width:30%; padding: 1.5em;">
 

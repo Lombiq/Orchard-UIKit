@@ -14,7 +14,10 @@ namespace Lombiq.UIKit.ViewModels
         [Required]
         public string TextBox1 { get; set; }
         public string TextBox2 { get; set; }
+
+        [Required]
         public string TextBox2Disabled { get; set; }
+        public string TextBox21Disabled { get; set; }
 
         [Required]
         public string TextBox3 { get; set; }

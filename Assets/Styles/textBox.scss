@@ -4,23 +4,39 @@
 
     &__placeholder {
         position: absolute;
-        top: 0.5rem;
+        top: 0rem;
         left: 0.75rem;
+        height: 2.375rem;
         display: none;
     }
 
     &__placeholderLabel {
         color: #868E96;
         font-size: 0.875rem;
-        font-family: "Segoe UI";
-        font-style: normal;
-        font-weight: normal;
-        line-height: 1.3125rem;
+        line-height: 2.375rem;
     }
 
     &__asterisk {
         color: red;
         font-weight: 700;
+    }
+
+    &__iconContainer {
+        width: 2.5em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0.0625em solid black;
+        border-top-left-radius: 0.2rem;
+        border-bottom-left-radius: 0.2rem;
+    }
+
+    &_iconOnLeft {
+        display: flex;
+
+        > .textBoxEditor__placeholder {
+            left: 2.75rem;
+        }
     }
 }
 

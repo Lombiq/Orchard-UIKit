@@ -53,6 +53,9 @@ namespace Lombiq.UIKit.TagHelpers
         [HtmlAttributeName(nameof(ButtonId))]
         public string ButtonId { get; set; }
 
+        [HtmlAttributeName(nameof(Icon))]
+        public string Icon { get; set; }
+
         // Otherwise the taghelper can't bind it's value to it.
 #pragma warning disable CA2227 // Collection properties should be read only
         [HtmlAttributeName(nameof(DropDownData))]
