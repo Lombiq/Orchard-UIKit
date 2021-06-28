@@ -10,7 +10,7 @@ namespace Lombiq.UIKit
             var manifest = builder.Add();
 
             manifest
-                .DefineScript(LombiqDropDownScript)
+                .DefineScript(LombiqDropdownScript)
                 .SetDependencies("jQuery")
                 .SetUrl("~/Lombiq.UIKit/js/jquery-bootstrap-dropdown.js")
                 .SetVersion("1.0");

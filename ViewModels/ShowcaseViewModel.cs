@@ -39,8 +39,9 @@ namespace Lombiq.UIKit.ViewModels
         public bool CheckboxTrue2 { get; set; } = true;
         public bool CheckboxTrue2Disabled { get; set; } = true;
 
-        public bool DropDown { get; set; }
-        public bool DropDownDisabled { get; set; }
+        [Required]
+        public bool Dropdown { get; set; }
+        public bool DropdownDisabled { get; set; }
         public Status Status { get; set; }
         public Status StatusDisabled { get; set; }
     }

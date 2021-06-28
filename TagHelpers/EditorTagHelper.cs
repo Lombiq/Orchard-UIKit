@@ -44,8 +44,8 @@ namespace Lombiq.UIKit.TagHelpers
         [HtmlAttributeName(nameof(BlockId))]
         public string BlockId { get; set; }
 
-        [HtmlAttributeName(nameof(DropDownContainerId))]
-        public string DropDownContainerId { get; set; }
+        [HtmlAttributeName(nameof(DropdownContainerId))]
+        public string DropdownContainerId { get; set; }
 
         [HtmlAttributeName(nameof(ButtonContainerId))]
         public string ButtonContainerId { get; set; }
@@ -53,17 +53,17 @@ namespace Lombiq.UIKit.TagHelpers
         [HtmlAttributeName(nameof(ButtonId))]
         public string ButtonId { get; set; }
 
-        [HtmlAttributeName(nameof(Icon))]
-        public string Icon { get; set; }
+        [HtmlAttributeName(nameof(IconClasses))]
+        public string IconClasses { get; set; }
 
         // Otherwise the taghelper can't bind it's value to it.
 #pragma warning disable CA2227 // Collection properties should be read only
-        [HtmlAttributeName(nameof(DropDownData))]
-        public List<DropDownItem> DropDownData { get; set; }
+        [HtmlAttributeName(nameof(DropdownData))]
+        public List<DropdownItem> DropdownData { get; set; }
 #pragma warning restore CA2227 // Collection properties should be read only
 
-        [HtmlAttributeName(nameof(HideSelectedFromDropDownList))]
-        public bool HideSelectedFromDropDownList { get; set; }
+        [HtmlAttributeName(nameof(HideSelectedFromDropdownList))]
+        public bool HideSelectedFromDropdownList { get; set; }
 
         public EditorTagHelper(IShapeFactory shapeFactory, IDisplayHelper displayHelper)
             : base(shapeFactory, displayHelper) { }

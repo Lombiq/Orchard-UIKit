@@ -1,21 +1,21 @@
 @model ShowcaseViewModel
 
 @{
-    var dropDownData = new List<DropDownItem>
+    var dropDownData = new List<DropdownItem>
 {
-        new DropDownItem(){ Text = T["Text 1"], DataState = true, DataClass = "dropDownEditor__button_success"},
-        new DropDownItem(){ Text = T["Long Text 2"], DataState = false, DataClass = "btn-danger"},
+        new DropdownItem(){ Text = T["Text 1"], DataState = true, DataClass = "dropDownEditor__button_success"},
+        new DropdownItem(){ Text = T["Long Text 2"], DataState = false, DataClass = "btn-danger"},
     };
 
-    var dropDownData2 = new List<DropDownItem>
+    var dropDownData2 = new List<DropdownItem>
 {
-        new DropDownItem(){ Text = T["Text 1"], DataState = Status.Approved, DataClass = "dropDownEditor__button_success"},
-        new DropDownItem(){ Text = T["Text 2"], DataState = Status.Denied, DataClass = "btn-danger"},
-        new DropDownItem(){ Text = T["Long Text 2"], DataState = Status.Pending, DataClass = "btn-warning"},
+        new DropdownItem(){ Text = T["Text 1"], DataState = Status.Approved, DataClass = "dropDownEditor__button_success"},
+        new DropdownItem(){ Text = T["Text 2"], DataState = Status.Denied, DataClass = "btn-danger"},
+        new DropdownItem(){ Text = T["Long Text 2"], DataState = Status.Pending, DataClass = "btn-warning"},
     };
 }
 
-<div style="background:white; overflow: auto; display: flex;align-items: flex-start;justify-content: center;">
+<div style="background:white; overflow: auto; display: flex; align-items: flex-start; justify-content: center;">
     <div style="width:30%; padding: 1.5em;">
 
         <h1>@T["Textbox:"]</h1>
@@ -34,13 +34,13 @@
         <editor type="TextBox"
                 for="@Model.TextBox2"
                 labelPosition="@LabelPosition.None"
-                icon="fab fa-linkedin"
+                IconClasses="fab fa-linkedin"
                 placeholder="@T["Placeholder"]" />
 
         <editor type="TextBox"
                 for="@Model.TextBox2Disabled"
                 labelPosition="@LabelPosition.None"
-                icon="fab fa-linkedin"
+                iconClasses="fab fa-linkedin"
                 placeholder="@T["Placeholder"]"/>
 
         <editor type="TextBox"
@@ -73,7 +73,7 @@
                 label="@T["Label"]"
                 labelPosition="@LabelPosition.Top"
                 placeholder="@T["Placeholder"]"
-                Disabled="true" />
+                disabled="true" />
 
         <h4>@T["Label on border."]</h4>
         <editor type="TextBox"
@@ -93,7 +93,7 @@
                 label="@T["Label"]"
                 labelPosition="@LabelPosition.Border"
                 placeholder="@T["Placeholder"]"
-                Disabled="true" />
+                disabled="true" />
     </div>
     <div style="width:30%; padding: 1.5em;">
 
@@ -136,7 +136,7 @@
 
         <h4>@T["Hide selected from list"]</h4>
         <editor type="DropDown"
-                for="@Model.DropDown"
+                for="@Model.Dropdown"
                 DropDownContainerId="downContainerId2"
                 ButtonContainerId="buttonContainerId2"
                 ButtonId="buttonId2"
@@ -145,7 +145,7 @@
                 HideSelectedFromDropDownList="true" />
 
         <editor type="DropDown"
-                for="@Model.DropDownDisabled"
+                for="@Model.DropdownDisabled"
                 DropDownContainerId="downContainerId2"
                 ButtonContainerId="buttonContainerId2"
                 ButtonId="buttonId2"

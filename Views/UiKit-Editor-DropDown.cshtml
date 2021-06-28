@@ -5,38 +5,31 @@
 @inject IHtmlGenerator HtmlGenerator
 
 @{
-    const string DefaultInputClass = DefaultDropDownBlockName + InputElement;
-    const string DefaultLabelClass = DefaultDropDownBlockName + LabelElement;
-    const string DefaultButtonClass = DefaultDropDownBlockName + ButtonElement;
-    const string DefaultButtonContainerClass = DefaultDropDownBlockName + ButtonContainerElement;
-    const string DefaultItemContainerClass = DefaultDropDownBlockName + ItemContainerElement;
-    const string DefaultItemClass = DefaultDropDownBlockName + ItemElement;
-
     var customBlockClasses = Model.BlockClassName;
 
     var inputAttributes = new Dictionary<string, object>
     {
         ["type"] = "hidden",
-        ["class"] = $"{DefaultInputClass} ",
+        ["class"] = $"{DefaultDropdownInputClass} ",
     };
 
     var labelAttributes = new Dictionary<string, object>
     {
-        ["class"] = $"{DefaultLabelClass} "
+        ["class"] = $"{DefaultDropdownLabelClass} "
     };
 
     var forModel = Model.For as ModelExpression;
     var isRequired = forModel.Metadata.RequiredAttrExists();
     if (isRequired)
     {
-        inputAttributes["required"] = "";
-        inputAttributes["class"] = inputAttributes["class"] + $"{DefaultInputClass}{RequiredModifier} ";
-        labelAttributes["class"] = labelAttributes["class"] + $"{DefaultLabelClass}{RequiredModifier} ";
+        inputAttributes["required"] = string.Empty;
+        inputAttributes["class"] = inputAttributes["class"] + $"{DefaultDropdownInputClass}{RequiredModifier} ";
+        labelAttributes["class"] = labelAttributes["class"] + $"{DefaultDropdownLabelClass}{RequiredModifier} ";
     }
 
     if (Model.Disabled == true)
     {
-        inputAttributes["disabled"] = "";
+        inputAttributes["disabled"] = string.Empty;
     }
 
     var label = Model.Label != null
@@ -56,7 +49,7 @@
         string.Empty,
         inputAttributes);
 
-    var dropDownData = Model.DropDownData as List<DropDownItem>;
+    var dropDownData = Model.DropDownData as List<DropdownItem>;
 
     var defaultData = dropDownData.FirstOrDefault(data => data.DataState.Equals(forModel.Model));
 
@@ -65,25 +58,25 @@
 
 <style asp-src="~/Lombiq.UIKit/css/dropDown.min.css" debug-src="~/Lombiq.UIKit/css/dropDown.css"></style>
 
-<div id="@Model.DropDownContainerId" class="@customBlockClasses @DefaultDropDownBlockName">
+<div id="@Model.DropDownContainerId" class="@customBlockClasses @DefaultDropdownBlockName">
     @label
     @input
     <nav>
         <div asp-validation-class-for="@forModel">
-            <div id="@Model.ButtonContainerId" class="@DefaultButtonContainerClass">
+            <div id="@Model.ButtonContainerId" class="@DefaultDropdownButtonContainerClass">
                 <button id="@Model.ButtonId"
                         title="@forModel.Model" @(disabled)
-                        class="btn btn-sm @defaultData.DataClass dropdown-toggle @DefaultButtonClass"
+                        class="btn btn-sm dropdown-toggle @defaultData.DataClass @DefaultDropdownButtonClass"
                         type="button"
                         data-toggle="dropdown">@defaultData.Text</button>
-                <div class="dropdown-menu @DefaultItemContainerClass">
-                    @foreach (var dropDownItem in dropDownData)
+                <div class="dropdown-menu dropdown-menu-right @DefaultDropdownItemContainerClass">
+                    @foreach (var dropdownItem in dropDownData)
                     {
                         <a href="javascript:void(0)"
-                            data-state="@dropDownItem.DataState"
-                            data-state-text="@dropDownItem.Text"
-                            data-class="@dropDownItem.DataClass"
-                            class="dropdown-item @DefaultItemClass">@dropDownItem.Text</a>
+                            data-state="@dropdownItem.DataState"
+                            data-state-text="@dropdownItem.Text"
+                            data-class="@dropdownItem.DataClass"
+                            class="dropdown-item @DefaultDropdownItemClass">@dropdownItem.Text</a>
                     }
                 </div>
             </div>

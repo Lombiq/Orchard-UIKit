@@ -2,8 +2,8 @@ namespace Lombiq.UIKit.Constants
 {
     public static class ResourceNames
     {
-        public const string LombiqDropDownScript = nameof(LombiqDropDownScript);
-        public const string LombiqDropDownStyle = nameof(LombiqCheckBoxStyle);
+        public const string LombiqDropdownScript = nameof(LombiqDropdownScript);
+        public const string LombiqDropdownStyle = nameof(LombiqCheckBoxStyle);
         public const string LombiqTextBoxStyle = nameof(LombiqTextBoxStyle);
         public const string LombiqCheckBoxStyle = nameof(LombiqCheckBoxStyle);
     }

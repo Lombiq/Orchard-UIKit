@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc.Localization;
 
 namespace Lombiq.UIKit.Models
 {
-    public class DropDownItem
+    public class DropdownItem
     {
         public LocalizedHtmlString Text { get; set; }
 
