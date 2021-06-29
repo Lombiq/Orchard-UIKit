@@ -22,9 +22,10 @@ function dropdownOnClick(id, buttonId, aspId, removeSelected) {
         const state = $(this).data('state');
         const text = $(this).data('state-text');
         const btnClass = $(this).data('class');
+        var lastclass = $('#' + buttonId).attr('class').split(' ').pop();
         $('#' + buttonId)
             .text(text)
-            .removeClass('btn-warning btn-success btn-danger dropdownEditor__button_success')
+            .removeClass(lastclass)
             .addClass(btnClass);
 
         /* Set hidden input value */
