@@ -14,6 +14,14 @@ Add the module to your solution and enable `Lombiq UIKit - Showcase page` featur
 currently available shapes. You can see them at ~/UIKitShowCase after the feature is enabled. The example code for using 
 these shapes can be seen at *[Views/ShowCase/ShowCase.cshtml](Views/ShowCase/ShowCase.cshtml)*.
 
+This module contains only those stylings which are needed for these shapes to work.
+
+### Custom class and id
+
+For your own styling you can override the default class stylings, or you can create a new class and add it to the shape block
+via the `BlockClassName` parameter.
+
+If it is needed to add an Id for the container block, then you can do that with the `BlockId` parameter.
 
 ## Contributing and support
 
