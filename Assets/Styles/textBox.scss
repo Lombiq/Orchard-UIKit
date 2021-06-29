@@ -1,5 +1,5 @@
 /* TextBox Styling for asterisk in the placeholder */
-.textBoxEditor {
+.textboxEditor {
     position: relative;
 
     &__placeholder {
@@ -34,13 +34,13 @@
     &_iconOnLeft {
         display: flex;
 
-        > .textBoxEditor__placeholder {
+        > .textboxEditor__placeholder {
             left: 2.75rem;
         }
     }
 }
 
-:not(.textBoxEditor__label_none).textBoxEditor__label_required:after {
+:not(.textboxEditor__label_none).textboxEditor__label_required:after {
     content: "*";
     margin-left: 0.2rem;
     color: red;

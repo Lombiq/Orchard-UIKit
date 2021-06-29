@@ -9,12 +9,12 @@
 
     var labelAttributes = new Dictionary<string, object>
     {
-        ["class"] = $"{DefaultTextboxLabelClass} "
+        ["class"] = $"{TextboxLabelClass} "
     };
 
     var inputAttributes = new Dictionary<string, object>
     {
-        ["class"] = $"{DefaultTextboxInputClass} "
+        ["class"] = $"{TextboxInputClass} "
     };
 
     var forModel = Model.For as ModelExpression;
@@ -22,27 +22,27 @@
     if (isRequired)
     {
         inputAttributes["required"] = string.Empty;
-        inputAttributes["class"] = inputAttributes["class"] + $"{DefaultTextboxInputClass}{RequiredModifier} ";
-        labelAttributes["class"] = labelAttributes["class"] + $"{DefaultTextboxLabelClass}{RequiredModifier} ";
+        inputAttributes["class"] = inputAttributes["class"] + $"{TextboxInputRequiredClass} ";
+        labelAttributes["class"] = labelAttributes["class"] + $"{TextboxLabelRequiredClass} ";
     }
 
     if (Model.Disabled == true)
     {
         inputAttributes["disabled"] = string.Empty;
-        labelAttributes["class"] = labelAttributes["class"] + $"{DefaultTextboxLabelClass}{DisabledModifier} ";
+        labelAttributes["class"] = labelAttributes["class"] + $"{TextboxLabelDisabledClass} ";
 
     }
 
-    var borderPositionClass = DefaultTextboxLabelClass + BorderPositionTopModifier;
+    var borderPositionClass = TextboxLabelPositionTopClass;
     if (Model.LabelPosition == LabelPosition.None)
     {
-        borderPositionClass = DefaultTextboxLabelClass + BorderPositionNoneModifier;
-        labelAttributes["class"] = labelAttributes["class"] + $"{DefaultTextboxPlaceholderLabelClass} ";
+        borderPositionClass = TextboxLabelPositionNoneClass;
+        labelAttributes["class"] = labelAttributes["class"] + $"{TextboxPlaceholderLabelClass} ";
     }
     else if (Model.LabelPosition == LabelPosition.Border)
     {
-        borderPositionClass = DefaultTextboxLabelClass + BorderPositionBorderModifier;
-        inputAttributes["class"] = inputAttributes["class"] + $"{DefaultTextboxInputClass}{BorderLabelInputModifier}";
+        borderPositionClass = TextboxLabelPositionBorderClass;
+        inputAttributes["class"] = inputAttributes["class"] + $"{TextboxInputBorderLabelClass} ";
     }
 
     labelAttributes["class"] = labelAttributes["class"] + $"{borderPositionClass} ";
@@ -76,19 +76,19 @@
 
     var containerIconClass = string.IsNullOrEmpty(Model.IconClasses)
         ? string.Empty
-        : DefaultTextBoxBlockName + IconLeftModifier;
+        : TextboxBlockName + IconLeftModifier;
 }
 
-<style asp-src="~/Lombiq.UIKit/css/textBox.min.css" debug-src="~/Lombiq.UIKit/css/textBox.css"></style>
-<script asp-src="~/Lombiq.UIKit/js/textBoxEditor.js" at="Foot" depends-on="jQuery"></script>
+<style asp-src="~/Lombiq.UIKit/css/textbox.min.css" debug-src="~/Lombiq.UIKit/css/textbox.css"></style>
+<script asp-src="~/Lombiq.UIKit/js/textboxEditor.js" at="Foot" depends-on="jQuery"></script>
 
-<div @blockId class="@DefaultTextBoxBlockName @customBlockClasses @containerIconClass">
+<div @blockId class="@TextboxBlockName @customBlockClasses @containerIconClass">
 
     @if (hasAsteriksInPlaceholder)
     {
-        <div class="@DefaultTextboxPlaceholderClass">
+        <div class="@TextboxPlaceholderClass">
             @label
-            <span class="@DefaultTextboxAsteriskClass">*</span>
+            <span class="@TextboxAsteriskClass">*</span>
         </div>
     }
     else
@@ -98,8 +98,8 @@
 
     @if (!string.IsNullOrEmpty(Model.IconClasses))
     {
-        <span class="@DefaultTextboxIconContainerClass">
-            <i class="@Model.IconClasses @DefaultTextboxIconClass"></i>
+        <span class="@TextboxIconContainerClass">
+            <i class="@Model.IconClasses @TextboxIconClass"></i>
         </span>
     }
 
@@ -107,6 +107,6 @@
 
     @if (!string.IsNullOrEmpty(Model.Hint))
     {
-        <div class="hint @DefaultTextboxHintClass">@Model.Hint</div>
+        <div class="hint @TextboxHintClass">@Model.Hint</div>
     }
 </div>

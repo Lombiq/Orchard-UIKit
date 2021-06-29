@@ -4,22 +4,18 @@
 @inject IHtmlGenerator HtmlGenerator
 
 @{
-    const string DefaultInputClass = DefaultCheckBoxBlockName + InputElement;
-    const string DefaultLabelClass = DefaultCheckBoxBlockName + LabelElement;
-
     var customBlockClasses = Model.BlockClassName;
-
     var blockId = string.IsNullOrEmpty(Model.BlockId) ? string.Empty : $"id={Model.BlockId}";
 
     var labelAttributes = new Dictionary<string, object>
     {
-        ["class"] = $"{DefaultLabelClass} {DefaultLabelClass}" +
-        $"{(Model.LabelPosition != LabelPosition.Left ? LabelPositionModifierRight : LabelPositionModifierLeft)} "
+        ["class"] = $"{CheckboxLabelClass} "
+            + $"{CheckboxLabelClass}{(Model.LabelPosition != LabelPosition.Left ? LabelPositionModifierRight : LabelPositionModifierLeft)} "
     };
 
     var inputAttributes = new Dictionary<string, object>
     {
-        ["class"] = $"{DefaultInputClass} "
+        ["class"] = $"{CheckboxInputClass} "
     };
 
     var modelFor = Model.For as ModelExpression;
@@ -27,8 +23,8 @@
     if (isRequired)
     {
         inputAttributes["required"] = string.Empty;
-        inputAttributes["class"] = inputAttributes["class"] + $"{DefaultInputClass}{RequiredModifier} ";
-        labelAttributes["class"] = labelAttributes["class"] + $"{DefaultLabelClass}{RequiredModifier} ";
+        inputAttributes["class"] = inputAttributes["class"] + $"{CheckboxInputRequiredClass} ";
+        labelAttributes["class"] = labelAttributes["class"] + $"{CheckboxLabelRequiredClass} ";
     }
 
     if (Model.Disabled == true)
@@ -53,10 +49,10 @@
         inputAttributes);
 }
 
-<style asp-src="~/Lombiq.UIKit/css/checkBox.min.css" debug-src="~/Lombiq.UIKit/css/checkBox.css"></style>
+<style asp-src="~/Lombiq.UIKit/css/checkbox.min.css" debug-src="~/Lombiq.UIKit/css/checkbox.css"></style>
 
-<div @blockId class="@DefaultCheckBoxBlockName @customBlockClasses">
+<div @blockId class="@CheckBoxBlockName @customBlockClasses">
     @input
     @label
-    <span class="@(DefaultCheckBoxBlockName + AsteriskElement)">*</span>
+    <span class="@CheckboxAsteriskClass">*</span>
 </div>

@@ -3,13 +3,13 @@
 @{
     var dropDownData = new List<DropdownItem>
 {
-        new DropdownItem(){ Text = T["Text 1"], DataState = true, DataClass = "dropDownEditor__button_success"},
+        new DropdownItem(){ Text = T["Text 1"], DataState = true, DataClass = "dropdownEditor__button_success"},
         new DropdownItem(){ Text = T["Long Text 2"], DataState = false, DataClass = "btn-danger"},
     };
 
     var dropDownData2 = new List<DropdownItem>
 {
-        new DropdownItem(){ Text = T["Text 1"], DataState = Status.Approved, DataClass = "dropDownEditor__button_success"},
+        new DropdownItem(){ Text = T["Text 1"], DataState = Status.Approved, DataClass = "dropdownEditor__button_success"},
         new DropdownItem(){ Text = T["Text 2"], DataState = Status.Denied, DataClass = "btn-danger"},
         new DropdownItem(){ Text = T["Long Text 2"], DataState = Status.Pending, DataClass = "btn-warning"},
     };
@@ -21,54 +21,54 @@
         <h1>@T["Textbox:"]</h1>
 
         <h4>@T["No label."]</h4>
-        <editor type="TextBox"
+        <editor type="Textbox"
                 for="@Model.TextBox1"
                 labelPosition="@LabelPosition.None"
                 placeholder="@T["Placeholder"]" />
 
-        <editor type="TextBox"
+        <editor type="Textbox"
                 for="@Model.TextBox2"
                 labelPosition="@LabelPosition.None"
                 placeholder="@T["Placeholder"]" />
 
-        <editor type="TextBox"
+        <editor type="Textbox"
                 for="@Model.TextBox2"
                 labelPosition="@LabelPosition.None"
                 IconClasses="fab fa-linkedin"
                 placeholder="@T["Placeholder"]" />
 
-        <editor type="TextBox"
+        <editor type="Textbox"
                 for="@Model.TextBox2Disabled"
                 labelPosition="@LabelPosition.None"
                 iconClasses="fab fa-linkedin"
                 placeholder="@T["Placeholder"]"/>
 
-        <editor type="TextBox"
+        <editor type="Textbox"
                 for="@Model.TextBox2Disabled"
                 labelPosition="@LabelPosition.None"
                 placeholder="@T["Placeholder"]"
                 Disabled="true" />
 
-        <editor type="TextBox"
+        <editor type="Textbox"
                 for="@Model.TextBox21Disabled"
                 labelPosition="@LabelPosition.None"
                 placeholder="@T["Placeholder"]"
                 Disabled="true" />
 
         <h4>@T["Label top."]</h4>
-        <editor type="TextBox"
+        <editor type="Textbox"
                 for="@Model.TextBox3"
                 label="@T["Label"]"
                 labelPosition="@LabelPosition.Top"
                 placeholder="@T["Placeholder"]" />
 
-        <editor type="TextBox"
+        <editor type="Textbox"
                 for="@Model.TextBox4"
                 label="@T["Label"]"
                 labelPosition="@LabelPosition.Top"
                 placeholder="@T["Placeholder"]" />
 
-        <editor type="TextBox"
+        <editor type="Textbox"
                 for="@Model.TextBox4Disabled"
                 label="@T["Label"]"
                 labelPosition="@LabelPosition.Top"
@@ -76,19 +76,19 @@
                 disabled="true" />
 
         <h4>@T["Label on border."]</h4>
-        <editor type="TextBox"
+        <editor type="Textbox"
                 for="@Model.TextBox5"
                 label="@T["Label"]"
                 labelPosition="@LabelPosition.Border"
                 placeholder="@T["Placeholder"]" />
 
-        <editor type="TextBox"
+        <editor type="Textbox"
                 for="@Model.TextBox6"
                 label="@T["Label"]"
                 labelPosition="@LabelPosition.Border"
                 placeholder="@T["Placeholder"]" />
 
-        <editor type="TextBox"
+        <editor type="Textbox"
                 for="@Model.TextBox6Disabled"
                 label="@T["Label"]"
                 labelPosition="@LabelPosition.Border"
@@ -100,31 +100,31 @@
         <h1>@T["Checkbox:"]</h1>
 
         <h4>@T["Label on right"]</h4>
-        <editor Type="CheckBox"
+        <editor Type="Checkbox"
                 for="@Model.CheckboxFalse1"
                 label="@T["Default false, required"]" />
 
-        <editor Type="CheckBox"
+        <editor Type="Checkbox"
                 for="@Model.CheckboxFalse2"
                 label="@T["Default false"]" />
 
-        <editor Type="CheckBox"
+        <editor Type="Checkbox"
                 for="@Model.CheckboxFalse2Disabled"
                 label="@T["Default false"]"
                 Disabled="true" />
 
         <h4>@T["Label on left"]</h4>
-        <editor Type="CheckBox"
+        <editor Type="Checkbox"
                 for="@Model.CheckboxTrue1"
                 label="@T["Default true, required"]"
                 labelPosition="@LabelPosition.Left" />
 
-        <editor Type="CheckBox"
+        <editor Type="Checkbox"
                 for="@Model.CheckboxTrue2"
                 label="@T["Default true"]"
                 labelPosition="@LabelPosition.Left" />
 
-        <editor Type="CheckBox"
+        <editor Type="Checkbox"
                 for="@Model.CheckboxTrue2Disabled"
                 label="@T["Default true"]"
                 labelPosition="@LabelPosition.Left"
@@ -135,7 +135,7 @@
         <h1>@T["Bootstrap dropdown:"]</h1>
 
         <h4>@T["Hide selected from list"]</h4>
-        <editor type="DropDown"
+        <editor type="Dropdown"
                 for="@Model.Dropdown"
                 DropDownContainerId="downContainerId2"
                 ButtonContainerId="buttonContainerId2"
@@ -144,7 +144,7 @@
                 Label="@T["Dropdown 1"]"
                 HideSelectedFromDropDownList="true" />
 
-        <editor type="DropDown"
+        <editor type="Dropdown"
                 for="@Model.DropdownDisabled"
                 DropDownContainerId="downContainerId2"
                 ButtonContainerId="buttonContainerId2"
@@ -155,7 +155,7 @@
                 Disabled="true" />
 
         <h4>@T["Don't hide selected from list"]</h4>
-        <editor type="DropDown"
+        <editor type="Dropdown"
                 for="@Model.Status"
                 DropDownContainerId="downContainerId1"
                 ButtonContainerId="buttonContainerId1"
@@ -163,7 +163,7 @@
                 Label="@T["Dropdown 2"]"
                 DropDownData="@dropDownData2" />
 
-        <editor type="DropDown"
+        <editor type="Dropdown"
                 for="@Model.StatusDisabled"
                 DropDownContainerId="downContainerId1"
                 ButtonContainerId="buttonContainerId1"

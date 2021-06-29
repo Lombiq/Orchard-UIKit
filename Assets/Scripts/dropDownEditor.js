@@ -1,7 +1,7 @@
 function removeSelectedFromDropDown(buttonId) {
     /* Remove selected */
 
-    const button = $('#' + buttonId + '.dropDownEditor__button');
+    const button = $('#' + buttonId + '.dropdownEditor__button');
     const buttonItems = button.siblings().children();
     const buttonText = button[0].innerText.trim();
 
@@ -24,7 +24,7 @@ function dropdownOnClick(id, buttonId, aspId, removeSelected) {
         const btnClass = $(this).data('class');
         $('#' + buttonId)
             .text(text)
-            .removeClass('btn-warning btn-success btn-danger dropDownEditor__button_success')
+            .removeClass('btn-warning btn-success btn-danger dropdownEditor__button_success')
             .addClass(btnClass);
 
         /* Set hidden input value */
