@@ -1,5 +1,5 @@
 function removeSelectedFromDropDown(buttonId) {
-    /* Remove selected */
+    /* Remove selected. */
 
     const button = $('#' + buttonId + '.dropdownEditor__button');
     const buttonItems = button.siblings().children();
@@ -16,7 +16,7 @@ function removeSelectedFromDropDown(buttonId) {
 }
 
 /* eslint-disable no-unused-vars */
-/* It's used from the dropDown shape */
+/* It's used from the dropdown shape. */
 function dropdownOnClick(id, buttonId, aspId, removeSelected) {
     return $('#' + id + ' div a').on('click', function dropDownOnClickFunc() {
         const state = $(this).data('state');
@@ -28,7 +28,7 @@ function dropdownOnClick(id, buttonId, aspId, removeSelected) {
             .removeClass(lastclass)
             .addClass(btnClass);
 
-        /* Set hidden input value */
+        /* Set hidden input value. */
         $('#' + aspId).val(state);
 
         if (removeSelected) {

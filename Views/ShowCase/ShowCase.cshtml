@@ -1,7 +1,7 @@
 @model ShowcaseViewModel
 
 @{
-    var dropDownData = new List<DropdownItem>
+    var dropdownData = new List<DropdownItem>
 {
         new DropdownItem(){ Text = T["Text 1"], DataState = true, DataClass = "btn-success"},
         new DropdownItem(){ Text = T["Long Text 2"], DataState = false, DataClass = "btn-danger"},
@@ -137,39 +137,39 @@
         <h4>@T["Hide selected from list"]</h4>
         <editor type="Dropdown"
                 for="@Model.Dropdown"
-                DropDownContainerId="downContainerId2"
+                DropdownContainerId="downContainerId2"
                 ButtonContainerId="buttonContainerId2"
                 ButtonId="buttonId2"
-                DropDownData="@dropDownData"
+                DropdownData="@dropdownData"
                 Label="@T["Dropdown 1"]"
-                HideSelectedFromDropDownList="true" />
+                HideSelectedFromDropdownList="true" />
 
         <editor type="Dropdown"
                 for="@Model.DropdownDisabled"
-                DropDownContainerId="downContainerId2"
+                DropdownContainerId="downContainerId2"
                 ButtonContainerId="buttonContainerId2"
                 ButtonId="buttonId2"
-                DropDownData="@dropDownData"
+                DropdownData="@dropdownData"
                 Label="@T["Dropdown 1"]"
-                HideSelectedFromDropDownList="true"
+                HideSelectedFromDropdownList="true"
                 Disabled="true" />
 
         <h4>@T["Don't hide selected from list"]</h4>
         <editor type="Dropdown"
                 for="@Model.Status"
-                DropDownContainerId="downContainerId1"
+                DropdownContainerId="downContainerId1"
                 ButtonContainerId="buttonContainerId1"
                 ButtonId="buttonId1"
                 Label="@T["Dropdown 2"]"
-                DropDownData="@dropDownData2" />
+                DropdownData="@dropDownData2" />
 
         <editor type="Dropdown"
                 for="@Model.StatusDisabled"
-                DropDownContainerId="downContainerId1"
+                DropdownContainerId="downContainerId1"
                 ButtonContainerId="buttonContainerId1"
                 ButtonId="buttonId1"
                 Label="@T["Dropdown 2"]"
-                DropDownData="@dropDownData2"
+                DropdownData="@dropDownData2"
                 Disabled="true"/>
     </div>
 </div>
