@@ -1,4 +1,4 @@
-/* TextBox Styling for asterisk in the placeholder */
+/* Textbox styling for asterisk in the placeholder */
 .textboxEditor {
     position: relative;
 
@@ -26,9 +26,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 0.0625em solid black;
-        border-top-left-radius: 0.2rem;
-        border-bottom-left-radius: 0.2rem;
     }
 
     &_iconOnLeft {

@@ -1,3 +1,4 @@
+/*Without this styling the custom checkboxes won't work. */
 .checkboxEditor {
     position: relative;
 
@@ -8,7 +9,7 @@
 
         + .checkboxEditor__label {
             &:before {
-                /* checkbox */
+                /* Checkbox. */
                 content: '';
                 position: absolute;
                 left: 0;
@@ -21,14 +22,14 @@
             }
 
             &_left:before {
-                /* checkbox - label position left */
+                /* Checkbox - label position left. */
                 right: 0;
                 top: 0.3em;
                 left: unset;
             }
 
             &:after {
-                /* check mark */
+                /* Check mark. */
                 content: "";
                 position: absolute;
                 display: block;
@@ -44,7 +45,7 @@
             }
 
             &_left:after {
-                /* check mark - label position left */
+                /* Check mark - label position left. */
                 left: unset;
                 right: 0.32em;
                 top: 0.45em;
@@ -54,7 +55,7 @@
         &:checked {
 
             + .checkboxEditor__label:before {
-                /* checkbox when checked*/
+                /* Checkbox when checked. */
                 background: blue;
                 border: 1px solid blue;
             }
@@ -63,13 +64,13 @@
         &:not(:checked) {
 
             + .checkboxEditor__label:after {
-                /* check mark when not checked */
+                /* Check mark when not checked. */
                 display: none;
             }
         }
 
         &:disabled {
-            /* disabled checkbox */
+            /* Disabled checkbox. */
             + .checkboxEditor__label {
                 color: lightslategray;
 
