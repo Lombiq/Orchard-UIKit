@@ -32,12 +32,12 @@ namespace Lombiq.UIKit.Constants
         public const string TextboxHintClass = TextboxBlockName + HintElement;
 
         // Checkbox classes.
-        public const string CheckBoxBlockName = "checkboxEditor";
-        public const string CheckboxLabelClass = CheckBoxBlockName + LabelElement;
+        public const string CheckboxBlockName = "checkboxEditor";
+        public const string CheckboxLabelClass = CheckboxBlockName + LabelElement;
         public const string CheckboxLabelRequiredClass = CheckboxLabelClass + RequiredModifier;
-        public const string CheckboxInputClass = CheckBoxBlockName + InputElement;
+        public const string CheckboxInputClass = CheckboxBlockName + InputElement;
         public const string CheckboxInputRequiredClass = CheckboxInputClass + RequiredModifier;
-        public const string CheckboxAsteriskClass = CheckBoxBlockName + AsteriskElement;
+        public const string CheckboxAsteriskClass = CheckboxBlockName + AsteriskElement;
 
         // Elements.
         public const string InputElement = "__input";
