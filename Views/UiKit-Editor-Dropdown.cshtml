@@ -1,6 +1,6 @@
 @using Lombiq.UIKit.Models
 @using Microsoft.AspNetCore.Mvc.Localization
-@using static Lombiq.UIKit.Constants.Classes 
+@using static Lombiq.UIKit.Constants.Classes
 
 @inject IHtmlGenerator HtmlGenerator
 
@@ -56,7 +56,7 @@
     var disabled = (Model.Disabled != null && Model.Disabled) ? "disabled" : string.Empty;
 }
 
-<style asp-src="~/Lombiq.UIKit/css/dropdown.min.css" debug-src="~/Lombiq.UIKit/css/dropdown.css"></style>
+<style asp-name="@ResourceNames.LombiqDropdownStyle" asp-src="~/Lombiq.UIKit/css/dropdown.min.css" debug-src="~/Lombiq.UIKit/css/dropdown.css"></style>
 
 <div id="@Model.DropdownContainerId" class="@customBlockClasses @DropdownBlockName">
     @label
@@ -68,24 +68,26 @@
                         title="@forModel.Model" @(disabled)
                         class="btn btn-sm dropdown-toggle @DropdownButtonClass @defaultData.DataClass"
                         type="button"
-                        data-toggle="dropdown">@defaultData.Text</button>
-                <div class="dropdown-menu dropdown-menu-right @DropdownItemContainerClass">
-                    @foreach (var dropdownItem in dropdownData)
-                    {
-                        <a href="javascript:void(0)"
-                            data-state="@dropdownItem.DataState"
-                            data-state-text="@dropdownItem.Text"
-                            data-class="@dropdownItem.DataClass"
-                            class="dropdown-item @DropdownItemClass">@dropdownItem.Text</a>
-                    }
+                        data-toggle="dropdown">
+                    @defaultData.Text
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right @DropdownItemContainerClass">
+                        @foreach (var dropdownItem in dropdownData)
+                        {
+                            <a href="javascript:void(0)"
+                               data-state="@dropdownItem.DataState"
+                               data-state-text="@dropdownItem.Text"
+                               data-class="@dropdownItem.DataClass"
+                               class="dropdown-item @DropdownItemClass">@dropdownItem.Text</a>
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
-</div>
+        </nav>
+    </div>
 
-<script asp-src="~/Lombiq.UIKit/js/dropdownEditor.js" at="Foot" depends-on="jQuery"></script>
-<script at="Foot">
+    <script asp-name="@ResourceNames.LombiqDropdownScript" asp-src="~/Lombiq.UIKit/js/dropdownEditor.js" at="Foot" depends-on="jQuery"></script>
+    <script at="Foot" >
     (function ($) {
         $(function () {
             @if ((bool?)Model.HideSelectedFromDropdownList == true)
@@ -100,4 +102,4 @@
                 @Json.Serialize(Model.HideSelectedFromDropdownList));
         });
     })(jQuery);
-</script>
+    </script>
