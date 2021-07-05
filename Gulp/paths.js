@@ -18,5 +18,5 @@ module.exports = {
         css: distBasePath + 'css/',
         fonts: distBasePath + 'fonts/',
         js: distBasePath + 'js/',
-    }
+    },
 };
