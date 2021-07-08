@@ -19,7 +19,7 @@
     };
 
     var modelFor = Model.For as ModelExpression;
-    var isRequired = modelFor.Metadata.RequiredAttrExists();
+    var isRequired = modelFor.Metadata.RequiredAttributeExists();
     if (isRequired)
     {
         inputAttributes["required"] = string.Empty;

@@ -19,7 +19,7 @@
     };
 
     var forModel = Model.For as ModelExpression;
-    var isRequired = forModel.Metadata.RequiredAttrExists();
+    var isRequired = forModel.Metadata.RequiredAttributeExists();
     if (isRequired)
     {
         inputAttributes["required"] = string.Empty;
@@ -70,36 +70,34 @@
                         type="button"
                         data-toggle="dropdown">
                     @defaultData.Text
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right @DropdownItemContainerClass">
-                        @foreach (var dropdownItem in dropdownData)
-                        {
-                            <a href="javascript:void(0)"
-                               data-state="@dropdownItem.DataState"
-                               data-state-text="@dropdownItem.Text"
-                               data-class="@dropdownItem.DataClass"
-                               class="dropdown-item @DropdownItemClass">@dropdownItem.Text</a>
-                        }
-                    </div>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right @DropdownItemContainerClass">
+                    @foreach (var dropdownItem in dropdownData)
+                    {
+                        <a href="javascript:void(0)"
+                           data-state="@dropdownItem.DataState"
+                           data-state-text="@dropdownItem.Text"
+                           data-class="@dropdownItem.DataClass"
+                           class="dropdown-item @DropdownItemClass">@dropdownItem.Text</a>
+                    }
                 </div>
             </div>
-        </nav>
-    </div>
+        </div>
+    </nav>
+</div>
 
-    <script asp-name="@ResourceNames.LombiqDropdownScript" asp-src="~/Lombiq.UIKit/js/dropdownEditor.js" at="Foot" depends-on="jQuery"></script>
-    <script at="Foot" >
-    (function ($) {
-        $(function () {
-            @if ((bool?)Model.HideSelectedFromDropdownList == true)
-            {
-                @:removeSelectedFromDropDown(@Json.Serialize(Model.ButtonId));
-            }
+<script asp-name="@ResourceNames.LombiqDropdownScript" asp-src="~/Lombiq.UIKit/js/dropdown-editor.js" at="Foot" depends-on="jQuery"></script>
+<script at="Foot">
+    jQuery(($) => {
+        @if ((bool?)Model.HideSelectedFromDropdownList == true)
+        {
+            @:removeSelectedFromDropDown(@Json.Serialize(Model.ButtonId));
+        }
 
-            dropdownOnClick(
-                @Json.Serialize(Model.ButtonContainerId),
-                @Json.Serialize(Model.ButtonId),
-                @Json.Serialize((Html.IdFor(m => forModel.Model))),
-                @Json.Serialize(Model.HideSelectedFromDropdownList));
-        });
-    })(jQuery);
-    </script>
+        dropdownOnClick(
+            @Json.Serialize(Model.ButtonContainerId),
+            @Json.Serialize(Model.ButtonId),
+            @Json.Serialize((Html.IdFor(m => forModel.Model))),
+            @Json.Serialize(Model.HideSelectedFromDropdownList));
+    });
+</script>

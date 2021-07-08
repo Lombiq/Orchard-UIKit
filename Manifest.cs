@@ -10,6 +10,13 @@ using static Lombiq.UIKit.FeatureIds;
 )]
 
 [assembly: Feature(
+    Id = Base,
+    Name = "Lombiq UIKit",
+    Category = "Development",
+    Description = "Module for reusable shapes containing text editors, dropdown editors, and potentially more complex editors."
+)]
+
+[assembly: Feature(
     Id = ShowCase,
     Name = "Lombiq UIKit - Showcase page",
     Category = "Development",

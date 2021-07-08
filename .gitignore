@@ -6,3 +6,6 @@ bin/
 **/wwwroot/*
 !**/wwwroot/favicon.ico
 !**/wwwroot/.placeholder
+
+# Exclude node modules
+node_modules/
