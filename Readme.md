@@ -9,9 +9,7 @@ This module contains reusable shapes like text editors, custom style checkboxes,
 
 ## Documentation
 
-Add the module to your solution and enable `Lombiq UIKit - Showcase page` feature if you want to check out the currently available shapes. You can see them at `~/UIKitShowCase` after the feature is enabled. The example code for using 
-these shapes can be seen at *[Views/ShowCase/ShowCase.cshtml](Views/ShowCase/ShowCase.cshtml)*.
-
+Add the module to your solution and enable the `Lombiq UIKit - Showcase page` feature if you want to check out the currently available shapes. You can see them under `~/UIKitShowCase` after the feature is enabled. The example code for using these shapes can be seen in *[Views/ShowCase/ShowCase.cshtml](Views/ShowCase/ShowCase.cshtml)*.
 This module contains only those stylings which are needed for these shapes to work.
 
 ### Custom class and id
@@ -20,9 +18,10 @@ For your own styling you can override the default class stylings, or you can cre
 
 If it is needed to add an Id for the container block, then you can do that with the `BlockId` parameter.
 
+
 ## Dependencies
-- NPM Targets
-- Gulp
+- [Lombiq NPM MSBuild Targets](https://github.com/Lombiq/NPM-Targets)
+- [Lombiq Gulp Extensions](https://github.com/Lombiq/Gulp-Extensions)
 
 
 ## Contributing and support

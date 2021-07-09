@@ -14,20 +14,22 @@ namespace Lombiq.UIKit.ViewModels
         [Required]
         public string TextBox1 { get; set; }
         public string TextBox2 { get; set; }
-
-        [Required]
-        public string TextBox2Disabled { get; set; }
-        public string TextBox21Disabled { get; set; }
-
-        [Required]
         public string TextBox3 { get; set; }
-        public string TextBox4 { get; set; }
-        public string TextBox4Disabled { get; set; }
 
         [Required]
+        public string TextBox4 { get; set; }
         public string TextBox5 { get; set; }
+
+        [Required]
         public string TextBox6 { get; set; }
-        public string TextBox6Disabled { get; set; }
+        public string TextBox7 { get; set; }
+
+        [Required]
+        public string TextBox1Disabled { get; set; }
+        public string TextBox2Disabled { get; set; }
+        public string TextBox3Disabled { get; set; }
+        public string TextBox4Disabled { get; set; }
+        public string TextBox5Disabled { get; set; }
 
         [Required]
         public bool CheckboxFalse1 { get; set; }

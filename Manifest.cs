@@ -2,7 +2,7 @@ using OrchardCore.Modules.Manifest;
 using static Lombiq.UIKit.FeatureIds;
 
 [assembly: Module(
-    Name = "Lombiq UIKit",
+    Name = "Lombiq UI Kit",
     Author = "Lombiq Technologies",
     Version = "1.0",
     Description = "Module for reusable shapes containing text editors, dropdown editors, and potentially more complex editors.",
@@ -11,14 +11,14 @@ using static Lombiq.UIKit.FeatureIds;
 
 [assembly: Feature(
     Id = Base,
-    Name = "Lombiq UIKit",
+    Name = "Lombiq UI Kit",
     Category = "Development",
     Description = "Module for reusable shapes containing text editors, dropdown editors, and potentially more complex editors."
 )]
 
 [assembly: Feature(
     Id = ShowCase,
-    Name = "Lombiq UIKit - Showcase page",
+    Name = "Lombiq UI Kit - Showcase page",
     Category = "Development",
-    Description = "You can reach the showcase page at /UIKitShowCase"
+    Description = "You can reach the showcase page under /UIKitShowCase"
 )]
