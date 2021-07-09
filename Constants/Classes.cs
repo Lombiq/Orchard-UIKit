@@ -15,6 +15,7 @@ namespace Lombiq.UIKit.Constants
 
         // Textbox classes.
         public const string TextboxBlockName = "textboxEditor";
+        public const string TextboxBlockBorderLabelClass = TextboxInputClass + BorderLabelBlockModifier;
         public const string TextboxInputClass = TextboxBlockName + InputElement;
         public const string TextboxInputRequiredClass = TextboxInputClass + RequiredModifier;
         public const string TextboxInputBorderLabelClass = TextboxInputClass + BorderLabelInputModifier;
@@ -56,7 +57,8 @@ namespace Lombiq.UIKit.Constants
         // Modifiers.
         public const string LabelPositionModifierLeft = "_left";
         public const string LabelPositionModifierRight = "_right";
-        public const string BorderLabelInputModifier = "_borderLabel";
+        public const string BorderLabelInputModifier = "_borderLabelInput";
+        public const string BorderLabelBlockModifier = "_borderLabelBlock";
         public const string IconLeftModifier = "_iconOnLeft";
 
         public const string BorderPositionBorderModifier = "_border";

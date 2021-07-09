@@ -33,6 +33,7 @@
 
     }
 
+    var textboxBlockClasses = TextboxBlockName;
     var borderPositionClass = TextboxLabelPositionTopClass;
     if (Model.LabelPosition == LabelPosition.None)
     {
@@ -42,6 +43,7 @@
     else if (Model.LabelPosition == LabelPosition.Border)
     {
         borderPositionClass = TextboxLabelPositionBorderClass;
+        textboxBlockClasses = textboxBlockClasses + $" {TextboxBlockBorderLabelClass}";
         inputAttributes["class"] = inputAttributes["class"] + $"{TextboxInputBorderLabelClass} ";
     }
 
@@ -82,7 +84,7 @@
 <style asp-name="@ResourceNames.LombiqTextBoxStyle" asp-src="~/Lombiq.UIKit/css/textbox.min.css" debug-src="~/Lombiq.UIKit/css/textbox.css"></style>
 <script asp-name="@ResourceNames.LombiqTextBoxScript" asp-src="~/Lombiq.UIKit/js/textbox-editor.js" at="Foot" depends-on="jQuery"></script>
 
-<div @blockId class="@TextboxBlockName @customBlockClasses @containerIconClass">
+<div @blockId class="@textboxBlockClasses @customBlockClasses @containerIconClass">
     @if (hasAsteriksInPlaceholder)
     {
         <div class="@TextboxPlaceholderClass">

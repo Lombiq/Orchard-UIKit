@@ -14,9 +14,21 @@
         new DropdownItem{ Text = T["Long Text 2"], DataState = Status.Pending, DataClass = "btn-warning"},
     };
 }
+<style>
+    .showcaseContainer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: center;
+    }
 
-<div style="background:white; overflow: auto; display: flex; align-items: flex-start; justify-content: center;">
-    <div style="width:30%; padding: 1.5em;">
+    .showcaseContainer__Item {
+        min-width: 300px;
+        padding: 1.5em;
+    }
+</style>
+<div class="showcaseContainer">
+    <div class="showcaseContainer__Item">
 
         <h1>@T["Textbox:"]</h1>
 
@@ -40,7 +52,7 @@
         <editor type="Textbox"
                 for="@Model.TextBox2Disabled"
                 labelPosition="@LabelPosition.None"
-                iconClasses="fab fa-linkedin"
+                iconClasses="fab fa-facebook-square"
                 placeholder="@T["Placeholder"]" />
 
         <editor type="Textbox"
@@ -95,7 +107,7 @@
                 placeholder="@T["Placeholder"]"
                 disabled="true" />
     </div>
-    <div style="width:30%; padding: 1.5em;">
+    <div class="showcaseContainer__Item">
 
         <h1>@T["Checkbox:"]</h1>
 
@@ -131,7 +143,7 @@
                 Disabled="true" />
 
     </div>
-    <div style="width:30%; padding: 1.5em;">
+    <div class="showcaseContainer__Item">
         <h1>@T["Bootstrap dropdown:"]</h1>
 
         <h2>@T["Hide selected from list"]</h2>

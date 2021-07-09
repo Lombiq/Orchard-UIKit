@@ -68,9 +68,7 @@
                         title="@forModel.Model" @(disabled)
                         class="btn btn-sm dropdown-toggle @DropdownButtonClass @defaultData.DataClass"
                         type="button"
-                        data-toggle="dropdown">
-                    @defaultData.Text
-                </button>
+                        data-toggle="dropdown">@defaultData.Text</button>
                 <div class="dropdown-menu dropdown-menu-right @DropdownItemContainerClass">
                     @foreach (var dropdownItem in dropdownData)
                     {
