@@ -1,14 +1,17 @@
 @model ShowcaseViewModel
 
 @{
+    var placeholderText = T["Placeholder"];
+    var labelText = T["Label"];
+
     var dropdownData = new List<DropdownItem>
-{
+    {
         new DropdownItem{ Text = T["Text 1"], DataState = true, DataClass = "btn-success"},
         new DropdownItem{ Text = T["Long Text 2"], DataState = false, DataClass = "btn-danger"},
     };
 
     var dropDownData2 = new List<DropdownItem>
-{
+    {
         new DropdownItem{ Text = T["Text 1"], DataState = Status.Approved, DataClass = "btn-success"},
         new DropdownItem{ Text = T["Text 2"], DataState = Status.Denied, DataClass = "btn-danger"},
         new DropdownItem{ Text = T["Long Text 2"], DataState = Status.Pending, DataClass = "btn-warning"},
@@ -24,75 +27,75 @@
         <editor type="Textbox"
                 for="@Model.TextBox1"
                 labelPosition="@LabelPosition.None"
-                placeholder="@T["Placeholder"]" />
+                placeholder="@placeholderText" />
 
         <editor type="Textbox"
                 for="@Model.TextBox2"
                 labelPosition="@LabelPosition.None"
-                placeholder="@T["Placeholder"]" />
+                placeholder="@placeholderText" />
 
         <editor type="Textbox"
                 for="@Model.TextBox3"
                 labelPosition="@LabelPosition.None"
                 IconClasses="fab fa-linkedin"
-                placeholder="@T["Placeholder"]" />
+                placeholder="@placeholderText" />
 
         <editor type="Textbox"
                 for="@Model.TextBox1Disabled"
                 labelPosition="@LabelPosition.None"
                 iconClasses="fab fa-facebook-square"
-                placeholder="@T["Placeholder"]" />
+                placeholder="@placeholderText" />
 
         <editor type="Textbox"
                 for="@Model.TextBox2Disabled"
                 labelPosition="@LabelPosition.None"
-                placeholder="@T["Placeholder"]"
+                placeholder="@placeholderText"
                 Disabled="true" />
 
         <editor type="Textbox"
                 for="@Model.TextBox3Disabled"
                 labelPosition="@LabelPosition.None"
-                placeholder="@T["Placeholder"]"
+                placeholder="@placeholderText"
                 Disabled="true" />
 
         <h2>@T["Label on top"]</h2>
         <editor type="Textbox"
                 for="@Model.TextBox4"
-                label="@T["Label"]"
+                label="@labelText"
                 labelPosition="@LabelPosition.Top"
-                placeholder="@T["Placeholder"]" />
+                placeholder="@placeholderText" />
 
         <editor type="Textbox"
                 for="@Model.TextBox5"
-                label="@T["Label"]"
+                label="@labelText"
                 labelPosition="@LabelPosition.Top"
-                placeholder="@T["Placeholder"]" />
+                placeholder="@placeholderText" />
 
         <editor type="Textbox"
                 for="@Model.TextBox4Disabled"
-                label="@T["Label"]"
+                label="@labelText"
                 labelPosition="@LabelPosition.Top"
-                placeholder="@T["Placeholder"]"
+                placeholder="@placeholderText"
                 disabled="true" />
 
         <h2>@T["Label on border"]</h2>
         <editor type="Textbox"
                 for="@Model.TextBox6"
-                label="@T["Label"]"
+                label="@labelText"
                 labelPosition="@LabelPosition.Border"
-                placeholder="@T["Placeholder"]" />
+                placeholder="@placeholderText" />
 
         <editor type="Textbox"
                 for="@Model.TextBox7"
-                label="@T["Label"]"
+                label="@labelText"
                 labelPosition="@LabelPosition.Border"
-                placeholder="@T["Placeholder"]" />
+                placeholder="@placeholderText" />
 
         <editor type="Textbox"
                 for="@Model.TextBox5Disabled"
-                label="@T["Label"]"
+                label="@labelText"
                 labelPosition="@LabelPosition.Border"
-                placeholder="@T["Placeholder"]"
+                placeholder="@placeholderText"
                 disabled="true" />
     </div>
     <div class="showcaseContainer__item">
