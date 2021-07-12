@@ -8,5 +8,7 @@ namespace Lombiq.UIKit.Constants
         public const string LombiqTextBoxStyle = nameof(LombiqTextBoxStyle);
         public const string LombiqTextBoxScript = nameof(LombiqTextBoxScript);
         public const string LombiqCheckBoxStyle = nameof(LombiqCheckBoxStyle);
+
+        public const string LombiqShowcaseStyle = nameof(LombiqShowcaseStyle);
     }
 }
