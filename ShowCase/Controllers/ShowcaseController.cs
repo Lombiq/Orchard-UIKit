@@ -1,16 +1,16 @@
-using Lombiq.UIKit.ShowCase.Constants;
+using Lombiq.UIKit.Showcase.Constants;
 using Lombiq.UIKit.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using OrchardCore.Admin;
 using OrchardCore.Modules;
 
-namespace Lombiq.UIKit.ShowCase.Controllers
+namespace Lombiq.UIKit.Showcase.Controllers
 {
-    [Feature(FeatureIds.ShowCase)]
+    [Feature(FeatureIds.Showcase)]
     [Admin]
-    public class ShowCaseController : Controller
+    public class ShowcaseController : Controller
     {
-        [HttpGet(Routes.UIKitShowCase)]
-        public ActionResult ShowCase() => View(model: new ShowcaseViewModel());
+        [HttpGet(Routes.UIKitShowcase)]
+        public ActionResult Showcase() => View(model: new ShowcaseViewModel());
     }
 }

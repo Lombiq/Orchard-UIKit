@@ -4,6 +4,6 @@ namespace Lombiq.UIKit
     {
         public const string Base = "Lombiq.UIKit";
 
-        public const string ShowCase = Base + "." + nameof(ShowCase);
+        public const string Showcase = Base + "." + nameof(Showcase);
     }
 }

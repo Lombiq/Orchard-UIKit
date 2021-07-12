@@ -9,7 +9,7 @@ This module contains reusable shapes like text editors, custom style checkboxes,
 
 ## Documentation
 
-Add the module to your solution and enable the `Lombiq UIKit - Showcase page` feature if you want to check out the currently available shapes. You can see them under `~/UIKitShowCase` after the feature is enabled. The example code for using these shapes can be seen in *[Views/ShowCase/ShowCase.cshtml](Views/ShowCase/ShowCase.cshtml)*.
+Add the module to your solution and enable the `Lombiq UIKit - Showcase page` feature if you want to check out the currently available shapes. You can see them under `~/UIKitShowcase` after the feature is enabled. The example code for using these shapes can be seen in *[Views/Showcase/Showcase.cshtml](Views/Showcase/Showcase.cshtml)*.
 This module contains only those stylings which are needed for these shapes to work.
 
 ### Custom class and id
