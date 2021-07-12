@@ -14,21 +14,9 @@
         new DropdownItem{ Text = T["Long Text 2"], DataState = Status.Pending, DataClass = "btn-warning"},
     };
 }
-<style>
-    .showcaseContainer {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        justify-content: center;
-    }
 
-    .showcaseContainer__Item {
-        min-width: 300px;
-        padding: 1.5em;
-    }
-</style>
 <div class="showcaseContainer">
-    <div class="showcaseContainer__Item">
+    <div class="showcaseContainer__item">
 
         <h1>@T["Textbox:"]</h1>
 
@@ -107,7 +95,7 @@
                 placeholder="@T["Placeholder"]"
                 disabled="true" />
     </div>
-    <div class="showcaseContainer__Item">
+    <div class="showcaseContainer__item">
 
         <h1>@T["Checkbox:"]</h1>
 
@@ -143,7 +131,7 @@
                 Disabled="true" />
 
     </div>
-    <div class="showcaseContainer__Item">
+    <div class="showcaseContainer__item">
         <h1>@T["Bootstrap dropdown:"]</h1>
 
         <h2>@T["Hide selected from list"]</h2>
