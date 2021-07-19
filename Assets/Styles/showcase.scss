@@ -1,0 +1,11 @@
+.showcaseContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+
+    &__item {
+        min-width: 300px;
+        padding: 1.5em;
+    }
+}

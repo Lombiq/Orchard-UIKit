@@ -1,0 +1,4 @@
+/* This is needed to be able to display somehow the required field. */
+.dropdownEditor__label_required:after {
+    content: '*';
+}

@@ -1,0 +1,129 @@
+// Without this styling the custom checkboxes won't work.
+.checkboxEditor {
+    position: relative;
+
+    &__input {
+        position: absolute;
+        left: 0;
+        opacity: 0;
+
+        + .checkboxEditor__label {
+            &:before {
+                //  Checkbox.
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0.3em;
+                width: 0.9375em;
+                height: 0.9375em;
+                border: 1px solid grey;
+                background: white;
+                border-radius: 0.125em;
+            }
+
+            &_left:before {
+                // Checkbox - label position left.
+                right: 0;
+                top: 0.3em;
+                left: unset;
+            }
+
+            &:after {
+                // Check mark.
+                content: '';
+                position: absolute;
+                display: block;
+                left: 0.325em;
+                top: 0.45em;
+                width: 0.3125em;
+                height: 0.5em;
+                border: solid white;
+                border-width: 0 0.125em 0.125em 0;
+                -webkit-transform: rotate( 45deg );
+                -ms-transform: rotate(45deg);
+                transform: rotate( 45deg );
+            }
+
+            &_left:after {
+                // Check mark - label position left.
+                left: unset;
+                right: 0.32em;
+                top: 0.45em;
+            }
+        }
+
+        &:checked {
+
+            + .checkboxEditor__label:before {
+                // Checkbox when checked.
+                background: blue;
+                border: 1px solid blue;
+            }
+        }
+
+        &:not(:checked) {
+
+            + .checkboxEditor__label:after {
+                // Check mark when not checked.
+                display: none;
+            }
+        }
+
+        &:disabled {
+            // Disabled checkbox.
+            + .checkboxEditor__label {
+                color: lightslategray;
+
+                &:before {
+                    box-shadow: none;
+                    border-color: grey;
+                    background-color: grey;
+                }
+            }
+
+            &:checked {
+                + .checkboxEditor__label:after {
+                    border-color: lightgrey;
+                }
+            }
+        }
+
+        &:focus {
+            + .checkboxEditor__label:before {
+                box-shadow: inset 0 0px 3px rgb(0 0 0 / 0%), 0 0 0 1px rgb(99 99 99 / 16%);
+            }
+        }
+    }
+
+    &__label {
+        position: relative;
+        padding-left: 1.25em;
+        user-select: none;
+        cursor: pointer;
+
+        &_left {
+            padding-left: 0em;
+            padding-right: 1.25em;
+
+            &.checkboxEditor__label_required {
+                padding-left: 0.7em;
+
+                + .checkboxEditor__asterisk {
+                    display: inline-block;
+                    color: red;
+                    position: absolute;
+                    left: 0;
+                }
+            }
+        }
+
+        &_right.checkboxEditor__label_required + .checkboxEditor__asterisk {
+            display: inline-block;
+            color: red;
+        }
+    }
+
+    &__asterisk {
+        display: none;
+    }
+}
