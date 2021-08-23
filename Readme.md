@@ -4,7 +4,7 @@
 
 ## About
 
-This module contains reusable shapes like text editors, custom style checkboxes, dropdown editors, and in the future potentially more complex editors.
+This module contains reusable shapes like text editors, custom-style checkboxes, dropdown editors, and in the future potentially more complex editors. [Here](https://www.youtube.com/watch?v=PONfn2K8AHg) you can also see a demo of it.
 
 
 ## Documentation
