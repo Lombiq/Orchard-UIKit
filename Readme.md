@@ -1,4 +1,4 @@
-# Lombiq UIKit for Orchard Core
+# Lombiq UI Kit for Orchard Core
 
 
 
@@ -9,12 +9,12 @@ This module contains reusable shapes like text editors, custom-style checkboxes,
 
 ## Documentation
 
-Add the module to your solution and enable the `Lombiq UIKit - Showcase page` feature if you want to check out the currently available shapes. You can see them under `~/UIKitShowcase` after the feature is enabled. The example code for using these shapes can be seen in *[Views/Showcase/Showcase.cshtml](Views/Showcase/Showcase.cshtml)*.
+Add the module to your solution and enable the `Lombiq UI Kit - Showcase page` feature if you want to check out the currently available shapes. You can see them under `~/UIKitShowcase` after the feature is enabled. The example code for using these shapes can be seen in *[Views/Showcase/Showcase.cshtml](Views/Showcase/Showcase.cshtml)*.
 This module contains only those stylings which are needed for these shapes to work.
 
 ### Custom class and id
 
-For your own styling you can override the default class stylings, or you can create a new class and add it to the shape blockvia the `BlockClassName` parameter.
+For your own styling you can override the default class stylings, or you can create a new class and add it to the shape block via the `BlockClassName` parameter.
 
 If it is needed to add an Id for the container block, then you can do that with the `BlockId` parameter.
 

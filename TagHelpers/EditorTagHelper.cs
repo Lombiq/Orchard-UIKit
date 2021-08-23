@@ -14,7 +14,7 @@ namespace Lombiq.UIKit.TagHelpers
     [HtmlTargetElement("editor", Attributes = nameof(Type) + "," + nameof(For))]
     public class EditorTagHelper : BaseShapeTagHelper
     {
-        private const string UIKitEditorBaseName = "UiKit__Editor__";
+        private const string UIKitEditorBaseName = "UIKit__Editor__";
 
         [HtmlAttributeName(nameof(For))]
         public ModelExpression For { get; set; }
