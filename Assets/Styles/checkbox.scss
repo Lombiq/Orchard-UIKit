@@ -2,6 +2,38 @@
 .checkboxEditor {
     position: relative;
 
+    &__asterisk {
+        display: none;
+    }
+
+    &__label {
+        position: relative;
+        padding-left: 1.25em;
+        user-select: none;
+        cursor: pointer;
+
+        &_left {
+            padding-left: 0;
+            padding-right: 1.25em;
+
+            &.checkboxEditor__label_required {
+                padding-left: 0.7em;
+
+                + .checkboxEditor__asterisk {
+                    display: inline-block;
+                    color: red;
+                    position: absolute;
+                    left: 0;
+                }
+            }
+        }
+
+        &_right.checkboxEditor__label_required + .checkboxEditor__asterisk {
+            display: inline-block;
+            color: red;
+        }
+    }
+
     &__input {
         position: absolute;
         left: 0;
@@ -28,7 +60,7 @@
                 left: unset;
             }
 
-            &:after {
+            &::after {
                 // Check mark.
                 content: '';
                 position: absolute;
@@ -39,12 +71,10 @@
                 height: 0.5em;
                 border: solid white;
                 border-width: 0 0.125em 0.125em 0;
-                -webkit-transform: rotate( 45deg );
-                -ms-transform: rotate(45deg);
-                transform: rotate( 45deg );
+                transform: rotate(45deg);
             }
 
-            &_left:after {
+            &_left::after {
                 // Check mark - label position left.
                 left: unset;
                 right: 0.32em;
@@ -53,7 +83,6 @@
         }
 
         &:checked {
-
             + .checkboxEditor__label::before {
                 // Checkbox when checked.
                 background: blue;
@@ -62,10 +91,15 @@
         }
 
         &:not(:checked) {
-
-            + .checkboxEditor__label:after {
+            + .checkboxEditor__label::after {
                 // Check mark when not checked.
                 display: none;
+            }
+        }
+
+        &:focus {
+            + .checkboxEditor__label::before {
+                box-shadow: inset 0 0 3px rgb(0 0 0 / 0%), 0 0 0 1px rgb(99 99 99 / 16%);
             }
         }
 
@@ -82,48 +116,10 @@
             }
 
             &:checked {
-                + .checkboxEditor__label:after {
+                + .checkboxEditor__label::after {
                     border-color: lightgrey;
                 }
             }
         }
-
-        &:focus {
-            + .checkboxEditor__label::before {
-                box-shadow: inset 0 0px 3px rgb(0 0 0 / 0%), 0 0 0 1px rgb(99 99 99 / 16%);
-            }
-        }
-    }
-
-    &__label {
-        position: relative;
-        padding-left: 1.25em;
-        user-select: none;
-        cursor: pointer;
-
-        &_left {
-            padding-left: 0em;
-            padding-right: 1.25em;
-
-            &.checkboxEditor__label_required {
-                padding-left: 0.7em;
-
-                + .checkboxEditor__asterisk {
-                    display: inline-block;
-                    color: red;
-                    position: absolute;
-                    left: 0;
-                }
-            }
-        }
-
-        &_right.checkboxEditor__label_required + .checkboxEditor__asterisk {
-            display: inline-block;
-            color: red;
-        }
-    }
-
-    &__asterisk {
-        display: none;
     }
 }
