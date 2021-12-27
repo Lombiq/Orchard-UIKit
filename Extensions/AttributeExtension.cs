@@ -19,7 +19,7 @@ namespace Lombiq.UIKit.Extensions
                 && metaData
                     .ContainerType
                     .GetProperty(metaData.PropertyName)
-                    .GetCustomAttributes(typeof(RequiredAttribute), false)
+                    .GetCustomAttributes(typeof(RequiredAttribute), inherit: false)
                     .Any());
     }
 }
