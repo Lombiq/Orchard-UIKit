@@ -58,8 +58,10 @@ namespace Lombiq.UIKit.TagHelpers
 
         // Otherwise the taghelper can't bind its value to it.
 #pragma warning disable CA2227 // Collection properties should be read only
+#pragma warning disable MA0016 // Prefer return collection abstraction instead of implementation
         [HtmlAttributeName(nameof(DropdownData))]
         public List<DropdownItem> DropdownData { get; set; }
+#pragma warning restore MA0016 // Prefer return collection abstraction instead of implementation
 #pragma warning restore CA2227 // Collection properties should be read only
 
         [HtmlAttributeName(nameof(HideSelectedFromDropdownList))]
