@@ -1,0 +1,63 @@
+/* Textbox styling for solving red asterisk in the placeholder */
+.textboxEditor {
+  position: relative;
+  margin-bottom: 1em;
+}
+.textboxEditor__label_border {
+  font-size: 0.7em;
+  position: absolute;
+  top: -0.6em;
+  left: 1em;
+  background: white;
+  padding: 0 0.25em;
+}
+.textboxEditor__input {
+  display: block;
+}
+.textboxEditor__placeholder {
+  position: absolute;
+  top: 0;
+  left: 0.3rem;
+  height: 2.375rem;
+  display: none;
+}
+.textboxEditor__placeholderLabel {
+  color: grey;
+  -webkit-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: text;
+}
+.textboxEditor__asterisk {
+  color: red;
+}
+.textboxEditor_iconOnLeft {
+  display: flex;
+}
+.textboxEditor_iconOnLeft > .textboxEditor__placeholder {
+  left: 2.7rem;
+}
+.textboxEditor__iconContainer {
+  width: 2.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid lightgrey;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.textboxEditor__iconContainer + .textboxEditor__input {
+  border-top-left-radius: unset;
+  border-bottom-left-radius: unset;
+  border-left-width: 0;
+}
+.textboxEditor__iconContainer > .textboxEditor__icon {
+  min-width: 1.125em;
+  min-height: 1.125em;
+}
+
+:not(.textboxEditor__label_none).textboxEditor__label_required::after {
+  content: "*";
+  color: red;
+}
+/*# sourceMappingURL=textbox.css.map */
