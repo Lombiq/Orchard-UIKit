@@ -4,7 +4,7 @@ using static Lombiq.UIKit.FeatureIds;
 [assembly: Module(
     Name = "Lombiq UI Kit",
     Author = "Lombiq Technologies",
-    Version = "1.0",
+    Version = "1.0.0",
     Description = "Module for reusable shapes containing text editors, dropdown editors, and potentially more complex editors.",
     Website = "https://github.com/Lombiq/Orchard-UIKit"
 )]
