@@ -2,6 +2,9 @@
 
 
 
+[![Lombiq.UIKit NuGet](https://img.shields.io/nuget/v/Lombiq.UIKit?label=Lombiq.UIKit)](https://www.nuget.org/packages/Lombiq.UIKit/)
+
+
 ## About
 
 This module contains reusable shapes like text editors, custom-style checkboxes, dropdown editors, and in the future potentially more complex editors. [Here](https://www.youtube.com/watch?v=PONfn2K8AHg) you can also see a demo of it.
