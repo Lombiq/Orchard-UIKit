@@ -49,9 +49,9 @@
 
     labelAttributes["class"] = labelAttributes["class"] + $"{borderPositionClass} ";
 
-    var hasAsteriksInPlaceholder = Model.LabelPosition == LabelPosition.None && isRequired;
+    var hasAsteriskInPlaceholder = Model.LabelPosition == LabelPosition.None && isRequired;
     var placeholder = (Model.Placeholder as LocalizedHtmlString)?.Value;
-    if (!string.IsNullOrEmpty(placeholder) && !hasAsteriksInPlaceholder)
+    if (!string.IsNullOrEmpty(placeholder) && !hasAsteriskInPlaceholder)
     {
         inputAttributes["placeholder"] = placeholder;
     }
@@ -63,7 +63,7 @@
             Model.ViewContext,
             forModel.ModelExplorer,
             forModel.Name,
-            hasAsteriksInPlaceholder
+            hasAsteriskInPlaceholder
                 ? placeholder
                 : (Model.Label as LocalizedHtmlString)?.Value,
             labelAttributes);
@@ -85,7 +85,7 @@
 <script asp-name="@ResourceNames.LombiqTextBoxScript" asp-src="~/Lombiq.UIKit/js/textbox-editor.js" at="Foot" depends-on="jQuery"></script>
 
 <div @blockId class="@textboxBlockClasses @customBlockClasses @containerIconClass">
-    @if (hasAsteriksInPlaceholder)
+    @if (hasAsteriskInPlaceholder)
     {
         <div class="@TextboxPlaceholderClass">
             @label
