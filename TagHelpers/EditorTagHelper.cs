@@ -56,6 +56,9 @@ namespace Lombiq.UIKit.TagHelpers
         [HtmlAttributeName(nameof(IconClasses))]
         public string IconClasses { get; set; }
 
+        [HtmlAttributeName(nameof(InputClasses))]
+        public string InputClasses { get; set; }
+
         // Otherwise the taghelper can't bind its value to it.
 #pragma warning disable CA2227 // Collection properties should be read only
 #pragma warning disable MA0016 // Prefer return collection abstraction instead of implementation
