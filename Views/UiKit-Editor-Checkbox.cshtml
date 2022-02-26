@@ -27,6 +27,12 @@
         labelAttributes["class"] = labelAttributes["class"] + $"{CheckboxLabelRequiredClass} ";
     }
 
+    var inputClasses = Model.InputClasses;
+    if (!string.IsNullOrEmpty(inputClasses))
+    {
+        inputAttributes["class"] = inputAttributes["class"] + $"{inputClasses} ";
+    }
+
     if (Model.Disabled == true)
     {
         inputAttributes["disabled"] = string.Empty;
