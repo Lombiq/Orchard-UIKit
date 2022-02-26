@@ -106,7 +106,7 @@
 
     @input
 
-    @if (!string.IsNullOrEmpty(Model.Hint))
+    @if (!string.IsNullOrEmpty(Model.Hint?.Value))
     {
         <div class="hint @TextboxHintClass">@Model.Hint</div>
     }
