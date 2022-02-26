@@ -53,6 +53,9 @@ namespace Lombiq.UIKit.TagHelpers
         [HtmlAttributeName(nameof(ButtonId))]
         public string ButtonId { get; set; }
 
+        [HtmlAttributeName(nameof(LabelClasses))]
+        public string LabelClasses { get; set; }
+
         [HtmlAttributeName(nameof(IconClasses))]
         public string IconClasses { get; set; }
 

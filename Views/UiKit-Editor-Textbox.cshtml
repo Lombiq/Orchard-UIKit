@@ -54,6 +54,12 @@
 
     labelAttributes["class"] = labelAttributes["class"] + $"{borderPositionClass} ";
 
+    var labelClasses = Model.LabelClasses;
+    if (!string.IsNullOrEmpty(labelClasses))
+    {
+        labelAttributes["class"] = labelAttributes["class"] + $"{labelClasses} ";
+    }
+
     var hasAsteriskInPlaceholder = Model.LabelPosition == LabelPosition.None && isRequired;
     var placeholder = (Model.Placeholder as LocalizedHtmlString)?.Value;
     if (!string.IsNullOrEmpty(placeholder) && !hasAsteriskInPlaceholder)
