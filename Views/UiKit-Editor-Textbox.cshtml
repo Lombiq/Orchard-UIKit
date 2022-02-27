@@ -115,9 +115,14 @@
         </span>
     }
 
+    @if (Model.HintPosition == HintPosition.BeforeInput && !string.IsNullOrEmpty(Model.Hint?.Value))
+    {
+        <div class="hint @TextboxHintClass">@Model.Hint</div>
+    }
+
     @input
 
-    @if (!string.IsNullOrEmpty(Model.Hint?.Value))
+    @if (Model.HintPosition == HintPosition.AfterInput && !string.IsNullOrEmpty(Model.Hint?.Value))
     {
         <div class="hint @TextboxHintClass">@Model.Hint</div>
     }

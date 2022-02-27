@@ -38,6 +38,9 @@ namespace Lombiq.UIKit.TagHelpers
         [HtmlAttributeName(nameof(Hint))]
         public LocalizedHtmlString Hint { get; set; }
 
+        [HtmlAttributeName(nameof(HintPosition))]
+        public HintPosition HintPosition { get; set; }
+
         [HtmlAttributeName(nameof(BlockClassName))]
         public string BlockClassName { get; set; }
 
