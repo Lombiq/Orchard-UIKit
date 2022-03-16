@@ -1,11 +1,10 @@
-namespace Lombiq.UIKit.ViewModels
+namespace Lombiq.UIKit.ViewModels;
+
+public enum LabelPosition
 {
-    public enum LabelPosition
-    {
-        None,
-        Top,
-        Right,
-        Left,
-        Border,
-    }
+    None,
+    Top,
+    Right,
+    Left,
+    Border,
 }
