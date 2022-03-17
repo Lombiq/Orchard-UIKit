@@ -1,7 +1,6 @@
-namespace Lombiq.UIKit.Showcase.Constants
+namespace Lombiq.UIKit.Showcase.Constants;
+
+public static class Routes
 {
-    public static class Routes
-    {
-        public const string UIKitShowcase = nameof(UIKitShowcase);
-    }
+    public const string UIKitShowcase = nameof(UIKitShowcase);
 }
