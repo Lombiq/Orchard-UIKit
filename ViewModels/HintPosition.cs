@@ -1,8 +1,7 @@
-namespace Lombiq.UIKit.ViewModels
+namespace Lombiq.UIKit.ViewModels;
+
+public enum HintPosition
 {
-    public enum HintPosition
-    {
-        BeforeInput,
-        AfterInput,
-    }
+    BeforeInput,
+    AfterInput,
 }

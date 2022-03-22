@@ -23,10 +23,10 @@ public class ShowcaseViewModel
     [Required]
     public string TextBox6 { get; set; }
     public string TextBox7 { get; set; }
-        public string TextBox8 { get; set; }
-        public string TextBox9 { get; set; }
-        public string TextBox10 { get; set; }
-        public string TextBox11 { get; set; }
+    public string TextBox8 { get; set; }
+    public string TextBox9 { get; set; }
+    public string TextBox10 { get; set; }
+    public string TextBox11 { get; set; }
 
     [Required]
     public string TextBox1Disabled { get; set; }
@@ -38,8 +38,8 @@ public class ShowcaseViewModel
     [Required]
     public bool CheckboxFalse1 { get; set; }
     public bool CheckboxFalse2 { get; set; }
-        public bool CheckboxFalse3 { get; set; }
-        public bool CheckboxFalse4 { get; set; }
+    public bool CheckboxFalse3 { get; set; }
+    public bool CheckboxFalse4 { get; set; }
     public bool CheckboxFalse2Disabled { get; set; }
 
     [Required]
