@@ -137,6 +137,54 @@
 
     </div>
     <div class="showcaseContainer__item">
+        <h1>@T["Custom classes:"]</h1>
+        <h2>@T["Label classes"]</h2>
+
+        <editor type="Textbox"
+                for="@Model.TextBox8"
+                label="@labelText"
+                labelPosition="@LabelPosition.Top"
+                LabelClasses="nonDefaultLabelClass customLabelClass" />
+
+        <editor Type="Checkbox"
+                for="@Model.CheckboxFalse3"
+                label="@T["Default false, required"]"
+                LabelPosition="@LabelPosition.Right"
+                LabelClasses="nonDefaultLabelClass customLabelClass" />
+
+        <h2>@T["Input classes"]</h2>
+
+        <editor type="Textbox"
+                for="@Model.TextBox9"
+                label="@labelText"
+                labelPosition="@LabelPosition.Top"
+                InputClasses="nonDefaultInputClass customInputClass" />
+
+        <editor Type="Checkbox"
+                for="@Model.CheckboxFalse4"
+                label="@T["Default false, required"]"
+                LabelPosition="@LabelPosition.Right"
+                InputClasses="nonDefaultInputClass customInputClass" />
+
+    </div>
+    <div class="showcaseContainer__item">
+        <h1>@T["Hint positioning:"]</h1>
+
+        <editor type="Textbox"
+                for="@Model.TextBox10"
+                label="@labelText"
+                labelPosition="@LabelPosition.Top"
+                Hint="@T["This is a hint positioned before the input."]"
+                HintPosition="@HintPosition.BeforeInput" />
+
+        <editor Type="Textbox"
+                for="@Model.TextBox11"
+                label="@labelText"
+                labelPosition="@LabelPosition.Border"
+                Hint="@T["This is a hint positioned after the input."]"
+                HintPosition="@HintPosition.AfterInput" />
+    </div>
+    <div class="showcaseContainer__item">
         <h1>@T["Bootstrap dropdown:"]</h1>
 
         <h2>@T["Hide selected from list"]</h2>
