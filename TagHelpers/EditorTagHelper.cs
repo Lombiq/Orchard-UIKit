@@ -38,6 +38,9 @@ public class EditorTagHelper : BaseShapeTagHelper
     [HtmlAttributeName(nameof(Hint))]
     public LocalizedHtmlString Hint { get; set; }
 
+    [HtmlAttributeName(nameof(HintPosition))]
+    public HintPosition HintPosition { get; set; }
+
     [HtmlAttributeName(nameof(BlockClassName))]
     public string BlockClassName { get; set; }
 
@@ -53,8 +56,14 @@ public class EditorTagHelper : BaseShapeTagHelper
     [HtmlAttributeName(nameof(ButtonId))]
     public string ButtonId { get; set; }
 
+    [HtmlAttributeName(nameof(LabelClasses))]
+    public string LabelClasses { get; set; }
+
     [HtmlAttributeName(nameof(IconClasses))]
     public string IconClasses { get; set; }
+
+    [HtmlAttributeName(nameof(InputClasses))]
+    public string InputClasses { get; set; }
 
     // Otherwise the taghelper can't bind its value to it.
 #pragma warning disable CA2227 // Collection properties should be read only
