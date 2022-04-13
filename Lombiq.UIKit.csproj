@@ -15,11 +15,11 @@
     <PackageTags>OrchardCore;Lombiq;AspNetCore;UI;UIKit;front-end</PackageTags>
     <RepositoryUrl>https://github.com/Lombiq/Orchard-UIKit</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Lombiq/Orchard-UIKit</PackageProjectUrl>
-    <PackageLicenseFile>Licence.md</PackageLicenseFile>
+    <PackageLicenseFile>License.md</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Licence.md" Pack="true" PackagePath="" />
+    <None Include="License.md" Pack="true" PackagePath="" />
     <None Include="Readme.md" />
     <None Include="NuGetIcon.png" Pack="true" PackagePath="" />
   </ItemGroup>
