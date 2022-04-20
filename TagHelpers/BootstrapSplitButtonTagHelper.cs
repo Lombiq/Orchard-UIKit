@@ -3,7 +3,7 @@ using OrchardCore.DisplayManagement;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Lombiq.HelpfulExtensions.Extensions.Bootstrap.TagHelpers;
+namespace Lombiq.UIKit.TagHelpers;
 
 [HtmlTargetElement("bootstrap-split-button", Attributes = "options")]
 public class BootstrapSplitButtonTagHelper : TagHelper

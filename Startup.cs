@@ -1,4 +1,4 @@
-using Lombiq.HelpfulExtensions.Extensions.Bootstrap.TagHelpers;
+using Lombiq.UIKit.TagHelpers;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.Modules;
 

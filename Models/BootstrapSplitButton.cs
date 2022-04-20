@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Lombiq.HelpfulExtensions.Extensions.Bootstrap.Models;
+namespace Lombiq.UIKit.Models;
 
 public class BootstrapSplitButton
 {

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc.Localization;
 using OrchardCore.DisplayManagement;
 
-namespace Lombiq.HelpfulExtensions.Extensions.Bootstrap.Models;
+namespace Lombiq.UIKit.Models;
 
 public class BootstrapAccordionItem
 {
