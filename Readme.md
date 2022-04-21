@@ -17,11 +17,14 @@ Do you want to quickly try out this project and see it in action? Check it out i
 Add the module to your solution and enable the `Lombiq UI Kit - Showcase page` feature if you want to check out the currently available shapes. You can see them under `~/UIKitShowcase` after the feature is enabled. The example code for using these shapes can be seen in *[Views/Showcase/Showcase.cshtml](Views/Showcase/Showcase.cshtml)*.
 This module contains only those stylings which are needed for these shapes to work.
 
+To see documentation on the Bootstrap controls, see [Docs/BoostrapControls.md](Docs/BoostrapControls.md).
+
 ### Custom class and id
 
 For your own styling you can override the default class stylings, or you can create a new class and add it to the shape block via the `BlockClassName` parameter.
 
 If it is needed to add an Id for the container block, then you can do that with the `BlockId` parameter.
+
 
 
 ## Dependencies
