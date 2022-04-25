@@ -225,4 +225,37 @@
                 DropdownData="@dropDownData2"
                 Disabled="true" />
     </div>
+    <div class="showcaseContainer__item">
+        <h1>@T["Bootstrap controls:"]</h1>
+
+        <h2>@T["Accordion"]</h2>
+        @{
+            var bootstrapAccordionChildren = new BootstrapAccordionItem[]
+            {
+                new () { Title = T["First"], Shape = await New.DateTime(Utc: DateTime.UtcNow) },
+                new () { Title = T["Second"], Shape = await New.DateTime(Utc: DateTime.UtcNow.AddDays(1)) },
+                new () { Title = T["Third"], Shape = await New.DateTime(Utc: DateTime.UtcNow.AddDays(2)) },
+            };
+        }
+        <shape type="BootstrapAccordion"
+               AdditionalClasses="bootstrapAccordionSample"
+               prop-Children="@bootstrapAccordionChildren"></shape>
+
+        <h2>@T["Split Button"]</h2>
+        @{
+            var bootstrapSplitButtonOptions = new[]
+            {
+                (Url: "/", Text: T["Home"].Value),
+                (Url: "/Admin", Text: T["Admin"].Value),
+            };
+        }
+        <bootstrap-split-button options="@bootstrapSplitButtonOptions"
+                                type="primary"
+                                text="@T["Split Button"].Value"
+                                class="bootstrapSplitButtonSample"
+                                button-classes="bootstrapSplitButtonSample__mainButton"
+                                toggle-classes="bootstrapSplitButtonSample__toggleButton"
+                                dropdown-classes="bootstrapSplitButtonSample__dropdown" />
+
+    </div>
 </div>
