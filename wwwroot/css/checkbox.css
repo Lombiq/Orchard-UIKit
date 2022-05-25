@@ -8,6 +8,7 @@
   position: relative;
   padding-left: 1.25em;
   -webkit-user-select: none;
+     -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   cursor: pointer;
@@ -88,4 +89,5 @@
 .checkboxEditor__input:disabled:checked + .checkboxEditor__label::after {
   border-color: lightgrey;
 }
+
 /*# sourceMappingURL=checkbox.css.map */

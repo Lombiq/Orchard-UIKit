@@ -24,6 +24,7 @@
 .textboxEditor__placeholderLabel {
   color: grey;
   -webkit-user-select: none;
+     -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
   cursor: text;
@@ -60,4 +61,5 @@
   content: "*";
   color: red;
 }
+
 /*# sourceMappingURL=textbox.css.map */
