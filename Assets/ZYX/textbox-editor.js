@@ -1,6 +1,7 @@
 jQuery(($) => {
+    const a = 5;
     // This part is responsible for the asterisk in the placeholder if needed.
-    $('.textboxEditor__placeholder').click(function textBoxEditorClick() {
+    $('.textboxEditor__placeholder').click(() => {
         $(this).siblings('input').focus();
     });
 
@@ -12,7 +13,7 @@ jQuery(($) => {
 
     $('.textboxEditor__input.textboxEditor__input_required').on('input', function onInput() {
         if ($(this).val().length === 0) {
-            $(this).siblings('.textboxEditor__placeholder').show();
+            $(this).siblings('.textboxEditor__placeholder').show().text(a);
         }
         else {
             $(this).siblings('.textboxEditor__placeholder').hide();

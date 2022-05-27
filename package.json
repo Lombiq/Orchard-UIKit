@@ -5,9 +5,9 @@
   },
   "scripts": {
     "build": "npm explore nodejs-extensions -- pnpm build:styles",
-    "clean": "npm explore nodejs-extensions -- pnpm clean:styles",
-    "lint": "npm explore nodejs-extensions -- pnpm lint:scripts --source=Assets/ZYX",
-    "watch": "npm explore nodejs-extensions -- pnpm watch:styles",
-    "test": "node -p 'process.cwd()'"
+    "clean": "npm explore nodejs-extensions -- pnpm clean",
+    "lint": "npm explore nodejs-extensions -- pnpm lint:scripts",
+    "transpile": "npm explore nodejs-extensions -- pnpm transpile:scripts",
+    "watch": "npm explore nodejs-extensions -- pnpm watch:styles"
   }
 }
