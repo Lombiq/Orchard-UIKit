@@ -4,10 +4,9 @@
     "nodejs-extensions": "link:node_modules\\.nx"
   },
   "scripts": {
-    "build": "npm explore nodejs-extensions -- pnpm build:styles",
+    "build": "npm explore nodejs-extensions -- pnpm build",
     "clean": "npm explore nodejs-extensions -- pnpm clean",
-    "lint": "npm explore nodejs-extensions -- pnpm lint:scripts",
-    "transpile": "npm explore nodejs-extensions -- pnpm transpile:scripts",
+    "lint": "npm explore nodejs-extensions -- pnpm lint",
     "watch": "npm explore nodejs-extensions -- pnpm watch:styles"
   }
 }
