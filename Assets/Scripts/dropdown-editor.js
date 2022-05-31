@@ -18,7 +18,7 @@ function removeSelectedFromDropDown(buttonId) {
 // It's used from the dropdown shape.
 /* eslint-disable no-unused-vars */
 function dropdownOnClick(id, buttonId, aspId, removeSelected) {
-    return $('#' + id + ' div a').on('click', function clickHandler() {
+    return $('#' + id + ' div a').on('click', function onClick() {
         const state = $(this).data('state');
         const text = $(this).data('state-text');
         const btnClass = $(this).data('class');
