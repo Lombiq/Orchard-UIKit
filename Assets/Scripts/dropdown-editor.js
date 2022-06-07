@@ -30,10 +30,13 @@ function dropdownOnClick(id, buttonId, aspId, removeSelected) {
 
         // Set hidden input value.
         $('#' + aspId).val(state);
-
+        let i = 0;
         if (removeSelected) {
-            removeSelectedFromDropDown(buttonId);
+            removeSelectedFromDropDown(buttonId + i++);
         }
+        console.log(i--);
+
+        for (;;i++) { /* */ }
     });
 }
 /* eslint-enable no-unused-vars */
