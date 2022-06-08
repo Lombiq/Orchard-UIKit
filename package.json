@@ -7,6 +7,6 @@
     "build": "npm explore nodejs-extensions -- pnpm build",
     "clean": "npm explore nodejs-extensions -- pnpm clean",
     "lint": "npm explore nodejs-extensions -- pnpm lint",
-    "watch": "npm explore nodejs-extensions -- pnpm watch:styles"
+    "watch": "npm explore nodejs-extensions -- pnpm watch"
   }
 }
