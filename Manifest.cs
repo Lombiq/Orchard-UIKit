@@ -22,7 +22,3 @@ using static Lombiq.UIKit.FeatureIds;
     Category = "Development",
     Description = "You can reach the showcase page under /UIKitShowcase"
 )]
-
-
-
-
