@@ -26,10 +26,6 @@ For your own styling you can override the default class stylings, or you can cre
 If it is needed to add an Id for the container block, then you can do that with the `BlockId` parameter.
 
 
-## Dependencies
-- [Lombiq Node.js Extensions](https://github.com/Lombiq/NodeJs-Extensions)
-
-
 ## Contributing and support
 
 Bug reports, feature requests, comments, questions, code contributions, and love letters are warmly welcome, please do so via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
