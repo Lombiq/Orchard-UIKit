@@ -61,27 +61,30 @@
 <div id="@Model.DropdownContainerId" class="@customBlockClasses @DropdownBlockName">
     @label
     @input
-    <nav>
-        <div asp-validation-class-for="@forModel">
-            <div id="@Model.ButtonContainerId" class="@DropdownButtonContainerClass">
-                <button id="@Model.ButtonId"
-                        title="@forModel.Model" @(disabled)
-                        class="btn btn-sm dropdown-toggle @DropdownButtonClass @defaultData.DataClass"
-                        type="button"
-                        data-toggle="dropdown">@defaultData.Text</button>
-                <div class="dropdown-menu dropdown-menu-right @DropdownItemContainerClass">
-                    @foreach (var dropdownItem in dropdownData)
-                    {
-                        <a href="javascript:void(0)"
-                           data-state="@dropdownItem.DataState"
-                           data-state-text="@dropdownItem.Text"
-                           data-class="@dropdownItem.DataClass"
-                           class="dropdown-item @DropdownItemClass">@dropdownItem.Text</a>
-                    }
-                </div>
+    <div asp-validation-class-for="@forModel">
+        <div id="@Model.ButtonContainerId" class="@DropdownButtonContainerClass dropdown">
+            <button class="btn btn-sm dropdown-toggle @DropdownButtonClass @defaultData.DataClass"
+                    title="@forModel.Model"
+                    @disabled
+                    type="button"
+                    id="@Model.ButtonId"
+                    data-bs-toggle="dropdown">
+                @defaultData.Text
+            </button>
+            <div class="dropdown-menu dropdown-menu-right @DropdownItemContainerClass">
+                @foreach (var dropdownItem in dropdownData)
+                {
+                    <a href="javascript:void(0)"
+                       data-state="@dropdownItem.DataState"
+                       data-state-text="@dropdownItem.Text"
+                       data-class="@dropdownItem.DataClass"
+                       class="dropdown-item @DropdownItemClass">
+                        @dropdownItem.Text
+                    </a>
+                }
             </div>
         </div>
-    </nav>
+    </div>
 </div>
 
 <script asp-name="@ResourceNames.LombiqDropdownScript" asp-src="~/Lombiq.UIKit/js/dropdown-editor.js" at="Foot" depends-on="jQuery"></script>
