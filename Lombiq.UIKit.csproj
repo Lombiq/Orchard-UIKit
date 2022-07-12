@@ -32,7 +32,6 @@
 
   <ItemGroup>
     <None Remove="node_modules\**" />
-    <None Remove="wwwroot\**" />
     <None Remove="Tests\**" />
   </ItemGroup>
 
