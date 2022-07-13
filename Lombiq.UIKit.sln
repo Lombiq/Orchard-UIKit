@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombiq.UIKit", "Lombiq.UIKit\Lombiq.UIKit.csproj", "{44239FCC-AD1B-41A0-9624-F026749F7DEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lombiq.UIKit.Tests.UI", "Lombiq.UIKit.Tests.UI\Lombiq.UIKit.Tests.UI.csproj", "{F5BFDBB1-BB55-45CC-AE03-517FE87560C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44239FCC-AD1B-41A0-9624-F026749F7DEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44239FCC-AD1B-41A0-9624-F026749F7DEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44239FCC-AD1B-41A0-9624-F026749F7DEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44239FCC-AD1B-41A0-9624-F026749F7DEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5BFDBB1-BB55-45CC-AE03-517FE87560C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5BFDBB1-BB55-45CC-AE03-517FE87560C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5BFDBB1-BB55-45CC-AE03-517FE87560C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5BFDBB1-BB55-45CC-AE03-517FE87560C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
