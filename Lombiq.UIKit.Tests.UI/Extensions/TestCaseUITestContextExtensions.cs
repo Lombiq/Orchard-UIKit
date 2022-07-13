@@ -12,17 +12,22 @@ public static class TestCaseUITestContextExtensions
     public static async Task TestUIKitShowcaseBehaviorAsync(this UITestContext context)
     {
         await context.SignInDirectlyAndGoToRelativeUrlAsync("UIKitShowcase");
-        await context.TestGroupCountAsync();
+        context.TestGroupCountAsync();
         await context.TestAccordionAsync();
         await context.TestDropdownButtonAsync();
     }
 
-    public static async Task TestGroupCountAsync(this UITestContext context)
+    public static void TestGroupCountAsync(this UITestContext context)
     {
         // Groups are correct
         string[] correctGroupNames =
         {
-            "Textbox:", "Checkbox:", "Custom classes:", "Hint positioning:", "Bootstrap dropdown:", "Bootstrap controls:"
+            "Textbox:",
+            "Checkbox:",
+            "Custom classes:",
+            "Hint positioning:",
+            "Bootstrap dropdown:",
+            "Bootstrap controls:",
         };
 
         var groupNames = context.GetAll(By.CssSelector("showcaseContainer__item h1"));
