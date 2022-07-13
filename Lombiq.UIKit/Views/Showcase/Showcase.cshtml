@@ -17,6 +17,10 @@
         new DropdownItem{ Text = T["Long Text 2"], DataState = Status.Pending, DataClass = "btn-warning"},
     };
 }
+
+<!-- [html-validate-disable input-attributes] -->
+<!-- [html-validate-disable prefer-native-element] -->
+
 <style asp-name="@ResourceNames.LombiqShowcaseStyle" asp-src="~/Lombiq.UIKit/css/showcase.min.css" debug-src="~/Lombiq.UIKit/css/showcase.css">
 </style>
 <zone Name="Title"><h1>@RenderTitleSegments(T["UI Kit showcase"])</h1></zone>
@@ -199,9 +203,9 @@
 
         <editor type="Dropdown"
                 for="@Model.DropdownDisabled"
-                DropdownContainerId="downContainerId2"
-                ButtonContainerId="buttonContainerId2"
-                ButtonId="buttonId2"
+                DropdownContainerId="downContainerId0"
+                ButtonContainerId="buttonContainerId0"
+                ButtonId="buttonId0"
                 DropdownData="@dropdownData"
                 Label="@T["Dropdown 1"]"
                 HideSelectedFromDropdownList="true"
@@ -218,9 +222,9 @@
 
         <editor type="Dropdown"
                 for="@Model.StatusDisabled"
-                DropdownContainerId="downContainerId1"
-                ButtonContainerId="buttonContainerId1"
-                ButtonId="buttonId1"
+                DropdownContainerId="downContainerId3"
+                ButtonContainerId="buttonContainerId3"
+                ButtonId="buttonId3"
                 Label="@T["Dropdown 2"]"
                 DropdownData="@dropDownData2"
                 Disabled="true" />

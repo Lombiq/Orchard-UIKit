@@ -20,7 +20,7 @@
 
     var modelFor = Model.For as ModelExpression;
     var isRequired = modelFor.Metadata.RequiredAttributeExists();
-    if (isRequired)
+    if (isRequired && Model.Disabled != true)
     {
         inputAttributes["required"] = string.Empty;
         inputAttributes["class"] = inputAttributes["class"] + $"{CheckboxInputRequiredClass} ";
