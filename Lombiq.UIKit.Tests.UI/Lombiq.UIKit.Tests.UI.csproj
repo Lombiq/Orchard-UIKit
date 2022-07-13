@@ -11,7 +11,7 @@
     <Description>Lombiq UI Kit for Orchard Core - UI Test Extensions: Extensions to aid in UI testing Lombiq UI Kit for Orchard Core.</Description>
     <PackageIcon>NuGetIcon.png</PackageIcon>
     <PackageTags>OrchardCore;Lombiq;AspNetCore;UIKit</PackageTags>
-    <RepositoryUrl>https://github.com/Lombiq/Orchard-Chart.js</RepositoryUrl>    
+    <RepositoryUrl>https://github.com/Lombiq/Orchard-Chart.js</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Lombiq/Orchard-UIKit/Lombiq.UIKit.Tests.UI/Readme.md</PackageProjectUrl>
     <PackageLicenseFile>License.md</PackageLicenseFile>
   </PropertyGroup>
@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
-    <ProjectReference Include="..\..\..\..\..\test\Lombiq.UITestingToolbox\Lombiq.Tests.UI\Lombiq.Tests.UI.csproj" />
+    <ProjectReference Include="..\..\..\..\test\Lombiq.UITestingToolbox\Lombiq.Tests.UI\Lombiq.Tests.UI.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
