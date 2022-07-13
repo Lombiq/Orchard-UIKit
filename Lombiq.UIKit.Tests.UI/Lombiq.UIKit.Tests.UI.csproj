@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lombiq.UIKit.csproj" />
+    <ProjectReference Include="..\Lombiq.UIKit\Lombiq.UIKit.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
