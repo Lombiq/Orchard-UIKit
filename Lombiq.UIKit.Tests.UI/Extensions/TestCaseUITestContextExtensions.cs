@@ -12,12 +12,12 @@ public static class TestCaseUITestContextExtensions
     public static async Task TestUIKitShowcaseBehaviorAsync(this UITestContext context)
     {
         await context.SignInDirectlyAndGoToRelativeUrlAsync("UIKitShowcase");
-        context.TestGroupCountAsync();
+        context.TestGroupCount();
         await context.TestAccordionAsync();
         await context.TestDropdownButtonAsync();
     }
 
-    public static void TestGroupCountAsync(this UITestContext context)
+    public static void TestGroupCount(this UITestContext context)
     {
         // Groups are correct
         string[] correctGroupNames =
