@@ -1,6 +1,6 @@
 jQuery(($) => {
     // This part is responsible for the asterisk in the placeholder if needed.
-    $('.textboxEditor__placeholder').click(function textBoxEditorClick() {
+    $('.textboxEditor__placeholder').click(function onClick() {
         $(this).siblings('input').focus();
     });
 
