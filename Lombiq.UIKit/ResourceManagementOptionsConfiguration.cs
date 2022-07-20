@@ -37,6 +37,10 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
         _manifest
             .DefineStyle(LombiqTextBoxStyle)
             .SetUrl(Css + "textbox.min.css", Css + "textbox.css");
+
+        _manifest
+            .DefineStyle("UIKitTest")
+            .SetUrl("~/Lombiq.Privacy/css/lombiq-privacy-consent-banner.min.css", "~/Lombiq.Privacy/css/lombiq-privacy-consent-banner.css");
     }
 
     public void Configure(ResourceManagementOptions options) => options.ResourceManifests.Add(_manifest);
