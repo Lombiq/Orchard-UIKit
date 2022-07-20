@@ -32,7 +32,7 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
 
         _manifest
             .DefineStyle(LombiqShowcaseStyle)
-            .SetUrl(Css + "showcase.min.css", Css + "showcase.css");
+            .SetUrl(Css + "showcaseStyles.min.css", Css + "showcaseStyles.css");
 
         _manifest
             .DefineStyle(LombiqTextBoxStyle)
