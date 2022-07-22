@@ -41,9 +41,9 @@
         $(function() {
             $('.card-accordion .card-header').click(function () {
                 var accordionBodySelector = $(this).data('target');
-                $(accordionBodySelector).collapse('toggle')
+                $(accordionBodySelector).collapse('toggle');
 
-                $('.card-accordion .card-header-icon').toggle();
+                $(this).find('.card-header-icon').toggle();
             });
 
             $('.card-accordion .hide').hide();

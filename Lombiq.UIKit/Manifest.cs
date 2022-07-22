@@ -20,5 +20,6 @@ using static Lombiq.UIKit.FeatureIds;
     Id = Showcase,
     Name = "Lombiq UI Kit - Showcase page",
     Category = "Development",
-    Description = "You can reach the showcase page under /UIKitShowcase"
+    Description = "You can reach the showcase page under /UIKitShowcase",
+    Dependencies = new[] { "Lombiq.UIKit" }
 )]
