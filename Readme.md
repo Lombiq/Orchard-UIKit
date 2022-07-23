@@ -10,7 +10,7 @@ Do you want to quickly try out this project and see it in action? Check it out i
 
 ## Documentation
 
-Add the module to your solution and enable the `Lombiq UI Kit - Showcase page` feature if you want to check out the currently available shapes. You can see them under `~/UIKitShowcase` after the feature is enabled. The example code for using these shapes can be seen in *[Views/Showcase/Showcase.cshtml](Views/Showcase/Showcase.cshtml)*. This module contains only those stylings which are needed for these shapes to work.
+Add the module to your solution and enable the `Lombiq UI Kit - Showcase page` feature if you want to check out the currently available shapes. You can see them under `~/UIKitShowcase` after the feature is enabled. The example code for using these shapes can be seen in _[Views/Showcase/Showcase.cshtml](Views/Showcase/Showcase.cshtml)_. This module contains only those stylings which are needed for these shapes to work.
 
 To see documentation on the Bootstrap controls, see [Docs/BoostrapControls.md](Docs/BoostrapControls.md).
 
