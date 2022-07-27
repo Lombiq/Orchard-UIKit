@@ -21,6 +21,7 @@ public static class TestCaseUITestContextExtensions
         await context.ClickReliablyOnAsync(By.Id("heading-first"));
 
         var accordionFirst = context.Get(By.Id("collapse-first"));
+        context.WaitElementToNotChange(By.Id("collapse-first"));
         accordionFirst.HasClass("show").ShouldBeTrue();
 
         var openIcons = context.GetAll(By.CssSelector(".bootstrapAccordionSample .card-header-icon.hide"));
