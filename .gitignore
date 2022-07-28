@@ -4,7 +4,7 @@
 obj/
 bin/
 artifacts/
-./Lombiq.UIKit/wwwroot/
+**/Lombiq.UIKit/wwwroot/
 node_modules/
 *.user
 .pnpm-debug.log
