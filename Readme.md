@@ -10,8 +10,7 @@ Do you want to quickly try out this project and see it in action? Check it out i
 
 ## Documentation
 
-Add the module to your solution and enable the `Lombiq UI Kit - Showcase page` feature if you want to check out the currently available shapes. You can see them under `~/UIKitShowcase` after the feature is enabled. The example code for using these shapes can be seen in *[Views/Showcase/Showcase.cshtml](Views/Showcase/Showcase.cshtml)*.
-This module contains only those stylings which are needed for these shapes to work.
+Add the module to your solution and enable the `Lombiq UI Kit - Showcase page` feature if you want to check out the currently available shapes. You can see them under `~/UIKitShowcase` after the feature is enabled. The example code for using these shapes can be seen in _[Views/Showcase/Showcase.cshtml](Views/Showcase/Showcase.cshtml)_. This module contains only those stylings which are needed for these shapes to work.
 
 To see documentation on the Bootstrap controls, see [Docs/BoostrapControls.md](Docs/BoostrapControls.md).
 
@@ -28,6 +27,6 @@ If it is needed to add an Id for the container block, then you can do that with 
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions, and love letters are warmly welcome, please do so via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
 
 This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
