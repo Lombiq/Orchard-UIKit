@@ -1,16 +1,12 @@
 # Lombiq UI Kit for Orchard Core
 
-
-
 [![Lombiq.UIKit NuGet](https://img.shields.io/nuget/v/Lombiq.UIKit?label=Lombiq.UIKit)](https://www.nuget.org/packages/Lombiq.UIKit/)
-
 
 ## About
 
 This module contains reusable shapes like text editors, custom-style checkboxes, dropdown editors, and in the future potentially more complex editors. [Here](https://www.youtube.com/watch?v=PONfn2K8AHg) you can also see a demo of it.
 
 Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
-
 
 ## Documentation
 
@@ -25,12 +21,10 @@ For your own styling you can override the default class stylings, or you can cre
 
 If it is needed to add an Id for the container block, then you can do that with the `BlockId` parameter.
 
-
-
 ## Dependencies
+
 - [Lombiq NPM MSBuild Targets](https://github.com/Lombiq/NPM-Targets)
 - [Lombiq Gulp Extensions](https://github.com/Lombiq/Gulp-Extensions)
-
 
 ## Contributing and support
 
