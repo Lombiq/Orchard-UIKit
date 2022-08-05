@@ -20,6 +20,9 @@ For your own styling you can override the default class stylings, or you can cre
 
 If it is needed to add an Id for the container block, then you can do that with the `BlockId` parameter.
 
+- [Lombiq NPM MSBuild Targets](https://github.com/Lombiq/NPM-Targets)
+- [Lombiq Gulp Extensions](https://github.com/Lombiq/Gulp-Extensions)
+
 ## Contributing and support
 
 Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
