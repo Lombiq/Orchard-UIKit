@@ -71,18 +71,20 @@
                     data-bs-toggle="dropdown">
                 @defaultData.Text
             </button>
-            <div class="dropdown-menu dropdown-menu-right @DropdownItemContainerClass">
+            <ul class="dropdown-menu dropdown-menu-right @DropdownItemContainerClass">
                 @foreach (var dropdownItem in dropdownData)
                 {
-                    <a href="javascript:void(0)"
-                       data-state="@dropdownItem.DataState"
-                       data-state-text="@dropdownItem.Text"
-                       data-class="@dropdownItem.DataClass"
-                       class="dropdown-item @DropdownItemClass">
-                        @dropdownItem.Text
-                    </a>
+                    <li>
+                        <a href="javascript:void(0)"
+                           data-state="@dropdownItem.DataState"
+                           data-state-text="@dropdownItem.Text"
+                           data-class="@dropdownItem.DataClass"
+                           class="dropdown-item @DropdownItemClass">
+                            @dropdownItem.Text
+                        </a>
+                    </li>
                 }
-            </div>
+            </ul>
         </div>
     </div>
 </div>
@@ -98,7 +100,8 @@
         dropdownOnClick(
             @Json.Serialize(Model.ButtonContainerId),
             @Json.Serialize(Model.ButtonId),
-            @Json.Serialize((Html.IdFor(m => forModel.Model))),
+            @Json.Serialize(forModel.Name),
             @Json.Serialize(Model.HideSelectedFromDropdownList));
+
     });
 </script>
