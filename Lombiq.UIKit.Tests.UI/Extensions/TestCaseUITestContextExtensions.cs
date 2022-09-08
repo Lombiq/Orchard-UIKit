@@ -31,6 +31,6 @@ public static class TestCaseUITestContextExtensions
     public static async Task TestDropdownButtonAsync(this UITestContext context)
     {
         await context.ClickReliablyOnAsync(By.CssSelector("#buttonContainerId2 button"));
-        context.Get(By.CssSelector("#buttonContainerId2 > div")).Displayed.ShouldBeTrue();
+        context.Get(By.CssSelector("#buttonContainerId2 > ul")).Displayed.ShouldBeTrue();
     }
 }
