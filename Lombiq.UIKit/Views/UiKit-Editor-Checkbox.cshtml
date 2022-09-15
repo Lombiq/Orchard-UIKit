@@ -20,7 +20,7 @@
 
     var modelFor = Model.For as ModelExpression;
     var isRequired = modelFor.Metadata.RequiredAttributeExists();
-    if (isRequired)
+    if (isRequired && Model.Disabled != true)
     {
         inputAttributes["required"] = string.Empty;
         inputAttributes["class"] = inputAttributes["class"] + $"{CheckboxInputRequiredClass} ";
@@ -61,7 +61,7 @@
         inputAttributes);
 }
 
-<style asp-name="@ResourceNames.LombiqCheckBoxStyle" asp-src="~/Lombiq.UIKit/css/checkbox.min.css" debug-src="~/Lombiq.UIKit/css/checkbox.css"></style>
+<style asp-name="@ResourceNames.LombiqCheckBoxStyle"></style>
 
 <div @blockId class="@CheckboxBlockName @customBlockClasses">
     @input
