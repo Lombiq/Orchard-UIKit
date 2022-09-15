@@ -1,7 +1,7 @@
 @using OrchardCore.DisplayManagement
 @using OrchardCore.DisplayManagement.Implementation
 @{
-    if (Model is not IShape shape || shape.As<BootstrapSplitButton>() is not { } viewModel) { return; }
+    if (!(Model is IShape shape) || !(shape.As<BootstrapSplitButton>() is { } viewModel)) { return; }
 
     const string bootstrapSplitButton = "bootstrapSplitButton";
 
