@@ -232,9 +232,9 @@
         @{
             var bootstrapAccordionChildren = new BootstrapAccordionItem[]
             {
-                new BootstrapAccordionItem { Title = T["First"], Shape = await New.DateTime(Utc: DateTime.UtcNow) },
-                new BootstrapAccordionItem { Title = T["Second"], Shape = await New.DateTime(Utc: DateTime.UtcNow.AddDays(1)) },
-                new BootstrapAccordionItem { Title = T["Third"], Shape = await New.DateTime(Utc: DateTime.UtcNow.AddDays(2)) },
+                new () { Title = T["First"], Shape = await New.DateTime(Utc: DateTime.UtcNow) },
+                new () { Title = T["Second"], Shape = await New.DateTime(Utc: DateTime.UtcNow.AddDays(1)) },
+                new () { Title = T["Third"], Shape = await New.DateTime(Utc: DateTime.UtcNow.AddDays(2)) },
             };
         }
         <shape type="BootstrapAccordion"
