@@ -10,9 +10,9 @@ Do you want to quickly try out this project and see it in action? Check it out i
 
 ## Documentation
 
-Add the module to your solution and enable the `Lombiq UI Kit - Showcase page` feature if you want to check out the currently available shapes. You can see them under `~/UIKitShowcase` after the feature is enabled. The example code for using these shapes can be seen in _[Views/Showcase/Showcase.cshtml](Views/Showcase/Showcase.cshtml)_. This module contains only those stylings which are needed for these shapes to work.
+Add the module to your solution and enable the `Lombiq UI Kit - Showcase page` feature if you want to check out the currently available shapes. Be sure that the dependencies can be found in the directory specified in the [Project file](Lombiq.UIKit/Lombiq.UIKit.csproj), or modify them where they are located in your solution. You can see them under `~/UIKitShowcase` after the feature is enabled. The example code for using these shapes can be seen in _[Views/Showcase/Showcase.cshtml](Lombiq.UIKit/Views/Showcase/Showcase.cshtml)_. This module contains only those stylings which are needed for these shapes to work.
 
-To see documentation on the Bootstrap controls, see [Docs/BoostrapControls.md](Docs/BoostrapControls.md).
+To see documentation on the Bootstrap controls, see [Docs/BootstrapControls.md](Lombiq.UIKit/Docs/BootstrapControls.md).
 
 ### Custom class and id
 

@@ -46,8 +46,6 @@ public class ShowcaseViewModel
     public bool CheckboxTrue1 { get; set; } = true;
     public bool CheckboxTrue2 { get; set; } = true;
     public bool CheckboxTrue2Disabled { get; set; } = true;
-
-    [Required]
     public bool Dropdown { get; set; }
     public bool DropdownDisabled { get; set; }
     public Status Status { get; set; }
