@@ -52,10 +52,6 @@
     <PackageReference Include="Lombiq.NodeJs.Extensions" Version="1.0.0-alpha.14" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot" />
-  </ItemGroup>
-
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Utilities\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions.targets" />
 
 </Project>
