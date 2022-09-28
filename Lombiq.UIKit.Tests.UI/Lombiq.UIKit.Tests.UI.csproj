@@ -29,9 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="License.md" Pack="true" PackagePath="" />
+    <None Include="License.md" Pack="true" PackagePath="" />
     <None Include="NuGetIcon.png" Pack="true" PackagePath="" />
-    <Content Include="Readme.md" Pack="true" PackagePath=""/>
+    <None Include="Readme.md" Pack="true" PackagePath=""/>
   </ItemGroup>
 
 </Project>
