@@ -18,12 +18,12 @@ function removeSelectedFromDropDown(buttonId) {
 
 
 function dropdownOnClick(id, buttonId, aspId, removeSelected) {
-  return $('#' + id + ' div a').on('click', function dropDownOnClickFunc() {
+  return $('#' + id + ' ul li a').on('click', function dropDownOnClickFunc() {
     var state = $(this).data('state');
     var text = $(this).data('state-text');
     var btnClass = $(this).data('class');
-    var lastclass = $('#' + buttonId).attr('class').split(' ').pop();
-    $('#' + buttonId).text(text).removeClass(lastclass).addClass(btnClass); // Set hidden input value.
+    var btnStyle = $('#' + buttonId).attr('class').split(' ').at(-2);
+    $('#' + buttonId).text(text).removeClass(btnStyle).addClass(btnClass); // Set hidden input value.
 
     $('#' + aspId).val(state);
 
