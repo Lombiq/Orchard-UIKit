@@ -53,5 +53,5 @@
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
     <PackageReference Include="Lombiq.HelpfulLibraries.OrchardCore" Version="4.6.1-alpha.walma-15.1" />
   </ItemGroup>
-  
+
 </Project>
