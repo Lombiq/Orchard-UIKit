@@ -20,8 +20,12 @@ For your own styling you can override the default class stylings, or you can cre
 
 If it is needed to add an Id for the container block, then you can do that with the `BlockId` parameter.
 
-- [Lombiq NPM MSBuild Targets](https://github.com/Lombiq/NPM-Targets)
-- [Lombiq Gulp Extensions](https://github.com/Lombiq/Gulp-Extensions)
+## Dependencies
+
+This module has the following dependencies:
+
+- [Lombiq Helpful Libraries for Orchard Core](https://github.com/Lombiq/Helpful-Libraries)
+- [Lombiq Node.js Extensions](https://gihub.com/Lombiq/NodeJs-Extensions)
 
 ## Contributing and support
 
