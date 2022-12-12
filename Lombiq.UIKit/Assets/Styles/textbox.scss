@@ -10,9 +10,9 @@ html {
 
 html[data-theme='darkmode'] {
     --input-text: white;
-    --input-bg: #AFAFAF;
-    --label-bg: linear-gradient(180deg, #AFAFAF 50%, #383838 50%);
-    --label-bg-disabled: linear-gradient(180deg, #383838 50%, #AFAFAF 50%);
+    --input-bg: #383838;
+    --label-bg: linear-gradient(180deg, #181A1B 50%, #383838 50%);
+    --label-bg-disabled: linear-gradient(180deg, #181A1B 50%, #AFAFAF 50%);
     --input-border: #737373;
 }
 
