@@ -8,8 +8,7 @@ html {
     --input-border: black;
 }
 
-/* stylelint-disable-next-line selector-no-qualifying-type */
-html[data-theme="darkmode"] {
+[data-theme="darkmode"] {
     --input-text: white;
     --input-bg: #383838;
     --label-bg: linear-gradient(180deg, #181a1b 50%, #383838 50%);
