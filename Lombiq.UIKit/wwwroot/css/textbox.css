@@ -3,15 +3,15 @@ html {
   --input-text: black;
   --input-bg: white;
   --label-bg: white;
-  --label-bg-disabled: linear-gradient(180deg, white 50%, #F8F8F8 50%);
+  --label-bg-disabled: linear-gradient(180deg, white 50%, #f8f8f8 50%);
   --input-border: black;
 }
 
-html[data-theme=darkmode] {
+[data-theme=darkmode] {
   --input-text: white;
   --input-bg: #383838;
-  --label-bg: linear-gradient(180deg, #181A1B 50%, #383838 50%);
-  --label-bg-disabled: linear-gradient(180deg, #181A1B 50%, #AFAFAF 50%);
+  --label-bg: linear-gradient(180deg, #181a1b 50%, #383838 50%);
+  --label-bg-disabled: linear-gradient(180deg, #181a1b 50%, #afafaf 50%);
   --input-border: #737373;
 }
 
