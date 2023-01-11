@@ -1,4 +1,4 @@
-﻿using Atata;
+using Atata;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;
 using OpenQA.Selenium;
@@ -26,6 +26,9 @@ public static class TestCaseUITestContextExtensions
 
         var openIcons = context.GetAll(By.CssSelector(".bootstrapAccordionSample .card-header-icon.hide"));
         openIcons.Count.ShouldBe(1);
+
+        // Added temporarily to investigate the stacktrace of this extension method.
+        context.AssertVisualVerificationApproved(element: null, pixelErrorPercentageThreshold: 5, regionOfInterest: null);
     }
 
     public static async Task TestDropdownButtonAsync(this UITestContext context)
