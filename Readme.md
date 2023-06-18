@@ -1,6 +1,6 @@
 # Lombiq UI Kit for Orchard Core
 
-[![Lombiq.UIKit NuGet](https://img.shields.io/nuget/v/Lombiq.UIKit?label=Lombiq.UIKit)](https://www.nuget.org/packages/Lombiq.UIKit/)
+[![Lombiq.UIKit NuGet](https://img.shields.io/nuget/v/Lombiq.UIKit?label=Lombiq.UIKit)](https://www.nuget.org/packages/Lombiq.UIKit/) [![Lombiq.UIKit.Tests.UI NuGet](https://img.shields.io/nuget/v/Lombiq.UIKit.Tests.UI?label=Lombiq.UIKit.Tests.UI)](https://www.nuget.org/packages/Lombiq.UIKit.Tests.UI/)
 
 ## About
 
@@ -19,13 +19,6 @@ To see documentation on the Bootstrap controls, see [Docs/BootstrapControls.md](
 For your own styling you can override the default class stylings, or you can create a new class and add it to the shape block via the `BlockClassName` parameter.
 
 If it is needed to add an Id for the container block, then you can do that with the `BlockId` parameter.
-
-## Dependencies
-
-This module has the following dependencies:
-
-- [Lombiq Helpful Libraries for Orchard Core](https://github.com/Lombiq/Helpful-Libraries)
-- [Lombiq Node.js Extensions](https://gihub.com/Lombiq/NodeJs-Extensions)
 
 ## Contributing and support
 
