@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace Lombiq.UIKit.TagHelpers;
 
 [HtmlTargetElement("editor", Attributes = nameof(Type) + "," + nameof(For))]
-public class EditorTagHelper : BaseShapeTagHelper
+public class EditorTagHelper(IShapeFactory shapeFactory, IDisplayHelper displayHelper) : BaseShapeTagHelper(shapeFactory, displayHelper)
 {
     private const string UIKitEditorBaseName = "UIKit__Editor__";
 
@@ -75,9 +75,6 @@ public class EditorTagHelper : BaseShapeTagHelper
 
     [HtmlAttributeName(nameof(HideSelectedFromDropdownList))]
     public bool HideSelectedFromDropdownList { get; set; }
-
-    public EditorTagHelper(IShapeFactory shapeFactory, IDisplayHelper displayHelper)
-        : base(shapeFactory, displayHelper) { }
 
     public override Task ProcessAsync(TagHelperContext tagHelperContext, TagHelperOutput output)
     {
