@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 namespace Lombiq.UIKit.TagHelpers;
 
 [HtmlTargetElement("bootstrap-split-button", Attributes = "options")]
-public class BootstrapSplitButtonTagHelper(IDisplayHelper displayHelper, IShapeFactory factory) : TagHelper
+public class BootstrapSplitButtonTagHelper : TagHelper
 {
-    private readonly IDisplayHelper _displayHelper = displayHelper;
-    private readonly IShapeFactory _shapeFactory = factory;
+    private readonly IDisplayHelper _displayHelper;
+    private readonly IShapeFactory _shapeFactory;
 
     [HtmlAttributeName("type")]
     public string Type { get; set; }
@@ -31,6 +31,12 @@ public class BootstrapSplitButtonTagHelper(IDisplayHelper displayHelper, IShapeF
 
     [HtmlAttributeName("options")]
     public IEnumerable<(string Url, string Text)> Options { get; set; }
+
+    public BootstrapSplitButtonTagHelper(IDisplayHelper displayHelper, IShapeFactory factory)
+    {
+        _displayHelper = displayHelper;
+        _shapeFactory = factory;
+    }
 
     public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
