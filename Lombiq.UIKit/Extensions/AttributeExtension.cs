@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 
 namespace Lombiq.UIKit.Extensions;
 
@@ -23,5 +22,5 @@ public static class AttributeExtension
                 .ContainerType
                 .GetProperty(metaData.PropertyName)
                 .GetCustomAttributes(typeof(RequiredAttribute), inherit: false)
-                .Any());
+                .Length != 0);
 }
