@@ -1,0 +1,80 @@
+@using OrchardCore.ContentManagement.Display
+@using OrchardCore.DisplayManagement.ModelBinding
+@using OrchardCore.ResourceManagement.TagHelpers
+@using Microsoft.Extensions.Configuration
+@using OrchardCore.ContentManagement
+
+@inject IContentItemDisplayManager ContentItemDisplayManager
+@inject IUpdateModelAccessor UpdateModelAccessor
+@inject IConfiguration Configuration
+
+<style asp-name="@ResourceNames.SlickTheme"></style>
+<script asp-name="@ResourceNames.Slick" at="Foot"></script>
+
+@{
+    var shapes = Model.Shapes as IEnumerable<dynamic>;
+    if (shapes?.Any() != true) { return; }
+
+    var carouselId = $"carousel-{Guid.NewGuid():N}";
+    var additionalClasses = Model.AdditionalClasses?.ToString() ?? string.Empty;
+}
+
+<h2 class="mt-4">@Model.HeaderText</h2>
+<div id="@carouselId" class="slickCarousel @additionalClasses">
+    <div class="slickCarousel__carousel">
+        @foreach (var shape in shapes)
+        {
+            <div class="slickCarousel__item">
+                @await DisplayAsync(shape)
+            </div>
+        }
+    </div>
+    <div class="slickCarousel__arrows"></div>
+</div>
+
+<script at="Foot">
+    jQuery(function ($) {
+        const $carouselContainer = $("#@carouselId");
+        const $carousel = $carouselContainer.find(".slickCarousel__carousel");
+        const $carouselArrows = $carouselContainer.find(".slickCarousel__arrows");
+
+        $carousel.on("init", () => {
+            // Carousel initializes elements with empty id attributes, which triggers HTML validation errors.
+            $carousel.find("[id]").filter((_, element) => element.id === "").removeAttr("id");
+        });
+
+        $carousel.slick({
+            dots: true,
+            infinite: true,
+            autoplay: @(Configuration.IsUITesting() ? "false" : "true"),
+            autoplaySpeed: 5000,
+            speed: 300,
+            mobileFirst: true,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            arrows: false,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 1,
+                        arrows: true,
+                        dots: false,
+                        appendArrows: $carouselArrows,
+                    }
+                },
+                {
+                    breakpoint: 2560,
+                    settings: {
+                        slidesToShow: 8,
+                        slidesToScroll: 1,
+                        arrows: true,
+                        dots: false,
+                        appendArrows: $carouselArrows,
+                    }
+                }
+            ]
+        });
+    });
+</script>
