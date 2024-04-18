@@ -19,7 +19,6 @@
     var additionalClasses = Model.AdditionalClasses?.ToString() ?? string.Empty;
 }
 
-<h2 class="mt-4">@Model.HeaderText</h2>
 <div id="@carouselId" class="slickCarousel @additionalClasses">
     <div class="slickCarousel__carousel">
         @foreach (var shape in shapes)
