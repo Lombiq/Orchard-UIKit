@@ -17,6 +17,8 @@
 
     var carouselId = $"carousel-{Guid.NewGuid():N}";
     var additionalClasses = Model.AdditionalClasses?.ToString() ?? string.Empty;
+
+    var mergeSettings = Model.MergeSettings as string;
 }
 
 <div id="@carouselId" class="slickCarousel @additionalClasses">
@@ -42,38 +44,20 @@
             $carousel.find("[id]").filter((_, element) => element.id === "").removeAttr("id");
         });
 
-        $carousel.slick({
-            dots: true,
-            infinite: true,
+        let carouselSettings = {
+            @* Disable autoplay during UI testing to prevent flakiness. *@
             autoplay: @(Configuration.IsUITesting() ? "false" : "true"),
-            autoplaySpeed: 5000,
-            speed: 300,
             mobileFirst: true,
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            arrows: false,
-            responsive: [
-                {
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 4,
-                        slidesToScroll: 1,
-                        arrows: true,
-                        dots: false,
-                        appendArrows: $carouselArrows,
-                    }
-                },
-                {
-                    breakpoint: 2560,
-                    settings: {
-                        slidesToShow: 8,
-                        slidesToScroll: 1,
-                        arrows: true,
-                        dots: false,
-                        appendArrows: $carouselArrows,
-                    }
-                }
-            ]
-        });
+            appendArrows: $carouselArrows
+        };
+
+        @if (!string.IsNullOrEmpty(mergeSettings))
+        {
+            <text>
+                carouselSettings = $.extend(true, carouselSettings, @Html.Raw(mergeSettings));
+            </text>
+        }
+
+        $carousel.slick(carouselSettings);
     });
 </script>
