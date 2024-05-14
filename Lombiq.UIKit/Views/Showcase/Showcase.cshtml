@@ -271,11 +271,14 @@
                 await New.Message(Message: "Item 5", Type: "Information"),
                 await New.Message(Message: "Item 6", Type: "Information"),
             };
+
+            var carouselSettings = @"{ slidesToShow: 4 }";
         }
 
         <shape type="SlickCarousel"
                AdditionalClasses="slickCarouselSample"
-               prop-Shapes="@carouselItems"></shape>
+               prop-Shapes="@carouselItems"
+               prop-MergeSettings="@carouselSettings"></shape>
 
     </div>
 </div>
