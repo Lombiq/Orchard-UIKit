@@ -4,5 +4,18 @@
     "build": "npm explore nodejs-extensions -- pnpm build",
     "clean": "npm explore nodejs-extensions -- pnpm clean",
     "watch": "npm explore nodejs-extensions -- pnpm watch"
+  },
+  "dependencies": {
+    "slick-carousel": "^1.8.1"
+  },
+  "nodejsExtensions": {
+    "assetsToCopy": [
+      {
+        "sources": [
+          "node_modules/slick-carousel/slick"
+        ],
+        "target": "wwwroot/vendors/slick"
+      }
+    ]
   }
 }
