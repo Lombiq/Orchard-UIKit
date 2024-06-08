@@ -8,6 +8,7 @@ namespace Lombiq.UIKit.Showcase.Controllers;
 
 [Feature(FeatureIds.Showcase)]
 [Admin]
+[Route("[controller]")]
 public class ShowcaseController : Controller
 {
     [HttpGet(Routes.UIKitShowcase)]
