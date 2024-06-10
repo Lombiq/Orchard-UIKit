@@ -8,9 +8,9 @@ namespace Lombiq.UIKit.Showcase.Controllers;
 
 [Feature(FeatureIds.Showcase)]
 [Admin]
-[Route("[controller]")]
+[Route(Routes.UIKitShowcase)]
 public class ShowcaseController : Controller
 {
-    [HttpGet(Routes.UIKitShowcase)]
+    [HttpGet]
     public ActionResult Showcase() => View(model: new ShowcaseViewModel());
 }
