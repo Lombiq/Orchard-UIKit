@@ -1,0 +1,64 @@
+@using OrchardCore.ContentManagement.Display
+@using OrchardCore.DisplayManagement.ModelBinding
+@using OrchardCore.ResourceManagement.TagHelpers
+@using Microsoft.Extensions.Configuration
+@using OrchardCore.ContentManagement
+
+@inject IContentItemDisplayManager ContentItemDisplayManager
+@inject IUpdateModelAccessor UpdateModelAccessor
+@inject IConfiguration Configuration
+
+<style asp-name="@ResourceNames.SlickTheme"></style>
+<script asp-name="@ResourceNames.Slick" at="Foot"></script>
+
+@{
+    var shapes = Model.Shapes as IEnumerable<dynamic>;
+    if (shapes?.Any() != true) { return; }
+
+    var carouselId = $"carousel-{Guid.NewGuid():N}";
+    var additionalClasses = Model.AdditionalClasses?.ToString() ?? string.Empty;
+
+    var mergeSettings = Model.MergeSettings as string;
+}
+
+<div id="@carouselId" class="slickCarousel @additionalClasses">
+    <div class="slickCarousel__carousel">
+        @foreach (var shape in shapes)
+        {
+            <div class="slickCarousel__item">
+                @await DisplayAsync(shape)
+            </div>
+        }
+    </div>
+    <div class="slickCarousel__arrows"></div>
+</div>
+
+<script at="Foot">
+    jQuery(function ($) {
+        const $carouselContainer = $("#@carouselId");
+        const $carousel = $carouselContainer.find(".slickCarousel__carousel");
+        const $carouselArrows = $carouselContainer.find(".slickCarousel__arrows");
+
+        $carousel.on("init", () => {
+            // Carousel initializes elements with empty id attributes, which triggers HTML validation errors.
+            // See: https://github.com/kenwheeler/slick/issues/4296
+            $carousel.find("[id]").filter((_, element) => element.id === "").removeAttr("id");
+        });
+
+        let carouselSettings = {
+            @* Disable autoplay during UI testing to prevent flakiness. *@
+            autoplay: @(Configuration.IsUITesting() ? "false" : "true"),
+            mobileFirst: true,
+            appendArrows: $carouselArrows
+        };
+
+        @if (!string.IsNullOrEmpty(mergeSettings))
+        {
+            <text>
+                carouselSettings = $.extend(true, carouselSettings, @Html.Raw(mergeSettings));
+            </text>
+        }
+
+        $carousel.slick(carouselSettings);
+    });
+</script>

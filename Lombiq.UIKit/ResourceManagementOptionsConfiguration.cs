@@ -9,6 +9,7 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
     private const string Module = "~/Lombiq.UIKit/";
     private const string Css = Module + "css/";
     private const string Js = Module + "js/";
+    private const string Vendors = Module + "vendors/";
 
     private static readonly ResourceManifest _manifest = new();
 
@@ -21,6 +22,11 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
         _manifest
             .DefineScript(LombiqTextBoxScript)
             .SetUrl(Js + "textbox-editor.js");
+
+        _manifest
+            .DefineScript(Slick)
+            .SetUrl(Vendors + "slick/slick.min.js")
+            .SetDependencies("jQuery");
 
         _manifest
             .DefineStyle(LombiqCheckBoxStyle)
@@ -37,6 +43,15 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
         _manifest
             .DefineStyle(LombiqTextBoxStyle)
             .SetUrl(Css + "textbox.min.css", Css + "textbox.css");
+
+        _manifest
+            .DefineStyle(Slick)
+            .SetUrl(Vendors + "slick/slick.css");
+
+        _manifest
+            .DefineStyle(SlickTheme)
+            .SetUrl(Vendors + "slick/slick-theme.css")
+            .SetDependencies(Slick);
     }
 
     public void Configure(ResourceManagementOptions options) => options.ResourceManifests.Add(_manifest);

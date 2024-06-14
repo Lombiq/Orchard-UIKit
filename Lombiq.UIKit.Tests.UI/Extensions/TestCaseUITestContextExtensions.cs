@@ -14,6 +14,7 @@ public static class TestCaseUITestContextExtensions
         await context.SignInDirectlyAndGoToRelativeUrlAsync("UIKitShowcase");
         await context.TestAccordionAsync();
         await context.TestDropdownButtonAsync();
+        context.TestSlickCarousel();
     }
 
     public static async Task TestAccordionAsync(this UITestContext context)
@@ -33,4 +34,7 @@ public static class TestCaseUITestContextExtensions
         await context.ClickReliablyOnAsync(By.CssSelector("#buttonContainerId2 button"));
         context.Get(By.CssSelector("#buttonContainerId2 > ul")).Displayed.ShouldBeTrue();
     }
+
+    public static void TestSlickCarousel(this UITestContext context) =>
+        context.GetAll(By.ClassName("slick-active")).Count.ShouldBe(4);
 }

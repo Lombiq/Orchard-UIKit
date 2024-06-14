@@ -17,11 +17,10 @@
     <PackageTags>OrchardCore;Lombiq;AspNetCore;UI;UIKit;front-end</PackageTags>
     <RepositoryUrl>https://github.com/Lombiq/Orchard-UIKit</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Lombiq/Orchard-UIKit</PackageProjectUrl>
-    <PackageLicenseFile>License.md</PackageLicenseFile>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="License.md" Pack="true" PackagePath="" />
     <None Include="..\Readme.md" />
     <None Include="NuGetIcon.png" Pack="true" PackagePath="" />
   </ItemGroup>
@@ -45,11 +44,13 @@
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
     <ProjectReference Include="..\..\..\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.OrchardCore\Lombiq.HelpfulLibraries.OrchardCore.csproj" />
     <ProjectReference Include="..\..\..\Utilities\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions.csproj" />
+    <ProjectReference Include="..\..\..\..\test\Lombiq.UITestingToolbox\Lombiq.Tests.UI.AppExtensions\Lombiq.Tests.UI.AppExtensions.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
     <PackageReference Include="Lombiq.HelpfulLibraries.OrchardCore" Version="10.0.0" />
     <PackageReference Include="Lombiq.NodeJs.Extensions" Version="2.1.0" />
+    <PackageReference Include="Lombiq.Tests.UI.AppExtensions" Version="1.7.0" />
   </ItemGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Utilities\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions.targets" />
