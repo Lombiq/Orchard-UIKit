@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Options;
 using OrchardCore.ResourceManagement;
 using static Lombiq.UIKit.Constants.ResourceNames;
 
@@ -13,7 +13,7 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
 
     private static readonly ResourceManifest _manifest = new();
 
-    public ResourceManagementOptionsConfiguration()
+    static ResourceManagementOptionsConfiguration()
     {
         _manifest
             .DefineScript(LombiqDropdownScript)
