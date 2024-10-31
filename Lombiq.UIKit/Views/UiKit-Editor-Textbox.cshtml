@@ -67,6 +67,11 @@
         inputAttributes["placeholder"] = placeholder;
     }
 
+    if (Model.MaxLength is int maxLength)
+    {
+        inputAttributes["maxlength"] = maxLength;
+    }
+
     var noLabelAndNotRequired = Model.LabelPosition == LabelPosition.None && !isRequired;
     var label = noLabelAndNotRequired
         ? null
