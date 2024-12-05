@@ -29,20 +29,12 @@ public class CarouselWidgetMigrations : DataMigration
             );
         await _contentDefinitionManager.AlterTypeDefinitionAsync("Slide", type =>
         type
-            .Creatable()
-            .Listable()
-            .Draftable()
             .Securable()
-            .Versionable()
             .WithPart(nameof(SlidePart)));
 
         await _contentDefinitionManager.AlterTypeDefinitionAsync("CarouselWidget", type =>
         type
-            .Creatable()
-            .Listable()
-            .Draftable()
             .Securable()
-            .Versionable()
             .WithPart(nameof(BagPart), part => part.WithSettings(new BagPartSettings 
             {
                 ContainedContentTypes = ["Slide"],
