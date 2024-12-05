@@ -35,7 +35,7 @@ public class CarouselWidgetMigrations : DataMigration
         await _contentDefinitionManager.AlterTypeDefinitionAsync("CarouselWidget", type =>
         type
             .Securable()
-            .WithPart(nameof(BagPart), part => part.WithSettings(new BagPartSettings 
+            .WithPart(nameof(BagPart), part => part.WithSettings(new BagPartSettings
             {
                 ContainedContentTypes = ["Slide"],
             })
@@ -43,4 +43,4 @@ public class CarouselWidgetMigrations : DataMigration
 
         return 1;
     }
- }
+}
