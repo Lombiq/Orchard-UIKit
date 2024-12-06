@@ -1,0 +1,24 @@
+@using Lombiq.UIKit.Widgets.Models
+@using OrchardCore.ContentManagement
+@using OrchardCore.DisplayManagement
+@using OrchardCore.Flows.Models
+<div class="showcaseContainer__item">
+    <h1>@T["Slick carousel:"]</h1>
+
+    @{
+        var bagItems = ((ContentItem)Model.ContentItem).As<BagPart>().ContentItems.Select(contentItem => contentItem.As<SlidePart>());
+        var items = new List<IShape>();
+
+        bagItems.ForEach(async (slide) => items.Add(await New.Slide(Title: slide.Title.Text, Image: slide.Image.Paths[0])));
+
+        var carouselSettings = @"{ slidesToShow: 4 }";
+    }
+
+    <shape type="SlickCarousel"
+           AdditionalClasses="slickCarouselSample"
+           prop-Shapes="@items"
+           prop-MergeSettings="@carouselSettings"></shape>
+
+</div>
+
+
