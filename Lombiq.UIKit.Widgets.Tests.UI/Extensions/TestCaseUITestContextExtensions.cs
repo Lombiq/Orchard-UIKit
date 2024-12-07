@@ -11,6 +11,7 @@ public static class TestCaseUITestContextExtensions
 {
     public static async Task TestUIKitShowcaseBehaviorAsync(this UITestContext context)
     {
+        await context.GoToRelativeUrlAsync("test");
         context.TestSlickCarousel();
     }
 
