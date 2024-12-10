@@ -12,7 +12,7 @@ public static class DefaultValues
     public const string PrevArrow = "<button type=\"button\" class=\"slick-prev\">Previous</button>";
     public const string NextArrow = "<button type=\"button\" class=\"slick-next\">Next</button>";
     public const string CenterPadding = "50px";
-    public const string CSSEase = "ease";
+    public const string CssEase = "ease";
     public const bool Dots = true;
     public const string DotsClass = "slick-dots";
     public const bool Draggable = true;
@@ -37,7 +37,7 @@ public static class DefaultValues
     public const bool SwipeToSlide = true;
     public const bool TouchMove = true;
     public const int TouchThreshold = 5;
-    public const bool UseCSS = true;
+    public const bool UseCss = true;
     public const bool UseTransform = true;
     public const bool VariableWidth = false;
     public const bool Vertical = false;
