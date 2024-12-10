@@ -25,7 +25,7 @@ public class CarouselWidgetPartSettings
     public string Easing { get; set; } = DefaultValues.Easing;
     public float EdgeFriction { get; set; } = DefaultValues.EdgeFriction;
     public bool Infinite { get; set; } = DefaultValues.Infinite;
-    public int InitialSlide = 0;
+    public int InitialSlide { get; set; } = DefaultValues.InitialSlide;
     public string LazyLoad { get; set; } = DefaultValues.LazyLoad;
     public bool MobileFirst { get; set; } = DefaultValues.MobileFirst;
     public bool PauseOnFocus { get; set; } = DefaultValues.PauseOnFocus;
