@@ -1,5 +1,6 @@
 using Lombiq.HelpfulLibraries.OrchardCore.Contents;
 using Lombiq.UIKit.Widgets.Models;
+using Lombiq.UIKit.Widgets.Settings;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
@@ -27,6 +28,12 @@ public class CarouselWidgetMigrations : DataMigration
                 );
             }
             );
+
+        await _contentDefinitionManager.AlterPartDefinitionAsync(nameof(CarouselWidgetPart), part => part
+        .Attachable()
+        .WithSettings(new CarouselWidgetPartSettings())
+        );
+
         await _contentDefinitionManager.AlterTypeDefinitionAsync("Slide", type =>
         type
             .Securable()
@@ -35,6 +42,7 @@ public class CarouselWidgetMigrations : DataMigration
         await _contentDefinitionManager.AlterTypeDefinitionAsync("CarouselWidget", type =>
         type
             .Securable()
+            .WithPart(nameof(CarouselWidgetPart), part => part.WithSettings(new CarouselWidgetPartSettings()))
             .WithPart(nameof(BagPart), part => part.WithSettings(new BagPartSettings
             {
                 ContainedContentTypes = ["Slide"],

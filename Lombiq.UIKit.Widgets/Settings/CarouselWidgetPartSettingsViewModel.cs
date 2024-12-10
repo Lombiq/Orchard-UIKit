@@ -1,14 +1,14 @@
 namespace Lombiq.UIKit.Widgets.Settings;
 public class CarouselWidgetPartSettingsViewModel
 {
-    public bool Acessibility { get; set; } = true;
+    public bool Accessibility { get; set; }
     public bool AdaptiveHeight { get; set; }
     public bool AutoPlay { get; set; }
-    public bool Arrows { get; set; } = true;
+    public bool Arrows { get; set; }
     public bool CenterMode { get; set; }
-    public string CenterPadding { get; set; } = "50px";
-    public bool Dots { get; set; } = true;
-    public string DotsClass { get; set; } = string.Empty;
-    public bool Draggable { get; set; } = true;
-    public bool Fade { get; set; } = true;
+    public string? CenterPadding { get; set; }
+    public bool Dots { get; set; }
+    public string? DotsClass { get; set; }
+    public bool Draggable { get; set; }
+    public bool Fade { get; set; }
 }

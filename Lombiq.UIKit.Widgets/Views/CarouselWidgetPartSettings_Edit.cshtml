@@ -1,0 +1,22 @@
+@using Lombiq.UIKit.Widgets.Settings
+@model CarouselWidgetPartSettingsViewModel
+<div class="form-check">
+    <label class="form-check-label" asp-for="Accessibility">@T["Accessibility"]</label>
+    <input type="checkbox" class="form-check-input" asp-for="Accessibility" />
+</div>
+<div class="form-check">
+    <label class="form-check-label" asp-for="Dots">@T["Dots"]</label>
+    <input type="checkbox" class="form-check-input" asp-for="Dots" />
+</div>
+<div class="form-check">
+    <label class="form-check-label" asp-for="Draggable">@T["Draggable"]</label>
+    <input type="checkbox" class="form-check-input" asp-for="Draggable" />
+</div>
+<div class="form-group">
+    <label asp-for="DotsClass">@T["Dots CSS class"]</label>
+    <input type="text" class="form-control" asp-for="DotsClass" />
+</div>
+<div class="form-group">
+    <label asp-for="CenterPadding">@T["Center Padding"]</label>
+    <input type="text" class="form-control" asp-for="CenterPadding" />
+</div>

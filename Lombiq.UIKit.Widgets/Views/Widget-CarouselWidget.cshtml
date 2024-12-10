@@ -1,17 +1,30 @@
 @using Lombiq.UIKit.Widgets.Models
+@using Lombiq.UIKit.Widgets.Settings
 @using OrchardCore.ContentManagement
+@using OrchardCore.ContentManagement.Metadata
 @using OrchardCore.DisplayManagement
 @using OrchardCore.Flows.Models
-<div class="showcaseContainer__item">
-    <h1>@T["Slick carousel:"]</h1>
 
+@inject IContentDefinitionManager _contentDefinitionManager;
+
+@{
+    var typeDefinition = await _contentDefinitionManager.GetTypeDefinitionAsync("CarouselWidget");
+    var part = typeDefinition.Parts.Where(part => part.Name == nameof(CarouselWidgetPart)).FirstOrDefault();
+    CarouselWidgetPartSettings settings = new CarouselWidgetPartSettings();
+    if(part != null)
+    {
+        settings = part.GetSettings<CarouselWidgetPartSettings>();
+    }
+}
+
+<div class="carouselWidget" id="carouselWidget-@Model.ContentItem.ContentItemId">
     @{
         var bagItems = ((ContentItem)Model.ContentItem).As<BagPart>().ContentItems.Select(contentItem => contentItem.As<SlidePart>());
         var items = new List<IShape>();
 
         bagItems.ForEach(async (slide) => items.Add(await New.Slide(Title: slide.Title.Text, Image: slide.Image.Paths[0])));
 
-        var carouselSettings = @"{ slidesToShow: 4 }";
+        var carouselSettings = string.Format("{{ slidesToShow: 4, dots: {0} }}", settings.Dots ? "true" : "false");
     }
 
     <shape type="SlickCarousel"
