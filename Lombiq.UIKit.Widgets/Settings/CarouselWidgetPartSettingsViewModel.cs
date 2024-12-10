@@ -11,6 +11,7 @@ public class CarouselWidgetPartSettingsViewModel
     public string? AppendDots { get; set; }
     public string? PrevArrow { get; set; }
     public string? NextArrow { get; set; }
+    public bool CenterMode { get; set; }
     public string? CenterPadding { get; set; }
     public string? CssEase { get; set; }
     public bool Dots { get; set; }

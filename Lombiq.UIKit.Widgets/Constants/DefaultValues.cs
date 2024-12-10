@@ -11,6 +11,7 @@ public static class DefaultValues
     public const string AppendDots = "$(element)";
     public const string PrevArrow = "<button type=\"button\" class=\"slick-prev\">Previous</button>";
     public const string NextArrow = "<button type=\"button\" class=\"slick-next\">Next</button>";
+    public const bool CenterMode = false;
     public const string CenterPadding = "50px";
     public const string CssEase = "ease";
     public const bool Dots = true;

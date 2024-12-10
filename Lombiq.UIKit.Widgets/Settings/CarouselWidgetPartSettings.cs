@@ -15,6 +15,7 @@ public class CarouselWidgetPartSettings
     public string AppendDots { get; set; } = DefaultValues.AppendDots;
     public string PrevArrow { get; set; } = DefaultValues.PrevArrow;
     public string NextArrow { get; set; } = DefaultValues.NextArrow;
+    public bool CenterMode { get; set; } = DefaultValues.CenterMode;
     public string CenterPadding { get; set; } = DefaultValues.CenterPadding;
     public string CssEase { get; set; } = DefaultValues.CssEase;
     public bool Dots { get; set; } = DefaultValues.Dots;
