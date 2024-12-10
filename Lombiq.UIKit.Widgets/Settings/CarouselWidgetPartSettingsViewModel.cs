@@ -29,6 +29,7 @@ public class CarouselWidgetPartSettingsViewModel
     public bool PauseOnHover { get; set; }
     public bool PauseOnDotsHover { get; set; }
     public string? RespondTo { get; set; }
+    public int Rows { get; set; }
     public string? Slide { get; set; }
     public int SlidesPerRow { get; set; }
     public int SlidesToShow { get; set; }

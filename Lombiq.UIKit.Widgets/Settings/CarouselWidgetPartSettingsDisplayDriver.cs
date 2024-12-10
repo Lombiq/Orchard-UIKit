@@ -1,15 +1,10 @@
+using GraphQL;
 using Lombiq.UIKit.Widgets.Models;
-using OrchardCore.ContentManagement.Display.ContentDisplay;
-using OrchardCore.ContentManagement.Display.Models;
 using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.ContentTypes.Editors;
 using OrchardCore.DisplayManagement.Handlers;
-using OrchardCore.DisplayManagement.ModelBinding;
 using OrchardCore.DisplayManagement.Views;
-using OrchardCore.Title.Models;
-using OrchardCore.Title.ViewModels;
-using System.Threading.Tasks;
-using static Dapper.SqlMapper;
+using System.Reflection;
 
 namespace Lombiq.UIKit.Widgets.Settings;
 public class CarouselWidgetPartSettingsDisplayDriver : ContentTypePartDefinitionDisplayDriver<CarouselWidgetPart>
@@ -18,11 +13,15 @@ public class CarouselWidgetPartSettingsDisplayDriver : ContentTypePartDefinition
         Initialize<CarouselWidgetPartSettingsViewModel>("CarouselWidgetPartSettings_Edit", model =>
         {
             var settings = contentTypePartDefinition.GetSettings<CarouselWidgetPartSettings>();
-            model.Accessibility = settings.Accessibility;
-            model.Draggable = settings.Draggable;
-            model.Dots = settings.Dots;
-            model.DotsClass = settings.DotsClass;
-            model.CenterPadding = settings.CenterPadding;
+
+            foreach (var property in model.GetType().GetProperties())
+            {
+                var setting = settings.GetType()?.GetProperty(property.Name)?.GetValue(settings);
+                if (setting != null)
+                {
+                    property.SetValue(model, setting);
+                }
+            }
         }).Location("Content");
 
     public override async Task<IDisplayResult> UpdateAsync(ContentTypePartDefinition contentTypePartDefinition, UpdateTypePartEditorContext context)
@@ -31,22 +30,22 @@ public class CarouselWidgetPartSettingsDisplayDriver : ContentTypePartDefinition
 
         await context.Updater.TryUpdateModelAsync(
             model,
-            Prefix,
-            m => m.Accessibility,
-            m => m.Dots,
-            m => m.DotsClass,
-            m => m.CenterPadding,
-            m => m.Draggable
+            Prefix
             );
-        context.Builder.WithSettings(new CarouselWidgetPartSettings
+
+        var settings = new CarouselWidgetPartSettings();
+
+        foreach (var property in settings.GetType().GetProperties())
         {
-            Accessibility = model.Accessibility,
-            Draggable = model.Draggable,
-            Dots = model.Dots,
-            CenterPadding = model.CenterPadding,
-            DotsClass = model.DotsClass,
+            var modelProperty = model.GetType()?.GetProperty(property.Name)?.GetValue(model);
+            if (modelProperty != null)
+            {
+                property.SetValue(settings, modelProperty);
+            }
         }
-        );
+
+        context.Builder.WithSettings(settings);
+
         return await EditAsync(contentTypePartDefinition, context);
     }
 

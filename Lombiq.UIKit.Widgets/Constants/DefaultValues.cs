@@ -29,6 +29,7 @@ public static class DefaultValues
     public const bool PauseOnHover = true;
     public const bool PauseOnDotsHover = false;
     public const string RespondTo = "window";
+    public const int Rows = 1;
     public const string Slide = "";
     public const int SlidesPerRow = 1;
     public const int SlidesToShow = 1;

@@ -33,6 +33,7 @@ public class CarouselWidgetPartSettings
     public bool PauseOnHover { get; set; } = DefaultValues.PauseOnHover;
     public bool PauseOnDotsHover { get; set; } = DefaultValues.PauseOnDotsHover;
     public string RespondTo { get; set; } = DefaultValues.RespondTo;
+    public int Rows { get; set; } = DefaultValues.Rows;
     public string Slide { get; set; } = DefaultValues.Slide;
     public int SlidesPerRow { get; set; } = DefaultValues.SlidesPerRow;
     public int SlidesToShow { get; set; } = DefaultValues.SlidesToShow;
