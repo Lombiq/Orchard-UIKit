@@ -24,7 +24,7 @@
 
         bagItems.ForEach(async (slide) => items.Add(await New.Slide(Title: slide.Title.Text, Image: slide.Image.Paths[0])));
 
-        var carouselSettings = $"{{ slidesToShow: 4}}";
+        var carouselSettings = settings.Options;
     }
 
     <shape type="SlickCarousel"

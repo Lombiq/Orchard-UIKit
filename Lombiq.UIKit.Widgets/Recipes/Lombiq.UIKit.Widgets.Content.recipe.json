@@ -1,0 +1,165 @@
+{
+  "name": "Lombiq.UIKit.Widgets.Content",
+  "displayName": "Lombiq UI Kit widgets - Sample Content - Carousel Widget",
+  "description": "Sample content for testing and demonstration of the Lombiq UI kit module.",
+  "author": "Lombiq Technologies",
+  "website": "https://github.com/Lombiq/Orchard-UIKit",
+  "version": "1.0",
+  "issetuprecipe": false,
+  "categories": [
+    "training"
+  ],
+  "tags": [
+    "developer",
+    "training",
+    "sample"
+  ],
+  "steps": [
+    {
+      "name": "feature",
+      "enable": [
+        "Lombiq.UIKit.Widgets"
+      ]
+    },
+    {
+      "name": "content",
+      "data": [
+        {
+          "ContentItemId": "[js:uuid()]",
+          "ContentItemVersionId": "[js:uuid()]",
+          "ContentType": "CarouselWidget",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "ModifiedUtc": "2024-12-12T20:59:34.2653141Z",
+          "PublishedUtc": "2024-12-12T20:59:34.3191698Z",
+          "CreatedUtc": "2024-12-12T20:59:34.2653141Z",
+          "Owner": "4d1m8j4trsk4px1att6bte204r",
+          "Author": "admin",
+          "CarouselWidgetPart": {},
+          "BagPart": {
+            "ContentItems": [
+              {
+                "ContentItemId": "4kdv73665s30r58kya16gsbzx9",
+                "ContentItemVersionId": null,
+                "ContentType": "Slide",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2024-12-12T20:59:34.1750167Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "4d1m8j4trsk4px1att6bte204r",
+                "Author": "admin",
+                "SlidePart": {
+                  "Title": {
+                    "Text": null
+                  },
+                  "Image": {
+                    "Paths": [
+                      "about-bg.jpg"
+                    ],
+                    "MediaTexts": [
+                      ""
+                    ]
+                  }
+                }
+              },
+              {
+                "ContentItemId": "43mwkc1ceyq0ktemqnh60684xf",
+                "ContentItemVersionId": null,
+                "ContentType": "Slide",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2024-12-12T20:59:34.2391386Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "4d1m8j4trsk4px1att6bte204r",
+                "Author": "admin",
+                "SlidePart": {
+                  "Title": {
+                    "Text": null
+                  },
+                  "Image": {
+                    "Paths": [
+                      "meadow-orchard.jpg"
+                    ],
+                    "MediaTexts": [
+                      ""
+                    ]
+                  }
+                }
+              },
+              {
+                "ContentItemId": "4r42m7q89tfwv4sk6f308svv4d",
+                "ContentItemVersionId": null,
+                "ContentType": "Slide",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2024-12-12T20:59:34.2435364Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "4d1m8j4trsk4px1att6bte204r",
+                "Author": "admin",
+                "SlidePart": {
+                  "Title": {
+                    "Text": null
+                  },
+                  "Image": {
+                    "Paths": [
+                      "home-bg.jpg"
+                    ],
+                    "MediaTexts": [
+                      ""
+                    ]
+                  }
+                }
+              },
+              {
+                "ContentItemId": "48k4r33wkna203qpmztamgprmj",
+                "ContentItemVersionId": null,
+                "ContentType": "Slide",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2024-12-12T20:59:34.251842Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "4d1m8j4trsk4px1att6bte204r",
+                "Author": "admin",
+                "SlidePart": {
+                  "Title": {
+                    "Text": null
+                  },
+                  "Image": {
+                    "Paths": [
+                      "post-bg.jpg"
+                    ],
+                    "MediaTexts": [
+                      ""
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "AdditionalStylingPart": {
+            "RemoveGridExtensionClasses": false,
+            "CustomClasses": null
+          },
+          "@WeldedPartSettings": {
+            "AdditionalStylingPart": {}
+          },
+          "LayerMetadata": {
+            "RenderTitle": false,
+            "Position": 1,
+            "Zone": "BeforeMain",
+            "Layer": "Always"
+          }
+        }
+      ]
+    }
+  ]
+}
