@@ -14,14 +14,7 @@ public class CarouselWidgetPartSettingsDisplayDriver : ContentTypePartDefinition
         {
             var settings = contentTypePartDefinition.GetSettings<CarouselWidgetPartSettings>();
 
-            foreach (var property in model.GetType().GetProperties())
-            {
-                var setting = settings.GetType()?.GetProperty(property.Name)?.GetValue(settings);
-                if (setting != null)
-                {
-                    property.SetValue(model, setting);
-                }
-            }
+            model.Options = settings.Options;
         }).Location("Content");
 
     public override async Task<IDisplayResult> UpdateAsync(ContentTypePartDefinition contentTypePartDefinition, UpdateTypePartEditorContext context)
@@ -30,19 +23,13 @@ public class CarouselWidgetPartSettingsDisplayDriver : ContentTypePartDefinition
 
         await context.Updater.TryUpdateModelAsync(
             model,
-            Prefix
+            Prefix,
+            m => m.Options
             );
 
         var settings = new CarouselWidgetPartSettings();
 
-        foreach (var property in settings.GetType().GetProperties())
-        {
-            var modelProperty = model.GetType()?.GetProperty(property.Name)?.GetValue(model);
-            if (modelProperty != null)
-            {
-                property.SetValue(settings, modelProperty);
-            }
-        }
+        settings.Options = model.Options;
 
         context.Builder.WithSettings(settings);
 
