@@ -9,12 +9,14 @@ namespace Lombiq.UIKit.Widgets.Tests.UI.Extensions;
 
 public static class TestCaseUITestContextExtensions
 {
-    public static async Task TestUIKitShowcaseBehaviorAsync(this UITestContext context)
+    public static async Task TestUIKitWidgetsBehaviorAsync(this UITestContext context)
     {
-        await context.GoToRelativeUrlAsync("test");
-        context.TestSlickCarousel();
+        context.TestCarouselWidgetExistence();
+        context.TestCorrectNumberOfItemsIsDisplayed();
     }
 
-    public static void TestSlickCarousel(this UITestContext context) =>
-        context.GetAll(By.ClassName("slick-active")).Count.ShouldBe(4);
+    public static void TestCorrectNumberOfItemsIsDisplayed(this UITestContext context) =>
+        context.GetAll(By.ClassName("slick-active")).Count.ShouldBe(1);
+    public static void TestCarouselWidgetExistence(this UITestContext context) =>
+        context.Exists(By.ClassName("slickCarousel__carousel"));
 }
