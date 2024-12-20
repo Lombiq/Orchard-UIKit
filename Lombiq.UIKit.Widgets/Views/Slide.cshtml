@@ -1,4 +1,11 @@
-<h2>@Model.Title</h2>
+@{
+    string title = @Model.Title;
+}
+
+@if(!string.IsNullOrEmpty(title))
+{
+    @title
+}
 <p>
     <img src="@Orchard.AssetUrl(Model.Image as string)" />
 </p>
