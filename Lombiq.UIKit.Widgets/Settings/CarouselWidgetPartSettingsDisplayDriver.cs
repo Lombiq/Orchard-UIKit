@@ -1,10 +1,9 @@
-using GraphQL;
+using Lombiq.UIKit.Widgets.Constants;
 using Lombiq.UIKit.Widgets.Models;
 using OrchardCore.ContentManagement.Metadata.Models;
 using OrchardCore.ContentTypes.Editors;
 using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.DisplayManagement.Views;
-using System.Reflection;
 
 namespace Lombiq.UIKit.Widgets.Settings;
 public class CarouselWidgetPartSettingsDisplayDriver : ContentTypePartDefinitionDisplayDriver<CarouselWidgetPart>
@@ -27,9 +26,10 @@ public class CarouselWidgetPartSettingsDisplayDriver : ContentTypePartDefinition
             m => m.Options
             );
 
-        var settings = new CarouselWidgetPartSettings();
-
-        settings.Options = model.Options;
+        var settings = new CarouselWidgetPartSettings
+        {
+            Options = model.Options ?? DefaultValues.CarouselWidgetPartOptions,
+        };
 
         context.Builder.WithSettings(settings);
 
