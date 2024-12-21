@@ -8,32 +8,31 @@ using OrchardCore.DisplayManagement.Views;
 namespace Lombiq.UIKit.Widgets.Settings;
 public class CarouselWidgetPartSettingsDisplayDriver : ContentTypePartDefinitionDisplayDriver<CarouselWidgetPart>
 {
-    public override IDisplayResult Edit(ContentTypePartDefinition contentTypePartDefinition, BuildEditorContext context) =>
-        Initialize<CarouselWidgetPartSettingsViewModel>("CarouselWidgetPartSettings_Edit", model =>
+    public override IDisplayResult Edit(ContentTypePartDefinition model, BuildEditorContext context) =>
+        Initialize<CarouselWidgetPartSettingsViewModel>("CarouselWidgetPartSettings_Edit", viewModel =>
         {
-            var settings = contentTypePartDefinition.GetSettings<CarouselWidgetPartSettings>();
+            var settings = model.GetSettings<CarouselWidgetPartSettings>();
 
-            model.Options = settings.Options;
+            viewModel.Options = settings.Options;
         }).Location("Content");
 
-    public override async Task<IDisplayResult> UpdateAsync(ContentTypePartDefinition contentTypePartDefinition, UpdateTypePartEditorContext context)
+    public override async Task<IDisplayResult> UpdateAsync(ContentTypePartDefinition model, UpdateTypePartEditorContext context)
     {
-        var model = new CarouselWidgetPartSettingsViewModel();
+        var viewModel = new CarouselWidgetPartSettingsViewModel();
 
         await context.Updater.TryUpdateModelAsync(
-            model,
+            viewModel,
             Prefix,
             m => m.Options
             );
 
         var settings = new CarouselWidgetPartSettings
         {
-            Options = model.Options ?? DefaultValues.CarouselWidgetPartOptions,
+            Options = viewModel.Options ?? DefaultValues.CarouselWidgetPartOptions,
         };
 
         context.Builder.WithSettings(settings);
 
-        return await EditAsync(contentTypePartDefinition, context);
+        return await EditAsync(model, context);
     }
-
 }
