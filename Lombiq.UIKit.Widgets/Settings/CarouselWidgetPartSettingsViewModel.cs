@@ -1,5 +1,5 @@
 namespace Lombiq.UIKit.Widgets.Settings;
 public class CarouselWidgetPartSettingsViewModel
 {
-    public string Options { get; set; }
+    public string? Options { get; set; }
 }

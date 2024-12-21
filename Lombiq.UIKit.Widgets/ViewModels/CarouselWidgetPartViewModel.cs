@@ -5,5 +5,5 @@ namespace Lombiq.UIKit.Widgets.ViewModels;
 public class CarouselWidgetPartViewModel
 {
     [BindNever]
-    public ContentItem ContentItem { get; set; }
+    public ContentItem? ContentItem { get; set; }
 }
