@@ -11,7 +11,7 @@
 <div>
     <div class="form-group">
         <label asp-for="Options">@T["Options"]</label>
-        <textarea class="form-control" id="editor" asp-for="Options"></textarea>
+        <textarea class="form-control" id="optionsEditor" asp-for="Options"></textarea>
         <div class="hint">
             @T[string.Format("Slick configuration. Check <a href=\"{0}\" target=\"_blank\">{0}</a> for more details.", "https://kenwheeler.github.io/slick/#settings")]
         </div>
@@ -19,14 +19,11 @@
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var editor = document.getElementById("editor");
-        CodeMirror.fromTextArea(
-            editor,
+        var codeMirrorJsonEditor = CodeMirror.fromTextArea(
+        document.getElementById("optionsEditor"),
             {
                 lineNumbers:true,
                 mode:"javascript",
             }
         );
-    })
 </script>
