@@ -1,13 +1,11 @@
 using Atata;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;
-using Lombiq.UIKit.Widgets.Constants;
 using OpenQA.Selenium;
 using Shouldly;
 using System;
 using System.Text.Json;
 using System.Threading.Tasks;
-using YesSql.Services;
 
 namespace Lombiq.UIKit.Widgets.Tests.UI.Extensions;
 
