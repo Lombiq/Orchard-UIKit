@@ -12,8 +12,11 @@ namespace Lombiq.UIKit.Widgets.Tests.UI.Extensions;
 public static class TestCaseUITestContextExtensions
 {
     private const string CarouselWidgetPartSettingsUrl = "/ContentTypes/CarouselWidget/ContentParts/CarouselWidgetPart/Edit";
-    public static void TestCarouselWidgetBehavior(this UITestContext context)
+    private const string CarouselWidgetExamplePageUrl = "/carousel-widget-example";
+
+    public static async Task TestCarouselWidgetBehaviorAsync(this UITestContext context)
     {
+        await context.GoToRelativeUrlAsync(CarouselWidgetExamplePageUrl);
         context.TestCarouselWidgetContainerExistence();
         context.TestSlickCarouselExistence();
         context.TestCorrectNumberOfItemsIsDisplayed();
@@ -29,7 +32,7 @@ public static class TestCaseUITestContextExtensions
         var options = JsonSerializer.Serialize(new { slidesToShow, dots = showDots });
         context.ExecuteScript($"codeMirrorJsonEditor.setValue('{options}')");
         await context.ClickReliablyOnSubmitAsync();
-        await context.GoToHomePageAsync();
+        await context.GoToRelativeUrlAsync(CarouselWidgetExamplePageUrl);
         context.TestCorrectNumberOfItemsIsDisplayed(slidesToShow);
         context.TestCarouselWidgetDotsVisibility(showDots);
     }

@@ -25,139 +25,165 @@
       "name": "content",
       "data": [
         {
-          "ContentItemId": "[js:uuid()]",
-          "ContentItemVersionId": "[js:uuid()]",
-          "ContentType": "CarouselWidget",
-          "DisplayText": null,
+          "ContentItemId": "4p4am9ww8e69w5ew0tpz1b30xb",
+          "ContentItemVersionId": "4ej1g5kses9y15wy66adn2bk5b",
+          "ContentType": "Page",
+          "DisplayText": "Carousel Widget Example",
           "Latest": true,
           "Published": true,
-          "ModifiedUtc": "2024-12-12T20:59:34.2653141Z",
-          "PublishedUtc": "2024-12-12T20:59:34.3191698Z",
-          "CreatedUtc": "2024-12-12T20:59:34.2653141Z",
-          "Owner": "4d1m8j4trsk4px1att6bte204r",
+          "ModifiedUtc": "2024-12-26T21:27:42.6026366Z",
+          "PublishedUtc": "2024-12-26T21:27:42.6607451Z",
+          "CreatedUtc": "2024-12-26T21:25:55.3922238Z",
+          "Owner": "44y7k7zehp4tt1ec442eeps34c",
           "Author": "admin",
-          "CarouselWidgetPart": {},
-          "BagPart": {
-            "ContentItems": [
+          "TitlePart": {
+            "Title": "Carousel Widget Example"
+          },
+          "AutoroutePart": {
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false,
+            "Path": "carousel-widget-example"
+          },
+          "FlowPart": {
+            "Widgets": [
               {
-                "ContentItemId": "4kdv73665s30r58kya16gsbzx9",
+                "ContentItemId": "4c4pyaj148qhwzc5d10w40mym6",
                 "ContentItemVersionId": null,
-                "ContentType": "Slide",
+                "ContentType": "CarouselWidget",
                 "DisplayText": null,
                 "Latest": false,
                 "Published": false,
-                "ModifiedUtc": "2024-12-12T20:59:34.1750167Z",
+                "ModifiedUtc": "2024-12-26T21:27:42.6105074Z",
                 "PublishedUtc": null,
                 "CreatedUtc": null,
-                "Owner": "4d1m8j4trsk4px1att6bte204r",
+                "Owner": null,
                 "Author": "admin",
-                "SlidePart": {
-                  "Title": {
-                    "Text": null
-                  },
-                  "Image": {
-                    "Paths": [
-                      "about-bg.jpg"
-                    ],
-                    "MediaTexts": [
-                      ""
-                    ]
-                  }
-                }
-              },
-              {
-                "ContentItemId": "43mwkc1ceyq0ktemqnh60684xf",
-                "ContentItemVersionId": null,
-                "ContentType": "Slide",
-                "DisplayText": null,
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2024-12-12T20:59:34.2391386Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": "4d1m8j4trsk4px1att6bte204r",
-                "Author": "admin",
-                "SlidePart": {
-                  "Title": {
-                    "Text": null
-                  },
-                  "Image": {
-                    "Paths": [
-                      "meadow-orchard.jpg"
-                    ],
-                    "MediaTexts": [
-                      ""
-                    ]
-                  }
-                }
-              },
-              {
-                "ContentItemId": "4r42m7q89tfwv4sk6f308svv4d",
-                "ContentItemVersionId": null,
-                "ContentType": "Slide",
-                "DisplayText": null,
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2024-12-12T20:59:34.2435364Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": "4d1m8j4trsk4px1att6bte204r",
-                "Author": "admin",
-                "SlidePart": {
-                  "Title": {
-                    "Text": null
-                  },
-                  "Image": {
-                    "Paths": [
-                      "home-bg.jpg"
-                    ],
-                    "MediaTexts": [
-                      ""
-                    ]
-                  }
-                }
-              },
-              {
-                "ContentItemId": "48k4r33wkna203qpmztamgprmj",
-                "ContentItemVersionId": null,
-                "ContentType": "Slide",
-                "DisplayText": null,
-                "Latest": false,
-                "Published": false,
-                "ModifiedUtc": "2024-12-12T20:59:34.251842Z",
-                "PublishedUtc": null,
-                "CreatedUtc": null,
-                "Owner": "4d1m8j4trsk4px1att6bte204r",
-                "Author": "admin",
-                "SlidePart": {
-                  "Title": {
-                    "Text": null
-                  },
-                  "Image": {
-                    "Paths": [
-                      "post-bg.jpg"
-                    ],
-                    "MediaTexts": [
-                      ""
-                    ]
-                  }
+                "CarouselWidgetPart": {},
+                "BagPart": {
+                  "ContentItems": [
+                    {
+                      "ContentItemId": "4kdv73665s30r58kya16gsbzx9",
+                      "ContentItemVersionId": null,
+                      "ContentType": "Slide",
+                      "DisplayText": "About",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2024-12-26T21:27:42.6146671Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "4d1m8j4trsk4px1att6bte204r",
+                      "Author": "admin",
+                      "SlidePart": {
+                        "Title": {
+                          "Text": "About"
+                        },
+                        "Image": {
+                          "Paths": [
+                            "about-bg.jpg"
+                          ],
+                          "MediaTexts": [
+                            ""
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "ContentItemId": "43mwkc1ceyq0ktemqnh60684xf",
+                      "ContentItemVersionId": null,
+                      "ContentType": "Slide",
+                      "DisplayText": "Features",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2024-12-26T21:27:42.6452548Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "4d1m8j4trsk4px1att6bte204r",
+                      "Author": "admin",
+                      "SlidePart": {
+                        "Title": {
+                          "Text": "Features"
+                        },
+                        "Image": {
+                          "Paths": [
+                            "meadow-orchard.jpg"
+                          ],
+                          "MediaTexts": [
+                            ""
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "ContentItemId": "4r42m7q89tfwv4sk6f308svv4d",
+                      "ContentItemVersionId": null,
+                      "ContentType": "Slide",
+                      "DisplayText": "Support",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2024-12-26T21:27:42.6488347Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "4d1m8j4trsk4px1att6bte204r",
+                      "Author": "admin",
+                      "SlidePart": {
+                        "Title": {
+                          "Text": "Support"
+                        },
+                        "Image": {
+                          "Paths": [
+                            "home-bg.jpg"
+                          ],
+                          "MediaTexts": [
+                            ""
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "ContentItemId": "48k4r33wkna203qpmztamgprmj",
+                      "ContentItemVersionId": null,
+                      "ContentType": "Slide",
+                      "DisplayText": "Modern",
+                      "Latest": false,
+                      "Published": false,
+                      "ModifiedUtc": "2024-12-26T21:27:42.6511657Z",
+                      "PublishedUtc": null,
+                      "CreatedUtc": null,
+                      "Owner": "4d1m8j4trsk4px1att6bte204r",
+                      "Author": "admin",
+                      "SlidePart": {
+                        "Title": {
+                          "Text": "Modern"
+                        },
+                        "Image": {
+                          "Paths": [
+                            "post-bg.jpg"
+                          ],
+                          "MediaTexts": [
+                            ""
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                "AdditionalStylingPart": {
+                  "RemoveGridExtensionClasses": false,
+                  "CustomClasses": null
+                },
+                "@WeldedPartSettings": {
+                  "AdditionalStylingPart": {}
+                },
+                "FlowMetadata": {
+                  "Alignment": "Justify",
+                  "Size": 100
                 }
               }
             ]
           },
-          "AdditionalStylingPart": {
-            "RemoveGridExtensionClasses": false,
-            "CustomClasses": null
-          },
-          "@WeldedPartSettings": {
-            "AdditionalStylingPart": {}
-          },
-          "LayerMetadata": {
-            "RenderTitle": false,
-            "Position": 1,
-            "Zone": "BeforeMain",
-            "Layer": "Always"
-          }
+          "Page": {}
         }
       ]
     }
