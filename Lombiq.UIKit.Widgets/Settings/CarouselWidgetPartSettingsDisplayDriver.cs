@@ -6,6 +6,7 @@ using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.DisplayManagement.Views;
 
 namespace Lombiq.UIKit.Widgets.Settings;
+
 public class CarouselWidgetPartSettingsDisplayDriver : ContentTypePartDefinitionDisplayDriver<CarouselWidgetPart>
 {
     public override IDisplayResult Edit(ContentTypePartDefinition model, BuildEditorContext context) =>
@@ -13,7 +14,7 @@ public class CarouselWidgetPartSettingsDisplayDriver : ContentTypePartDefinition
         {
             var settings = model.GetSettings<CarouselWidgetPartSettings>();
 
-            viewModel.Options = settings.Options;
+            viewModel.OptionsJsonSerialized = settings.OptionsJsonSerialized;
         }).Location("Content");
 
     public override async Task<IDisplayResult> UpdateAsync(ContentTypePartDefinition model, UpdateTypePartEditorContext context)
@@ -23,12 +24,12 @@ public class CarouselWidgetPartSettingsDisplayDriver : ContentTypePartDefinition
         await context.Updater.TryUpdateModelAsync(
             viewModel,
             Prefix,
-            m => m.Options
+            model => model.OptionsJsonSerialized
             );
 
         var settings = new CarouselWidgetPartSettings
         {
-            Options = viewModel.Options ?? DefaultValues.CarouselWidgetPartOptions,
+            OptionsJsonSerialized = viewModel.OptionsJsonSerialized ?? DefaultValues.CarouselWidgetPartOptions,
         };
 
         context.Builder.WithSettings(settings);

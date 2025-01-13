@@ -1,7 +1,7 @@
 {
   "name": "Lombiq.UIKit.Widgets.Content",
   "displayName": "Lombiq UI Kit widgets - Sample Content - Carousel Widget",
-  "description": "Sample content for testing and demonstration of the Lombiq UI kit module.",
+  "description": "Sample content for testing and demonstration of the Lombiq UI kit Widgets module.",
   "author": "Lombiq Technologies",
   "website": "https://github.com/Lombiq/Orchard-UIKit",
   "version": "1.0",
@@ -75,10 +75,10 @@
                       "CreatedUtc": null,
                       "Owner": "4d1m8j4trsk4px1att6bte204r",
                       "Author": "admin",
+                      "TitlePart": {
+                        "Text": "About"
+                      },
                       "SlidePart": {
-                        "Title": {
-                          "Text": "About"
-                        },
                         "Image": {
                           "Paths": [
                             "about-bg.jpg"
@@ -101,10 +101,10 @@
                       "CreatedUtc": null,
                       "Owner": "4d1m8j4trsk4px1att6bte204r",
                       "Author": "admin",
+                      "TitlePart": {
+                        "Text": "About"
+                      },
                       "SlidePart": {
-                        "Title": {
-                          "Text": "Features"
-                        },
                         "Image": {
                           "Paths": [
                             "meadow-orchard.jpg"
@@ -127,10 +127,10 @@
                       "CreatedUtc": null,
                       "Owner": "4d1m8j4trsk4px1att6bte204r",
                       "Author": "admin",
+                      "TitlePart": {
+                        "Text": "Support"
+                      },
                       "SlidePart": {
-                        "Title": {
-                          "Text": "Support"
-                        },
                         "Image": {
                           "Paths": [
                             "home-bg.jpg"
@@ -153,10 +153,10 @@
                       "CreatedUtc": null,
                       "Owner": "4d1m8j4trsk4px1att6bte204r",
                       "Author": "admin",
+                      "TitlePart": {
+                        "Text": "Modern"
+                      },
                       "SlidePart": {
-                        "Title": {
-                          "Text": "Modern"
-                        },
                         "Image": {
                           "Paths": [
                             "post-bg.jpg"

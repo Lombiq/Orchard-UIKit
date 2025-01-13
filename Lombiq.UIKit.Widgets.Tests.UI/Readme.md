@@ -1,10 +1,10 @@
-# Lombiq UI Kit for Orchard Core - UI Test Extensions
+# Lombiq UI Kit Widgets for Orchard Core - UI Test Extensions
 
 ## About
 
-Extension methods that test various features in UI Kit for Orchard Core.
+Extension methods that test various features in UI Kit Widgets for Orchard Core.
 
-Call these from a UI test project that also references _Lombiq.UIKit._ to verify the module's basic features; as seen in [Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions).
+Call these from a UI test project that also references _Lombiq.UIKit.Widgets_ to verify the module's basic features; as seen in [Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions).
 
 ## Contributing and support
 

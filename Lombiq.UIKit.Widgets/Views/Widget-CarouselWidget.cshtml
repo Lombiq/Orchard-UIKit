@@ -5,7 +5,7 @@
 @using OrchardCore.DisplayManagement
 @using OrchardCore.Flows.Models
 
-@inject IContentDefinitionManager _contentDefinitionManager;
+@inject IContentDefinitionManager _contentDefinitionManager
 
 @{
     var typeDefinition = await _contentDefinitionManager.GetTypeDefinitionAsync("CarouselWidget");
@@ -22,14 +22,12 @@
         var bagItems = ((ContentItem)Model.ContentItem).As<BagPart>().ContentItems.Select(contentItem => contentItem.As<SlidePart>());
         var items = new List<IShape>();
 
-        bagItems.ForEach(async (slide) => items.Add(await New.Slide(Title: slide.Title.Text, Image: slide.Image.Paths[0])));
+        bagItems.ForEach(async (slide) => items.Add(await New.Slide(Title: slide.ContentItem.Content.TitlePart.Text, Image: slide.Image.Paths[0])));
 
-        var carouselSettings = settings.Options;
+        var carouselSettings = settings.OptionsJsonSerialized;
     }
 
     <shape type="SlickCarousel"
-           AdditionalClasses="slickCarouselSample"
            prop-Shapes="@items"
            prop-MergeSettings="@carouselSettings"></shape>
-
 </div>

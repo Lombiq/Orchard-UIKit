@@ -9,6 +9,7 @@ using OrchardCore.Data.Migration;
 using OrchardCore.Modules;
 
 namespace Lombiq.UIKit.Widgets;
+
 public sealed class Startup : StartupBase
 {
     public override void ConfigureServices(IServiceCollection services)

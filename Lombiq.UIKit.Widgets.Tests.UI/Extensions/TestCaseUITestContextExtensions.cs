@@ -13,6 +13,8 @@ public static class TestCaseUITestContextExtensions
 {
     private const string CarouselWidgetPartSettingsUrl = "/ContentTypes/CarouselWidget/ContentParts/CarouselWidgetPart/Edit";
     private const string CarouselWidgetExamplePageUrl = "/carousel-widget-example";
+    private const int SlidesToShow = 3;
+    private const bool ShowDots = false;
 
     public static async Task TestCarouselWidgetBehaviorAsync(this UITestContext context)
     {
@@ -24,17 +26,14 @@ public static class TestCaseUITestContextExtensions
 
     public static async Task TestCarouselWidgetOptionsAsync(this UITestContext context)
     {
-        int slidesToShow = 3;
-        bool showDots = false;
-
         await context.SignInDirectlyAndGoToAdminRelativeUrlAsync(CarouselWidgetPartSettingsUrl);
         context.WaitForPageLoad();
-        var options = JsonSerializer.Serialize(new { slidesToShow, dots = showDots });
+        var options = JsonSerializer.Serialize(new { SlidesToShow, dots = ShowDots });
         context.ExecuteScript($"codeMirrorJsonEditor.setValue('{options}')");
         await context.ClickReliablyOnSubmitAsync();
         await context.GoToRelativeUrlAsync(CarouselWidgetExamplePageUrl);
-        context.TestCorrectNumberOfItemsIsDisplayed(slidesToShow);
-        context.TestCarouselWidgetDotsVisibility(showDots);
+        context.TestCorrectNumberOfItemsIsDisplayed(SlidesToShow);
+        context.TestCarouselWidgetDotsVisibility(ShowDots);
     }
 
     public static void TestCorrectNumberOfItemsIsDisplayed(this UITestContext context, int numberOfItems = 1) =>
