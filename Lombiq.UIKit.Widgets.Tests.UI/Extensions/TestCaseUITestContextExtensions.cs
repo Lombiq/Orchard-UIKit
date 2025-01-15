@@ -28,7 +28,7 @@ public static class TestCaseUITestContextExtensions
     {
         await context.SignInDirectlyAndGoToAdminRelativeUrlAsync(CarouselWidgetPartSettingsUrl);
         context.WaitForPageLoad();
-        var options = JsonSerializer.Serialize(new { SlidesToShow, dots = ShowDots });
+        var options = JsonSerializer.Serialize(new { slidesToShow = SlidesToShow, dots = ShowDots });
         context.ExecuteScript($"codeMirrorJsonEditor.setValue('{options}')");
         await context.ClickReliablyOnSubmitAsync();
         await context.GoToRelativeUrlAsync(CarouselWidgetExamplePageUrl);
