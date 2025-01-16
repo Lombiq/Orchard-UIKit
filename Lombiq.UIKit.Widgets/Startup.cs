@@ -1,4 +1,3 @@
-using Lombiq.UIKit.Widgets.Handlers;
 using Lombiq.UIKit.Widgets.Migrations;
 using Lombiq.UIKit.Widgets.Models;
 using Lombiq.UIKit.Widgets.Settings;
@@ -14,7 +13,7 @@ public sealed class Startup : StartupBase
 {
     public override void ConfigureServices(IServiceCollection services)
     {
-        services.AddContentPart<SlidePart>().AddHandler<SlidePartHandler>();
+        services.AddContentPart<SlidePart>();
         services.AddContentPart<CarouselWidgetPart>();
         services.AddScoped<IContentTypePartDefinitionDisplayDriver, CarouselWidgetPartSettingsDisplayDriver>();
         services.AddScoped<IDataMigration, CarouselWidgetMigrations>();

@@ -27,7 +27,7 @@ public class CarouselWidgetMigrations : DataMigration
             .WithPosition("0")
         ));
 
-        await _contentDefinitionManager.AlterPartDefinitionAsync(ContentTypes.CarouselWidgetPart, part => part
+        await _contentDefinitionManager.AlterPartDefinitionAsync(nameof(CarouselWidgetPart), part => part
             .Attachable()
             .WithSettings(new CarouselWidgetPartSettings())
         );
@@ -42,7 +42,7 @@ public class CarouselWidgetMigrations : DataMigration
 
         await _contentDefinitionManager.AlterTypeDefinitionAsync(ContentTypes.CarouselWidget, type => type
             .Securable()
-            .WithPart(ContentTypes.CarouselWidgetPart, part => part.WithSettings(new CarouselWidgetPartSettings()))
+            .WithPart(nameof(CarouselWidgetPart), part => part.WithSettings(new CarouselWidgetPartSettings()))
             .WithPart(nameof(BagPart), part => part.WithSettings(new BagPartSettings
             {
                 ContainedContentTypes = [ContentTypes.Slide],
