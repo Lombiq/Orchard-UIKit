@@ -11,7 +11,6 @@
   ],
   "tags": [
     "developer",
-    "training",
     "sample"
   ],
   "steps": [
@@ -19,6 +18,31 @@
       "name": "feature",
       "enable": [
         "Lombiq.UIKit.Widgets"
+      ]
+    },
+    {
+      "name": "media",
+      "Files": [
+        {
+          // Photo by Edgar Colomba: https://www.pexels.com/photo/hollywood-sign-2671089/
+          "SourcePath": "Media/hollywood.jpg",
+          "TargetPath": "hollywood.jpg"
+        },
+        {
+          // Photo by Jahoo Clouseau: https://www.pexels.com/photo/photography-of-city-during-dusk-867092/
+          "SourcePath": "Media/skyline.jpg",
+          "TargetPath": "skyline.jpg"
+        },
+        {
+          // Photo by Pixabay: https://www.pexels.com/photo/sunflower-during-sunset-33044/
+          "SourcePath": "Media/sunflower.jpg",
+          "TargetPath": "sunflower.jpg"
+        },
+        {
+          // Photo by Pixabay: https://www.pexels.com/photo/white-windmill-414837/
+          "SourcePath": "Media/windturbine.jpg",
+          "TargetPath": "windturbine.jpg"
+        }
       ]
     },
     {
@@ -67,7 +91,7 @@
                       "ContentItemId": "4kdv73665s30r58kya16gsbzx9",
                       "ContentItemVersionId": null,
                       "ContentType": "Slide",
-                      "DisplayText": "About",
+                      "DisplayText": "Hollywood",
                       "Latest": false,
                       "Published": false,
                       "ModifiedUtc": "2024-12-26T21:27:42.6146671Z",
@@ -76,15 +100,15 @@
                       "Owner": "4d1m8j4trsk4px1att6bte204r",
                       "Author": "admin",
                       "TitlePart": {
-                        "Text": "About"
+                        "Text": "Hollywood"
                       },
                       "SlidePart": {
                         "Image": {
                           "Paths": [
-                            "about-bg.jpg"
+                            "hollywood.jpg"
                           ],
                           "MediaTexts": [
-                            ""
+                            "Hollywood Sign"
                           ]
                         }
                       }
@@ -93,7 +117,7 @@
                       "ContentItemId": "43mwkc1ceyq0ktemqnh60684xf",
                       "ContentItemVersionId": null,
                       "ContentType": "Slide",
-                      "DisplayText": "Features",
+                      "DisplayText": "Skyline",
                       "Latest": false,
                       "Published": false,
                       "ModifiedUtc": "2024-12-26T21:27:42.6452548Z",
@@ -102,15 +126,15 @@
                       "Owner": "4d1m8j4trsk4px1att6bte204r",
                       "Author": "admin",
                       "TitlePart": {
-                        "Text": "About"
+                        "Text": "Skyline"
                       },
                       "SlidePart": {
                         "Image": {
                           "Paths": [
-                            "meadow-orchard.jpg"
+                            "skyline.jpg"
                           ],
                           "MediaTexts": [
-                            ""
+                            "Singapore Skyline"
                           ]
                         }
                       }
@@ -119,7 +143,7 @@
                       "ContentItemId": "4r42m7q89tfwv4sk6f308svv4d",
                       "ContentItemVersionId": null,
                       "ContentType": "Slide",
-                      "DisplayText": "Support",
+                      "DisplayText": "Sunflower",
                       "Latest": false,
                       "Published": false,
                       "ModifiedUtc": "2024-12-26T21:27:42.6488347Z",
@@ -128,15 +152,15 @@
                       "Owner": "4d1m8j4trsk4px1att6bte204r",
                       "Author": "admin",
                       "TitlePart": {
-                        "Text": "Support"
+                        "Text": "Sunflower"
                       },
                       "SlidePart": {
                         "Image": {
                           "Paths": [
-                            "home-bg.jpg"
+                            "sunflower.jpg"
                           ],
                           "MediaTexts": [
-                            ""
+                            "Sunflower"
                           ]
                         }
                       }
@@ -145,7 +169,7 @@
                       "ContentItemId": "48k4r33wkna203qpmztamgprmj",
                       "ContentItemVersionId": null,
                       "ContentType": "Slide",
-                      "DisplayText": "Modern",
+                      "DisplayText": "Wind Turbine",
                       "Latest": false,
                       "Published": false,
                       "ModifiedUtc": "2024-12-26T21:27:42.6511657Z",
@@ -154,15 +178,15 @@
                       "Owner": "4d1m8j4trsk4px1att6bte204r",
                       "Author": "admin",
                       "TitlePart": {
-                        "Text": "Modern"
+                        "Text": "Wind Turbine"
                       },
                       "SlidePart": {
                         "Image": {
                           "Paths": [
-                            "post-bg.jpg"
+                            "windturbine.jpg"
                           ],
                           "MediaTexts": [
-                            ""
+                            "Wind Turbine"
                           ]
                         }
                       }

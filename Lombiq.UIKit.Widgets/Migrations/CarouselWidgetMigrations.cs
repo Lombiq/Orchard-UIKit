@@ -36,7 +36,7 @@ public class CarouselWidgetMigrations : DataMigration
             .Securable()
             .WithPart(nameof(TitlePart), part => part
                 .WithPosition("0"))
-            .WithPart(ContentTypes.SlidePart, part => part
+            .WithPart(nameof(SlidePart), part => part
                 .WithPosition("1")
             ));
 
