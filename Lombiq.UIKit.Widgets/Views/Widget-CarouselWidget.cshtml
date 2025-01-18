@@ -1,0 +1,34 @@
+@using Lombiq.UIKit.Widgets.Constants
+@using Lombiq.UIKit.Widgets.Models
+@using Lombiq.UIKit.Widgets.Settings
+@using OrchardCore.ContentManagement
+@using OrchardCore.ContentManagement.Metadata
+@using OrchardCore.DisplayManagement
+@using OrchardCore.Flows.Models
+
+@inject IContentDefinitionManager _contentDefinitionManager
+
+@{
+    var typeDefinition = await _contentDefinitionManager.GetTypeDefinitionAsync(ContentTypes.CarouselWidget);
+    var part = typeDefinition.Parts.Where(part => part.Name == nameof(CarouselWidgetPart)).FirstOrDefault();
+    CarouselWidgetPartSettings settings = new CarouselWidgetPartSettings();
+    if(part != null)
+    {
+        settings = part.GetSettings<CarouselWidgetPartSettings>();
+    }
+}
+
+<div class="carouselWidget" id="carouselWidget-@Model.ContentItem.ContentItemId">
+    @{
+        var bagItems = ((ContentItem)Model.ContentItem).As<BagPart>().ContentItems.Select(contentItem => contentItem.As<SlidePart>());
+        var items = new List<IShape>();
+
+        bagItems.ForEach(async (slide) => items.Add(await New.Slide(Title: slide.ContentItem.DisplayText, Image: slide.Image.Paths[0])));
+
+        var carouselSettings = settings.OptionsJsonSerialized;
+    }
+
+    <shape type="SlickCarousel"
+           prop-Shapes="@items"
+           prop-MergeSettings="@carouselSettings"></shape>
+</div>
