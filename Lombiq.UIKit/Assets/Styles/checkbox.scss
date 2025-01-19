@@ -48,7 +48,7 @@
                 top: 0.3em;
                 width: 0.9375em;
                 height: 0.9375em;
-                border: 1px solid grey;
+                border: 1px solid gray;
                 background: white;
                 border-radius: 0.125em;
             }
@@ -112,14 +112,14 @@
 
                 &::before {
                     box-shadow: none;
-                    border-color: grey;
-                    background-color: grey;
+                    border-color: gray;
+                    background-color: gray;
                 }
             }
 
             &:checked {
                 + .checkboxEditor__label::after {
-                    border-color: lightgrey;
+                    border-color: lightgray;
                 }
             }
         }
