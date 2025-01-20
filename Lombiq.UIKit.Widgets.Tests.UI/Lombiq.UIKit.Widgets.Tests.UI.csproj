@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Title>Lombiq UI Kit Widgets for Orchard Core - UI Test Extensions</Title>
+    <Authors>Lombiq Technologies</Authors>
+    <Copyright>Copyright © 2022, Lombiq Technologies Ltd.</Copyright>
+    <Description>Lombiq UI Kit Widgets for Orchard Core - UI Test Extensions: Extensions to aid in UI testing Lombiq UI Kit Widgets for Orchard Core.</Description>
+    <PackageIcon>NuGetIcon.png</PackageIcon>
+    <PackageTags>OrchardCore;Lombiq;AspNetCore;UIKit;UIKit.Widgets</PackageTags>
+    <RepositoryUrl>https://github.com/Lombiq/Orchard-UIKit</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Lombiq/Orchard-UIKit/blob/dev/Lombiq.UIKit.Widgets.Tests.UI/Readme.md</PackageProjectUrl>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lombiq.UIKit.Widgets\Lombiq.UIKit.Widgets.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
+    <ProjectReference Include="..\..\..\..\test\Lombiq.UITestingToolbox\Lombiq.Tests.UI\Lombiq.Tests.UI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
+    <PackageReference Include="Lombiq.Tests.UI" Version="12.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="NuGetIcon.png" Pack="true" PackagePath="" />
+    <None Include="Readme.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+</Project>
