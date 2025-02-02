@@ -230,12 +230,15 @@
 
         <h2>@T["Accordion"]</h2>
         @{
+            // Known bug: https://github.com/SonarSource/sonar-dotnet/issues/6834.
+#pragma warning disable S3257 // Declarations and initializations should be as concise as possible
             var bootstrapAccordionChildren = new BootstrapAccordionItem[]
             {
-                new () { Title = T["First"], Shape = await New.DateTime(Utc: DateTime.UtcNow) },
-                new () { Title = T["Second"], Shape = await New.DateTime(Utc: DateTime.UtcNow.AddDays(1)) },
-                new () { Title = T["Third"], Shape = await New.DateTime(Utc: DateTime.UtcNow.AddDays(2)) },
+                new() { Title = T["First"], Shape = await New.DateTime(Utc: DateTime.UtcNow) },
+                new() { Title = T["Second"], Shape = await New.DateTime(Utc: DateTime.UtcNow.AddDays(1)) },
+                new() { Title = T["Third"], Shape = await New.DateTime(Utc: DateTime.UtcNow.AddDays(2)) },
             };
+#pragma warning restore S3257 // Declarations and initializations should be as concise as possible
         }
         <shape type="BootstrapAccordion"
                AdditionalClasses="bootstrapAccordionSample"
@@ -272,7 +275,7 @@
                 await New.Message(Message: "Item 6", Type: "Information"),
             };
 
-            var carouselSettings = @"{ slidesToShow: 4 }";
+            const string carouselSettings = @"{ slidesToShow: 4 }";
         }
 
         <shape type="SlickCarousel"

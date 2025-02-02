@@ -32,7 +32,10 @@
         inputAttributes["class"] = inputAttributes["class"] + $"{inputClasses} ";
     }
 
+    // Known bug: https://github.com/SonarSource/sonar-dotnet/issues/8995.
+#pragma warning disable S1125 // Boolean literals should not be redundant
     if (Model.Disabled == true)
+#pragma warning restore S1125 // Boolean literals should not be redundant
     {
         inputAttributes["disabled"] = string.Empty;
         labelAttributes["class"] = labelAttributes["class"] + $"{TextboxLabelDisabledClass} ";
@@ -73,15 +76,17 @@
     }
 
     var noLabelAndNotRequired = Model.LabelPosition == LabelPosition.None && !isRequired;
+    var labelText = !noLabelAndNotRequired && hasAsteriskInPlaceholder
+        ? placeholder
+        : (Model.Label as LocalizedHtmlString)?.Value;
+
     var label = noLabelAndNotRequired
         ? null
         : HtmlGenerator.GenerateLabel(
             Model.ViewContext,
             forModel.ModelExplorer,
             forModel.Name,
-            hasAsteriskInPlaceholder
-                ? placeholder
-                : (Model.Label as LocalizedHtmlString)?.Value,
+            labelText,
             labelAttributes);
 
     var input = HtmlGenerator.GenerateTextBox(
