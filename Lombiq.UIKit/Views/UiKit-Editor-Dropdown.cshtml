@@ -27,10 +27,7 @@
         labelAttributes["class"] = labelAttributes["class"] + $"{DropdownLabelRequiredClass} ";
     }
 
-    // Known bug: https://github.com/SonarSource/sonar-dotnet/issues/8995.
-#pragma warning disable S1125 // Boolean literals should not be redundant
     if (Model.Disabled == true)
-#pragma warning restore S1125 // Boolean literals should not be redundant
     {
         inputAttributes["disabled"] = string.Empty;
     }
