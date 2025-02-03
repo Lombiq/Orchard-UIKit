@@ -6,11 +6,11 @@
 @using OrchardCore.DisplayManagement
 @using OrchardCore.Flows.Models
 
-@inject IContentDefinitionManager _contentDefinitionManager
+@inject IContentDefinitionManager ContentDefinitionManager
 
 @{
-    var typeDefinition = await _contentDefinitionManager.GetTypeDefinitionAsync(ContentTypes.CarouselWidget);
-    var part = typeDefinition.Parts.Where(part => part.Name == nameof(CarouselWidgetPart)).FirstOrDefault();
+    var typeDefinition = await ContentDefinitionManager.GetTypeDefinitionAsync(ContentTypes.CarouselWidget);
+    var part = typeDefinition.Parts.FirstOrDefault(part => part.Name == nameof(CarouselWidgetPart));
     CarouselWidgetPartSettings settings = new CarouselWidgetPartSettings();
     if(part != null)
     {
