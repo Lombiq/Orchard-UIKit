@@ -8,7 +8,7 @@ This module contains widgets that are based on the reusable shapes from [Lombiq 
 
 Available widgets:
 
-- Carousel Widget
+- [Carousel Widget](#carousel-widget)
 
 Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
@@ -22,7 +22,11 @@ Once it's enabled you can use all widgets from this module just like any other w
 
 Based on UI Kit's [SlickCarousel](../Lombiq.UIKit/Views/SlickCarousel.cshtml) shape, this widget allows you to easily create carousels from the admin panel. The widget doesn't have any styles (except the default Slick style) and you can make ones that fit your site needs without any overhead.
 
+#### Configuration
+
 To configure the global settings (for all carousels widgets) go to `Content`->`ContentDefinition`->`ContentTypes`. Find `CarouselWidget` content type and click on `Edit` button. There, under parts, edit `CarouselWidget` and on that page you can set [Slick slider options](https://kenwheeler.github.io/slick/#settings) using JSON.
+
+#### Samples
 
 To quickly see the carousel widget in action, go to `Configuration`->`Recipes` and find `Lombiq UI Kit widgets - Sample Content - Carousel Widget` recipe. This recipe will add a new page called `Carousel Widget Example` which will contain the carousel widget.
 
