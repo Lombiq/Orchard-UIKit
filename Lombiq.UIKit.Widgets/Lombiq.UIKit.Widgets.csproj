@@ -37,8 +37,6 @@
   </ItemGroup>
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
       <PackageReference Include="Lombiq.UIKit" Version="9.0.0" />
-  <ItemGroup>
-    <ProjectReference Include="..\Lombiq.UIKit\Lombiq.UIKit.csproj" />
   </ItemGroup>
 </ItemGroup>
 
