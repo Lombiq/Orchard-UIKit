@@ -16,16 +16,14 @@
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Lombiq.UIKit.Widgets\Lombiq.UIKit.Widgets.csproj" />
-  </ItemGroup>
-
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
     <ProjectReference Include="..\..\..\..\test\Lombiq.UITestingToolbox\Lombiq.Tests.UI\Lombiq.Tests.UI.csproj" />
+    <ProjectReference Include="..\Lombiq.UIKit.Widgets\Lombiq.UIKit.Widgets.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
     <PackageReference Include="Lombiq.Tests.UI" Version="12.1.1-alpha.3.osoe-935" />
+    <PackageReference Include="Lombiq.UIKit.Widgets" Version="9.0.1-alpha.1.osoe-1064" />
   </ItemGroup>
 
   <ItemGroup>
