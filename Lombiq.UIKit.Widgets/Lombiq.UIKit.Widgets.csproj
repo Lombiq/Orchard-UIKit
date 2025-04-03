@@ -15,7 +15,7 @@
     <PackageIcon>NuGetIcon.png</PackageIcon>
     <PackageTags>OrchardCore;Lombiq;AspNetCore;UI;UIKit;Widgets;front-end</PackageTags>
     <RepositoryUrl>https://github.com/Lombiq/Orchard-UIKit</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-UIKit</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Lombiq/Orchard-UIKit/blob/issue/OSOE-1087/Lombiq.UIKit.Widgets/Readme.md</PackageProjectUrl>
     <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
