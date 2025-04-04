@@ -23,7 +23,7 @@
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
     <PackageReference Include="Lombiq.Tests.UI" Version="12.1.1-alpha.32.osoe-1064" />
-    <PackageReference Include="Lombiq.UIKit.Widgets" Version="9.0.1-alpha.3.osoe-1087" />
+    <PackageReference Include="Lombiq.UIKit.Widgets" Version="9.0.1-alpha.2.osoe-1087" />
   </ItemGroup>
 
   <ItemGroup>
