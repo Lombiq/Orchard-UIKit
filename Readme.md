@@ -22,7 +22,7 @@ If it is needed to add an Id for the container block, then you can do that with 
 
 ## Lombiq UI Kit - Widgets
 
-[Lombiq UI kit widgets](Lombiq.UIKit.Widgets/) is a feature that provides widgets based on the Lombiq UI Kit reusable shapes.
+[Lombiq UI Kit - Widgets](Lombiq.UIKit.Widgets/) is a module that provides widgets based on the Lombiq UI Kit reusable shapes.
 
 ## Contributing and support
 
