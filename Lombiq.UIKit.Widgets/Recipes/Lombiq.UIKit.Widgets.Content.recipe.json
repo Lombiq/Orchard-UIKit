@@ -1,7 +1,7 @@
 {
   "name": "Lombiq.UIKit.Widgets.Content",
-  "displayName": "Lombiq UI Kit widgets - Sample Content - Carousel Widget",
-  "description": "Sample content for testing and demonstration of the Lombiq UI kit Widgets module.",
+  "displayName": "Lombiq UI Kit - Widgets - Sample Content - Carousel Widget",
+  "description": "Sample content for testing and demonstration of the Lombiq UI Kit - Widgets module.",
   "author": "Lombiq Technologies",
   "website": "https://github.com/Lombiq/Orchard-UIKit",
   "version": "1.0",

@@ -1,4 +1,4 @@
-# Lombiq UI Kit Widgets for Orchard Core
+# Lombiq UI Kit - Widgets for Orchard Core
 
 [![Lombiq.UIKit Widgets NuGet](https://img.shields.io/nuget/v/Lombiq.UIKit?label=Lombiq.UIKit.Widgets)](https://www.nuget.org/packages/Lombiq.UIKit.Widgets/) [![Lombiq.UIKit.Tests.UI NuGet](https://img.shields.io/nuget/v/Lombiq.UIKit.Tests.UI?label=Lombiq.UIKit.Widgets.Tests.UI)](https://www.nuget.org/packages/Lombiq.UIKit.widgets.Tests.UI/)
 
@@ -28,7 +28,7 @@ To configure the global settings (for all carousels widgets) go to `Content`->`C
 
 #### Samples
 
-To quickly see the carousel widget in action, go to `Configuration`->`Recipes` and find `Lombiq UI Kit widgets - Sample Content - Carousel Widget` recipe. This recipe will add a new page called `Carousel Widget Example` which will contain the carousel widget.
+To quickly see the carousel widget in action, go to `Configuration`->`Recipes` and find `Lombiq UI Kit - Widgets - Sample Content - Carousel Widget` recipe. This recipe will add a new page called `Carousel Widget Example` which will contain the carousel widget.
 
 Please note that, like mentioned above, the carousel widget doesn't have any styles so you might need to make some CSS adjustments (depending on the theme).
 

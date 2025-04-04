@@ -2,7 +2,7 @@ using Lombiq.UIKit;
 using OrchardCore.Modules.Manifest;
 
 [assembly: Module(
-    Name = "Lombiq UI Kit Widgets",
+    Name = "Lombiq UI Kit - Widgets",
     Author = "Lombiq Technologies",
     Version = "0.0.1",
     Description = "Module for reusable widgets based on Lombiq UI Kit.",
