@@ -1,4 +1,4 @@
-# Lombiq UI Kit Widgets for Orchard Core - UI Test Extensions
+# Lombiq UI Kit - Widgets for Orchard Core - UI Test Extensions
 
 ## About
 
