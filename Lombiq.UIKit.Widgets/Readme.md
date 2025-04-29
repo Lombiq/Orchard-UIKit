@@ -20,7 +20,7 @@ Once it's enabled you can use all widgets from this module just like any other w
 
 ### Carousel Widget
 
-Based on UI Kit's [SlickCarousel](../Lombiq.UIKit/Views/SlickCarousel.cshtml) shape, this widget allows you to easily create carousels from the admin panel. The widget doesn't have any styles (except the default Slick style) but you can make ones that fit your site' needs without any overhead.
+Based on UI Kit's [SlickCarousel](../Lombiq.UIKit/Views/SlickCarousel.cshtml) shape, this widget allows you to easily create carousels from the admin panel. The widget doesn't have any styles (except the default Slick style) but you can make ones that fit your site' needs without any overhead. [Here](https://www.youtube.com/watch?v=1CzUnzMMr-w) you can also see a demo of it.
 
 #### Configuration
 
