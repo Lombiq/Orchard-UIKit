@@ -16,33 +16,9 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
     static ResourceManagementOptionsConfiguration()
     {
         _manifest
-            .DefineScript(LombiqDropdownScript)
-            .SetUrl(Js + "dropdown-editor.js");
-
-        _manifest
-            .DefineScript(LombiqTextBoxScript)
-            .SetUrl(Js + "textbox-editor.js");
-
-        _manifest
             .DefineScript(Slick)
             .SetUrl(Vendors + "slick/slick.min.js")
             .SetDependencies("jQuery");
-
-        _manifest
-            .DefineStyle(LombiqCheckBoxStyle)
-            .SetUrl(Css + "checkbox.min.css", Css + "checkbox.css");
-
-        _manifest
-            .DefineStyle(LombiqDropdownStyle)
-            .SetUrl(Css + "dropdown.min.css", Css + "dropdown.css");
-
-        _manifest
-            .DefineStyle(LombiqShowcaseStyle)
-            .SetUrl(Css + "showcase.min.css", Css + "showcase.css");
-
-        _manifest
-            .DefineStyle(LombiqTextBoxStyle)
-            .SetUrl(Css + "textbox.min.css", Css + "textbox.css");
 
         _manifest
             .DefineStyle(Slick)
@@ -52,7 +28,25 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
             .DefineStyle(SlickTheme)
             .SetUrl(Vendors + "slick/slick-theme.css")
             .SetDependencies(Slick);
+
+        Script(LombiqDropdownScript, "dropdown-editor");
+        Script(LombiqTextBoxScript, "textbox-editor");
+
+        Style(LombiqCheckBoxStyle, "checkbox");
+        Style(LombiqDropdownStyle, "dropdown");
+        Style(LombiqShowcaseStyle, "showcase");
+        Style(LombiqTextBoxStyle, "textbox");
     }
 
     public void Configure(ResourceManagementOptions options) => options.ResourceManifests.Add(_manifest);
+
+    private static void Style(string name, string file) =>
+        _manifest
+            .DefineStyle(name)
+            .SetUrl($"{Css}{file}.css");
+
+    private static void Script(string name, string file) =>
+        _manifest
+            .DefineScript(name)
+            .SetUrl($"{Js}{file}.js");
 }
