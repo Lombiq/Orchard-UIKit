@@ -12,5 +12,5 @@ namespace Lombiq.UIKit.Showcase.Controllers;
 public sealed class ShowcaseController : Controller
 {
     [HttpGet]
-    public ActionResult Showcase() => View(model: new ShowcaseViewModel());
+    public IActionResult Showcase() => View(model: new ShowcaseViewModel());
 }
