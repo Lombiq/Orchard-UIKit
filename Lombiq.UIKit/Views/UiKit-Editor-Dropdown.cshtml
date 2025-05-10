@@ -56,7 +56,10 @@
 
 <style asp-name="@ResourceNames.LombiqDropdownStyle"></style>
 
-<div id="@viewModel.DropdownContainerId" class="@customBlockClasses @DropdownBlockName">
+<div id="@viewModel.DropdownContainerId"
+     class="@customBlockClasses @DropdownBlockName"
+     data-asp-id="@viewModel.For.Name"
+     data-hide-selected="@Json.Serialize(viewModel.HideSelectedFromDropdownList)">
     @label
     @input
     <div asp-validation-class-for="@viewModel.For">
@@ -90,10 +93,3 @@
 </div>
 
 <script asp-name="@ResourceNames.LombiqDropdownScript" at="Foot"></script>
-<script at="Foot" depends-on="@ResourceNames.LombiqDropdownScript">
-    dropdownOnClick(
-        @containerId.JsonHtmlContent(),
-        @viewModel.ButtonId.JsonHtmlContent(),
-        @viewModel.For.Name.JsonHtmlContent(),
-        @Json.Serialize(viewModel.HideSelectedFromDropdownList));
-</script>
