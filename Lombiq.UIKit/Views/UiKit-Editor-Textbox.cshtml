@@ -8,10 +8,7 @@
     var blockId = string.IsNullOrEmpty(viewModel.BlockId) ? string.Empty : $"id={viewModel.BlockId}";
 
     var labelClasses = new List<string> { TextboxLabelClass };
-    var labelAttributes = new Dictionary<string, object>
-    {
-        ["class"] = $"{TextboxLabelClass} "
-    };
+    var labelAttributes = new Dictionary<string, object>();
 
     var inputClasses = new List<string> { TextboxInputClass };
     var inputAttributes = new Dictionary<string, object>();
@@ -95,7 +92,7 @@
 }
 
 <style asp-name="@ResourceNames.LombiqTextBoxStyle"></style>
-<script asp-name="@ResourceNames.LombiqTextBoxScript" at="Foot" depends-on="jQuery"></script>
+<script asp-name="@ResourceNames.LombiqTextBoxScript" at="Foot"></script>
 
 <div @blockId class="@textboxBlockClasses @customBlockClasses @containerIconClass">
     @if (hasAsteriskInPlaceholder)

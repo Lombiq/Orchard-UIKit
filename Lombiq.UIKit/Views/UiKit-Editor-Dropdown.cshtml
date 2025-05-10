@@ -6,23 +6,21 @@
     var viewModel = (UiKitEditorViewModel)Model.ViewModel;
     var customBlockClasses = viewModel.BlockClassName;
 
+    var inputClasses = new List<string> { DropdownInputClass };
     var inputAttributes = new Dictionary<string, object>
     {
         ["type"] = "hidden",
-        ["class"] = $"{DropdownInputClass} ",
     };
 
-    var labelAttributes = new Dictionary<string, object>
-    {
-        ["class"] = $"{DropdownLabelClass} "
-    };
+    var labelClasses = new List<string> { DropdownLabelClass };
+    var labelAttributes = new Dictionary<string, object>();
 
     var isRequired = viewModel.For.Metadata.RequiredAttributeExists();
     if (isRequired)
     {
         inputAttributes["required"] = string.Empty;
-        inputAttributes["class"] += $"{DropdownInputRequiredClass} ";
-        labelAttributes["class"] += $"{DropdownLabelRequiredClass} ";
+        inputClasses.Add(DropdownInputRequiredClass);
+        labelClasses.Add(DropdownLabelRequiredClass);
     }
 
     if (viewModel.Disabled)
@@ -36,7 +34,7 @@
             viewModel.For.ModelExplorer,
             viewModel.For.Name,
             viewModel.Label?.Value,
-            labelAttributes)
+            labelAttributes.WithClasses(labelClasses))
         : null;
 
     var input = HtmlGenerator.GenerateTextBox(
@@ -45,7 +43,7 @@
         viewModel.For.Name,
         viewModel.For.Model,
         string.Empty,
-        inputAttributes);
+        inputAttributes.WithClasses(inputClasses));
 
     var defaultData = viewModel.DropdownData.FirstOrDefault(data => data.DataState.Equals(viewModel.For.Model)) ?? new();
 

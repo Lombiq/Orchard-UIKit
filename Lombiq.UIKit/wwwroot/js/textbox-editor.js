@@ -1,23 +1,17 @@
-jQuery(($) => {
-    // This part is responsible for the asterisk in the placeholder if needed.
-    $('.textboxEditor__placeholder').click(function onClick() {
-        $(this).siblings('input').focus();
-    });
+document.querySelectorAll('.textboxEditor__placeholder').forEach(item =>
+    item.addEventListener('click', () =>
+        item.parentElement.querySelector('.textboxEditor__input').focus()));
 
-    $('.textboxEditor__input').blur(function formControlBlur() {
-        if ($(this).val().length === 0) {
-            $(this).siblings('.textboxEditor__placeholder').show();
-        }
-    });
+function hidePlaceholder(item) {
+    const placeholder = item.parentElement.querySelector('.textboxEditor__placeholder');
+    if (placeholder) placeholder.hidden = item.value?.toString().trim();
+}
 
-    $('.textboxEditor__input.textboxEditor__input_required').on('input', function onInput() {
-        if ($(this).val().length === 0) {
-            $(this).siblings('.textboxEditor__placeholder').show();
-        }
-        else {
-            $(this).siblings('.textboxEditor__placeholder').hide();
-        }
-    });
+document.querySelectorAll('.textboxEditor__input').forEach(item => {
+    item.addEventListener('blur', () => hidePlaceholder(item));
+    hidePlaceholder(item);
 
-    $('.textboxEditor__input').blur();
+    if (item.classList.contains('textboxEditor__input_required')) {
+        item.addEventListener('input', () => hidePlaceholder(item));
+    }
 });
