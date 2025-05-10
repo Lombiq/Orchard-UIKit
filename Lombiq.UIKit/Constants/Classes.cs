@@ -12,6 +12,7 @@ public static class Classes
     public const string DropdownButtonContainerClass = DropdownBlockName + ButtonContainerElement;
     public const string DropdownItemContainerClass = DropdownBlockName + ItemContainerElement;
     public const string DropdownItemClass = DropdownBlockName + ItemElement;
+    public const string DropdownItemParentClass = DropdownBlockName + ItemElement + "Parent";
 
     // Textbox classes.
     public const string TextboxBlockName = "textboxEditor";
