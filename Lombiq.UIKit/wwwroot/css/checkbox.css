@@ -1,47 +1,47 @@
-// Without this styling the custom checkboxes won't work.
+/* Without this styling the custom checkboxes won't work. */
 .checkboxEditor {
     position: relative;
 
-    &__asterisk {
+    .checkboxEditor__asterisk {
         display: none;
     }
 
-    &__label {
+    .checkboxEditor__label {
         position: relative;
         padding-left: 1.25em;
         user-select: none;
         cursor: pointer;
+    }
 
-        &_left {
-            padding-left: 0;
-            padding-right: 1.25em;
+    .checkboxEditor__label_left {
+        padding-left: 0;
+        padding-right: 1.25em;
 
-            &.checkboxEditor__label_required {
-                padding-left: 0.7em;
+        &.checkboxEditor__label_required {
+            padding-left: 0.7em;
 
-                + .checkboxEditor__asterisk {
-                    display: inline-block;
-                    color: red;
-                    position: absolute;
-                    left: 0;
-                }
+            + .checkboxEditor__asterisk {
+                display: inline-block;
+                color: red;
+                position: absolute;
+                left: 0;
             }
-        }
-
-        &_right.checkboxEditor__label_required + .checkboxEditor__asterisk {
-            display: inline-block;
-            color: red;
         }
     }
 
-    &__input {
+    .checkboxEditor__label_right.checkboxEditor__label_required + .checkboxEditor__asterisk {
+        display: inline-block;
+        color: red;
+    }
+
+    .checkboxEditor__input {
         position: absolute;
         left: 0;
         opacity: 0;
 
         + .checkboxEditor__label {
             &::before {
-                // Checkbox.
+                /* Checkbox. */
                 content: "";
                 position: absolute;
                 left: 0;
@@ -53,15 +53,8 @@
                 border-radius: 0.125em;
             }
 
-            &_left::before {
-                // Checkbox - label position left.
-                right: 0;
-                top: 0.3em;
-                left: unset;
-            }
-
             &::after {
-                // Check mark.
+                /* Check mark. */
                 content: "";
                 position: absolute;
                 display: block;
@@ -73,9 +66,18 @@
                 border-width: 0 0.125em 0.125em 0;
                 transform: rotate(45deg);
             }
+        }
 
-            &_left::after {
-                // Check mark - label position left.
+        + .checkboxEditor__label_left {
+            &::before {
+                /* Checkbox - label position left. */
+                right: 0;
+                top: 0.3em;
+                left: unset;
+            }
+
+            &::after {
+                /* Check mark - label position left. */
                 left: unset;
                 right: 0.32em;
                 top: 0.45em;
@@ -84,7 +86,7 @@
 
         &:checked {
             + .checkboxEditor__label::before {
-                // Checkbox when checked.
+                /* Checkbox when checked. */
                 background: blue;
                 border: 1px solid blue;
             }
@@ -92,7 +94,7 @@
 
         &:not(:checked) {
             + .checkboxEditor__label::after {
-                // Check mark when not checked.
+                /* Check mark when not checked. */
                 display: none;
             }
         }
@@ -106,7 +108,7 @@
         }
 
         &:disabled {
-            // Disabled checkbox.
+            /* Disabled checkbox. */
             + .checkboxEditor__label {
                 color: lightslategray;
 
