@@ -1,64 +1,61 @@
-@using Microsoft.AspNetCore.Mvc.Localization
 @using static Lombiq.UIKit.Constants.Classes
 
 @inject IHtmlGenerator HtmlGenerator
 
 @{
-    var customBlockClasses = Model.BlockClassName;
-    var blockId = string.IsNullOrEmpty(Model.BlockId) ? string.Empty : $"id={Model.BlockId}";
+    var viewModel = (UiKitEditorViewModel)Model.ViewModel;
+    var customBlockClasses = viewModel.BlockClassName;
+    var blockId = string.IsNullOrEmpty(viewModel.BlockId) ? string.Empty : $"id={viewModel.BlockId}";
 
-    var labelAttributes = new Dictionary<string, object>
-    {
-        ["class"] = $"{CheckboxLabelClass} "
-            + $"{CheckboxLabelClass}{(Model.LabelPosition != LabelPosition.Left ? LabelPositionModifierRight : LabelPositionModifierLeft)} "
-    };
+    var labelPositionModifier = viewModel.LabelPosition != LabelPosition.Left
+        ? LabelPositionModifierRight
+        : LabelPositionModifierLeft;
 
-    var inputAttributes = new Dictionary<string, object>
-    {
-        ["class"] = $"{CheckboxInputClass} "
-    };
+    var labelClasses = new List<string> { CheckboxLabelClass, $"{CheckboxLabelClass}{labelPositionModifier}" };
+    var labelAttributes = new Dictionary<string, object>();
 
-    var modelFor = Model.For as ModelExpression;
-    var isRequired = modelFor.Metadata.RequiredAttributeExists();
-    if (isRequired && Model.Disabled != true)
+    var inputClasses = new List<string> { CheckboxInputClass };
+    var inputAttributes = new Dictionary<string, object>();
+
+    var isRequired = viewModel.For.Metadata.RequiredAttributeExists();
+    if (isRequired && viewModel.Disabled != true)
     {
         inputAttributes["required"] = string.Empty;
-        inputAttributes["class"] = inputAttributes["class"] + $"{CheckboxInputRequiredClass} ";
-        labelAttributes["class"] = labelAttributes["class"] + $"{CheckboxLabelRequiredClass} ";
+        inputClasses.Add(CheckboxInputRequiredClass);
+        inputClasses.Add(CheckboxLabelRequiredClass);
     }
 
-    var labelClasses = Model.LabelClasses;
-    if (!string.IsNullOrEmpty(labelClasses))
+    if (!string.IsNullOrEmpty(viewModel.LabelClasses))
     {
-        labelAttributes["class"] = labelAttributes["class"] + $"{labelClasses} ";
+        labelClasses.Add(viewModel.LabelClasses);
     }
 
-    var inputClasses = Model.InputClasses;
-    if (!string.IsNullOrEmpty(inputClasses))
+    if (!string.IsNullOrEmpty(viewModel.InputClasses))
     {
-        inputAttributes["class"] = inputAttributes["class"] + $"{inputClasses} ";
+        inputClasses.Add(viewModel.InputClasses);
     }
 
-    if (Model.Disabled == true)
+    if (viewModel.Disabled)
     {
         inputAttributes["disabled"] = string.Empty;
     }
 
-    var label = Model.Label != null
+    var label = viewModel.Label != null
         ? HtmlGenerator.GenerateLabel(
-            Model.ViewContext,
-            modelFor.ModelExplorer,
-            modelFor.Name,
-            (Model.Label as LocalizedHtmlString)?.Value,
-            labelAttributes)
+            viewModel.ViewContext,
+            viewModel.For.ModelExplorer,
+            viewModel.For.Name,
+            viewModel.Label?.Value,
+            labelAttributes.WithClasses(labelClasses))
         : null;
 
+
     var input = HtmlGenerator.GenerateCheckBox(
-        Model.ViewContext,
-        modelFor.ModelExplorer,
-        modelFor.Name,
-        (bool)modelFor.Model,
-        inputAttributes);
+        viewModel.ViewContext,
+        viewModel.For.ModelExplorer,
+        viewModel.For.Name,
+        (bool)viewModel.For.Model,
+        inputAttributes.WithClasses(inputClasses));
 }
 
 <style asp-name="@ResourceNames.LombiqCheckBoxStyle"></style>

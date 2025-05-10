@@ -1,11 +1,10 @@
-@using Lombiq.UIKit.Models
-@using Microsoft.AspNetCore.Mvc.Localization
 @using static Lombiq.UIKit.Constants.Classes
 
 @inject IHtmlGenerator HtmlGenerator
 
 @{
-    var customBlockClasses = Model.BlockClassName;
+    var viewModel = (UiKitEditorViewModel)Model.ViewModel;
+    var customBlockClasses = viewModel.BlockClassName;
 
     var inputAttributes = new Dictionary<string, object>
     {
@@ -18,67 +17,70 @@
         ["class"] = $"{DropdownLabelClass} "
     };
 
-    var forModel = Model.For as ModelExpression;
-    var isRequired = forModel.Metadata.RequiredAttributeExists();
+    var isRequired = viewModel.For.Metadata.RequiredAttributeExists();
     if (isRequired)
     {
         inputAttributes["required"] = string.Empty;
-        inputAttributes["class"] = inputAttributes["class"] + $"{DropdownInputRequiredClass} ";
-        labelAttributes["class"] = labelAttributes["class"] + $"{DropdownLabelRequiredClass} ";
+        inputAttributes["class"] += $"{DropdownInputRequiredClass} ";
+        labelAttributes["class"] += $"{DropdownLabelRequiredClass} ";
     }
 
-    if (Model.Disabled == true)
+    if (viewModel.Disabled)
     {
         inputAttributes["disabled"] = string.Empty;
     }
 
-    var label = Model.Label != null
+    var label = viewModel.Label != null
         ? HtmlGenerator.GenerateLabel(
-            Model.ViewContext,
-            forModel.ModelExplorer,
-            forModel.Name,
-            (Model.Label as LocalizedHtmlString)?.Value,
+            viewModel.ViewContext,
+            viewModel.For.ModelExplorer,
+            viewModel.For.Name,
+            viewModel.Label?.Value,
             labelAttributes)
         : null;
 
     var input = HtmlGenerator.GenerateTextBox(
-        Model.ViewContext,
-        forModel.ModelExplorer,
-        forModel.Name,
-        forModel.Model,
+        viewModel.ViewContext,
+        viewModel.For.ModelExplorer,
+        viewModel.For.Name,
+        viewModel.For.Model,
         string.Empty,
         inputAttributes);
 
-    var dropdownData = Model.DropdownData as List<DropdownItem>;
+    var defaultData = viewModel.DropdownData.FirstOrDefault(data => data.DataState.Equals(viewModel.For.Model)) ?? new();
 
-    var defaultData = dropdownData.FirstOrDefault(data => data.DataState.Equals(forModel.Model));
+    var disabled = viewModel.Disabled ? "disabled" : string.Empty;
 
-    var disabled = (Model.Disabled != null && Model.Disabled) ? "disabled" : string.Empty;
+    var containerId = string.IsNullOrWhiteSpace(viewModel.ButtonContainerId)
+        ? $"{viewModel.ButtonId}_Container"
+        : viewModel.ButtonContainerId;
 }
 
 <style asp-name="@ResourceNames.LombiqDropdownStyle"></style>
 
-<div id="@Model.DropdownContainerId" class="@customBlockClasses @DropdownBlockName">
+<div id="@viewModel.DropdownContainerId" class="@customBlockClasses @DropdownBlockName">
     @label
     @input
-    <div asp-validation-class-for="@forModel">
-        <div id="@Model.ButtonContainerId" class="@DropdownButtonContainerClass dropdown">
+    <div asp-validation-class-for="@viewModel.For">
+        <div id="@containerId" class="@DropdownButtonContainerClass dropdown">
             <button class="btn btn-sm dropdown-toggle @DropdownButtonClass @defaultData.DataClass"
-                    title="@forModel.Model"
+                    title="@viewModel.For.Model"
                     @disabled
                     type="button"
-                    id="@Model.ButtonId"
-                    data-bs-toggle="dropdown">
+                    id="@viewModel.ButtonId"
+                    data-bs-toggle="dropdown"
+                    data-selected-class="@defaultData.DataClass">
                 @defaultData.Text
             </button>
             <ul class="dropdown-menu dropdown-menu-right @DropdownItemContainerClass">
-                @foreach (var dropdownItem in dropdownData)
+                @foreach (var dropdownItem in viewModel.DropdownData)
                 {
-                    <li>
+                    <li class="@DropdownItemParentClass">
                         <a href="javascript:void(0)"
                            data-state="@dropdownItem.DataState"
                            data-state-text="@dropdownItem.Text"
                            data-class="@dropdownItem.DataClass"
+                           data-button-class="@dropdownItem.DataClass"
                            class="dropdown-item @DropdownItemClass">
                             @dropdownItem.Text
                         </a>
@@ -89,19 +91,11 @@
     </div>
 </div>
 
-<script asp-name="@ResourceNames.LombiqDropdownScript" at="Foot" depends-on="jQuery"></script>
-<script at="Foot">
-    jQuery(($) => {
-        @if ((bool?)Model.HideSelectedFromDropdownList == true)
-        {
-            @:removeSelectedFromDropDown(@Json.Serialize(Model.ButtonId));
-        }
-
-        dropdownOnClick(
-            @Json.Serialize(Model.ButtonContainerId),
-            @Json.Serialize(Model.ButtonId),
-            @Json.Serialize(forModel.Name),
-            @Json.Serialize(Model.HideSelectedFromDropdownList));
-
-    });
+<script asp-name="@ResourceNames.LombiqDropdownScript" at="Foot"></script>
+<script at="Foot" depends-on="@ResourceNames.LombiqDropdownScript">
+    dropdownOnClick(
+        @containerId.JsonHtmlContent(),
+        @viewModel.ButtonId.JsonHtmlContent(),
+        @viewModel.For.Name.JsonHtmlContent(),
+        @Json.Serialize(viewModel.HideSelectedFromDropdownList));
 </script>
