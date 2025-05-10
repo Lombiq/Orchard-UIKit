@@ -7,7 +7,7 @@ function removeSelectedFromDropDown(container, button) {
     const buttonText = button?.textContent.trim();
     const buttonItems = container.querySelectorAll('.dropdownEditor__itemParent');
 
-    buttonItems.forEach(item => item.classList.toggle('d-none', buttonText === item.innerText.trim()));
+    buttonItems.forEach((item) => item.classList.toggle('d-none', buttonText === item.innerText.trim()));
 }
 
 /**
@@ -22,7 +22,7 @@ function dropdownOnClick(container, button, aspId, removeSelected) {
         removeSelectedFromDropDown(container, button);
     }
 
-    container.querySelectorAll(`.dropdownEditor__item`)
+    container.querySelectorAll('.dropdownEditor__item')
         .forEach((item) => item.addEventListener('click', () => {
             const state = item.getAttribute('data-state');
             const text = item.getAttribute('data-state-text');
@@ -44,9 +44,8 @@ function dropdownOnClick(container, button, aspId, removeSelected) {
         }));
 }
 
-document.querySelectorAll('.dropdownEditor').forEach((item) =>
-    dropdownOnClick(
-        item,
-        item.querySelector('.dropdownEditor__button'),
-        item.getAttribute('data-asp-id'),
-        item.getAttribute('data-hide-selected') === 'true'));
+document.querySelectorAll('.dropdownEditor').forEach((item) => dropdownOnClick(
+    item,
+    item.querySelector('.dropdownEditor__button'),
+    item.getAttribute('data-asp-id'),
+    item.getAttribute('data-hide-selected') === 'true'));
