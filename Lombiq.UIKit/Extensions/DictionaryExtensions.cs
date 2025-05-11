@@ -7,7 +7,7 @@ public static class DictionaryExtensions
 {
     /// <summary>
     /// Appends unique words from <paramref name="classes"/> into <paramref name="dictionary"/> as an entry with the key
-    /// of "class, then returns <paramref name="dictionary"/> for easy chaining.
+    /// of <c>"class"</c>, then returns <paramref name="dictionary"/> for easy chaining.
     /// </summary>
     public static IDictionary<string, object> WithClasses(this IDictionary<string, object> dictionary, IEnumerable<string> classes)
     {
