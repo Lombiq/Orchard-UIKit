@@ -2,14 +2,14 @@
     --input-text: black;
     --input-bg: white;
     --label-bg: white;
-    --label-bg-disabled: linear-gradient(180deg, white 50%, #f8f8f8 50%);
+    --label-bg-disabled: linear-gradient(180deg, white 40%, #f8f8f8 40%);
     --input-border: black;
 }
 
 [data-theme="darkmode"], [data-bs-theme="dark"] {
     --input-text: white;
     --input-bg: #383838;
-    --label-bg: linear-gradient(180deg, #181a1b 50%, #383838 50%);
-    --label-bg-disabled: linear-gradient(180deg, #181a1b 50%, #afafaf 50%);
+    --label-bg: linear-gradient(180deg, #181a1b 40%, #383838 40%);
+    --label-bg-disabled: linear-gradient(180deg, #181a1b 40%, #222128 40%);
     --input-border: #737373;
 }
