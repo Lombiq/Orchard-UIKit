@@ -32,10 +32,8 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
         Script(LombiqDropdownScript, "dropdown-editor");
         Script(LombiqTextBoxScript, "textbox-editor");
 
-        Style(LombiqCheckBoxStyle, "checkbox");
-        Style(LombiqDropdownStyle, "dropdown");
+        Style(LombiqUiKitEditorStyle, "ui-kit-editor");
         Style(LombiqShowcaseStyle, "showcase");
-        Style(LombiqTextBoxStyle, "textbox");
     }
 
     public void Configure(ResourceManagementOptions options) => options.ResourceManifests.Add(_manifest);
