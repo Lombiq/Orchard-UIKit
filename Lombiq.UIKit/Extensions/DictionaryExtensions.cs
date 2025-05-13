@@ -12,7 +12,7 @@ public static class DictionaryExtensions
     public static IDictionary<string, object> WithClasses(this IDictionary<string, object> dictionary, IEnumerable<string> classes)
     {
         dictionary["class"] = string.Join(' ', classes
-            .SelectMany(item => item.Split())
+            .SelectMany(item => item?.Split() ?? [])
             .WhereNot(string.IsNullOrEmpty)
             .Distinct());
         return dictionary;
