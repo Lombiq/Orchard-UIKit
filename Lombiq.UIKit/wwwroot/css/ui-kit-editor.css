@@ -11,6 +11,10 @@
         .input-group-prepend {
             width: var(--prepend-width);
 
+            &:has(.textboxEditor__iconContainer) {
+                cursor: pointer;
+            }
+
             & ~ .textboxEditor__placeholder {
                 left: calc(var(--prepend-width) + var(--placeholder-left));
             }

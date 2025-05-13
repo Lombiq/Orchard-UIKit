@@ -1,3 +1,8 @@
+// Focus on the textbox after clicking on the icon on the left.
+document.querySelectorAll('.input-group-prepend:has(.textboxEditor__iconContainer)').forEach((item) => item
+    .addEventListener('click', () => item.parentElement.querySelector('.textboxEditor__input').focus()))
+
+// Hide custom placeholder when there is text in the textbox.
 document.querySelectorAll('.textboxEditor__input').forEach((item) => {
     function hidePlaceholder(item, placeholder) {
         placeholder.hidden = item.value?.toString().trim();
