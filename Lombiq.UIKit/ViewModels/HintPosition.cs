@@ -4,4 +4,5 @@ public enum HintPosition
 {
     BeforeInput,
     AfterInput,
+    Hidden,
 }

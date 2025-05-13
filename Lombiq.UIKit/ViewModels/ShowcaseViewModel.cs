@@ -38,7 +38,9 @@ public class ShowcaseViewModel
     [Required]
     public bool CheckboxFalse1 { get; set; }
     public bool CheckboxFalse2 { get; set; }
+    [Required]
     public bool CheckboxFalse3 { get; set; }
+    [Required]
     public bool CheckboxFalse4 { get; set; }
     public bool CheckboxFalse2Disabled { get; set; }
 
@@ -48,6 +50,7 @@ public class ShowcaseViewModel
     public bool CheckboxTrue2Disabled { get; set; } = true;
     public bool Dropdown { get; set; }
     public bool DropdownDisabled { get; set; }
+    [Required]
     public Status Status { get; set; }
     public Status StatusDisabled { get; set; }
 }
