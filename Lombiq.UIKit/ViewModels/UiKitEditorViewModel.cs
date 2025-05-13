@@ -10,6 +10,7 @@ namespace Lombiq.UIKit.ViewModels;
 
 public class UiKitEditorViewModel : ShapeViewModel
 {
+    public EditorTypes Type { get; set; }
     public string BlockId { get; set; }
     public string BlockClassName { get; set; }
     public string ButtonContainerId { get; set; }

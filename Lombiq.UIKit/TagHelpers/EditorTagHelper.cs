@@ -20,7 +20,7 @@ public class EditorTagHelper : ShapeTagHelperBase<UiKitEditorViewModel>
     protected override string ShapeType => UIKitEditorBaseName + Type;
 
     [HtmlAttributeName(nameof(Type))]
-    public string Type { get; set; }
+    public EditorTypes Type { get; set; }
 
     [HtmlAttributeName(nameof(For))]
     public ModelExpression For { get; set; }
@@ -36,7 +36,7 @@ public class EditorTagHelper : ShapeTagHelperBase<UiKitEditorViewModel>
     public LocalizedHtmlString Label { get; set; }
 
     [HtmlAttributeName(nameof(LabelPosition))]
-    public LabelPosition LabelPosition { get; set; }
+    public LabelPosition LabelPosition { get; set; } = LabelPosition.Top;
 
     [HtmlAttributeName(nameof(Placeholder))]
     public LocalizedHtmlString Placeholder { get; set; }
@@ -72,7 +72,7 @@ public class EditorTagHelper : ShapeTagHelperBase<UiKitEditorViewModel>
     public string InputClasses { get; set; }
 
     [HtmlAttributeName(nameof(MaxLength))]
-    public int MaxLength { get; set; }
+    public int? MaxLength { get; set; }
 
     [HtmlAttributeName(nameof(DropdownData))]
     [SuppressMessage(
@@ -91,6 +91,7 @@ public class EditorTagHelper : ShapeTagHelperBase<UiKitEditorViewModel>
     protected override ValueTask<UiKitEditorViewModel> GetViewModelAsync(TagHelperContext context, TagHelperOutput output) =>
         ValueTask.FromResult(new UiKitEditorViewModel
         {
+            Type = Type,
             BlockId = BlockId,
             BlockClassName = BlockClassName,
             ButtonContainerId = ButtonContainerId,
