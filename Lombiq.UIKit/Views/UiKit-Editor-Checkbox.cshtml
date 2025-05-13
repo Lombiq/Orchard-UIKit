@@ -4,64 +4,17 @@
 
 @{
     var viewModel = (UiKitEditorViewModel)Model.ViewModel;
-    var customBlockClasses = viewModel.BlockClassName;
-    var blockId = string.IsNullOrEmpty(viewModel.BlockId) ? string.Empty : $"id={viewModel.BlockId}";
-
-    var labelPositionModifier = viewModel.LabelPosition != LabelPosition.Left
-        ? LabelPositionModifierRight
-        : LabelPositionModifierLeft;
-
-    var labelClasses = new List<string> { CheckboxLabelClass, $"{CheckboxLabelClass}{labelPositionModifier}" };
-    var labelAttributes = new Dictionary<string, object>();
-
-    var inputClasses = new List<string> { CheckboxInputClass };
-    var inputAttributes = new Dictionary<string, object>();
-
-    var isRequired = viewModel.For.Metadata.RequiredAttributeExists();
-    if (isRequired && viewModel.Disabled != true)
-    {
-        inputAttributes["required"] = string.Empty;
-        inputClasses.Add(CheckboxInputRequiredClass);
-        inputClasses.Add(CheckboxLabelRequiredClass);
-    }
-
-    if (!string.IsNullOrEmpty(viewModel.LabelClasses))
-    {
-        labelClasses.Add(viewModel.LabelClasses);
-    }
-
-    if (!string.IsNullOrEmpty(viewModel.InputClasses))
-    {
-        inputClasses.Add(viewModel.InputClasses);
-    }
-
-    if (viewModel.Disabled)
-    {
-        inputAttributes["disabled"] = string.Empty;
-    }
-
-    var label = viewModel.Label != null
-        ? HtmlGenerator.GenerateLabel(
-            viewModel.ViewContext,
-            viewModel.For.ModelExplorer,
-            viewModel.For.Name,
-            viewModel.Label?.Value,
-            labelAttributes.WithClasses(labelClasses))
-        : null;
-
-
-    var input = HtmlGenerator.GenerateCheckBox(
-        viewModel.ViewContext,
-        viewModel.For.ModelExplorer,
-        viewModel.For.Name,
-        (bool)viewModel.For.Model,
-        inputAttributes.WithClasses(inputClasses));
+    var reverse = viewModel.LabelPosition == LabelPosition.Left ? " reverse" : string.Empty;
 }
 
-<style asp-name="@ResourceNames.LombiqCheckBoxStyle"></style>
+<style asp-name="@ResourceNames.LombiqUiKitEditorStyle"></style>
 
-<div @blockId class="@CheckboxBlockName @customBlockClasses">
-    @input
-    @label
-    <span class="@CheckboxAsteriskClass">*</span>
+<div id="@viewModel.GetBlockIdWithFallback()"
+     class="@UiKitEditorBlockName @CheckboxBlockName @viewModel.BlockClassName@reverse">
+    @viewModel.GenerateHintBefore()
+    <div class="form-check">
+        @viewModel.GenerateInput(HtmlGenerator, CheckboxInputClass)
+        @viewModel.GenerateLabel(HtmlGenerator)
+    </div>
+    @viewModel.GenerateHintAfter()
 </div>

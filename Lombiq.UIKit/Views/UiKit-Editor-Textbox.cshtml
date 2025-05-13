@@ -4,125 +4,59 @@
 
 @{
     var viewModel = (UiKitEditorViewModel)Model.ViewModel;
-    var customBlockClasses = viewModel.BlockClassName;
-    var blockId = string.IsNullOrEmpty(viewModel.BlockId) ? string.Empty : $"id={viewModel.BlockId}";
+    var input = viewModel.GenerateInput(HtmlGenerator, TextboxInputClass, viewModel.InputClasses);
+    var hasIcon = !string.IsNullOrWhiteSpace(viewModel.IconClasses);
+    var specialPlaceholder = input.Attributes.ContainsKey("placeholder") &&
+                             viewModel.IsLabelEmpty() &&
+                             viewModel.IsRequired();
 
-    var labelClasses = new List<string> { TextboxLabelClass };
-    var labelAttributes = new Dictionary<string, object>();
-
-    var inputClasses = new List<string> { TextboxInputClass };
-    var inputAttributes = new Dictionary<string, object>();
-
-    var isRequired = viewModel.For.Metadata.RequiredAttributeExists();
-    if (isRequired)
+    if (specialPlaceholder)
     {
-        inputAttributes["required"] = string.Empty;
-
-        inputClasses.Add(TextboxInputRequiredClass);
-        labelClasses.Add(TextboxLabelRequiredClass);
+        input.Attributes.Remove("placeholder");
     }
-
-    if (!string.IsNullOrEmpty(viewModel.InputClasses))
-    {
-        inputClasses.Add(viewModel.InputClasses);
-    }
-
-    if (viewModel.Disabled)
-    {
-        inputAttributes["disabled"] = string.Empty;
-        labelClasses.Add(TextboxLabelDisabledClass);
-    }
-
-    var textboxBlockClasses = TextboxBlockName;
-    var borderPositionClass = TextboxLabelPositionTopClass;
-    if (viewModel.LabelPosition == LabelPosition.None)
-    {
-        borderPositionClass = TextboxLabelPositionNoneClass;
-        labelClasses.Add(TextboxPlaceholderLabelClass);
-    }
-    else if (viewModel.LabelPosition == LabelPosition.Border)
-    {
-        borderPositionClass = TextboxLabelPositionBorderClass;
-        textboxBlockClasses += $" {TextboxBlockBorderLabelClass}";
-        inputClasses.Add(TextboxInputBorderLabelClass);
-    }
-
-    labelClasses.Add(borderPositionClass);
-
-    if (!string.IsNullOrEmpty(viewModel.LabelClasses))
-    {
-        labelClasses.Add(viewModel.LabelClasses);
-    }
-
-    var hasAsteriskInPlaceholder = viewModel.LabelPosition == LabelPosition.None && isRequired;
-    var placeholder = viewModel.Placeholder?.Value;
-    if (!hasAsteriskInPlaceholder && !string.IsNullOrEmpty(placeholder))
-    {
-        inputAttributes["placeholder"] = placeholder;
-    }
-
-    if (viewModel.MaxLength is { } maxLength)
-    {
-        inputAttributes["maxlength"] = maxLength;
-    }
-
-    var noLabelAndNotRequired = viewModel.LabelPosition == LabelPosition.None && !isRequired;
-    var label = noLabelAndNotRequired
-        ? null
-        : HtmlGenerator.GenerateLabel(
-            viewModel.ViewContext,
-            viewModel.For.ModelExplorer,
-            viewModel.For.Name,
-            hasAsteriskInPlaceholder
-                ? placeholder
-                : viewModel.Label?.Value,
-            labelAttributes.WithClasses(labelClasses));
-
-    var input = HtmlGenerator.GenerateTextBox(
-        viewModel.ViewContext,
-        viewModel.For.ModelExplorer,
-        viewModel.For.Name,
-        viewModel.For.Model,
-        string.Empty,
-        inputAttributes.WithClasses(inputClasses));
-
-    var containerIconClass = string.IsNullOrEmpty(viewModel.IconClasses)
-        ? string.Empty
-        : TextboxBlockName + IconLeftModifier;
 }
 
-<style asp-name="@ResourceNames.LombiqTextBoxStyle"></style>
-<script asp-name="@ResourceNames.LombiqTextBoxScript" at="Foot"></script>
+<style asp-name="@ResourceNames.LombiqUiKitEditorStyle"></style>
+<script asp-name="@ResourceNames.LombiqTextBoxScript"></script>
 
-<div @blockId class="@textboxBlockClasses @customBlockClasses @containerIconClass">
-    @if (hasAsteriskInPlaceholder)
+<div id="@viewModel.GetBlockIdWithFallback()"
+     class="@UiKitEditorBlockName @TextboxBlockName @viewModel.BlockClassName mb-3">
+    @if (viewModel.LabelPosition != LabelPosition.Border)
     {
-        <div class="@TextboxPlaceholderClass">
-            @label
-            <span class="@TextboxAsteriskClass">*</span>
-        </div>
-    }
-    else
-    {
-        @label
+        @viewModel.GenerateLabel(HtmlGenerator)
     }
 
-    @if (!string.IsNullOrEmpty(viewModel.IconClasses))
-    {
-        <span class="@TextboxIconContainerClass">
-            <i class="@viewModel.IconClasses @TextboxIconClass"></i>
-        </span>
-    }
+    @viewModel.GenerateHintBefore()
 
-    @if (viewModel.HintPosition == HintPosition.BeforeInput && !string.IsNullOrEmpty(viewModel.Hint?.Value))
-    {
-        <div class="hint @TextboxHintClass">@viewModel.Hint</div>
-    }
+    <div class="input-group">
+        @if (hasIcon)
+        {
+            <div class="input-group-prepend">
+                <span class="input-group-text @TextboxIconContainerClass">
+                    <i class="@viewModel.IconClasses @TextboxIconClass"></i>
+                </span>
+            </div>
+        }
 
-    @input
+        @if (viewModel.LabelPosition == LabelPosition.Border)
+        {
+            <div class="form-floating">
+                @input
+                @viewModel.GenerateLabel(HtmlGenerator)
+            </div>
+        }
+        else
+        {
+            @input
+            @if (specialPlaceholder)
+            {
+                <div class="@TextboxPlaceholderClass">
+                    @viewModel.Placeholder
+                    <span class="@UiKitEditorRequiredAsteriskClass">*</span>
+                </div>
+            }
+        }
+    </div>
 
-    @if (viewModel.HintPosition == HintPosition.AfterInput && !string.IsNullOrEmpty(viewModel.Hint?.Value))
-    {
-        <div class="hint @TextboxHintClass">@viewModel.Hint</div>
-    }
+    @viewModel.GenerateHintAfter()
 </div>
