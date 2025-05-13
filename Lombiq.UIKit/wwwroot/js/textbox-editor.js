@@ -4,15 +4,15 @@ document.querySelectorAll('.input-group-prepend:has(.textboxEditor__iconContaine
 
 // Hide custom placeholder when there is text in the textbox.
 document.querySelectorAll('.textboxEditor__input').forEach((item) => {
-    function hidePlaceholder(item, placeholder) {
-        placeholder.hidden = item.value?.toString().trim();
-    }
-
     const placeholder = item.parentElement.querySelector('.textboxEditor__placeholder');
     if (!placeholder) return;
 
-    ['blur', 'keyup', 'change'].forEach((eventName) => item
-        .addEventListener(eventName, () => hidePlaceholder(item, placeholder)));
+    function hideIfInputHasContent() {
+        placeholder.hidden = item.value?.toString().trim();
+    }
 
-    hidePlaceholder(item, placeholder);
+    ['blur', 'keyup', 'change'].forEach((eventName) => item
+        .addEventListener(eventName, hideIfInputHasContent));
+
+    hideIfInputHasContent();
 });

@@ -6,7 +6,16 @@
     &.textboxEditor {
         --prepend-width: 2.5em;
         --placeholder-left: 0.75em;
+
         position: relative;
+
+        .textboxEditor__placeholder {
+            position: absolute;
+            left: var(--placeholder-left);
+            top: 0.5em;
+            pointer-events: none;
+            opacity: .7;
+        }
 
         .input-group-prepend {
             width: var(--prepend-width);
@@ -18,14 +27,6 @@
             & ~ .textboxEditor__placeholder {
                 left: calc(var(--prepend-width) + var(--placeholder-left));
             }
-        }
-
-        .textboxEditor__placeholder {
-            position: absolute;
-            left: var(--placeholder-left);
-            top: 0.5em;
-            pointer-events: none;
-            opacity: .7;
         }
 
         .textboxEditor__iconContainer {
