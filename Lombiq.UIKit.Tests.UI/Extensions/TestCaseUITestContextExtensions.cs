@@ -3,6 +3,8 @@ using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;
 using OpenQA.Selenium;
 using Shouldly;
+using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Lombiq.UIKit.Tests.UI.Extensions;
@@ -40,12 +42,21 @@ public static class TestCaseUITestContextExtensions
 
         if (validateScreenshot)
         {
-            // Clean up page for more reliable screenshotting.
+            // Clean up page and ensure daylight mode for more reliable screenshotting.
+            await context.SelectFromBootstrapDropdownReliablyAsync(
+                context.Get(By.Id("bd-theme")),
+                By.CssSelector("[data-bs-theme-value='light']"));
             context.ExecuteScript(
                 "document.querySelectorAll('.ta-navbar-top, #ta-left-sidebar').forEach((element) => element.remove());" +
-                "document.querySelector('.ta-content').style.margin = '0';");
+                "document.querySelector('.ta-content').style.margin = '0';" +
+                "document.body.style.width = '1500px';" +
+                "document.body.style.minHeight = '1800px';" +
+                "document.body.style.overflow = 'hidden';");
+
+            // Add some delay to ensure that any admin theme animations have finished.
+            await Task.Delay(TimeSpan.FromSeconds(2), CancellationToken.None);
+
             context.AssertVisualVerificationApproved(
-                By.ClassName("ta-content"),
                 pixelErrorPercentageThreshold: 5,
                 configurator: configuration => configuration
                     .WithUsePlatformAsSuffix()
