@@ -1,0 +1,50 @@
+.uiKitEditor {
+    .requiredAsterisk {
+        color: var(--bs-danger);
+    }
+
+    &.textboxEditor {
+        --prepend-width: 2.5em;
+        --placeholder-left: 0.75em;
+
+        position: relative;
+
+        .textboxEditor__placeholder {
+            position: absolute;
+            left: var(--placeholder-left);
+            top: 0.5em;
+            pointer-events: none;
+            opacity: .7;
+        }
+
+        .input-group-prepend {
+            width: var(--prepend-width);
+
+            &:has(.textboxEditor__iconContainer) {
+                cursor: pointer;
+            }
+
+            & ~ .textboxEditor__placeholder {
+                left: calc(var(--prepend-width) + var(--placeholder-left));
+            }
+        }
+
+        .textboxEditor__iconContainer {
+            height: 100%;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+
+    &.checkboxEditor.reverse {
+        .form-check-label {
+            float: left;
+            margin-left: -1.5em;
+        }
+
+        .form-check-input {
+            float: none;
+            margin-left: 0.5em;
+        }
+    }
+}

@@ -1,0 +1,40 @@
+.showcaseContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+
+    .showcaseContainer__item {
+        min-width: 300px;
+        padding: 1.5em;
+    }
+
+    /* Some arbitrary styling for the custom classes so their presence is visible in the browser. */
+    .nonDefaultLabelClass {
+        font-weight: bold;
+    }
+
+    .customLabelClass {
+        color: rebeccapurple;
+    }
+
+    .nonDefaultInputClass {
+        text-decoration: underline;
+    }
+
+    .customInputClass {
+        background-color: rebeccapurple;
+    }
+}
+
+/* See https://github.com/Lombiq/Orchard-Base-Theme/blob/5f9f79c3c6f4d2bc4e0b1766b13a3c59e90536b2/Assets/Styles/abstracts/_helpers.scss#L32 */
+.visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}

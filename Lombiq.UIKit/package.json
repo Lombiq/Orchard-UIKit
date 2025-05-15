@@ -7,15 +7,5 @@
   },
   "dependencies": {
     "slick-carousel": "^1.8.1"
-  },
-  "nodejsExtensions": {
-    "assetsToCopy": [
-      {
-        "sources": [
-          "node_modules/slick-carousel/slick"
-        ],
-        "target": "wwwroot/vendors/slick"
-      }
-    ]
   }
 }
