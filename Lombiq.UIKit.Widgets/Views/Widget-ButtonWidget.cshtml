@@ -1,0 +1,8 @@
+@using Lombiq.UIKit.Widgets.Models
+@{
+    if (Model.ContentItem is not IContent contentItem || contentItem.As<ButtonWidget>() is not { } button) { return; }
+
+    var href = button.Disabled.Value ? "#" : Url.Content(button.Link.Url);
+}
+
+<a class="@button.GetClasses()" href="@href">@button.Link.Text?.Trim()</a>
