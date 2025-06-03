@@ -1,50 +1,22 @@
-using Microsoft.Extensions.Options;
-using OrchardCore.ResourceManagement;
+using Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
 using static Lombiq.UIKit.Constants.ResourceNames;
 
 namespace Lombiq.UIKit;
 
-public class ResourceManagementOptionsConfiguration : IConfigureOptions<ResourceManagementOptions>
+public class ResourceManagementOptionsConfiguration : ResourceManagementOptionsConfiguratorBase
 {
-    private const string Module = "~/Lombiq.UIKit/";
-    private const string Css = Module + "css/";
-    private const string Js = Module + "js/";
-    private const string Vendors = Module + "vendors/";
+    protected override string Area => FeatureIds.Base;
 
-    private static readonly ResourceManifest _manifest = new();
-
-    static ResourceManagementOptionsConfiguration()
+    protected override void Configure(ResourceManagementContext context)
     {
-        _manifest
-            .DefineScript(Slick)
-            .SetUrl(Vendors + "slick/slick.min.js")
-            .SetDependencies("jQuery");
+        context.DefineVendorScript(Slick, "slick/slick.min.js", "jQuery");
+        context.DefineVendorStyle(Slick, "slick/slick.css");
+        context.DefineVendorStyle(SlickTheme, "slick/slick-theme.css", Slick);
 
-        _manifest
-            .DefineStyle(Slick)
-            .SetUrl(Vendors + "slick/slick.css");
+        context.DefineScript(LombiqDropdownScript, "dropdown-editor.js");
+        context.DefineScript(LombiqTextBoxScript, "textbox-editor.js");
 
-        _manifest
-            .DefineStyle(SlickTheme)
-            .SetUrl(Vendors + "slick/slick-theme.css")
-            .SetDependencies(Slick);
-
-        Script(LombiqDropdownScript, "dropdown-editor");
-        Script(LombiqTextBoxScript, "textbox-editor");
-
-        Style(LombiqUiKitEditorStyle, "ui-kit-editor");
-        Style(LombiqShowcaseStyle, "showcase");
+        context.DefineStyle(LombiqUiKitEditorStyle, "ui-kit-editor.css");
+        context.DefineStyle(LombiqShowcaseStyle, "showcase.css");
     }
-
-    public void Configure(ResourceManagementOptions options) => options.ResourceManifests.Add(_manifest);
-
-    private static void Style(string name, string file) =>
-        _manifest
-            .DefineStyle(name)
-            .SetUrl($"{Css}{file}.css");
-
-    private static void Script(string name, string file) =>
-        _manifest
-            .DefineScript(name)
-            .SetUrl($"{Js}{file}.js");
 }
