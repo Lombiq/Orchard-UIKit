@@ -46,8 +46,8 @@ public class CarouselWidgetMigrations : DataMigration
             .WithPart(nameof(BagPart), part => part.WithSettings(new BagPartSettings
             {
                 ContainedContentTypes = [ContentTypes.Slide],
-            })
-            ).Stereotype(CommonStereotypes.Widget));
+            }))
+            .Stereotype(CommonStereotypes.Widget));
 
         return 1;
     }
