@@ -1,0 +1,21 @@
+@using Lombiq.UIKit.Widgets.Models
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@{
+    var button = Model.Button as ButtonWidget ?? new ButtonWidget
+    {
+        Link =
+        {
+            Text = $"{(Model.Text as LocalizedString)?.Value ?? (Model.Text as LocalizedHtmlString)?.Value ?? Model.Text}",
+            Url = $"{Model.Url}",
+        },
+        TypeName = { Text = $"{Model.TypeName}" },
+        SizeName = { Text = $"{Model.SizeName}" },
+        Disabled = { Value = bool.TryParse($"{Model.Disabled}", out bool resultDisabled) && resultDisabled },
+        Outlined = { Value = bool.TryParse($"{Model.Outlined}", out bool resultOutlined) && resultOutlined },
+    };
+
+    var href = button.Disabled.Value || string.IsNullOrWhiteSpace(button.Link.Url) ? "#" : Url.Content(button.Link.Url);
+}
+
+<a class="@button.GetClasses()" href="@href">@button.Link.Text?.Trim()</a>

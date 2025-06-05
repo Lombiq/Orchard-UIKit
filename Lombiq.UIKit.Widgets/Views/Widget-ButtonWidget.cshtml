@@ -1,8 +1,7 @@
 @using Lombiq.UIKit.Widgets.Models
-@{
-    if (Model.ContentItem is not IContent contentItem || contentItem.As<ButtonWidget>() is not { } button) { return; }
 
-    var href = button.Disabled.Value ? "#" : Url.Content(button.Link.Url);
+@{
+    var button = (Model.ContentItem as IContent)?.As<ButtonWidget>();
 }
 
-<a class="@button.GetClasses()" href="@href">@button.Link.Text?.Trim()</a>
+<shape type="ButtonWidget" prop-Button="@button"></shape>

@@ -32,6 +32,16 @@ To quickly see the carousel widget in action, go to `Configuration`->`Recipes` a
 
 Please note that, like mentioned above, the carousel widget doesn't have any styles so you might need to make some CSS adjustments (depending on the theme).
 
+### Button Widget
+
+This widget displays a link as a Bootstrap button. You can select the button type, size, if it's full or empty (outlined), or if it's disabled. This is especially useful in Flow parts.
+
+You can also use the `ButtonWidget` shape which can be directly configured, for example in Liquid:
+
+```liquid
+{% shape "ButtonWidget", Text: 'Contact Us', Url: '~/contact-us', TypeName: 'Secondary', SizeName: 'Small' %}
+```
+
 ## Contributing and support
 
 Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
