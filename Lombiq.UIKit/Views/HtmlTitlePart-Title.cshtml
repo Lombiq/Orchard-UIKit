@@ -1,1 +1,28 @@
-<h1>@Html.Raw(Model.Html)</h1>
+@using AngleSharp
+@using AngleSharp.Dom
+@using System.IO
+@using System.Text
+@using HtmlHelper = Lombiq.HelpfulLibraries.Common.Utilities.HtmlHelper
+
+@{
+    var node = HtmlHelper.ParseHtmlFragment($"{Model.Html}");
+
+    foreach (var element in node.Descendants<IElement>().ToList())
+    {
+        if (element.ParentElement is { } parent &&
+            element.TagName.ToUpperInvariant() is "DIV" or "P")
+        {
+            foreach (var child in element.ChildNodes.ToList())
+            {
+                parent.InsertBefore(child, element);
+            }
+
+            parent.RemoveChild(element);
+        }
+    }
+
+    var html = new StringBuilder();
+    await using (var writer = new StringWriter(html)) { await node.ToHtmlAsync(writer); }
+}
+
+<h1>@Html.Raw(html.ToString())</h1>

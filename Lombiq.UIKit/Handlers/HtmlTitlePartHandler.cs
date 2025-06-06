@@ -6,6 +6,7 @@ using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Handlers;
 using OrchardCore.Liquid;
 using OrchardCore.Title.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -46,9 +47,8 @@ public class HtmlTitlePartHandler : ContentPartHandler<HtmlTitlePart>
                 });
         }
 
-        part.ContentItem.DisplayText = HtmlHelper
-            .ConvertToPlainText(title)
-            .Replace("\r", string.Empty).Replace("\n", string.Empty);
+        // This text can't be multiline, so we remove spaces more agressively.
+        part.ContentItem.DisplayText = HtmlHelper.ConvertToPlainText(title).RegexReplace(@"\s+", " ");
         part.Apply();
     }
 }
