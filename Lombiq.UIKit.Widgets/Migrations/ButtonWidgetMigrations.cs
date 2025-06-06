@@ -20,14 +20,14 @@ public class ButtonWidgetMigrations : DataMigration
     {
         await _contentDefinitionManager.AlterTypeDefinitionAsync(nameof(ButtonWidget), builder => builder
             .Stereotype(CommonStereotypes.Widget)
-            .WithPart(nameof(ButtonWidget)));
+            .WithPart<ButtonWidget>());
 
         await _contentDefinitionManager.AlterPartDefinitionAsync<ButtonWidget>(builder => builder
             .WithField(part => part.Link, DefinitionHelper.ConfigureRequired<LinkField>)
-            .WithField(part => part.TypeName, builder => builder
+            .WithField(part => part.TypeName, part => part
                 .WithDisplayName("Type")
                 .WithEnumEditor<ButtonWidget.ButtonType>())
-            .WithField(part => part.SizeName, builder => builder
+            .WithField(part => part.SizeName, part => part
                 .WithDisplayName("Size")
                 .WithEnumEditor<ButtonWidget.ButtonSize>())
             .WithField(part => part.Outlined)

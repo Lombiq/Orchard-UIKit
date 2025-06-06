@@ -34,16 +34,13 @@ public class CarouselWidgetMigrations : DataMigration
 
         await _contentDefinitionManager.AlterTypeDefinitionAsync(ContentTypes.Slide, type => type
             .Securable()
-            .WithPart(nameof(TitlePart), part => part
-                .WithPosition("0"))
-            .WithPart(nameof(SlidePart), part => part
-                .WithPosition("1")
-            ));
+            .WithPart<TitlePart>(part => part.WithPosition("0"))
+            .WithPart<SlidePart>(part => part.WithPosition("1")));
 
         await _contentDefinitionManager.AlterTypeDefinitionAsync(ContentTypes.CarouselWidget, type => type
             .Securable()
-            .WithPart(nameof(CarouselWidgetPart), part => part.WithSettings(new CarouselWidgetPartSettings()))
-            .WithPart(nameof(BagPart), part => part.WithSettings(new BagPartSettings
+            .WithPart<CarouselWidgetPart>(part => part.WithSettings(new CarouselWidgetPartSettings()))
+            .WithPart<BagPart>(part => part.WithSettings(new BagPartSettings
             {
                 ContainedContentTypes = [ContentTypes.Slide],
             }))
