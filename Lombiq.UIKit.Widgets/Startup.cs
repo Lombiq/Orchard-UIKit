@@ -20,5 +20,8 @@ public sealed class Startup : StartupBase
 
         services.AddContentPart<ButtonWidget>()
             .WithMigration<ButtonWidgetMigrations>();
+
+        services.AddContentPart<SectionWidget>()
+            .WithMigration<SectionWidgetMigrations>();
     }
 }
