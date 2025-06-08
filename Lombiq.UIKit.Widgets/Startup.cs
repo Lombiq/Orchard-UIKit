@@ -1,3 +1,4 @@
+using Lombiq.HelpfulLibraries.OrchardCore.Contents;
 using Lombiq.UIKit.Widgets.Migrations;
 using Lombiq.UIKit.Widgets.Models;
 using Lombiq.UIKit.Widgets.Settings;
@@ -12,6 +13,8 @@ public sealed class Startup : StartupBase
 {
     public override void ConfigureServices(IServiceCollection services)
     {
+        services.AddScoped<ITaxonomyHelper, TaxonomyHelper>();
+
         services.AddContentPart<SlidePart>();
 
         services.AddContentPart<CarouselWidgetPart>()

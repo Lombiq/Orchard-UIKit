@@ -25,7 +25,7 @@ public class SectionWidgetMigrations : DataMigration
         await _contentDefinitionManager.AlterTypeDefinitionAsync(nameof(SectionWidget), builder => builder
             .Stereotype(CommonStereotypes.Widget)
             .WithPart<SectionWidget>()
-            .WithPart<HtmlTitlePart>(part => part.WithPosition("before"))
+            .WithPart<HtmlTitlePart>(part => part.WithPosition("0"))
             .WithPart<MarkdownBodyPart>()
             .WithPart<FlowPart>());
 

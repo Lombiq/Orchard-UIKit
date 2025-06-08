@@ -1,1 +1,8 @@
-<h1>@Html.Raw(HtmlTitlePart.CleanUpHtmlAsync($"{Model.Html}"))</h1>
+@using OrchardCore.DisplayManagement
+@{
+    var classesHtml = (Model as IShape)?.Classes is { Count: > 0 } classes
+        ? $"classes=\"{string.Join(' ', classes)}\""
+        : string.Empty;
+}
+
+<h1 @classesHtml>@Html.Raw(await HtmlTitlePart.CleanUpHtmlAsync($"{Model.Html}"))</h1>

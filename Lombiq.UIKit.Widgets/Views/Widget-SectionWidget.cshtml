@@ -1,0 +1,42 @@
+@using Lombiq.HelpfulLibraries.OrchardCore.Contents
+@using OrchardCore.DisplayManagement
+
+@inject ITaxonomyHelper TaxonomyHelper
+
+@{
+    if (Model.Content is not IShape content ||
+        Model.ContentItem is not ContentItem contentItem ||
+        contentItem.As<SectionWidget>() is not { } section)
+    {
+        return;
+    }
+
+    var childrenByType = content
+        .Items
+        .CastWhere<IShape>()
+        .ToDictionary(shape => shape.Metadata.Differentiator);
+
+    var classes = (await TaxonomyHelper
+        .GetTermsOfTaxonomyByIdAsync(section.Classes.TaxonomyContentItemId, section.Classes.TermContentItemIds))
+        .Select(term => term.DisplayText);
+}
+
+<div class="sectionWidget @string.Join(' ', classes)">
+    @if (childrenByType.TryGetValue("HtmlTitlePart-Title", out var title))
+    {
+        title.Classes.Add("html-title-part");
+        @await DisplayAsync(title)
+    }
+
+    @if (childrenByType.TryGetValue("MarkdownBodyPart", out var body))
+    {
+        <div class="markdown-body-part">
+            @await DisplayAsync(body)
+        </div>
+    }
+
+    @if (childrenByType.TryGetValue("FlowPart", out var flow))
+    {
+        @await DisplayAsync(flow)
+    }
+</div>
