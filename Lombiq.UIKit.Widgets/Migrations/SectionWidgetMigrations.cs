@@ -24,8 +24,8 @@ public class SectionWidgetMigrations : DataMigration
     {
         await _contentDefinitionManager.AlterTypeDefinitionAsync(nameof(SectionWidget), builder => builder
             .Stereotype(CommonStereotypes.Widget)
+            .WithPart<HtmlTitlePart>()
             .WithPart<SectionWidget>()
-            .WithPart<HtmlTitlePart>(part => part.WithPosition("0"))
             .WithPart<MarkdownBodyPart>()
             .WithPart<FlowPart>());
 
@@ -42,7 +42,7 @@ public class SectionWidgetMigrations : DataMigration
                 Open = true,
                 TaxonomyContentItemId = ContentItemIds.SectionClassesTaxonomy,
             }))
-            .WithField(part => part.ImagePosition, builder => builder
+            .WithField(part => part.ImagePositionName, builder => builder
                 .WithDisplayName("Image Position")
                 .WithEnumEditor<SectionWidget.SectionImagePosition>())
         );
