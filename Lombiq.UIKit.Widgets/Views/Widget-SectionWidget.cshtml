@@ -11,6 +11,8 @@
         return;
     }
 
+    var uniqueId = $"sectionWidget-{Guid.NewGuid():N}";
+
     var childrenByType = content
         .Items
         .CastWhere<IShape>()
@@ -21,18 +23,35 @@
         .Select(term => term.DisplayText);
 }
 
-<div class="sectionWidget @string.Join(' ', classes)">
-    @if (childrenByType.TryGetValue("HtmlTitlePart-Title", out var title))
+@if (section.ImagePosition == SectionWidget.SectionImagePosition.Behind &&
+     section.Images.Paths.FirstOrDefault() is { Length: > 0 } imagePath)
+{
+    <style>
+        @('#' + uniqueId) {
+            background-image: url('@Orchard.AssetUrl(imagePath)');
+        }
+    </style>
+}
+
+<div id="@uniqueId" class="sectionWidget @string.Join(' ', classes)">
+    @if (contentItem.As<HtmlTitlePart>() is { Title.Html: { Length: > 0 } title } )
     {
-        title.Classes.Add("html-title-part");
-        @await DisplayAsync(title)
+        @Html.Raw(await HtmlTitlePart.GetHtmlAsync(title, 2, "htmlTitlePart"))
     }
 
     @if (childrenByType.TryGetValue("MarkdownBodyPart", out var body))
     {
-        <div class="markdown-body-part">
+        <div class="markdownBodyPart">
             @await DisplayAsync(body)
         </div>
+    }
+
+    @if (section.ImagePosition != SectionWidget.SectionImagePosition.Behind &&
+        childrenByType.TryGetValue("SectionWidget-Images", out var images))
+    {
+    <div class="sectionImages">
+        @await DisplayAsync(images)
+    </div>
     }
 
     @if (childrenByType.TryGetValue("FlowPart", out var flow))
