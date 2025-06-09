@@ -18,4 +18,4 @@
     var href = button.Disabled.Value || string.IsNullOrWhiteSpace(button.Link.Url) ? "#" : Url.Content(button.Link.Url);
 }
 
-<a class="@button.GetClasses()" href="@href">@button.Link.Text?.Trim()</a>
+<a class="buttonWidget @button.GetClasses()" href="@href">@button.Link.Text?.Trim()</a>
