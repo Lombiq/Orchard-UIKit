@@ -35,13 +35,15 @@ public class SectionWidgetMigrations : DataMigration
                 Multiple = true,
                 AllowAnchors = true,
             }))
-            .WithField(part => part.Classes, part => part.WithSettings(new TaxonomyFieldSettings
-            {
-                Hint = "Additional HTML classes applied to the section, for styling.",
-                LeavesOnly = true,
-                Open = true,
-                TaxonomyContentItemId = ContentItemIds.SectionClassesTaxonomy,
-            }))
+            .WithField(part => part.Classes, part => part
+                .WithSettings(new TaxonomyFieldSettings
+                {
+                    Hint = "Additional HTML classes applied to the section, for styling.",
+                    LeavesOnly = true,
+                    Open = true,
+                    TaxonomyContentItemId = ContentItemIds.SectionClassesTaxonomy,
+                })
+                .WithEditor(ContentFieldEditorEnums.TaxonomyFieldEditors.Tags))
             .WithField(part => part.ImagePositionName, builder => builder
                 .WithDisplayName("Image Position")
                 .WithEnumEditor<SectionWidget.SectionImagePosition>())

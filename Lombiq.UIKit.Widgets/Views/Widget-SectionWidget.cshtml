@@ -1,5 +1,6 @@
 @using Lombiq.HelpfulLibraries.OrchardCore.Contents
 @using OrchardCore.DisplayManagement
+@using OrchardCore.Mvc.Utilities
 
 @inject ITaxonomyHelper TaxonomyHelper
 
@@ -33,7 +34,7 @@
     </style>
 }
 
-<div id="@uniqueId" class="sectionWidget @string.Join(' ', classes)">
+<section id="@uniqueId" class="sectionWidget @string.Join(' ', classes)">
     @if (contentItem.As<HtmlTitlePart>() is { Title.Html: { Length: > 0 } title } )
     {
         @Html.Raw(await HtmlTitlePart.GetHtmlAsync(title, 2, "htmlTitlePart"))
@@ -49,7 +50,7 @@
     @if (section.ImagePosition != SectionWidget.SectionImagePosition.Behind &&
         childrenByType.TryGetValue("SectionWidget-Images", out var images))
     {
-    <div class="sectionImages">
+    <div class="sectionImages @(section.ImagePosition.ToString().HtmlClassify())">
         @await DisplayAsync(images)
     </div>
     }
@@ -58,4 +59,4 @@
     {
         @await DisplayAsync(flow)
     }
-</div>
+</section>
