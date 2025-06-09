@@ -36,7 +36,7 @@
 
 @if (isImageBehind)
 {
-    <style>
+    <style at="Head">
         @('#' + uniqueId) {
             background-image: url('@Orchard.AssetUrl(section.Images.Paths[0])');
         }
