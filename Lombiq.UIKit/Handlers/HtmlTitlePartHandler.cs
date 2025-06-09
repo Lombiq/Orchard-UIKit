@@ -47,7 +47,7 @@ public class HtmlTitlePartHandler : ContentPartHandler<HtmlTitlePart>
                 });
         }
 
-        // This text can't be multiline, so we remove spaces more agressively.
+        // This text can't be multiline, so we remove spaces more aggressively.
         part.ContentItem.DisplayText = HtmlHelper.ConvertToPlainText(title).RegexReplace(@"\s+", " ");
         part.Apply();
     }
