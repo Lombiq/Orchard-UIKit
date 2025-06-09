@@ -1,6 +1,7 @@
 @using Lombiq.HelpfulLibraries.OrchardCore.Contents
 @using OrchardCore.DisplayManagement
 @using OrchardCore.Mvc.Utilities
+@using Position = Lombiq.UIKit.Widgets.Models.SectionWidget.SectionImagePosition
 
 @inject ITaxonomyHelper TaxonomyHelper
 
@@ -18,26 +19,48 @@
         .Items
         .CastWhere<IShape>()
         .ToDictionary(shape => shape.Metadata.Differentiator);
+    var classes = (await TaxonomyHelper.GetTermsOfTaxonomyFieldAsync(section.Classes))
+        .Select(term => term.DisplayText)
+        .ToList();
 
-    var classes = (await TaxonomyHelper
-        .GetTermsOfTaxonomyByIdAsync(section.Classes.TaxonomyContentItemId, section.Classes.TermContentItemIds))
-        .Select(term => term.DisplayText);
+    var imagePosition = section.ImagePosition;
+    var hasImages = !string.IsNullOrWhiteSpace(section.Images.Paths.FirstOrDefault());
+    var isImageBehind = hasImages && imagePosition == Position.Behind;
+    var images = hasImages && !isImageBehind ? childrenByType.GetMaybe("SectionWidget-Images") : null;
+    var imageClass = images is null ? null : imagePosition.ToString().HtmlClassify();
+    if (imageClass != null)
+    {
+        classes.Add("image-position-" + imageClass);
+    }
 }
 
-@if (section.ImagePosition == SectionWidget.SectionImagePosition.Behind &&
-     section.Images.Paths.FirstOrDefault() is { Length: > 0 } imagePath)
+@if (isImageBehind)
 {
     <style>
         @('#' + uniqueId) {
-            background-image: url('@Orchard.AssetUrl(imagePath)');
+            background-image: url('@Orchard.AssetUrl(section.Images.Paths[0])');
         }
     </style>
 }
 
 <section id="@uniqueId" class="sectionWidget @string.Join(' ', classes)">
-    @if (contentItem.As<HtmlTitlePart>() is { Title.Html: { Length: > 0 } title } )
+    @if (imagePosition == Position.Above && images != null)
+    {
+        <div class="sectionImages @imageClass">
+            @await DisplayAsync(images)
+        </div>
+    }
+
+    @if (contentItem.As<HtmlTitlePart>() is { Title.Html: { Length: > 0 } title })
     {
         @Html.Raw(await HtmlTitlePart.GetHtmlAsync(title, 2, "htmlTitlePart"))
+    }
+
+    @if (imagePosition == Position.Left && images != null)
+    {
+        <div class="sectionImages @imageClass">
+            @await DisplayAsync(images)
+        </div>
     }
 
     @if (childrenByType.TryGetValue("MarkdownBodyPart", out var body))
@@ -47,16 +70,23 @@
         </div>
     }
 
-    @if (section.ImagePosition != SectionWidget.SectionImagePosition.Behind &&
-        childrenByType.TryGetValue("SectionWidget-Images", out var images))
+    @if (imagePosition == Position.Right && images != null)
     {
-    <div class="sectionImages @(section.ImagePosition.ToString().HtmlClassify())">
-        @await DisplayAsync(images)
-    </div>
+        <div class="sectionImages @imageClass">
+            @await DisplayAsync(images)
+        </div>
     }
 
     @if (childrenByType.TryGetValue("FlowPart", out var flow))
     {
         @await DisplayAsync(flow)
+    }
+
+
+    @if (imagePosition == Position.Below && images != null)
+    {
+        <div class="sectionImages @imageClass">
+            @await DisplayAsync(images)
+        </div>
     }
 </section>
