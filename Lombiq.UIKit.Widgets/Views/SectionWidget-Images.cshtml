@@ -1,0 +1,43 @@
+@using OrchardCore.DisplayManagement
+@using OrchardCore.Mvc.Utilities
+@model OrchardCore.Media.ViewModels.DisplayMediaFieldViewModel
+
+@{
+    if (Model.Paths is not { Length: > 0 } paths) { return; }
+
+    var mediaTexts = (Model.Field?.MediaTexts ?? []);
+    var classes = new[]
+        {
+            "field",
+            "field-type-mediafield",
+            $"field-name-{Model.PartFieldDefinition.PartDefinition.Name}-{Model.PartFieldDefinition.Name}".HtmlClassify(),
+        }
+        .Concat((Model as IShape)?.Classes ?? []);
+}
+
+<div class="@string.Join(' ', classes)">
+    @foreach (var (path, alt) in paths.Zip(mediaTexts.TakeExactly(paths.Length)))
+    {
+        var imageUrl = Orchard.AssetUrl(path);
+        var linkUrl = imageUrl;
+        var altText = alt;
+        var target = string.Empty;
+
+        // If the media text contains text and URL separated by a pipe character, then it's a link image.
+        if (alt.Partition("|") is ({} text, "|", {} link) &&
+            (link.StartsWithOrdinal("https://") || Url.IsLocalUrl(link)))
+        {
+            altText = text;
+            linkUrl = Url.Content(link);
+
+            if (link.StartsWithOrdinal("https://"))
+            {
+                target = "target=\"_blank\"";
+            }
+        }
+
+        <a href="@linkUrl" @target>
+            <img src="@imageUrl" alt="@altText" />
+        </a>
+    }
+</div>
