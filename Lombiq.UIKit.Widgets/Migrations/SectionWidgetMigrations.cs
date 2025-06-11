@@ -7,7 +7,6 @@ using OrchardCore.ContentManagement.Metadata.Builders;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
 using OrchardCore.Flows.Models;
-using OrchardCore.Markdown.Models;
 using OrchardCore.Media.Settings;
 using OrchardCore.Taxonomies.Settings;
 
