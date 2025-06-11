@@ -26,7 +26,6 @@ public class SectionWidgetMigrations : DataMigration
             .Stereotype(CommonStereotypes.Widget)
             .WithPart<HtmlTitlePart>()
             .WithPart<SectionWidget>()
-            .WithPart<MarkdownBodyPart>()
             .WithPart<FlowPart>());
 
         await _contentDefinitionManager.AlterPartDefinitionAsync<SectionWidget>(builder => builder

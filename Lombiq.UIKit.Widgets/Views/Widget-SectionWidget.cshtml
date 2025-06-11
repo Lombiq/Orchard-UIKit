@@ -56,37 +56,8 @@
         @Html.Raw(await HtmlTitlePart.GetHtmlAsync(title, 2, "htmlTitlePart"))
     }
 
-    @if (imagePosition == Position.Left && images != null)
-    {
-        <div class="sectionImages @imageClass">
-            @await DisplayAsync(images)
-        </div>
-    }
-
-    @if (childrenByType.TryGetValue("MarkdownBodyPart", out var body))
-    {
-        <div class="markdownBodyPart">
-            @await DisplayAsync(body)
-        </div>
-    }
-
-    @if (imagePosition == Position.Right && images != null)
-    {
-        <div class="sectionImages @imageClass">
-            @await DisplayAsync(images)
-        </div>
-    }
-
     @if (childrenByType.TryGetValue("FlowPart", out var flow))
     {
         @await DisplayAsync(flow)
-    }
-
-
-    @if (imagePosition == Position.Below && images != null)
-    {
-        <div class="sectionImages @imageClass">
-            @await DisplayAsync(images)
-        </div>
     }
 </section>
