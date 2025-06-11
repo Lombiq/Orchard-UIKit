@@ -5,7 +5,22 @@
     "clean": "npm explore nodejs-extensions -- pnpm clean",
     "watch": "npm explore nodejs-extensions -- pnpm watch"
   },
+  "nodejsExtensions": {
+    "assetsToCopy": [
+      {
+        "sources": [
+          "Assets/Images"
+        ],
+        "target": "wwwroot/images"
+      },
+      {
+        "sources": [ "node_modules/slick-carousel/slick" ],
+        "target": "wwwroot/vendors/slick"
+      }
+    ]
+  },
   "dependencies": {
     "slick-carousel": "^1.8.1"
-  }
+  },
+  "packageManager": "pnpm@8.15.9+sha1.aa4bc353b5f59fe1f1df5d802ce049ddf7f3c60e"
 }
