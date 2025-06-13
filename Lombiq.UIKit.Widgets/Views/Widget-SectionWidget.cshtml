@@ -1,0 +1,63 @@
+@using Lombiq.HelpfulLibraries.OrchardCore.Contents
+@using OrchardCore.DisplayManagement
+@using OrchardCore.Mvc.Utilities
+@using Position = Lombiq.UIKit.Widgets.Models.SectionWidget.SectionImagePosition
+
+@inject ITaxonomyHelper TaxonomyHelper
+
+@{
+    if (Model.Content is not IShape content ||
+        Model.ContentItem is not ContentItem contentItem ||
+        contentItem.As<SectionWidget>() is not { } section)
+    {
+        return;
+    }
+
+    var uniqueId = $"sectionWidget-{Guid.NewGuid():N}";
+
+    var childrenByType = content
+        .Items
+        .CastWhere<IShape>()
+        .ToDictionary(shape => shape.Metadata.Differentiator);
+    var classes = (await TaxonomyHelper.GetTermsOfTaxonomyFieldAsync(section.Classes))
+        .Select(term => term.DisplayText)
+        .ToList();
+
+    var imagePosition = section.ImagePosition;
+    var hasImages = !string.IsNullOrWhiteSpace(section.Images.Paths.FirstOrDefault());
+    var isImageBehind = hasImages && imagePosition == Position.Behind;
+    var images = hasImages && !isImageBehind ? childrenByType.GetMaybe("SectionWidget-Images") : null;
+    var imageClass = images is null ? null : imagePosition.ToString().HtmlClassify();
+    if (imageClass != null)
+    {
+        classes.Add("image-position-" + imageClass);
+    }
+}
+
+@if (isImageBehind)
+{
+    <style at="Head">
+        @('#' + uniqueId) {
+            background-image: url('@Orchard.AssetUrl(section.Images.Paths[0])');
+        }
+    </style>
+}
+
+<section id="@uniqueId" class="sectionWidget @string.Join(' ', classes)">
+    @if (imagePosition == Position.Above && images != null)
+    {
+        <div class="sectionImages @imageClass">
+            @await DisplayAsync(images)
+        </div>
+    }
+
+    @if (contentItem.As<HtmlTitlePart>() is { Title.Html: { Length: > 0 } title })
+    {
+        @Html.Raw(await HtmlTitlePart.GetHtmlAsync(title, 2, "htmlTitlePart"))
+    }
+
+    @if (childrenByType.TryGetValue("FlowPart", out var flow))
+    {
+        @await DisplayAsync(flow)
+    }
+</section>

@@ -18,7 +18,11 @@ To see documentation on the Bootstrap controls, see [Docs/BootstrapControls.md](
 
 For your own styling you can override the default class stylings, or you can create a new class and add it to the shape block via the `BlockClassName` parameter.
 
-If it is needed to add an Id for the container block, then you can do that with the `BlockId` parameter.
+If it is needed to add an ID for the container block, then you can do that with the `BlockId` parameter.
+
+### Content Parts
+
+- HTML Title part: Similar to the stock Title part, but a HTML editor is used instead of a plain text editor. It updates the content item's display text with the provided HTML's inner text content as well.
 
 ## Lombiq UI Kit - Widgets
 

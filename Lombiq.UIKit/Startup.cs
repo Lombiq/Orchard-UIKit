@@ -1,7 +1,11 @@
+using Lombiq.UIKit.Handlers;
+using Lombiq.UIKit.Migrations;
+using Lombiq.UIKit.Models;
 using Lombiq.UIKit.Showcase.Services;
 using Lombiq.UIKit.TagHelpers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using OrchardCore.ContentManagement;
 using OrchardCore.Modules;
 using OrchardCore.Navigation;
 using OrchardCore.ResourceManagement;
@@ -14,6 +18,10 @@ public sealed class Startup : StartupBase
     {
         services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
         services.AddTagHelpers<BootstrapSplitButtonTagHelper>();
+
+        services.AddContentPart<HtmlTitlePart>()
+            .WithMigration<HtmlTitlePartMigrations>()
+            .AddHandler<HtmlTitlePartHandler>();
     }
 }
 

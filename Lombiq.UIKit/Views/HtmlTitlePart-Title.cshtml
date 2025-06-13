@@ -1,0 +1,7 @@
+@using OrchardCore.DisplayManagement
+
+@{
+    var classes = string.Join(' ', (Model as IShape)?.Classes ?? []);
+}
+
+@Html.Raw(await HtmlTitlePart.GetHtmlAsync($"{Model.Html}", headingLevel: 1, classes))

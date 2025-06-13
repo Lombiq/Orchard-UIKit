@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-  
+
   <PropertyGroup>
     <Title>Lombiq UI Kit - Widgets for Orchard Core</Title>
     <Authors>Lombiq Technologies</Authors>
@@ -37,11 +37,8 @@
     <PackageReference Include="OrchardCore.Media" Version="2.1.0" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
+  <ItemGroup>
       <ProjectReference Include="..\Lombiq.UIKit\Lombiq.UIKit.csproj" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-      <PackageReference Include="Lombiq.UIKit" Version="9.0.0" />
   </ItemGroup>
 
 </Project>

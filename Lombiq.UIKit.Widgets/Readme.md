@@ -32,6 +32,24 @@ To quickly see the carousel widget in action, go to `Configuration`->`Recipes` a
 
 Please note that, like mentioned above, the carousel widget doesn't have any styles so you might need to make some CSS adjustments (depending on the theme).
 
+### Button Widget
+
+This widget displays a link as a Bootstrap button. You can select the button type, size, if it's full or empty (outlined), or if it's disabled. This is especially useful in Flow parts.
+
+You can also use the `ButtonWidget` shape which can be directly configured, for example in Liquid:
+
+```liquid
+{% shape "ButtonWidget", Text: 'Contact Us', Url: '~/contact-us', TypeName: 'Secondary', SizeName: 'Small' %}
+```
+
+### Section Widget
+
+A self-contained, illustrated section for your page. Best used inside a Flow part. Can contain a title, images, Markdown body and an inner Flow part.
+
+The images can be placed in all directions of the content, or the first image can be used as a background. The latter is good for "hero" sections. Note that if the Image Position is set to "Behind", any images besides the first are ignored.
+
+The classes taxonomy can be used to add further styling instructions to the section from the admin UI. It uses the "tags" editor, so you can define additional classes on the fly. To use this, you have to create a Taxonomy content item and assign it to the Classes field. If you create the taxonomy from recipe, you can set its `ContentItemId` to `"sectionstylestaxonomy00000"`, or you can assign it in the Content Type Definitions admin UI as you would with any Taxonomy field.
+
 ## Contributing and support
 
 Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
