@@ -26,5 +26,8 @@ public sealed class Startup : StartupBase
 
         services.AddContentPart<SectionWidget>()
             .WithMigration<SectionWidgetMigrations>();
+
+        services.AddContentPart<ImageLinkWidget>()
+            .WithMigration<ImageLinkWidgetMigrations>();
     }
 }
