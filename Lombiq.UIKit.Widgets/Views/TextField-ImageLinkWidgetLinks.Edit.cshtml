@@ -1,0 +1,47 @@
+@using OrchardCore
+@using OrchardCore.ContentManagement.Metadata.Models
+@using OrchardCore.DisplayManagement.Notify
+@model OrchardCore.ContentFields.ViewModels.EditTextFieldViewModel
+
+@{
+    if (Model.Part is not ImageLinkWidget widget)
+    {
+        <shape type="Message"
+               prop-Type="@NotifyType.Error"
+               prop-Message="@T["This editor can only be used in the Image Link Widget!"]"></shape>
+        return;
+    }
+
+    var data = widget.GetItemData().ToList();
+}
+
+<shape type="Message"
+       prop-Type="@NotifyType.Error"
+       prop-Message="@T["This editor can only be used in the Image Link Widget!"]"></shape>
+
+<div class="@Orchard.GetFieldWrapperClasses(Model.PartFieldDefinition)" id="@Html.IdFor(x => x.Text)_FieldWrapper">
+    <label asp-for="Text" class="@Orchard.GetLabelClasses()">@Model.PartFieldDefinition.DisplayName()</label>
+    <div class="@Orchard.GetEndClasses()">
+        <input type="hidden" asp-for="Text" />
+
+        <ul class="imageLinkWidgetLinksEditor">
+            @foreach (var item in data)
+            {
+                <li>
+                    <input type="text" value="@item.Link"/>
+                </li>
+            }
+        </ul>
+
+        <span asp-validation-for="Text"></span>
+    </div>
+</div>
+
+<script asp-name="imageLinkWidgetLinksEditorScript" at="Foot">
+    document.querySelectorAll('.imageLinkWidgetLinksEditor').forEach((element) => {
+        const wrapper = element.closest(".content-part-wrapper-image-link-widget");
+        if (!wrapper) return;
+
+
+    })
+</script>

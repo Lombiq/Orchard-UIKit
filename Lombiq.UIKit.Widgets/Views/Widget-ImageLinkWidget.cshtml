@@ -1,0 +1,21 @@
+@{
+    if (Model.ContentItem is not ContentItem contentItem ||
+        contentItem.As<ImageLinkWidget>() is not { } widget ||
+        widget.Images?.Paths is not { Length: > 0 })
+    {
+        return;
+    }
+}
+
+<div class="imageLinkWidget">
+    @foreach (var (path, text, link, index) in widget.GetItemData())
+    {
+        var imageUrl = Orchard.AssetUrl(path);
+        var linkUrl = string.IsNullOrWhiteSpace(link) ? imageUrl : Url.Content(link);
+        var altText = string.IsNullOrWhiteSpace(text) ? T["Image #{0}", index + 1].Value : text.Trim();
+
+        <a href="@linkUrl" title="@altText">
+            <img src="@imageUrl" alt="@altText" />
+        </a>
+    }
+</div>
