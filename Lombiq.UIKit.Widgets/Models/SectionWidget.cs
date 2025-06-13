@@ -23,10 +23,7 @@ public class SectionWidget : ContentPart
 
     public enum SectionImagePosition
     {
-        Right,
-        Left,
         Above,
-        Below,
         Behind,
     }
 }

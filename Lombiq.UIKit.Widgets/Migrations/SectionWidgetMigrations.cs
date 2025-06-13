@@ -7,7 +7,6 @@ using OrchardCore.ContentManagement.Metadata.Builders;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
 using OrchardCore.Flows.Models;
-using OrchardCore.Markdown.Models;
 using OrchardCore.Media.Settings;
 using OrchardCore.Taxonomies.Settings;
 
@@ -26,7 +25,6 @@ public class SectionWidgetMigrations : DataMigration
             .Stereotype(CommonStereotypes.Widget)
             .WithPart<HtmlTitlePart>()
             .WithPart<SectionWidget>()
-            .WithPart<MarkdownBodyPart>()
             .WithPart<FlowPart>());
 
         await _contentDefinitionManager.AlterPartDefinitionAsync<SectionWidget>(builder => builder
