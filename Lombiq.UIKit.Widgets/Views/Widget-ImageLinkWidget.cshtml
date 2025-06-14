@@ -1,8 +1,9 @@
 @{
     var widget = (Model.ContentItem as ContentItem)?.As<ImageLinkWidget>() ?? new ImageLinkWidget();
+    var classes = string.Join(' ', (Model as IShape)?.Classes ?? []);
 }
 
-<div class="imageLinkWidget">
+<div class="imageLinkWidget @classes">
     @foreach (var (path, text, link) in widget.GetItemData())
     {
         var imageUrl = Orchard.AssetUrl(path);
