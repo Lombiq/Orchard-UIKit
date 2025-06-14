@@ -20,8 +20,15 @@ public class ImageLinkWidget : ContentPart
 
         for (var i = 0; i < length; i++)
         {
-            var text = mediaTexts[i];
-            if (string.IsNullOrWhiteSpace(text))
+            var text = mediaTexts[i]?.Trim();
+
+            if (text == "-")
+            {
+                text = string.Empty;
+                links[i] = "-";
+            }
+
+            if (string.IsNullOrEmpty(text))
             {
                 mediaTexts[i] = paths[i]
                     .Split('/')[^1]
@@ -29,11 +36,13 @@ public class ImageLinkWidget : ContentPart
             }
             else if (text.Partition("|") is ({ } left, not null, { } right))
             {
-                mediaTexts[i] = left;
-                links[i] = right.Trim();
+                mediaTexts[i] = left.TrimEnd();
+                links[i] = right.TrimStart();
             }
-
-            mediaTexts[i] = mediaTexts[i]!.Trim();
+            else
+            {
+                mediaTexts[i] = text;
+            }
         }
 
         return paths.Zip(mediaTexts, links);

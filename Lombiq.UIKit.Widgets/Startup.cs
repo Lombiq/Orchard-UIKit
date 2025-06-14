@@ -1,9 +1,11 @@
 using Lombiq.HelpfulLibraries.OrchardCore.Contents;
+using Lombiq.UIKit.Widgets.Drivers;
 using Lombiq.UIKit.Widgets.Migrations;
 using Lombiq.UIKit.Widgets.Models;
 using Lombiq.UIKit.Widgets.Settings;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.ContentManagement;
+using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.ContentTypes.Editors;
 using OrchardCore.Modules;
 
@@ -28,6 +30,7 @@ public sealed class Startup : StartupBase
             .WithMigration<SectionWidgetMigrations>();
 
         services.AddContentPart<ImageLinkWidget>()
-            .WithMigration<ImageLinkWidgetMigrations>();
+            .WithMigration<ImageLinkWidgetMigrations>()
+            .UseDisplayDriver<ImageLinkWidgetInfoDisplayDriver>();
     }
 }
