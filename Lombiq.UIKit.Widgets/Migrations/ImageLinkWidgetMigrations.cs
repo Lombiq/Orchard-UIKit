@@ -1,5 +1,4 @@
 using Lombiq.UIKit.Widgets.Models;
-using OrchardCore.ContentFields.Settings;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Builders;
 using OrchardCore.Media.Settings;
@@ -13,10 +12,5 @@ public class ImageLinkWidgetMigrations : WidgetMigrationBase<ImageLinkWidget>
     { }
 
     protected override void DefinePart(ContentPartDefinitionBuilder<ImageLinkWidget> builder) => builder
-        .WithField(part => part.Images, field => field.WithSettings(new MediaFieldSettings { Multiple = true }))
-        .WithField(part => part.Links, field => field.WithSettings(new TextFieldSettings
-        {
-            DefaultValue = "[]",
-            Required = true,
-        }));
+        .WithField(part => part.Images, field => field.WithSettings(new MediaFieldSettings { Multiple = true }));
 }

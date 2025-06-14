@@ -1,21 +1,22 @@
 @{
-    if (Model.ContentItem is not ContentItem contentItem ||
-        contentItem.As<ImageLinkWidget>() is not { } widget ||
-        widget.Images?.Paths is not { Length: > 0 })
-    {
-        return;
-    }
+    var widget = (Model.ContentItem as ContentItem)?.As<ImageLinkWidget>() ?? new ImageLinkWidget();
 }
 
 <div class="imageLinkWidget">
-    @foreach (var (path, text, link, index) in widget.GetItemData())
+    @foreach (var (path, text, link) in widget.GetItemData())
     {
         var imageUrl = Orchard.AssetUrl(path);
-        var linkUrl = string.IsNullOrWhiteSpace(link) ? imageUrl : Url.Content(link);
-        var altText = string.IsNullOrWhiteSpace(text) ? T["Image #{0}", index + 1].Value : text.Trim();
+        var linkUrl = string.IsNullOrEmpty(link) ? imageUrl : Url.Content(link);
 
-        <a href="@linkUrl" title="@altText">
-            <img src="@imageUrl" alt="@altText" />
-        </a>
+        if (link == "-")
+        {
+            <img src="@imageUrl" alt="@text" />
+        }
+        else
+        {
+            <a href="@linkUrl" title="@text">
+                <img src="@imageUrl" alt="@text" />
+            </a>
+        }
     }
 </div>
