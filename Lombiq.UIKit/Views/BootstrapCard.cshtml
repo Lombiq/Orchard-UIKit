@@ -28,7 +28,9 @@
 <div class="bootstrapCard card @string.Join(' ', classes)">
     @if (!imageBottom && !string.IsNullOrWhiteSpace(image))
     {
-        <img src="@Url.Content(image)" class="card-img-top" alt="@imageAlt">
+        <div class="bootstrapCardImage">
+            <img src="@Url.Content(image)" class="card-img-top" alt="@imageAlt">
+        </div>
     }
 
     @if (NotEmpty(Model.Header) is { } header)
@@ -92,6 +94,8 @@
 
     @if (imageBottom && !string.IsNullOrWhiteSpace(image))
     {
-        <img src="@Url.Content(image)" class="card-img-bottom " alt="@imageAlt">
+        <div class="bootstrapCardImage">
+            <img src="@Url.Content(image)" class="card-img-bottom " alt="@imageAlt">
+        </div>
     }
 </div>
