@@ -32,5 +32,8 @@ public sealed class Startup : StartupBase
         services.AddContentPart<ImageLinkWidget>()
             .WithMigration<ImageLinkWidgetMigrations>()
             .UseDisplayDriver<ImageLinkWidgetInfoDisplayDriver>();
+
+        services.AddContentPart<CardWidget>()
+            .WithMigration<CardWidgetMigrations>();
     }
 }
