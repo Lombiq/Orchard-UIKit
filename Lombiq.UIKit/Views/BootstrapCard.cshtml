@@ -1,0 +1,90 @@
+@using Microsoft.AspNetCore.Html
+@using OrchardCore.DisplayManagement
+@using System.Collections
+@using System.Runtime.CompilerServices
+
+@{
+    var image = (Model.Image as object)?.ToString();
+    var imageAlt = string.IsNullOrWhiteSpace($"{Model.Alt}")
+        ? image?.Split('/')[^1].Split('?')[0]
+        : Model.Alt;
+    var imageBottom = Model.ImageBottom == true ||
+        (bool.TryParse($"{Model.ImageBottom}", out var imageBottomBool) && imageBottomBool);
+
+    var classes =
+        (Model as IShape)?.Classes ??
+        (Model as IEnumerable)?.CastWhere<object>().SelectWhere(item => item.ToString()) ??
+        [];
+}
+
+@* Based on https://getbootstrap.com/docs/5.3/components/card/. *@
+<div class="bootstrapCard card @string.Join(' ', classes)">
+    @if (!imageBottom && !string.IsNullOrWhiteSpace(image))
+    {
+        <img src="@Url.Content(image)" class="card-img-top" alt="@imageAlt">
+    }
+
+    @if (Model.Header is { } header)
+    {
+        <div class="card-header">
+            @header
+        </div>
+    }
+
+    <div class="card-body">
+        @if (Model.Title is { } title)
+        {
+            <h5 class="card-title">@title</h5>
+        }
+
+        @if (Model.Subtitle is { } subtitle)
+        {
+            <h6 class="card-subtitle mb-2 text-body-secondary">@subtitle</h6>
+        }
+
+        @if (Model.Text is { } text)
+        {
+            <p class="card-text">@text</p>
+        }
+
+        @if (Model.Content is IHtmlContent content)
+        {
+            @content
+        }
+
+        @if (Model.Links is IEnumerable links)
+        {
+            foreach (var parts in links.CastWhere<ITuple>(link => link.Length > 1))
+            {
+                var linkUrl = parts[0]?.ToString() ?? string.Empty;
+                object linkText = parts[1];
+
+                <a href="@(string.IsNullOrWhiteSpace(linkUrl) ? "#" : Url.Content(linkUrl))" class="card-link">@linkText</a>
+            }
+        }
+    </div>
+
+    @if (Model.List is IEnumerable list)
+    {
+        <ul class="list-group list-group-flush">
+            @foreach (var item in list)
+            {
+                <li class="list-group-item">
+                    @item
+                </li>
+            }
+        </ul>
+    }
+
+    @if (Model.Footer is { } footer)
+    {
+        <div class="card-footer">
+            @footer
+        </div>
+    }
+
+    @if (imageBottom && !string.IsNullOrWhiteSpace(image))
+    {
+        <img src="@Url.Content(image)" class="card-img-bottom " alt="@imageAlt">
+    }
+</div>
