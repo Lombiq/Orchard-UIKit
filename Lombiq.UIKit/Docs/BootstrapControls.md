@@ -26,7 +26,7 @@ Displays a [card](https://getbootstrap.com/docs/5.3/components/card/). All prope
   - `Text`: Displays a line of text inside a `<p class="card-text">` element.
   - `Content`: Displays arbitrary content. The value property must implement the `IHtmlContent`. You can use Orchard Core's [`<add-property>` tag helper](https://docs.orchardcore.net/en/main/reference/modules/DisplayManagement/#adding-properties-with-additional-tag-helpers) to pass HTML.
   - `Links`: Displays links that can contain absolute URLs or relative content URLs. The value property must implement `IEnumerable` where each item must implement `ITuple` with 2 items, for example `IEnumerable<(string, LocalizedHtmlString)>`.
-- Others: 
+- Others:
   - `Header`: A header is a separate bordered area that can appear above the body, but below the top image cap.
   - `Footer`: A footer is a separate bordered area that can appear below the body and the list, but above the bottom image cap.
   - `List`: A list of bordered items displayed below the body, but above the footer and the bottom image cap. The value property must implement `IEnumerable`.
