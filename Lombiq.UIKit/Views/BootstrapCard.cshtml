@@ -1,4 +1,5 @@
 @using Microsoft.AspNetCore.Html
+@using Microsoft.AspNetCore.Mvc.Localization
 @using OrchardCore.DisplayManagement
 @using System.Collections
 @using System.Runtime.CompilerServices
@@ -15,6 +16,12 @@
         (Model as IShape)?.Classes ??
         (Model as IEnumerable)?.CastWhere<object>().SelectWhere(item => item.ToString()) ??
         [];
+
+    object NotEmpty(object item)
+    {
+        var text = item is IHtmlContent htmlContent ? htmlContent.Html() : item?.ToString();
+        return string.IsNullOrWhiteSpace(text) ? null : item;
+    }
 }
 
 @* Based on https://getbootstrap.com/docs/5.3/components/card/. *@
@@ -24,7 +31,7 @@
         <img src="@Url.Content(image)" class="card-img-top" alt="@imageAlt">
     }
 
-    @if (Model.Header is { } header)
+    @if (NotEmpty(Model.Header) is { } header)
     {
         <div class="card-header">
             @header
@@ -32,17 +39,17 @@
     }
 
     <div class="card-body">
-        @if (Model.Title is { } title)
+        @if (NotEmpty(Model.Title) is { } title)
         {
             <h5 class="card-title">@title</h5>
         }
 
-        @if (Model.Subtitle is { } subtitle)
+        @if (NotEmpty(Model.Subtitle) is { } subtitle)
         {
             <h6 class="card-subtitle mb-2 text-body-secondary">@subtitle</h6>
         }
 
-        @if (Model.Text is { } text)
+        @if (NotEmpty(Model.Text) is { } text)
         {
             <p class="card-text">@text</p>
         }
@@ -76,7 +83,7 @@
         </ul>
     }
 
-    @if (Model.Footer is { } footer)
+    @if (NotEmpty(Model.Footer) is { } footer)
     {
         <div class="card-footer">
             @footer
