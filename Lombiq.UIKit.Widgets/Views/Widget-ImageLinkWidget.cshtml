@@ -1,10 +1,19 @@
 @{
     var widget = (Model.ContentItem as ContentItem)?.As<ImageLinkWidget>() ?? new ImageLinkWidget();
-    var classes = string.Join(' ', (Model as IShape)?.Classes ?? []);
+    var images = widget.GetItemData().ToList();
+    var classes = new List<string>((Model as IShape)?.Classes ?? []);
+
+    const string className = "imageLinkWidget";
+    classes.Add(images.Count switch
+    {
+        0 => $"{className}_empty",
+        1 => $"{className}_single",
+        _ => $"{className}_multiple {className}_multiple_{images.Count}",
+    });
 }
 
-<div class="imageLinkWidget @classes">
-    @foreach (var (path, text, link) in widget.GetItemData())
+<div class="@className @string.Join(' ', classes)">
+    @foreach (var (path, text, link) in images)
     {
         var imageUrl = Orchard.AssetUrl(path);
         var linkUrl = string.IsNullOrEmpty(link) ? imageUrl : Url.Content(link);
