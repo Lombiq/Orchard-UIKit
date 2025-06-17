@@ -35,5 +35,8 @@ public sealed class Startup : StartupBase
 
         services.AddContentPart<CardWidget>()
             .WithMigration<CardWidgetMigrations>();
+
+        services.AddContentPart<RandomWidget>()
+            .WithMigration<RandomWidgetMigrations>();
     }
 }
