@@ -9,7 +9,6 @@ using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.ContentManagement.Display.Models;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Records;
-using OrchardCore.DisplayManagement;
 using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.DisplayManagement.Views;
 using YesSql;
@@ -40,8 +39,8 @@ public class RandomWidgetDisplayDriver : ContentPartDisplayDriver<RandomWidget>
         T = localizer;
     }
 
-    public override IDisplayResult Display(RandomWidget part, BuildPartDisplayContext context) =>
-        Initialize<RandomWidgetDisplayViewModel>(nameof(RandomWidget), async viewModel =>
+    public override IDisplayResult? Display(RandomWidget part, BuildPartDisplayContext context) =>
+        part.Count == 0 ? null : Initialize<RandomWidgetDisplayViewModel>(nameof(RandomWidget), async viewModel =>
         {
             // This randomization doesn't need to be cryptographically secure, so we can use this System.Random wrapper.
             // We use an arbitrary constant seed in case this is a UI test, to avoid repeatability issues.
@@ -52,20 +51,32 @@ public class RandomWidgetDisplayDriver : ContentPartDisplayDriver<RandomWidget>
                 index.Latest &&
                 index.Published &&
                 index.ContentType.IsIn(typeNames));
-            var randomIndex = randomizer.GetFromRange(await query.CountAsync());
-            var contentItems = await query.Skip(randomIndex - part.Count + 1).Take(part.Count).ListAsync();
-            var shapes = new List<IShape>(capacity: part.Count);
 
-            foreach (var item in contentItems)
+            // Take either some consecutive items from a random point or take the whole set.
+            IEnumerable<ContentItem> contentItems;
+            if (part.Count > 0)
             {
-                shapes.Add(await _contentItemDisplayManager.BuildDisplayAsync(
+                var randomIndex = randomizer.GetFromRange(await query.CountAsync());
+                contentItems = await query.Skip(randomIndex - part.Count + 1).Take(part.Count).ListAsync();
+            }
+            else
+            {
+                contentItems = await query.ListAsync();
+            }
+
+            // Then shuffle all items.
+            contentItems = contentItems
+                .Select(item => (Item: item, OrderBy: randomizer.Get()))
+                .OrderBy(pair => pair.OrderBy)
+                .ThenBy(pair => pair.Item.Id)
+                .Select(pair => pair.Item);
+
+            viewModel.Shapes = await contentItems.AwaitEachAsync(item =>
+                _contentItemDisplayManager.BuildDisplayAsync(
                     item,
                     context.Updater,
                     part.DisplayType ?? string.Empty,
                     part.GroupId ?? string.Empty));
-            }
-
-            viewModel.Shapes = shapes;
         })
         .PlaceInContent();
 
@@ -78,7 +89,7 @@ public class RandomWidgetDisplayDriver : ContentPartDisplayDriver<RandomWidget>
             viewModel.SelectedContentTypes = part.ContentTypes ?? [];
             viewModel.DisplayType = part.DisplayType;
             viewModel.GroupId = part.GroupId;
-            viewModel.Count = part.Count > 0 ? part.Count : 1;
+            viewModel.Count = part.Count == 0 ? 1 : part.Count;
         });
 
     public override async Task<IDisplayResult> UpdateAsync(RandomWidget part, UpdatePartEditorContext context)
@@ -93,13 +104,17 @@ public class RandomWidgetDisplayDriver : ContentPartDisplayDriver<RandomWidget>
                 ? (selected.AttemptedValue?.SplitByCommas() ?? [])
                 : [];
 
+        if (viewModel.Count < 0) viewModel.Count = -1;
+
         part.ContentTypes = viewModel.SelectedContentTypes;
         part.DisplayType = viewModel.DisplayType;
         part.GroupId = viewModel.GroupId;
         part.Count = viewModel.Count;
 
-        if (!part.ContentTypes.Any()) context.AddModelError(nameof(viewModel.Count), T["Please select at least 1 content type."]);
-        if (part.Count < 1) context.AddModelError(nameof(viewModel.Count), T["The count must be at least 1."]);
+        if (!part.ContentTypes.Any())
+        {
+            context.AddModelError(nameof(viewModel.Count), T["Please select at least 1 content type."]);
+        }
 
         return await EditAsync(part, context);
     }
