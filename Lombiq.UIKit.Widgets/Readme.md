@@ -34,13 +34,24 @@ Please note that, like mentioned above, the carousel widget doesn't have any sty
 
 ### Button Widget
 
-This widget displays a link as a Bootstrap button. You can select the button type, size, if it's full or empty (outlined), or if it's disabled. This is especially useful in Flow parts.
+This widget displays a link as a Bootstrap [button](https://getbootstrap.com/docs/5.3/components/buttons/). You can select the button type, size, if it's full or empty (outlined), or if it's disabled. This is especially useful in Flow parts.
 
 You can also use the `ButtonWidget` shape which can be directly configured, for example in Liquid:
 
 ```liquid
 {% shape "ButtonWidget", Text: 'Contact Us', Url: '~/contact-us', TypeName: 'Secondary', SizeName: 'Small' %}
 ```
+
+### Card Widget
+
+Displays a Bootstrap [card](https://getbootstrap.com/docs/5.3/components/card/) with a media field for the cap image and several flow parts for the header, body and footer areas.
+
+> [!NOTE]  
+> You can also use this card in other templates, with the related [`BootstrapCard` shape](../Lombiq.UIKit/Docs/BootstrapControls.md#bootstrapcard) in _Lombiq,UIKit_. It has even more customization options too.
+
+### Image Link Widget
+
+This widget simply contains a media field, but on display each image is also a link. By default, clicking on the image just opens it, which can be used as a gallery element. But if you customize the item's media text, you can use the `{actual media text}|{absolute or relative URL}` format. For example, use the media text `Site Logo|~/` to create an image link that sends you to the home page.
 
 ### Section Widget
 
@@ -49,6 +60,12 @@ A self-contained, illustrated section for your page. Best used inside a Flow par
 The images can be placed in all directions of the content, or the first image can be used as a background. The latter is good for "hero" sections. Note that if the Image Position is set to "Behind", any images besides the first are ignored.
 
 The classes taxonomy can be used to add further styling instructions to the section from the admin UI. It uses the "tags" editor, so you can define additional classes on the fly. To use this, you have to create a Taxonomy content item and assign it to the Classes field. If you create the taxonomy from recipe, you can set its `ContentItemId` to `"sectionstylestaxonomy00000"`, or you can assign it in the Content Type Definitions admin UI as you would with any Taxonomy field.
+
+### Random Widget
+
+Lets you select one or more content types, then it will pick a random published content item from those types to display. You can specify the count to show several consecutive items from a random starting point, or even to retrieve all content items and then shuffle them into a random order.
+
+You can also specify the display type and group ID, for additional customization.
 
 ## Contributing and support
 
