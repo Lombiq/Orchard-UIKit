@@ -30,6 +30,12 @@
         hint="@T["Content item display types, like {0} or {1}.", CommonContentDisplayTypes.Summary, CommonContentDisplayTypes.Detail]"
         HintPosition="AfterInput" />
 
+<editor Type="Textbox"
+        for="@Model.GroupId"
+        label="@T["Group ID"]"
+        hint="@T["The group ID used when displaying the content item."]"
+        HintPosition="AfterInput" />
+
 <editor Type="Number"
         for="@Model.Count"
         label="@T["Count"]"

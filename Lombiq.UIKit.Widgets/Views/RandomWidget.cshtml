@@ -1,0 +1,6 @@
+@model RandomWidgetDisplayViewModel
+
+@foreach (var shape in Model.Shapes)
+{
+    @await DisplayAsync(shape)
+}
