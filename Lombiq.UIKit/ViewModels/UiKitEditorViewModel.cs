@@ -101,7 +101,7 @@ public class UiKitEditorViewModel : ShapeViewModel
         var bootstrapClass = Type == EditorTypes.Checkbox ? "form-check-input" : "form-control";
         var inputClasses = new[] { InputClasses, bootstrapClass }.Concat(additionalClasses);
 
-        return Type == EditorTypes.Checkbox
+        var tagBuilder = Type == EditorTypes.Checkbox
             ? htmlGenerator.GenerateCheckBox(
                 ViewContext,
                 For.ModelExplorer,
@@ -115,6 +115,13 @@ public class UiKitEditorViewModel : ShapeViewModel
                 For.Model,
                 string.Empty,
                 inputAttributes.WithClasses(inputClasses));
+
+        if (Type == EditorTypes.Number)
+        {
+            tagBuilder.Attributes["type"] = "number";
+        }
+
+        return tagBuilder;
     }
 
     public TagBuilder GenerateHintBefore() => GenerateHint(HintPosition.BeforeInput);
@@ -141,6 +148,7 @@ public class UiKitEditorViewModel : ShapeViewModel
             EditorTypes.Textbox => TextboxBlockName,
             EditorTypes.Checkbox => CheckboxBlockName,
             EditorTypes.Dropdown => DropdownBlockName,
+            EditorTypes.Number => "numberEditor",
             _ => throw new ArgumentOutOfRangeException($"Unknown editor type \"{Type}\"."),
         };
 
