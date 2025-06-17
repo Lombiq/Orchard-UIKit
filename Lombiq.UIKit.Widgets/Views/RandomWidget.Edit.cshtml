@@ -1,0 +1,37 @@
+@model RandomWidgetEditorViewModel
+
+@using Lombiq.HelpfulLibraries.OrchardCore.Contents
+
+@{
+    var selected = Model.SelectedContentTypes.AsList();
+}
+
+<div class="mb-3">
+    <div>@T["Content Types"]</div>
+
+    @foreach (var type in Model.AvailableContentTypes.OrderBy(type => type))
+    {
+        var id = $"randomWidget_{type}_{Guid.NewGuid():N}";
+        var name = Html.NameFor(model => model.SelectedContentTypes);
+        var isChecked = selected.Contains(type);
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="@name" value="@type" id="@id" checked="@isChecked">
+            <label class="form-check-label" for="@id">@type</label>
+        </div>
+    }
+
+    <div class="hint">@T["Choose one or more content types. The displayed items will be picked from them."]</div>
+</div>
+
+<editor Type="Textbox"
+        for="@Model.DisplayType"
+        label="@T["Display Type"]"
+        hint="@T["Content item display types, like {0} or {1}.", CommonContentDisplayTypes.Summary, CommonContentDisplayTypes.Detail]"
+        HintPosition="AfterInput" />
+
+<editor Type="Number"
+        for="@Model.Count"
+        label="@T["Count"]"
+        hint="@T["The number of items to display."]"
+        HintPosition="AfterInput" />
