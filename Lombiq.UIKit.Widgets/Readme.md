@@ -8,7 +8,13 @@ This module contains widgets that are based on the reusable shapes from [Lombiq 
 
 Available widgets:
 
+- [Button Widget](#button-widget)
+- [Card Widget](#card-widget)
 - [Carousel Widget](#carousel-widget)
+- [Carousel Bag Widget](#carousel-bag-widget)
+- [Image Link Widget](#image-link-widget)
+- [Random Widget](#random-widget)
+- [Section Widget](#section-widget)
 
 Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
@@ -31,6 +37,15 @@ To configure the global settings (for all carousels widgets) go to `Content`->`C
 To quickly see the carousel widget in action, go to `Configuration`->`Recipes` and find `Lombiq UI Kit - Widgets - Sample Content - Carousel Widget` recipe. This recipe will add a new page called `Carousel Widget Example` which will contain the carousel widget.
 
 Please note that, like mentioned above, the carousel widget doesn't have any styles so you might need to make some CSS adjustments (depending on the theme).
+
+### Carousel Bag Widget
+
+Similar to the above _Carousel Widget_, but it has a Bag Part that can contain any widget type instead of the specific Slide content type. Use this, if you want a carousel that contains complex HTML.
+
+Besides the Bag Part, it has two additional text fields to configure the individual widget:
+
+- **Slide Element Selector**: Specify a CSS selector that's used to find the individual slides in the carousel. The default value will turn each widget inside the Bag Part. You can customize it if you use another widget to fetch or generate the content. For example, using the _Random Widget_ you can set this value to `.randomWidgetItem` - a class that's automatically added to any item returned by the Random Widget.
+- **Additional Settings JSON**: This JSON object is merged into the Slick settings object before the carousel is created. You can learn more about configuring Slick [here](https://kenwheeler.github.io/slick/#settings).
 
 ### Button Widget
 

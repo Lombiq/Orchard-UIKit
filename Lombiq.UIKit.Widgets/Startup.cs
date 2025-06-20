@@ -22,6 +22,7 @@ public sealed class Startup : StartupBase
         services.AddContentPart<CarouselWidgetPart>()
             .WithMigration<CarouselWidgetMigrations>();
         services.AddScoped<IContentTypePartDefinitionDisplayDriver, CarouselWidgetPartSettingsDisplayDriver>();
+        services.AddContentPart<CarouselBagWidget>();
 
         services.AddContentPart<ButtonWidget>()
             .WithMigration<ButtonWidgetMigrations>();
