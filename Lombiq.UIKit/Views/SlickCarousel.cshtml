@@ -1,27 +1,42 @@
-@using OrchardCore.ContentManagement.Display
-@using OrchardCore.DisplayManagement.ModelBinding
-@using OrchardCore.ResourceManagement.TagHelpers
+@using Lombiq.HelpfulLibraries.Common.Utilities
 @using Microsoft.Extensions.Configuration
-@using OrchardCore.ContentManagement
+@using OrchardCore.DisplayManagement
+@using System.Collections
+@using System.Text.Json.Nodes
 
-@inject IContentItemDisplayManager ContentItemDisplayManager
-@inject IUpdateModelAccessor UpdateModelAccessor
 @inject IConfiguration Configuration
 
 <style asp-name="@ResourceNames.SlickTheme"></style>
 <script asp-name="@ResourceNames.Slick" at="Foot"></script>
 
 @{
-    var shapes = Model.Shapes as IEnumerable<dynamic>;
-    if (shapes?.Any() != true) { return; }
+    if ((Model.Shapes as IEnumerable)?.CastWhere<IShape>().ToList() is not { Count: > 0 } shapes)
+    {
+        return;
+    }
 
     var carouselId = $"carousel-{Guid.NewGuid():N}";
-    var additionalClasses = Model.AdditionalClasses?.ToString() ?? string.Empty;
+    var additionalClasses = $"{string.Join(' ', (Model as IShape)?.Classes ?? [])} {Model.AdditionalClasses}"
+        .Split()
+        .WhereNot(string.IsNullOrEmpty);
 
-    var mergeSettings = Model.MergeSettings as string;
+    var mergeSettings =
+        Model.MergeSettings is string { Length: > 0 } settingsJson &&
+        JsonHelpers.TryParse(settingsJson, out var parsedJson) &&
+        parsedJson is JsonObject parsedJsonObject
+            ? parsedJsonObject
+            : new JsonObject();
+
+    // Disable autoplay during UI testing to prevent flakiness.
+    if (Configuration.IsUITesting())
+    {
+        mergeSettings["autoplay"] = false;
+    }
 }
 
-<div id="@carouselId" class="slickCarousel @additionalClasses">
+<div id="@carouselId"
+     class="slickCarousel @string.Join(' ', additionalClasses)"
+     data-merge-settings="@mergeSettings.ToJsonString()">
     <div class="slickCarousel__carousel">
         @foreach (var shape in shapes)
         {
@@ -33,32 +48,32 @@
     <div class="slickCarousel__arrows"></div>
 </div>
 
-<script at="Foot">
+<script asp-name="SlickCarousel" at="Foot">
     jQuery(function ($) {
-        const $carouselContainer = $("#@carouselId");
-        const $carousel = $carouselContainer.find(".slickCarousel__carousel");
-        const $carouselArrows = $carouselContainer.find(".slickCarousel__arrows");
+        document.querySelectorAll('.slickCarousel').forEach(function (element) {
+            const $carouselContainer = $(element);
+            const $carousel = $carouselContainer.find(".slickCarousel__carousel");
+            const $carouselArrows = $carouselContainer.find(".slickCarousel__arrows");
 
-        $carousel.on("init", () => {
-            // Carousel initializes elements with empty id attributes, which triggers HTML validation errors.
-            // See: https://github.com/kenwheeler/slick/issues/4296
-            $carousel.find("[id]").filter((_, element) => element.id === "").removeAttr("id");
+            $carousel.on("init", () => {
+                // Carousel initializes elements with empty id attributes, which triggers HTML validation errors.
+                // See: https://github.com/kenwheeler/slick/issues/4296
+                $carousel.find("[id]").filter((_, element) => element.id === "").removeAttr("id");
+            });
+
+            let carouselSettings = {
+                autoplay: true,
+                mobileFirst: true,
+                appendArrows: $carouselArrows
+            };
+
+            const mergeSettingsJson = element.getAttribute('data-merge-settings');
+            if (mergeSettingsJson && mergeSettingsJson[0] === '{') {
+                const mergeSettings = JSON.parse(mergeSettingsJson);
+                carouselSettings = $.extend(true, carouselSettings, mergeSettings);
+            }
+
+            $carousel.slick(carouselSettings);
         });
-
-        let carouselSettings = {
-            @* Disable autoplay during UI testing to prevent flakiness. *@
-            autoplay: @(Configuration.IsUITesting() ? "false" : "true"),
-            mobileFirst: true,
-            appendArrows: $carouselArrows
-        };
-
-        @if (!string.IsNullOrEmpty(mergeSettings))
-        {
-            <text>
-                carouselSettings = $.extend(true, carouselSettings, @Html.Raw(mergeSettings));
-            </text>
-        }
-
-        $carousel.slick(carouselSettings);
     });
 </script>
