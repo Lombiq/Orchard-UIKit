@@ -22,6 +22,21 @@ jQuery(function ($) {
             carouselSettings = $.extend(true, carouselSettings, mergeSettings);
         }
 
+        // Apply the slide selector destructively, to avoid problems from the slide elements being on different
+        // levels.
+        if (carouselSettings.slide?.trim())
+        {
+            const $items = $carousel.find('.slickCarousel__item');
+            const $slides = $items.find(carouselSettings.slide);
+
+            if ($slides.length) {
+                $carousel.append($slides.addClass('slickCarousel__item'));
+                $items.remove();
+            }
+
+            carouselSettings.slide = '';
+        }
+
         $carousel.slick(carouselSettings);
     });
 });
