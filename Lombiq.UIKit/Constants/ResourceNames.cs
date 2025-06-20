@@ -4,6 +4,7 @@ public static class ResourceNames
 {
     public const string LombiqDropdownScript = nameof(LombiqDropdownScript);
     public const string LombiqTextBoxScript = nameof(LombiqTextBoxScript);
+    public const string LombiqSlickCarousel = nameof(LombiqSlickCarousel);
 
     public const string LombiqShowcaseStyle = nameof(LombiqShowcaseStyle);
     public const string LombiqUiKitEditorStyle = nameof(LombiqUiKitEditorStyle);
