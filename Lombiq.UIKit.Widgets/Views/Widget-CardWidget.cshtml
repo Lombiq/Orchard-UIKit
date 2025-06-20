@@ -6,11 +6,7 @@
         return;
     }
 
-    var childrenByType = content
-        .Items
-        .CastWhere<IShape>()
-        .ToDictionary(shape => shape.Metadata.Differentiator);
-
+    var childrenByType = content.GetChildrenByDifferentiator();
     var image = widget.Image.Paths.Length > 0 ? Orchard.AssetUrl(widget.Image.Paths[0]) : null;
 }
 

@@ -13,11 +13,7 @@
     }
 
     var uniqueId = $"sectionWidget-{Guid.NewGuid():N}";
-
-    var childrenByType = content
-        .Items
-        .CastWhere<IShape>()
-        .ToDictionary(shape => shape.Metadata.Differentiator);
+    var childrenByType = content.GetChildrenByDifferentiator();
     var classes = (await TaxonomyHelper.GetTermsOfTaxonomyFieldAsync(section.Classes))
         .Select(term => term.DisplayText)
         .Concat((Model as IShape)?.Classes ?? [])

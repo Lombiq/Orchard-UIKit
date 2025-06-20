@@ -6,6 +6,10 @@ namespace OrchardCore.ContentManagement.Display;
 
 public static class ContentItemDisplayManagerExtensions
 {
+    /// <summary>
+    /// Render each <see cref="ContentItem"/> in a <paramref name="bagViewModel"/> into <see cref="IShape"/> using the
+    /// information in the view-model.
+    /// </summary>
     public static async Task<IList<IShape>> DisplayBagPartContentItemsAsync(
         this IContentItemDisplayManager manager,
         BagPartViewModel? bagViewModel)

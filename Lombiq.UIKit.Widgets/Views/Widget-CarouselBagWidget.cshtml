@@ -15,11 +15,6 @@
         return;
     }
 
-    var childrenByType = content
-        .Items
-        .CastWhere<IShape>()
-        .ToDictionary(shape => shape.Metadata.Differentiator);
-
     var settings =
         !string.IsNullOrWhiteSpace(part.AdditionalSettings.Text) &&
         JsonHelpers.TryParse(part.AdditionalSettings.Text, out var settingsJson) &&
@@ -29,6 +24,7 @@
 
     settings["slide"] = part.SlideSelector.Text ?? string.Empty;
 
+    var childrenByType = content.GetChildrenByDifferentiator();
     var bagViewModel = childrenByType.GetMaybe(nameof(BagPart)) as BagPartViewModel;
     var bagShapes = await ContentItemDisplayManager.DisplayBagPartContentItemsAsync(bagViewModel);
 
