@@ -8,6 +8,7 @@ This module contains widgets that are based on the reusable shapes from [Lombiq 
 
 Available widgets:
 
+- [Add Metadata Widget](#add-metadata-widget)
 - [Button Widget](#button-widget)
 - [Card Widget](#card-widget)
 - [Carousel Widget](#carousel-widget)
@@ -23,6 +24,15 @@ Do you want to quickly try out this project and see it in action? Check it out i
 Add this project to your solution. Then go to Admin panel and enable `Lombiq.UIKit.Widgets` by going to `Configuration` -> `Features`.
 
 Once it's enabled you can use all widgets from this module just like any other widget.
+
+### Add Metadata Widget
+
+Serves a similar role as the [`<metadata>`](https://docs.orchardcore.net/en/main/reference/modules/DisplayManagement/#manipulating-shape-metadata) tag helper for Razor, but for amending metadata inside a Flow part. It contains a Bag part for the target widgets to be altered, and the following fields:
+
+- **Alternate**: If not empty, a new [alternate](https://docs.orchardcore.net/en/main/reference/glossary/#alternate) for the shape.
+- **Classes**: A whitespace separated list of HTML classes. These are added to the `IShape.Classes` list of the shapes created from the content items in the Bag part. 
+- **DisplayType**: Sets the display type used to render the shapes in the Bag part.
+- **Wrapper**:  If not empty, adds the specified wrapper shape around the shapes in the Bag part.
 
 ### Carousel Widget
 
