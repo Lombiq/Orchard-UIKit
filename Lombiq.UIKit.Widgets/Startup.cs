@@ -40,5 +40,8 @@ public sealed class Startup : StartupBase
         services.AddContentPart<RandomWidget>()
             .WithMigration<RandomWidgetMigrations>()
             .UseDisplayDriver<RandomWidgetDisplayDriver>();
+
+        services.AddContentPart<AddMetadataWidget>()
+            .WithMigration<AddMetadataMigrations>();
     }
 }
