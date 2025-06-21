@@ -14,7 +14,7 @@
 
     var widgetClass = "widget-" + nameof(AddMetadataWidget).HtmlClassify();
     var inheritedClasses = (Model.Classes as IEnumerable<string> ?? [])
-        .Where(item => item is not "widget" and not "widget-add-metadata-widget");
+        .Where(item => item is not ("widget" or "widget-add-metadata-widget"));
     widget.Classes.Text = $"widget {widgetClass} {string.Join(' ', inheritedClasses)} {widget.Classes.Text}";
 
     bagPartViewModel.Settings = new()
