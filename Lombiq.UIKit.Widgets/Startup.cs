@@ -4,6 +4,7 @@ using Lombiq.UIKit.Widgets.Migrations;
 using Lombiq.UIKit.Widgets.Models;
 using Lombiq.UIKit.Widgets.Settings;
 using Microsoft.Extensions.DependencyInjection;
+using OrchardCore.ContentFields.Fields;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.ContentTypes.Editors;
@@ -23,6 +24,7 @@ public sealed class Startup : StartupBase
             .WithMigration<CarouselWidgetMigrations>();
         services.AddScoped<IContentTypePartDefinitionDisplayDriver, CarouselWidgetPartSettingsDisplayDriver>();
         services.AddContentPart<CarouselBagWidget>();
+        services.AddContentField<TextField>().ForEditor<CarouselBagWidgetJsonValidationDisplayDriver>();
 
         services.AddContentPart<ButtonWidget>()
             .WithMigration<ButtonWidgetMigrations>();
