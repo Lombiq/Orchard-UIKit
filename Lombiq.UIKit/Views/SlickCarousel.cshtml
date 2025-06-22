@@ -28,7 +28,7 @@
             ? parsedJsonObject
             : new JsonObject();
 
-    // Disable autoplay during UI testing to prevent flakiness.
+    // Always disable autoplay during UI testing to prevent flakiness.
     if (Configuration.IsUITesting())
     {
         mergeSettings["autoplay"] = false;
