@@ -30,9 +30,9 @@ Once it's enabled you can use all widgets from this module just like any other w
 Serves a similar role as the [`<metadata>`](https://docs.orchardcore.net/en/main/reference/modules/DisplayManagement/#manipulating-shape-metadata) tag helper for Razor, but for amending metadata inside a Flow part. It contains a Bag part for the target widgets to be altered, and the following fields:
 
 - **Alternate**: If not empty, a new [alternate](https://docs.orchardcore.net/en/main/reference/glossary/#alternate) for the shape.
-- **Classes**: A whitespace separated list of HTML classes. These are added to the `IShape.Classes` list of the shapes created from the content items in the Bag part. 
+- **Classes**: A whitespace separated list of HTML classes. These are added to the `IShape.Classes` list of the shapes created from the content items in the Bag part.
 - **DisplayType**: Sets the display type used to render the shapes in the Bag part.
-- **Wrapper**:  If not empty, adds the specified wrapper shape around the shapes in the Bag part.
+- **Wrapper**: If not empty, adds the specified wrapper shape around the shapes in the Bag part.
 
 ### Carousel Widget
 
@@ -71,7 +71,7 @@ You can also use the `ButtonWidget` shape which can be directly configured, for 
 
 Displays a Bootstrap [card](https://getbootstrap.com/docs/5.3/components/card/) with a media field for the cap image and several flow parts for the header, body and footer areas.
 
-> [!NOTE]  
+> [!NOTE]
 > You can also use this card in other templates, with the related [`BootstrapCard` shape](../Lombiq.UIKit/Docs/BootstrapControls.md#bootstrapcard) in _Lombiq,UIKit_. It has even more customization options too.
 
 ### Image Link Widget
