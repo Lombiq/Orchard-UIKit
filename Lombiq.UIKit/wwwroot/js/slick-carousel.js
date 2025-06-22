@@ -1,19 +1,19 @@
-jQuery(function ($) {
-    document.querySelectorAll('.slickCarousel').forEach(function (element) {
+jQuery(($) => {
+    document.querySelectorAll('.slickCarousel').forEach((element) => {
         const $carouselContainer = $(element);
-        const $carousel = $carouselContainer.find(".slickCarousel__carousel");
-        const $carouselArrows = $carouselContainer.find(".slickCarousel__arrows");
+        const $carousel = $carouselContainer.find('.slickCarousel__carousel');
+        const $carouselArrows = $carouselContainer.find('.slickCarousel__arrows');
 
-        $carousel.on("init", () => {
+        $carousel.on('init', () => {
             // Carousel initializes elements with empty id attributes, which triggers HTML validation errors.
             // See: https://github.com/kenwheeler/slick/issues/4296
-            $carousel.find("[id]").filter((_, element) => element.id === "").removeAttr("id");
+            $carousel.find('[id=""]').removeAttr('id');
         });
 
         let carouselSettings = {
             autoplay: true,
             mobileFirst: true,
-            appendArrows: $carouselArrows
+            appendArrows: $carouselArrows,
         };
 
         const mergeSettingsJson = element.getAttribute('data-merge-settings');
@@ -24,8 +24,7 @@ jQuery(function ($) {
 
         // Apply the slide selector destructively, to avoid problems from the slide elements being on different
         // levels.
-        if (carouselSettings.slide?.trim())
-        {
+        if (carouselSettings.slide?.trim()) {
             const $items = $carousel.find('.slickCarousel__item');
             const $slides = $items.find(carouselSettings.slide);
 
