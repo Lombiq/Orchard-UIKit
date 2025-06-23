@@ -33,8 +33,8 @@
     }
 }
 
-<section class="sectionWidget @string.Join(' ', (Model as IShape)?.Classes ?? [])">
+<div class="carouselBagWidget @string.Join(' ', (Model as IShape)?.Classes ?? [])">
     <shape type="SlickCarousel"
            prop-MergeSettings="@settings.ToJsonString()"
            prop-Shapes="@bagShapes"></shape>
-</section>
+</div>
