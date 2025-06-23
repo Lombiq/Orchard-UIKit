@@ -29,7 +29,8 @@
             : new JsonObject();
 
     // Always disable autoplay during UI testing to prevent flakiness.
-    if (Configuration.IsUITesting())
+    var isUiTesting = Configuration.IsUITesting();
+    if (isUiTesting)
     {
         mergeSettings["autoplay"] = false;
     }
@@ -38,6 +39,14 @@
 <div id="@carouselId"
      class="slickCarousel @string.Join(' ', additionalClasses)"
      data-merge-settings="@mergeSettings.ToJsonString()">
+
+    @if (isUiTesting)
+    {
+        // Slick initiates elements with empty attributes (see https://github.com/kenwheeler/slick/issues/4296) and
+        // even though we remove them in Slick's "init" event, sometimes that happens after HTML validation so we have
+        // to disable these rules anyway.
+        <!-- [html-validate-disable attribute-allowed-values, valid-id] -->
+    }
     <div class="slickCarousel__carousel">
         @foreach (var shape in shapes)
         {
@@ -46,5 +55,10 @@
             </div>
         }
     </div>
+    @if (isUiTesting)
+    {
+        <!-- [html-validate-enable attribute-allowed-values, valid-id] -->
+    }
+
     <div class="slickCarousel__arrows"></div>
 </div>
