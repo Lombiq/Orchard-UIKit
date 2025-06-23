@@ -7,7 +7,7 @@ jQuery(($) => {
         $carousel.on('init', () => {
             // Carousel initializes elements with empty id attributes, which triggers HTML validation errors.
             // See: https://github.com/kenwheeler/slick/issues/4296
-            $carousel.find('[id=""]').removeAttr('id');
+            $('.slickCarousel__item[id=""]').removeAttr('id');
         });
 
         let carouselSettings = {
