@@ -1,0 +1,52 @@
+@{
+    if (Model.Content is not IShape content ||
+        Model.ContentItem is not ContentItem contentItem ||
+        contentItem.As<CardWidget>() is not { } widget)
+    {
+        return;
+    }
+
+    var childrenByType = content
+        .Items
+        .CastWhere<IShape>()
+        .ToDictionary(shape => shape.Metadata.Differentiator);
+
+    var image = widget.Image.Paths.Length > 0 ? Orchard.AssetUrl(widget.Image.Paths[0]) : null;
+}
+
+<shape type="BootstrapCard"
+       prop-Image="@image"
+       prop-ImageBottom="@widget.ImageBottom.Value"
+       prop-Alt="@widget.Image.MediaTexts.FirstOrDefault()"
+       prop-Title="@contentItem.As<HtmlTitlePart>()?.Title?.Html">
+    <metadata>
+        <add-property name="Header">
+            @if (childrenByType.TryGetValue("Header", out var flow))
+            {
+                @await DisplayAsync(flow)
+            }
+        </add-property>
+
+        <add-property name="Content">
+            @if (childrenByType.TryGetValue("Content", out var flow))
+            {
+                @await DisplayAsync(flow)
+            }
+        </add-property>
+
+        <add-property name="Footer">
+            @if (childrenByType.TryGetValue("Footer", out var flow))
+            {
+                @await DisplayAsync(flow)
+            }
+        </add-property>
+
+        @if ((Model as IShape)?.Classes is { Count: > 0 } classes)
+        {
+            foreach (var className in classes)
+            {
+                <add-class name="@className"/>
+            }
+        }
+    </metadata>
+</shape>

@@ -28,11 +28,7 @@ public class SectionWidgetMigrations : DataMigration
             .WithPart<FlowPart>());
 
         await _contentDefinitionManager.AlterPartDefinitionAsync<SectionWidget>(builder => builder
-            .WithField(part => part.Images, part => part.WithSettings(new MediaFieldSettings
-            {
-                Multiple = true,
-                AllowAnchors = true,
-            }))
+            .WithField(part => part.Images, part => part.WithSettings(new MediaFieldSettings { Multiple = true }))
             .WithField(part => part.Classes, part => part
                 .WithSettings(new TaxonomyFieldSettings
                 {

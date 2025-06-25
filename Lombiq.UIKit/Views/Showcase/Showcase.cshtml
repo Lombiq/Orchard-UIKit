@@ -1,3 +1,4 @@
+@using Microsoft.AspNetCore.Html
 @model ShowcaseViewModel
 
 @{
@@ -256,6 +257,86 @@
                                 button-classes="bootstrapSplitButtonSample__mainButton"
                                 toggle-classes="bootstrapSplitButtonSample__toggleButton"
                                 dropdown-classes="bootstrapSplitButtonSample__dropdown" />
+
+        <h2>@T["Card"]</h2>
+
+        @{
+            // This array has mixed type contents
+            var links = new object[] { ("~/", T["Home"]), ("https://orchardcore.net/", "Orchard Core") };
+            var list = new object[] { "Raw Text", new HtmlString("<a href=\"https://lombiq.com/\">Html Content</a>") };
+        }
+
+        @* Normally the card takes up all horizontal space, but you can use Bootstrap's grid markup to manage the layout
+           (see https://getbootstrap.com/docs/5.3/components/card/#using-grid-markup). *@
+        <div class="row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <shape type="BootstrapCard"
+                       Image="~/Lombiq.UIKit/lombiq-logo-small.svg"
+                       prop-Alt="@T["Top Image"]"
+                       prop-Title="@T["Hello World!"]"
+                       prop-Subtitle="@T["Do you like this card?"]"
+                       prop-Text="@T["An example line of text"]"
+                       prop-Links="@links"
+                       prop-List="@list">
+                    <metadata>
+                        <add-property name="Content">
+                            <h6>@T["Some complicated HTML"]</h6>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididut
+                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ull
+                                amco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+                        </add-property>
+                        <add-property name="Footer">
+                            <h6>@T["Excerpt from the English OC Documentation."]</h6>
+                            <blockquote>
+                                Properties can be passed to a shape by adding attributes to the shape tag helper. But
+                                you can also use the <code>&lt;add-property&gt;</code> tag helper inside the
+                                <code>&lt;shape&gt;</code>. This even lets you pass Razor code as properties with the
+                                <code>IHtmlContent</code> value, if you omit the `value` attribute. Something that can't
+                                be easily done otherwise.
+                            </blockquote>
+                        </add-property>
+                    </metadata>
+                </shape>
+            </div>
+
+            <div class="col-sm-6">
+                @* This instance has the image below due to the prop-ImageBottom="true" property. *@
+                <shape type="BootstrapCard"
+                       prop-ImageBottom="true"
+                       Image="~/Lombiq.UIKit/lombiq-logo-small.svg"
+                       prop-Alt="@T["Bottom Image"]"
+                       prop-Title="@T["Hello World!"]"
+                       prop-Subtitle="@T["Do you like this card?"]"
+                       prop-Text="@T["An example line of text"]"
+                       prop-Links="@links"
+                       prop-List="@list">
+                    <metadata>
+                        <add-property name="Content">
+                            <h6>@T["Some complicated HTML"]</h6>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididut
+                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ull
+                                amco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+                        </add-property>
+                        <add-property name="Footer">
+                            <h6>@T["Excerpt from the English OC Documentation."]</h6>
+                            <blockquote>
+                                Properties can be passed to a shape by adding attributes to the shape tag helper. But
+                                you can also use the <code>&lt;add-property&gt;</code> tag helper inside the
+                                <code>&lt;shape&gt;</code>. This even lets you pass Razor code as properties with the
+                                <code>IHtmlContent</code> value, if you omit the `value` attribute. Something that can't
+                                be easily done otherwise.
+                            </blockquote>
+                        </add-property>
+                        @* You can add Bootstrap utiltiy classes or any other class to aid in styling. *@
+                        <add-class name="text-center"/>
+                    </metadata>
+                </shape>
+            </div>
+        </div>
 
     </div>
     <div class="showcaseContainer__item">

@@ -1,5 +1,4 @@
 @using Lombiq.HelpfulLibraries.OrchardCore.Contents
-@using OrchardCore.DisplayManagement
 @using OrchardCore.Mvc.Utilities
 @using Position = Lombiq.UIKit.Widgets.Models.SectionWidget.SectionImagePosition
 
@@ -21,6 +20,7 @@
         .ToDictionary(shape => shape.Metadata.Differentiator);
     var classes = (await TaxonomyHelper.GetTermsOfTaxonomyFieldAsync(section.Classes))
         .Select(term => term.DisplayText)
+        .Concat((Model as IShape)?.Classes ?? [])
         .ToList();
 
     var imagePosition = section.ImagePosition;

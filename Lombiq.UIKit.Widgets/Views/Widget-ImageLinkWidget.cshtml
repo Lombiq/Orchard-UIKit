@@ -1,0 +1,32 @@
+@{
+    var widget = (Model.ContentItem as ContentItem)?.As<ImageLinkWidget>() ?? new ImageLinkWidget();
+    var images = widget.GetItemData().ToList();
+    var classes = new List<string>((Model as IShape)?.Classes ?? []);
+
+    const string className = "imageLinkWidget";
+    classes.Add(images.Count switch
+    {
+        0 => $"{className}_empty",
+        1 => $"{className}_single",
+        _ => $"{className}_multiple {className}_multiple_{images.Count}",
+    });
+}
+
+<div class="@className @string.Join(' ', classes)">
+    @foreach (var (path, text, link) in images)
+    {
+        var imageUrl = Orchard.AssetUrl(path);
+        var linkUrl = string.IsNullOrEmpty(link) ? imageUrl : Url.Content(link);
+
+        if (link == "-")
+        {
+            <img src="@imageUrl" alt="@text" />
+        }
+        else
+        {
+            <a href="@linkUrl" title="@text" target="_blank">
+                <img src="@imageUrl" alt="@text" />
+            </a>
+        }
+    }
+</div>
