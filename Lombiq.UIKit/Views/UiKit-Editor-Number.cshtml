@@ -1,0 +1,26 @@
+@using static Lombiq.UIKit.Constants.Classes
+
+@inject IHtmlGenerator HtmlGenerator
+
+@{
+    var viewModel = (UiKitEditorViewModel)Model.ViewModel;
+    var input = viewModel.GenerateInput(HtmlGenerator, TextboxInputClass, viewModel.InputClasses);
+}
+
+<style asp-name="@ResourceNames.LombiqUiKitEditorStyle"></style>
+
+<div id="@viewModel.GetBlockIdWithFallback()"
+     class="@UiKitEditorBlockName numberEditor @viewModel.BlockClassName mb-3">
+    @if (viewModel.LabelPosition == LabelPosition.Top)
+    {
+        @viewModel.GenerateLabel(HtmlGenerator)
+    }
+
+    @viewModel.GenerateHintBefore()
+
+    <div class="input-group">
+        @input
+    </div>
+
+    @viewModel.GenerateHintAfter()
+</div>

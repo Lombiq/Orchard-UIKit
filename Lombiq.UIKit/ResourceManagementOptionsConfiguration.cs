@@ -15,6 +15,7 @@ public class ResourceManagementOptionsConfiguration : ResourceManagementOptionsC
 
         context.DefineScript(LombiqDropdownScript, "dropdown-editor.js");
         context.DefineScript(LombiqTextBoxScript, "textbox-editor.js");
+        context.DefineScript(LombiqSlickCarousel, "slick-carousel.js", Slick);
 
         context.DefineStyle(LombiqUiKitEditorStyle, "ui-kit-editor.css");
         context.DefineStyle(LombiqShowcaseStyle, "showcase.css");

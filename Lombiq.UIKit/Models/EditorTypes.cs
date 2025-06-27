@@ -5,4 +5,5 @@ public enum EditorTypes
     Textbox,
     Checkbox,
     Dropdown,
+    Number,
 }
