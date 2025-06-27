@@ -1,0 +1,40 @@
+@using Lombiq.HelpfulLibraries.Common.Utilities
+@using OrchardCore.ContentManagement.Display
+@using OrchardCore.Flows.Models
+@using OrchardCore.Flows.ViewModels
+@using System.Text.Json.Nodes
+
+@inject IContentItemDisplayManager ContentItemDisplayManager
+
+@{
+    if (Model.Content is not IShape content ||
+        Model.ContentItem is not ContentItem contentItem ||
+        contentItem.As<CarouselBagWidget>() is not { } part)
+    {
+        return;
+    }
+
+    var settings =
+        !string.IsNullOrWhiteSpace(part.AdditionalSettings.Text) &&
+        JsonHelpers.TryParse(part.AdditionalSettings.Text, out var settingsJson) &&
+        settingsJson is JsonObject settingsJsonObject
+            ? settingsJsonObject
+            : new JsonObject();
+
+    settings["slide"] = part.SlideSelector.Text ?? string.Empty;
+
+    var childrenByType = content.GetChildrenByDifferentiator();
+    var bagViewModel = childrenByType.GetMaybe(nameof(BagPart)) as BagPartViewModel;
+    var bagShapes = await ContentItemDisplayManager.DisplayBagPartContentItemsAsync(bagViewModel);
+
+    foreach (var bagShape in bagShapes)
+    {
+        bagShape.Classes.Add("slickCarousel__bagItem");
+    }
+}
+
+<div class="carouselBagWidget @string.Join(' ', (Model as IShape)?.Classes ?? [])">
+    <shape type="SlickCarousel"
+           prop-MergeSettings="@settings.ToJsonString()"
+           prop-Shapes="@bagShapes"></shape>
+</div>
