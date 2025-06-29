@@ -1,13 +1,12 @@
 jQuery(($) => {
     document.querySelectorAll('.slickCarousel').forEach((containerElement) => {
         const carousel = containerElement.querySelector('.slickCarousel__carousel');
-
         const findItems = () => Array.from(carousel.querySelectorAll('.slickCarousel__item'));
 
         let carouselSettings = {
             autoplay: true,
             mobileFirst: true,
-            appendArrows: '.slickCarousel__arrows',
+            appendArrows: '#' + containerElement.id + ' .slickCarousel__arrows',
         };
 
         const mergeSettingsJson = containerElement.getAttribute('data-merge-settings');
