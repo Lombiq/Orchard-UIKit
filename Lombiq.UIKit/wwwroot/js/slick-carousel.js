@@ -6,7 +6,7 @@ jQuery(($) => {
         let carouselSettings = {
             autoplay: true,
             mobileFirst: true,
-            appendArrows: '#' + containerElement.id + ' .slickCarousel__arrows',
+            appendArrows: containerElement.querySelector('.slickCarousel__arrows'),
         };
 
         const mergeSettingsJson = containerElement.getAttribute('data-merge-settings');
