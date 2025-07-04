@@ -30,12 +30,6 @@ jQuery(($) => {
             carouselSettings.slide = '';
         }
 
-        $(carousel)
-            .on('init', () => {
-                // Carousel initializes elements with empty id attributes, which triggers HTML validation errors.
-                // See: https://github.com/kenwheeler/slick/issues/4296
-                carousel.querySelectorAll('[id=""]').forEach((element) => element.removeAttribute('id'));
-            })
-            .slick(carouselSettings);
+        $(carousel).slick(carouselSettings);
     });
 });
