@@ -25,7 +25,7 @@ public class CardWidgetMigrations : WidgetMigrationBase<CardWidget>
                 Hint = "Check if the cap image should be at the bottom instead of the top.",
             }));
 
-    protected async override Task<int> AdditionalCreateAsync()
+    protected override async Task<int> AdditionalCreateAsync()
     {
         await _contentDefinitionManager.AlterPartDefinitionAsync(nameof(FlowPart), part => part.Reusable());
 

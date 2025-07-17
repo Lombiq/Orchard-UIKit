@@ -25,7 +25,7 @@ public class AddMetadataWidgetMigrations : WidgetMigrationBase<AddMetadataWidget
             }))
         .WithField(part => part.Wrapper);
 
-    protected async override Task<int> AdditionalCreateAsync()
+    protected override async Task<int> AdditionalCreateAsync()
     {
         await _contentDefinitionManager.AlterTypeDefinitionAsync(nameof(AddMetadataWidget), builder => builder
             .WithPart<BagPart>(part => part.WithSettings(new BagPartSettings
