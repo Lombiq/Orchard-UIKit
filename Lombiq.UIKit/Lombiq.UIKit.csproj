@@ -47,7 +47,7 @@
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
     <PackageReference Include="Lombiq.HelpfulLibraries.OrchardCore" Version="12.3.0" />
     <PackageReference Include="Lombiq.Npm.Targets" Version="1.5.0" />
-    <PackageReference Include="Lombiq.Tests.UI.AppExtensions" Version="13.1.0" />
+    <PackageReference Include="Lombiq.Tests.UI.AppExtensions" Version="14.0.0" />
   </ItemGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Utilities\Lombiq.Npm.Targets\Lombiq.Npm.Targets.targets" />
