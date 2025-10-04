@@ -23,7 +23,7 @@ public static class ContentItemDisplayManagerExtensions
     public static async Task<IList<IShape>> DisplayBagPartContentItemsAsync(
         this IContentItemDisplayManager manager,
         BagPartViewModel? bagViewModel,
-        string itemDisplayType)
+        string? itemDisplayType)
     {
         if (bagViewModel == null) return [];
 
@@ -31,6 +31,7 @@ public static class ContentItemDisplayManagerExtensions
         var results = new List<IShape>(capacity: items.Count);
         var context = bagViewModel.BuildPartDisplayContext;
 
+        itemDisplayType ??= string.Empty;
         var displayType = itemDisplayType.OrIfEmpty(
             bagViewModel.Settings.DisplayType?.Trim(),
             CommonContentDisplayTypes.Summary);
