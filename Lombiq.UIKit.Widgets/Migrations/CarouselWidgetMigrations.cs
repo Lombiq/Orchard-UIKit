@@ -65,6 +65,12 @@ public class CarouselWidgetMigrations : DataMigration
                     Required = true,
                 })
                 .WithDisplayName("Additional Settings JSON"))
+            .WithField(part => part.SlideDisplayType, field => field
+                .WithSettings(new TextFieldSettings
+                {
+                    Hint = "The display type of the individual slides. If none are specified, Summary is the default.",
+                })
+                .WithDisplayName("Slide Display Type"))
         );
 
         await _contentDefinitionManager.AlterTypeDefinitionAsync(nameof(CarouselBagWidget), type => type
@@ -75,7 +81,7 @@ public class CarouselWidgetMigrations : DataMigration
             }))
             .Stereotype(CommonStereotypes.Widget));
 
-        return 2;
+        return 3;
     }
 
     public async Task<int> UpdateFrom1Async()
@@ -109,5 +115,18 @@ public class CarouselWidgetMigrations : DataMigration
             .Stereotype(CommonStereotypes.Widget));
 
         return 2;
+    }
+
+    public async Task<int> UpdateFrom2Async()
+    {
+        await _contentDefinitionManager.AlterPartDefinitionAsync<CarouselBagWidget>(builder => builder
+            .WithField(part => part.SlideDisplayType, field => field
+                .WithSettings(new TextFieldSettings
+                {
+                    Hint = "The display type of the individual slides. If none are specified, Summary is the default.",
+                })
+                .WithDisplayName("Slide Display Type")));
+
+        return 3;
     }
 }
