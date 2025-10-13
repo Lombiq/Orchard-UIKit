@@ -60,6 +60,10 @@
         {
             @content
         }
+        else if (Model.Content is { } rawContent)
+        {
+            @Html.Raw(rawContent.ToString())
+        }
 
         @if (Model.Links is IEnumerable links)
         {
