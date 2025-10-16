@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   slick-carousel:
-    specifier: github:kenwheeler/slick#0bce01e901628d038b3a5f6d0947e14fb0ae6016
-    version: github.com/kenwheeler/slick/0bce01e901628d038b3a5f6d0947e14fb0ae6016(jquery@3.7.1)
+    specifier: github:kenwheeler/slick#a619bf4c24ec1816459ffd6e598c0f338d378bde
+    version: github.com/kenwheeler/slick/a619bf4c24ec1816459ffd6e598c0f338d378bde(jquery@3.7.1)
 
 packages:
 
@@ -15,9 +15,9 @@ packages:
     resolution: {integrity: sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==}
     dev: false
 
-  github.com/kenwheeler/slick/0bce01e901628d038b3a5f6d0947e14fb0ae6016(jquery@3.7.1):
-    resolution: {tarball: https://codeload.github.com/kenwheeler/slick/tar.gz/0bce01e901628d038b3a5f6d0947e14fb0ae6016}
-    id: github.com/kenwheeler/slick/0bce01e901628d038b3a5f6d0947e14fb0ae6016
+  github.com/kenwheeler/slick/a619bf4c24ec1816459ffd6e598c0f338d378bde(jquery@3.7.1):
+    resolution: {tarball: https://codeload.github.com/kenwheeler/slick/tar.gz/a619bf4c24ec1816459ffd6e598c0f338d378bde}
+    id: github.com/kenwheeler/slick/a619bf4c24ec1816459ffd6e598c0f338d378bde
     name: slick-carousel
     version: 1.8.1
     peerDependencies:
