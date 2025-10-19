@@ -8,5 +8,5 @@
   "dependencies": {
     "slick-carousel": "github:kenwheeler/slick#a619bf4c24ec1816459ffd6e598c0f338d378bde"
   },
-  "packageManager": "pnpm@8.15.9"
+  "packageManager": "pnpm@10.18.3"
 }
