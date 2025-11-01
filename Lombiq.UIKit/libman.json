@@ -3,9 +3,9 @@
   "defaultProvider": "jsdelivr",
   "libraries": [
     {
-      "library": "slick-carousel@github:kenwheeler/slick#b987f6526674b5b9c1360315edd99d9acad74bd4",
-      "destination": "wwwroot/vendors/vue",
-      "files": [ "dist/vue.esm-browser.prod.js", "dist/vue.esm-browser.js" ]
+      "library": "kenwheeler/slick@b987f6526674b5b9c1360315edd99d9acad74bd4",
+      "destination": "wwwroot/vendors/slick-carousel",
+      "files": [ "slick/slick.min.js", "slick/slick.css", "slick/slick-theme.css" ]
     }
   ]
 }
