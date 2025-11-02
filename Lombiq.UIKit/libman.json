@@ -4,7 +4,7 @@
   "libraries": [
     {
       "library": "kenwheeler/slick@b987f65",
-      "destination": "wwwroot/vendors/slick-carousel",
+      "destination": "wwwroot/vendors",
       "files": [ "slick/slick.min.js", "slick/slick.css", "slick/slick-theme.css" ]
     }
   ]
