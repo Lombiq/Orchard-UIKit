@@ -1,19 +1,17 @@
-using Lombiq.HelpfulLibraries.Attributes;
 using Lombiq.HelpfulLibraries.OrchardCore.ResourceManagement;
 using static Lombiq.UIKit.Constants.ResourceNames;
 
 namespace Lombiq.UIKit;
 
-[LibManVersions]
-public partial class ResourceManagementOptionsConfiguration : ResourceManagementOptionsConfiguratorBase
+public class ResourceManagementOptionsConfiguration : ResourceManagementOptionsConfiguratorBase
 {
     protected override string Area => FeatureIds.Base;
 
     protected override void Configure(ResourceManagementContext context)
     {
-        context.DefineVendorScript(Slick, "slick/slick.min.js", "jQuery").SetVersion(LibManVersions.KenwheelerSlick);
-        context.DefineVendorStyle(Slick, "slick/slick.css").SetVersion(LibManVersions.KenwheelerSlick);
-        context.DefineVendorStyle(SlickTheme, "slick/slick-theme.css", Slick).SetVersion(LibManVersions.KenwheelerSlick);
+        context.DefineVendorScript(Slick, "slick/slick.min.js", "jQuery");
+        context.DefineVendorStyle(Slick, "slick/slick.css");
+        context.DefineVendorStyle(SlickTheme, "slick/slick-theme.css", Slick);
 
         context.DefineScript(LombiqDropdownScript, "dropdown-editor.js");
         context.DefineScript(LombiqTextBoxScript, "textbox-editor.js");
