@@ -7,15 +7,13 @@ namespace Lombiq.UIKit;
 [LibManVersions]
 public partial class ResourceManagementOptionsConfiguration : ResourceManagementOptionsConfiguratorBase
 {
-    private const string Version = LibMan_kenwheeler_slick;
-
     protected override string Area => FeatureIds.Base;
 
     protected override void Configure(ResourceManagementContext context)
     {
-        context.DefineVendorScript(Slick, "slick/slick.min.js", "jQuery").SetVersion(Version);
-        context.DefineVendorStyle(Slick, "slick/slick.css").SetVersion(Version);
-        context.DefineVendorStyle(SlickTheme, "slick/slick-theme.css", Slick).SetVersion(Version);
+        context.DefineVendorScript(Slick, "slick/slick.min.js", "jQuery").SetVersion(LibManVersions.KenwheelerSlick);
+        context.DefineVendorStyle(Slick, "slick/slick.css").SetVersion(LibManVersions.KenwheelerSlick);
+        context.DefineVendorStyle(SlickTheme, "slick/slick-theme.css", Slick).SetVersion(LibManVersions.KenwheelerSlick);
 
         context.DefineScript(LombiqDropdownScript, "dropdown-editor.js");
         context.DefineScript(LombiqTextBoxScript, "textbox-editor.js");
