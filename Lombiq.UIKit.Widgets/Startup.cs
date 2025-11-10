@@ -47,6 +47,6 @@ public sealed class Startup : StartupBase
             .WithMigration<AddMetadataWidgetMigrations>();
 
         services.AddContentPart<QueryContentItemsWidget>()
-            .WithMigration<QueryContentItemWidgetMigrations>();
+            .WithMigration<QueryContentItemsWidgetMigrations>();
     }
 }

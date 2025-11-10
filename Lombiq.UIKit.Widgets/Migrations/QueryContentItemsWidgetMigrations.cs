@@ -8,21 +8,23 @@ using OrchardCore.Data.Migration;
 
 namespace Lombiq.UIKit.Widgets.Migrations;
 
-public class QueryContentItemWidgetMigrations : DataMigration
+public class QueryContentItemsWidgetMigrations : DataMigration
 {
     private readonly IContentDefinitionManager _contentDefinitionManager;
 
-    public QueryContentItemWidgetMigrations(IContentDefinitionManager contentDefinitionManager) =>
+    public QueryContentItemsWidgetMigrations(IContentDefinitionManager contentDefinitionManager) =>
         _contentDefinitionManager = contentDefinitionManager;
 
     public async Task<int> CreateAsync()
     {
         await _contentDefinitionManager.AlterTypeDefinitionAsync(nameof(QueryContentItemsWidget), builder => builder
-            .Stereotype(CommonStereotypes.Widget));
+            .Stereotype(CommonStereotypes.Widget)
+            .WithPart<QueryContentItemsWidget>());
 
         await _contentDefinitionManager.AlterPartDefinitionAsync<QueryContentItemsWidget>(builder => builder
             .WithField(part => part.QueryName, part => part
                 .WithDisplayName("Query Name")
+                .WithEditor("ContentItemQueryNamesDropdown")
                 .WithSettings(new TextFieldSettings
                 {
                     Hint = "The technical name of the query from Admin > Search > All queries.",

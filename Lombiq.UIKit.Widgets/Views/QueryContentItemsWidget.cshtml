@@ -32,6 +32,6 @@
 
 @foreach (var item in items)
 {
-    var shape = ContentItemDisplayManager.BuildDisplayAsync(item, UpdateModelAccessor.ModelUpdater, displayType);
+    var shape = await ContentItemDisplayManager.BuildDisplayAsync(item, UpdateModelAccessor.ModelUpdater, displayType);
     @await DisplayAsync(shape);
 }
