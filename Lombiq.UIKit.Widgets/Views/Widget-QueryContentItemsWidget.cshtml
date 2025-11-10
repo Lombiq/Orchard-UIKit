@@ -1,0 +1,11 @@
+@using Lombiq.HelpfulLibraries.OrchardCore.Contents
+@{
+    if ((Model?.ContentItem as ContentItem)?.As<QueryContentItemsWidget>() is not { } part)
+    {
+        return;
+    }
+}
+
+<shape type="QueryContentItemsWidget"
+       prop-DefaultDisplayType="@CommonContentDisplayTypes.Detail"
+       prop-Part="@part"></shape>

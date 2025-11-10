@@ -1,0 +1,37 @@
+@using Lombiq.HelpfulLibraries.Common.Utilities
+@using OrchardCore.ContentManagement.Display
+@using OrchardCore.DisplayManagement.ModelBinding
+
+@inject IContentItemDisplayManager ContentItemDisplayManager
+@inject IUpdateModelAccessor UpdateModelAccessor
+
+@{
+    if (Model.Part is not QueryContentItemsWidget part) { return; }
+
+    var defaultDisplayType = (string)Model.DefaultDisplayType;
+    var displayType = string.IsNullOrWhiteSpace(part.DisplayType.Text) ? defaultDisplayType : part.DisplayType.Text;
+    var parameters = new Dictionary<string, object>
+    {
+        ["sortColumn"] = part.SortColumn.Text,
+        ["order"] = part.Order.Text,
+        ["limit"] = part.Limit.Value?.ToTechnicalString() ?? "10",
+    };
+
+    var items = (await Orchard.QueryAsync(part.QueryName.Text, parameters)).CastWhere<ContentItem>();
+
+    if (part.ShuffleResults.Value)
+    {
+        var random = new NonSecurityRandomizer();
+        items = items
+            .Select(item => (Order: random.Get(), Item: item))
+            .OrderBy(pair => pair.Order)
+            .Select(pair => pair.Item);
+    }
+
+}
+
+@foreach (var item in items)
+{
+    var shape = ContentItemDisplayManager.BuildDisplayAsync(item, UpdateModelAccessor.ModelUpdater, displayType);
+    @await DisplayAsync(shape);
+}
