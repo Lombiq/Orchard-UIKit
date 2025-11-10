@@ -14,6 +14,7 @@ Available widgets:
 - [Carousel Widget](#carousel-widget)
 - [Carousel Bag Widget](#carousel-bag-widget)
 - [Image Link Widget](#image-link-widget)
+- [Query Content Items Widget](#query-content-items-widget)
 - [Random Widget](#random-widget)
 - [Section Widget](#section-widget)
 
@@ -77,6 +78,14 @@ Displays a Bootstrap [card](https://getbootstrap.com/docs/5.3/components/card/) 
 ### Image Link Widget
 
 This widget simply contains a media field, but on display each image is also a link. By default, clicking on the image just opens it, which can be used as a gallery element. But if you customize the item's media text, you can use the `{actual media text}|{absolute or relative URL}` format. For example, use the media text `Site Logo|~/` to create an image link that sends you to the home page.
+
+### Query Content Items Widget
+
+Evaluates a selected query that returns Content Items, and displays the results. The query can have the following parameters, which filled from the matching content fields.
+
+- sortColumn: Provided by the "Sort Column" text field. Use this in the `ORDER BY` clause of your query to select sorting column.
+- order: Provided by the "Order" dropdown. The value is either `ASC` or `DESC`. Use this in the `ORDER BY` clause of your query to set sorting direction.
+- limit: Provided by the "Limit" numeric field. Use this in the `LIMIT` clause of your query.
 
 ### Section Widget
 
