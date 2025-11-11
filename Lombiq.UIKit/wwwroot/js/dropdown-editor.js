@@ -10,8 +10,6 @@ function removeSelectedFromDropDown(container, button) {
     buttonItems.forEach((item) => item.classList.toggle('d-none', buttonText === item.innerText.trim()));
 }
 
-var asd = 1;
-
 /**
  * Adds click event handler to each dropdown item.
  * @param container {Element} The container around the button and dropdown list.
