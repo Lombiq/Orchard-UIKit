@@ -1,5 +1,5 @@
 .showcaseContainer {
-    display: flex;
+    display: flex !important;
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: center;
