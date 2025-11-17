@@ -6,7 +6,7 @@
     "watch": "npm explore nodejs-extensions -- pnpm watch"
   },
   "dependencies": {
-    "slick-carousel": "github:kenwheeler/slick#b987f6526674b5b9c1360315edd99d9acad74bd4"
+    "slick-carousel": "github:kenwheeler/slick#ecb6ea2345650a5769e81aee46bec10504ac2a36"
   },
   "packageManager": "pnpm@9.15.9"
 }
