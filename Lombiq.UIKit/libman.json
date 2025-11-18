@@ -3,10 +3,9 @@
   "defaultProvider": "jsdelivr",
   "libraries": [
     {
-      "library": "kenwheeler/slick@b987f65",
+      "library": "kenwheeler/slick@ecb6ea2",
       "destination": "wwwroot/vendors",
-      "files": [ "slick/**/*" ],
-      "npmPackageName": "slick-carousel"
+      "files": [ "slick/**/*" ]
     }
   ]
 }
