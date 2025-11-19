@@ -81,7 +81,11 @@ public class UiKitEditorViewModel : ShapeViewModel
     {
         var inputAttributes = new Dictionary<string, object>();
 
-        if (IsRequired()) inputAttributes["required"] = string.Empty;
+        if (IsRequired() && (!additionalAttributes.TryGetValue("type", out var type) || type.ToString() != "hidden"))
+        {
+            inputAttributes["required"] = string.Empty;
+        }
+
         if (Disabled) inputAttributes["disabled"] = string.Empty;
         if (MaxLength is { } maxLength) inputAttributes["maxlength"] = maxLength;
 
