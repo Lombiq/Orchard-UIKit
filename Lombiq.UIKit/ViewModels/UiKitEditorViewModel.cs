@@ -81,7 +81,8 @@ public class UiKitEditorViewModel : ShapeViewModel
     {
         var inputAttributes = new Dictionary<string, object>();
 
-        if (IsRequired() && (!additionalAttributes.TryGetValue("type", out var type) || type.ToString() != "hidden"))
+        if (IsRequired() &&
+            (additionalAttributes == null || !additionalAttributes.TryGetValue("type", out var type) || type.ToString() != "hidden"))
         {
             inputAttributes["required"] = string.Empty;
         }
