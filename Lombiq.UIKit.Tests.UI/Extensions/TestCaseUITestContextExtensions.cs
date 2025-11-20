@@ -1,4 +1,4 @@
-﻿using Atata;
+using Atata;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;
 using OpenQA.Selenium;
@@ -61,7 +61,7 @@ public static class TestCaseUITestContextExtensions
                 configurator: configuration => configuration
                     .WithUsePlatformAsSuffix()
                     .WithUseBrowserNameAsSuffix());
-            context.Refresh();
+            await context.RefreshAsync();
         }
 
         await context.TestAccordionAsync();

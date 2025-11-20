@@ -1,4 +1,4 @@
-﻿@using OrchardCore.Mvc.Utilities
+@using OrchardCore.Mvc.Utilities
 
 @{
     var additionalClasses = Model.AdditionalClasses?.ToString() ?? string.Empty;
@@ -26,7 +26,6 @@
 
             <div id="collapse-@id"
                  class="collapse"
-                 aria-labelledby="heading-@id"
                  data-parent=".card-accordion">
                 <div class="card-body">
                     @await DisplayAsync(items.Shape)
