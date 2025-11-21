@@ -4,8 +4,8 @@
  * @param button {Element} The button next to the dropdown list.
  */
 function removeSelectedFromDropDown(container, button) {
-    const buttonText = button?.textContent.trim()
-    const buttonItems = container.querySelectorAll('.dropdownEditor__itemParent')
+    const buttonText = button?.textContent.trim();
+    const buttonItems = container.querySelectorAll('.dropdownEditor__itemParent');
 
     buttonItems.forEach((item) => item.classList.toggle('d-none', buttonText === item.innerText.trim()));
 }
@@ -44,7 +44,7 @@ function dropdownOnClick(container, button, aspId, removeSelected) {
         }));
 }
 
-document.querySelectorAll('.dropdownEditor').forEach(item => dropdownOnClick(
+document.querySelectorAll('.dropdownEditor').forEach((item) => dropdownOnClick(
     item,
     item.querySelector('.dropdownEditor__button'),
     item.getAttribute('data-asp-id'),
