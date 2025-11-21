@@ -1,0 +1,12 @@
+{
+  "version": "3.0",
+  "defaultProvider": "jsdelivr",
+  "libraries": [
+    {
+      "note": "This entry refers to a specific GitHub commit mirrored by jsDelivr. Its API requires the commit hash to be in the short form. If Renovate automatically updates the value after the at sign below, it has to be manually shortened or the build will fail.",
+      "library": "kenwheeler/slick@ecb6ea2",
+      "destination": "wwwroot/vendors",
+      "files": [ "slick/**/*" ]
+    }
+  ]
+}
