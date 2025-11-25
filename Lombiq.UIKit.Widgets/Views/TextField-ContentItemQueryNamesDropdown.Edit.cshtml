@@ -1,0 +1,38 @@
+@using OrchardCore
+@using OrchardCore.ContentFields.Settings
+@using OrchardCore.ContentManagement.Metadata.Models
+@using OrchardCore.Queries
+@model OrchardCore.ContentFields.ViewModels.EditTextFieldViewModel
+
+@inject IQueryManager QueryManager
+
+@{
+    var settings = Model.PartFieldDefinition.GetSettings<TextFieldSettings>();
+    var options = (await QueryManager.ListQueriesAsync())
+        .Where(query => query.ReturnContentItems)
+        .Select(query => new SelectListItem(query.Name, query.Name))
+        .ToArray();
+}
+
+@* Simplified version of the PredefinedList editor. *@
+<div class="@Orchard.GetFieldWrapperClasses(Model.PartFieldDefinition)"
+     id="@Html.IdFor(model => model.Text)_FieldWrapper">
+
+    <label asp-for="Text" class="@Orchard.GetLabelClasses(inputRequired: settings.Required)">
+        @Model.PartFieldDefinition.DisplayName()
+    </label>
+
+    <div class="@Orchard.GetEndClasses()">
+        <select class="form-select content-preview-select"
+                asp-for="Text"
+                asp-items="options"></select>
+
+        <span asp-validation-for="Text"></span>
+
+        @if (!string.IsNullOrEmpty(settings.Hint))
+        {
+            <span class="hint">@settings.Hint</span>
+        }
+    </div>
+
+</div>
