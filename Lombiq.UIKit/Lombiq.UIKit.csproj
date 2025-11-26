@@ -45,4 +45,11 @@
     <PackageReference Include="Lombiq.Tests.UI.AppExtensions" Version="14.2.0" />
   </ItemGroup>
 
+  <!--  Needed for deployment.  -->
+  <Target Name="AddVendors" AfterTargets="LibraryManagerRestore">
+    <ItemGroup>
+      <Content Include="wwwroot\vendors\**\*" />
+    </ItemGroup>
+  </Target>
+
 </Project>
