@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="OrchardCore.Module.Targets" Version="2.1.0" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="2.1.0" GeneratePathProperty="true" />
     <PackageReference Include="OrchardCore.Contents" Version="2.1.0" />
     <PackageReference Include="OrchardCore.DisplayManagement" Version="2.1.0" />
     <PackageReference Include="OrchardCore.ResourceManagement" Version="2.1.0" />
@@ -41,7 +41,7 @@
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="3.0.71" />
-    <PackageReference Include="Lombiq.MSBuild.LibMan.Targets" Version="1.0.0-alpha.6.nest-643" />
+    <PackageReference Include="Lombiq.MSBuild.LibMan.Targets" Version="1.0.0-alpha.11.nest-643" />
     <PackageReference Include="Lombiq.HelpfulLibraries.OrchardCore" Version="12.5.0" />
     <PackageReference Include="Lombiq.Tests.UI.AppExtensions" Version="14.2.0" />
   </ItemGroup>
