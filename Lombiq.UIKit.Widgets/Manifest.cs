@@ -12,6 +12,7 @@ using OrchardCore.Modules.Manifest;
         FeatureIds.Base,
         "Lombiq.HelpfulExtensions.ContentTypes",
         "OrchardCore.ContentFields",
-        "OrchardCore.Media"
+        "OrchardCore.Media",
+        "OrchardCore.Queries"
         ]
 )]
