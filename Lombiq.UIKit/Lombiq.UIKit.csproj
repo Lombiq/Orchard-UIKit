@@ -35,10 +35,10 @@
     <PackageReference Include="OrchardCore.Contents" Version="2.1.0" />
     <PackageReference Include="OrchardCore.DisplayManagement" Version="2.1.0" />
     <PackageReference Include="OrchardCore.ResourceManagement" Version="2.1.0" />
-    <!-- This is deactivated in CI because restoring Slick via LibMan is flaky, see
-    https://github.com/Lombiq/GitHub-Actions/issues/549. So, we keep the library in the repository but LibMan can be
-    used to update the Slick snapshot. -->
-    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="3.0.71" Condition="'$(GITHUB_ENV)' == ''" />
+    <!-- This is commented out, because restoring Slick via LibMan is flaky, see
+    https://github.com/Lombiq/GitHub-Actions/issues/549. So, we keep the library in the repository. This should only be
+    temporarily uncommented while updating the Slick snapshot. -->
+    <!--<PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="3.0.71" />-->
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
