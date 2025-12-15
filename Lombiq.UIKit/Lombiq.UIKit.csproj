@@ -35,7 +35,12 @@
     <PackageReference Include="OrchardCore.Contents" Version="2.1.0" />
     <PackageReference Include="OrchardCore.DisplayManagement" Version="2.1.0" />
     <PackageReference Include="OrchardCore.ResourceManagement" Version="2.1.0" />
-    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="3.0.71" />
+    <!-- This is commented out, because restoring Slick via LibMan is flaky, see
+    https://github.com/Lombiq/GitHub-Actions/issues/549. So, we keep the library in the repository. Uncomment this
+    temporarily while updating the Slick snapshot locally. It's not enabled locally either because we don't gain
+    anything by it except for the rare cases of updates, but since LibMan touches the files, they'll show up as changed
+    in Git (at least in Git Extensions), even though their contents didn't change. -->
+    <!--<PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="3.0.71" />-->
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' != 'true'">
