@@ -17,10 +17,9 @@ public static class AttributeExtension
     /// </remarks>
     public static bool RequiredAttributeExists(this ModelMetadata metaData) =>
         (!metaData.ModelType.IsValueType && metaData.IsRequired)
-        || (metaData.ModelType.IsValueType
-            && metaData
-                .ContainerType
-                .GetProperty(metaData.PropertyName)
-                .GetCustomAttributes(typeof(RequiredAttribute), inherit: false)
-                .Length != 0);
+        || (metaData.ModelType.IsValueType &&
+            System.Attribute.IsDefined(
+                metaData.ContainerType.GetProperty(metaData.PropertyName),
+                typeof(RequiredAttribute),
+                inherit: false));
 }
