@@ -31,10 +31,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="OrchardCore.Module.Targets" Version="3.0.0-preview-18882" GeneratePathProperty="true" />
-    <PackageReference Include="OrchardCore.Contents" Version="3.0.0-preview-18882" />
-    <PackageReference Include="OrchardCore.DisplayManagement" Version="3.0.0-preview-18882" />
-    <PackageReference Include="OrchardCore.ResourceManagement" Version="3.0.0-preview-18882" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="3.0.0-preview-18891" GeneratePathProperty="true" />
+    <PackageReference Include="OrchardCore.Contents" Version="3.0.0-preview-18891" />
+    <PackageReference Include="OrchardCore.DisplayManagement" Version="3.0.0-preview-18891" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="3.0.0-preview-18891" />
     <!-- This is commented out, because restoring Slick via LibMan is flaky, see
     https://github.com/Lombiq/GitHub-Actions/issues/549. So, we keep the library in the repository. Uncomment this
     temporarily while updating the Slick snapshot locally. It's not enabled locally either because we don't gain
