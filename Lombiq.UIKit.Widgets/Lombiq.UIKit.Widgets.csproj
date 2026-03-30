@@ -1,38 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
-
+<Project>
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
-    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="1.0.1-alpha.6.osoe-1208" />
+
   <PropertyGroup>
+    <IsLombiqProject>true</IsLombiqProject>
     <Title>Lombiq UI Kit - Widgets for Orchard Core</Title>
-    <Authors>Lombiq Technologies</Authors>
-    <Copyright>Copyright © 2024, Lombiq Technologies Ltd.</Copyright>
-    <Description>Lombiq UI Kit - Widgets for Orchard Core: This module contains widgets based on shapes from Lombiq UI Kit. See the project website for detailed documentation.</Description>
-    <PackageIcon>NuGetIcon.png</PackageIcon>
+    <CopyrightYear>2024</CopyrightYear>
+    <DescriptionBody>This module contains widgets based on shapes from Lombiq UI Kit. See the project website for detailed documentation.</DescriptionBody>
     <PackageTags>OrchardCore;Lombiq;AspNetCore;UI;UIKit;Widgets;front-end</PackageTags>
     <RepositoryUrl>https://github.com/Lombiq/Orchard-UIKit</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Lombiq/Orchard-UIKit/blob/dev/Lombiq.UIKit.Widgets/Readme.md</PackageProjectUrl>
-    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Readme.md" />
-    <None Include="NuGetIcon.png" Pack="true" PackagePath="" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="OrchardCore.Module.Targets" Version="3.0.0-preview-18960" />
-    <PackageReference Include="OrchardCore.Contents" Version="3.0.0-preview-18960" />
-    <PackageReference Include="OrchardCore.DisplayManagement" Version="3.0.0-preview-18960" />
-    <PackageReference Include="OrchardCore.ResourceManagement" Version="3.0.0-preview-18960" />
     <PackageReference Include="OrchardCore.Flows" Version="3.0.0-preview-18960" />
     <PackageReference Include="OrchardCore.Media" Version="3.0.0-preview-18960" />
   </ItemGroup>
@@ -41,4 +27,6 @@
       <ProjectReference Include="..\Lombiq.UIKit\Lombiq.UIKit.csproj" />
   </ItemGroup>
 
+  <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="1.0.1-alpha.6.osoe-1208" />
 </Project>
