@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Lombiq.UIKit.Tests.UI/Lombiq.UIKit.Tests.UI.csproj" />
+  <Project Path="Lombiq.UIKit.Widgets.Tests.UI/Lombiq.UIKit.Widgets.Tests.UI.csproj" />
+  <Project Path="Lombiq.UIKit.Widgets/Lombiq.UIKit.Widgets.csproj" />
+  <Project Path="Lombiq.UIKit/Lombiq.UIKit.csproj" />
+</Solution>
