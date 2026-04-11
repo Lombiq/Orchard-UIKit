@@ -23,8 +23,10 @@
             .Select(contentItem => contentItem.GetOrCreate<SlidePart>());
         var items = new List<IShape>();
 
-        await bagItems.AwaitEachAsync(async slide => 
-            items.Add(await New.Slide(Title: slide.ContentItem.DisplayText, Image: slide.Image.Paths[0])));
+        foreach (var slide in bagItems)
+        {
+            items.Add(await New.Slide(Title: slide.ContentItem.DisplayText, Image: slide.Image.Paths[0]));
+        }
 
         var carouselSettings = settings.OptionsJsonSerialized;
     }
