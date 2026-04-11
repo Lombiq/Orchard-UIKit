@@ -6,7 +6,7 @@
 @{
     if (Model.Content is not IShape content ||
         Model.ContentItem is not ContentItem contentItem ||
-        contentItem.As<AddMetadataWidget>() is not { } widget ||
+        contentItem.GetOrCreate<AddMetadataWidget>() is not { } widget ||
         content.GetBagPartViewModel() is not { } bagPartViewModel)
     {
         return;

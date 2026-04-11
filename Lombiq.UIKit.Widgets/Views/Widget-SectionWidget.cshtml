@@ -7,7 +7,7 @@
 @{
     if (Model.Content is not IShape content ||
         Model.ContentItem is not ContentItem contentItem ||
-        contentItem.As<SectionWidget>() is not { } section)
+        contentItem.GetOrCreate<SectionWidget>() is not { } section)
     {
         return;
     }
@@ -47,7 +47,7 @@
         </div>
     }
 
-    @if (contentItem.As<HtmlTitlePart>() is { Title.Html: { Length: > 0 } title })
+    @if (contentItem.GetOrCreate<HtmlTitlePart>() is { Title.Html: { Length: > 0 } title })
     {
         @Html.Raw(await HtmlTitlePart.GetHtmlAsync(title, 2, "htmlTitlePart"))
     }

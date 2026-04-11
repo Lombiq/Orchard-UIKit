@@ -1,6 +1,6 @@
 @using Lombiq.HelpfulLibraries.OrchardCore.Contents
 @{
-    if ((Model?.ContentItem as ContentItem)?.As<QueryContentItemsWidget>() is not { } part)
+    if ((Model?.ContentItem as ContentItem)?.GetOrCreate<QueryContentItemsWidget>() is not { } part)
     {
         return;
     }
