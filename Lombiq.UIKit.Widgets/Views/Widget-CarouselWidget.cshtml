@@ -20,7 +20,7 @@
         var bagItems = ((ContentItem)Model.ContentItem)
             .GetOrCreate<BagPart>()
             .ContentItems
-            .Select(contentItem => contentItem.GetOrCreate<SlidePart>());
+            .SelectWhere(contentItem => contentItem.GetMaybe<SlidePart>());
         var items = new List<IShape>();
 
         foreach (var slide in bagItems)
