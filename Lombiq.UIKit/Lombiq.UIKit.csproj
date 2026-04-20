@@ -51,7 +51,7 @@
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
     <PackageReference Include="Lombiq.MSBuild.LibMan.Targets" Version="1.0.0-alpha.12.nest-643" />
     <PackageReference Include="Lombiq.HelpfulLibraries.OrchardCore" Version="12.6.1-alpha.7.osoe-925" />
-    <PackageReference Include="Lombiq.Tests.UI.AppExtensions" Version="14.2.2-alpha.10.osoe-925" />
+    <PackageReference Include="Lombiq.Tests.UI.AppExtensions" Version="14.2.2-alpha.12.osoe-925" />
   </ItemGroup>
 
   <Import Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.LibMan.Targets/Lombiq.MSBuild.LibMan.Targets.targets"
