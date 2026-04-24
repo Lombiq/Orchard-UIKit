@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Lombiq.Tests.UI.AppExtensions" Version="14.2.2-alpha.9.osoe-925" />
+    <PackageReference Include="Lombiq.Tests.UI.AppExtensions" Version="14.2.2-alpha.14.osoe-925" />
   </ItemGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
