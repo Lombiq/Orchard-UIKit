@@ -7,8 +7,7 @@ using OrchardCore.Modules;
 namespace Lombiq.UIKit.Showcase.Controllers;
 
 [Feature(FeatureIds.Showcase)]
-[Admin]
-[Route(Routes.UIKitShowcase)]
+[Admin(Routes.UIKitShowcase)]
 public sealed class ShowcaseController : Controller
 {
     [HttpGet]

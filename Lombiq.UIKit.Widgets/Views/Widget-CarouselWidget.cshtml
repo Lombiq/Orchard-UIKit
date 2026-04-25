@@ -17,10 +17,16 @@
 
 <div class="carouselWidget" id="carouselWidget-@Model.ContentItem.ContentItemId">
     @{
-        var bagItems = ((ContentItem)Model.ContentItem).As<BagPart>().ContentItems.Select(contentItem => contentItem.As<SlidePart>());
+        var bagItems = ((ContentItem)Model.ContentItem)
+            .GetOrCreate<BagPart>()
+            .ContentItems
+            .SelectWhere(contentItem => contentItem.GetMaybe<SlidePart>());
         var items = new List<IShape>();
 
-        bagItems.ForEach(async (slide) => items.Add(await New.Slide(Title: slide.ContentItem.DisplayText, Image: slide.Image.Paths[0])));
+        foreach (var slide in bagItems)
+        {
+            items.Add(await New.Slide(Title: slide.ContentItem.DisplayText, Image: slide.Image.Paths[0]));
+        }
 
         var carouselSettings = settings.OptionsJsonSerialized;
     }

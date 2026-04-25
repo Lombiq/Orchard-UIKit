@@ -10,12 +10,12 @@
   </PropertyGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
-  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="1.0.1-alpha.7.osoe-1208" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="1.0.1-alpha.10.osoe-1208" />
 
   <PropertyGroup>
     <Title>Lombiq UI Kit for Orchard Core</Title>
     <CopyrightYear>2021</CopyrightYear>
-    <DescriptionBody>This module contains reusable shapes like text editors, custom-style checkboxes, dropdown editors, and in the future potentially more complex editors. See the project website for detailed documentation.</DescriptionBody>
+    <DescriptionBody>This module contains reusable shapes like text editors, custom-style checkboxes, dropdown editors, and in the future potentially more complex editors.</DescriptionBody>
     <PackageTags>OrchardCore;Lombiq;AspNetCore;UI;UIKit;front-end</PackageTags>
     <RepositoryUrl>https://github.com/Lombiq/Orchard-UIKit</RepositoryUrl>
   </PropertyGroup>
@@ -25,9 +25,9 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Lombiq.Tests.UI.AppExtensions" Version="14.2.2-alpha.9.osoe-925" />
+    <PackageReference Include="Lombiq.Tests.UI.AppExtensions" Version="14.2.2-alpha.14.osoe-925" />
   </ItemGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
-  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="1.0.1-alpha.7.osoe-1208" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="1.0.1-alpha.10.osoe-1208" />
 </Project>

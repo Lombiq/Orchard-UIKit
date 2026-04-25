@@ -30,7 +30,7 @@ public static class TestCaseUITestContextExtensions
     {
         if (goToUrl)
         {
-            await context.SignInDirectlyAndGoToRelativeUrlAsync("UIKitShowcase");
+            await context.SignInDirectlyAndGoToAdminRelativeUrlAsync("UIKitShowcase");
         }
         else
         {

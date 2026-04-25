@@ -6,20 +6,20 @@
   </PropertyGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
-  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="1.0.1-alpha.7.osoe-1208" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="1.0.1-alpha.10.osoe-1208" />
 
   <PropertyGroup>
     <Title>Lombiq UI Kit - Widgets for Orchard Core</Title>
     <CopyrightYear>2024</CopyrightYear>
-    <DescriptionBody>This module contains widgets based on shapes from Lombiq UI Kit. See the project website for detailed documentation.</DescriptionBody>
+    <DescriptionBody>This module contains widgets based on shapes from Lombiq UI Kit.</DescriptionBody>
     <PackageTags>OrchardCore;Lombiq;AspNetCore;UI;UIKit;Widgets;front-end</PackageTags>
     <RepositoryUrl>https://github.com/Lombiq/Orchard-UIKit</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Lombiq/Orchard-UIKit/blob/dev/Lombiq.UIKit.Widgets/Readme.md</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OrchardCore.Flows" Version="3.0.0-preview-18960" />
-    <PackageReference Include="OrchardCore.Media" Version="3.0.0-preview-18960" />
+    <PackageReference Include="OrchardCore.Flows" Version="3.0.0-preview-18975" />
+    <PackageReference Include="OrchardCore.Media" Version="3.0.0-preview-18975" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,5 +27,5 @@
   </ItemGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
-  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="1.0.1-alpha.7.osoe-1208" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="1.0.1-alpha.10.osoe-1208" />
 </Project>

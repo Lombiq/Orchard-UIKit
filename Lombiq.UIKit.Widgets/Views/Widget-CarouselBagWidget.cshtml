@@ -9,7 +9,7 @@
 @{
     if (Model.Content is not IShape content ||
         Model.ContentItem is not ContentItem contentItem ||
-        contentItem.As<CarouselBagWidget>() is not { } part)
+        !contentItem.TryGet<CarouselBagWidget>(out var part))
     {
         return;
     }

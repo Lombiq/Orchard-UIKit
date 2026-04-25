@@ -1,7 +1,7 @@
 @{
     if (Model.Content is not IShape content ||
         Model.ContentItem is not ContentItem contentItem ||
-        contentItem.As<CardWidget>() is not { } widget)
+        !contentItem.TryGet<CardWidget>(out var widget))
     {
         return;
     }
@@ -14,7 +14,7 @@
        prop-Image="@image"
        prop-ImageBottom="@widget.ImageBottom.Value"
        prop-Alt="@widget.Image.MediaTexts.FirstOrDefault()"
-       prop-Title="@contentItem.As<HtmlTitlePart>()?.Title?.Html">
+       prop-Title="@contentItem.GetOrCreate<HtmlTitlePart>().Title?.Html">
     <metadata>
         <add-property name="Header">
             @if (childrenByType.TryGetValue("Header", out var flow))
