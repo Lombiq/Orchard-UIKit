@@ -18,8 +18,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="OrchardCore.Flows" Version="3.0.0-preview-18975" />
-    <PackageReference Include="OrchardCore.Media" Version="3.0.0-preview-18975" />
+    <PackageReference Include="OrchardCore.Flows" Version="3.0.0-preview-18991" />
+    <PackageReference Include="OrchardCore.Media" Version="3.0.0-preview-18991" />
   </ItemGroup>
 
   <ItemGroup>
