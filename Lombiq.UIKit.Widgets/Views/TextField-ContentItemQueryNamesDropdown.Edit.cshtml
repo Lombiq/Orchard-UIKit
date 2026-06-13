@@ -15,14 +15,14 @@
 }
 
 @* Simplified version of the PredefinedList editor. *@
-<div class="@Orchard.GetFieldWrapperClasses(Model.PartFieldDefinition)"
+<div class="ocat-wrapper @Model.PartFieldDefinition"
      id="@Html.IdFor(model => model.Text)_FieldWrapper">
 
-    <label asp-for="Text" class="@Orchard.GetLabelClasses(inputRequired: settings.Required)">
+    <label asp-for="Text" class="ocat-label @Orchard.GetLabelClasses(settings)">
         @Model.PartFieldDefinition.DisplayName()
     </label>
 
-    <div class="@Orchard.GetEndClasses()">
+    <div class="ocat-end">
         <select class="form-select content-preview-select"
                 asp-for="Text"
                 asp-items="options"></select>
