@@ -47,25 +47,20 @@ public class RandomWidgetDisplayDriver : ContentPartDisplayDriver<RandomWidget>
             var randomizer = _configuration.IsUITesting() ? new NonSecurityRandomizer(seed: 839_819_175) : new();
 
             var typeNames = part.ContentTypes?.AsList() ?? [];
-            var query = _session.Query<ContentItem, ContentItemIndex>(index =>
+            IQuery<ContentItem> query = _session.Query<ContentItem, ContentItemIndex>(index =>
                 index.Latest &&
                 index.Published &&
                 index.ContentType.IsIn(typeNames));
 
             // Take either some consecutive items from a random point or take the whole set.
-            IEnumerable<ContentItem> contentItems;
             if (part.Count > 0)
             {
                 var randomIndex = randomizer.GetFromRange(await query.CountAsync());
-                contentItems = await query.Skip(randomIndex - part.Count + 1).Take(part.Count).ListAsync();
-            }
-            else
-            {
-                contentItems = await query.ListAsync();
+                query = query.Skip(randomIndex - part.Count + 1).Take(part.Count);
             }
 
             // Then shuffle all items.
-            contentItems = contentItems
+            var contentItems = (await query.ListReadOnlyAsync())
                 .Select(item => (Item: item, OrderBy: randomizer.Get()))
                 .OrderBy(pair => pair.OrderBy)
                 .ThenBy(pair => pair.Item.Id)

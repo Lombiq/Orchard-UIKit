@@ -1,5 +1,5 @@
 @{
-    var widget = (Model.ContentItem as ContentItem)?.As<ImageLinkWidget>() ?? new ImageLinkWidget();
+    var widget = (Model.ContentItem as ContentItem)?.GetOrCreate<ImageLinkWidget>() ?? new ImageLinkWidget();
     var images = widget.GetItemData().ToList();
     var classes = new List<string>((Model as IShape)?.Classes ?? []);
 
