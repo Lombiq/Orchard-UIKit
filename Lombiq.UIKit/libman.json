@@ -5,7 +5,7 @@
     {
       "note": "This entry refers to a specific GitHub commit mirrored by jsDelivr. Its API requires the commit hash to be in the short form. If Renovate automatically updates the value after the at sign below, it has to be manually shortened or the build will fail.",
       "note2": "WARNING: When updating the reference, enable Microsoft.Web.LibraryManager.Build in the csproj and follow the comment there.",
-      "library": "kenwheeler/slick@ad3198e26bb5f4182c56cf40bcdee1d239b30ac3",
+      "library": "kenwheeler/slick@a2eb8e01c51baabefe13b65a0d8dcc1a5975d393",
       "destination": "wwwroot/vendors",
       "files": [ "slick/**/*" ]
     }
