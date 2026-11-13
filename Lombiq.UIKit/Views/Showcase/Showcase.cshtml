@@ -1,4 +1,5 @@
 @using Microsoft.AspNetCore.Html
+@using OrchardCore.DisplayManagement
 @using System.Text.Json
 @model ShowcaseViewModel
 
@@ -17,6 +18,34 @@
         new DropdownItem{ Text = T["Text 1"], DataState = Status.Approved, DataClass = "btn-success"},
         new DropdownItem{ Text = T["Text 2"], DataState = Status.Denied, DataClass = "btn-danger"},
         new DropdownItem{ Text = T["Long Text 2"], DataState = Status.Pending, DataClass = "btn-warning"},
+    };
+
+    var loremIpsum = new[] {
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat mauris a enim ullamcorper " +
+        "aliquet. Praesent dapibus finibus nulla eu fringilla. Integer fermentum nisl ac lectus posuere bibendum. " +
+        "Pellentesque a metus porta, consequat metus efficitur, viverra mauris. Phasellus vel diam mattis, pulvinar " +
+        "augue a, posuere ipsum. Fusce dictum nulla in justo egestas, sed dignissim lacus bibendum. Etiam nisl " +
+        "velit, mollis eget pharetra quis, interdum ut odio. Aenean ultricies sit amet ipsum id fermentum. " +
+        "Suspendisse nulla ex, scelerisque et elementum vel, consequat a felis. Sed viverra consectetur posuere. " +
+        "Maecenas quis semper odio, non placerat libero.",
+        "Phasellus tempor auctor felis, sed ullamcorper ante tristique a. Nunc non tortor quam. Quisque euismod eros " +
+        "ut turpis egestas, at semper ligula fermentum. Praesent non aliquam urna. Phasellus blandit ac ipsum nec " +
+        "pharetra. Aenean augue dolor, dapibus ut congue nec, sagittis non tellus. Nulla aliquam egestas dictum.",
+        "Nam in risus ex. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla tincidunt sollicitudin " +
+        "posuere. Integer felis dolor, consectetur a interdum sit amet, efficitur eget felis. Praesent convallis " +
+        "urna sapien, a eleifend urna tempus sit amet. Mauris sagittis sodales commodo. Ut tincidunt nulla nec leo " +
+        "semper consequat. Fusce eros sapien, varius sed faucibus in, sagittis id tellus. Vivamus at sodales velit. " +
+        "Donec nec nisi a ligula imperdiet congue vel a enim.",
+        "Cras semper ullamcorper dui a dapibus. Sed mattis orci ac diam mollis, eu lacinia orci porttitor. Orci " +
+        "varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas aliquam tellus " +
+        "sit amet vehicula ultrices. Maecenas pharetra porta ipsum id varius. Maecenas eu viverra justo, et " +
+        "tincidunt tortor. Nunc volutpat cursus pellentesque. Curabitur vitae magna ac risus interdum consectetur.",
+        "Donec porta molestie diam id auctor. Morbi semper sed arcu ac pharetra. In in tellus mi. Maecenas sit amet " +
+        "finibus tellus. Morbi gravida sem id maximus dignissim. Fusce ultrices velit libero, et bibendum est " +
+        "efficitur eu. Quisque nec condimentum est. Mauris iaculis sed sapien sit amet convallis. Vivamus malesuada, " +
+        "tortor ut maximus finibus, tortor dui tincidunt lectus, non aliquet mauris turpis at neque. Suspendisse " +
+        "sagittis augue sit amet quam vulputate, vel laoreet quam varius. Praesent sed euismod tellus, eget congue " +
+        "augue. Sed in felis eget risus placerat dictum commodo vel ligula.",
     };
 }
 
@@ -344,15 +373,8 @@
         <h1>@T["Slick carousel:"]</h1>
 
         @{
-            var carouselItems = new[]
-            {
-                await New.Message(Message: "Item 1", Type: "Information"),
-                await New.Message(Message: "Item 2", Type: "Information"),
-                await New.Message(Message: "Item 3", Type: "Information"),
-                await New.Message(Message: "Item 4", Type: "Information"),
-                await New.Message(Message: "Item 5", Type: "Information"),
-                await New.Message(Message: "Item 6", Type: "Information"),
-            };
+            var carouselItems = await loremIpsum.AwaitEachAsync(async (pargraph, i) =>
+                (IShape)await New.ShowcaseCarouselItem(Head: $"Item {i + 1}", Body: pargraph));
 
             var carouselSettings = JsonSerializer.Serialize(new { slidesToShow = 4 });
         }
