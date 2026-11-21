@@ -1,0 +1,20 @@
+<style at="Head">
+    .ShowcaseCarouselItem {
+        height: 300px;
+        width: 100%;
+        padding: 1em;
+        color: var(--bs-info-text-emphasis);
+        background-color: var(--bs-info-bg-subtle);
+        border: 1px solid var(--bs-info-border-subtle);
+        
+        p {
+            overflow: hidden;
+            max-height: calc(300px - 4em);
+        }
+    }
+</style>
+
+<div class="ShowcaseCarouselItem">
+    <div>@Model.Head</div>
+    <p>@Model.Body</p>
+</div>
